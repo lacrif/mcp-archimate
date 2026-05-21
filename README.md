@@ -157,12 +157,6 @@ Ce skill est utile pour:
 - retrouver les relations (ex: `Flow`, relations entrantes/sortantes)
 - parcourir les vues et leurs details
 
-Prerequis: l'API doit etre demarree avant utilisation du skill.
-
-```bash
-uvicorn api.main:app --host 127.0.0.1 --port 8000
-```
-
 ## Service MCP (FastMCP)
 
 Le projet expose aussi un service MCP en lecture seule, monte dans la meme application FastAPI.
@@ -188,22 +182,19 @@ Ces outils reprennent les memes capacites de consultation que les endpoints REST
 
 ### Configuration MCP
 
-Le fichier `mcp-config.json` fournit une configuration réutilisable pour les clients MCP. Il décrit l'endpoint, le transport, la version du protocole et les outils exposés.
+Le fichier `.vscode/mcp.json` fournit une configuration réutilisable pour les clients MCP. Il décrit l'endpoint, le transport, la version du protocole et les outils exposés.
 
-- Fichier : `mcp-config.json`
-- Endpoint : `http://localhost:8000/mcp`
-- Transport : `streamable-http`
-
-### Exemple de client MCP
-
-Un exemple Python utilise `mcp-config.json` pour initialiser une session MCP et lister les outils disponibles.
-
-```bash
-python mcp_client_example.py
+```json
+{
+    "servers": {
+        "mcp-archimate": {
+            "url": "http://localhost:8000/mcp",
+            "type": "http"
+        }
+    },
+    "inputs": []
+}
 ```
-
-Le script lit la configuration, envoie une requête `initialize`, puis appelle `tools/list`.
-
 
 ## Tests unitaires
 
