@@ -1,7 +1,6 @@
 # mcp-archimate
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/lacrif/mcp-archimate?logo=docker&link=https%3A%2F%2Fhub.docker.com%2Frepository%2Fdocker%2Flacrif%2Fmcp-archimate)](https://hub.docker.com/repository/docker/lacrif/mcp-archimate)
-[![Docker Stars](https://img.shields.io/docker/stars/lacrif/mcp-archimate?logo=docker&link=https%3A%2F%2Fhub.docker.com%2Frepository%2Fdocker%2Flacrif%2Fmcp-archimate)](https://hub.docker.com/repository/docker/lacrif/mcp-archimate)
+[![Docker Pulls](https://img.shields.io/docker/pulls/lacrif/mcp-archimate?logo=docker&link=https%3A%2F%2Fhub.docker.com%2Fr%2Fdocker%2Flacrif%2Fmcp-archimate)](https://hub.docker.com/r/docker/lacrif/mcp-archimate)
 [![Unit Tests](https://github.com/lacrif/mcp-archimate/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/lacrif/mcp-archimate/actions/workflows/unit-tests.yml)
 [![Docker Build & Push](https://github.com/lacrif/mcp-archimate/actions/workflows/docker-build-push.yml/badge.svg)](https://github.com/lacrif/mcp-archimate/actions/workflows/docker-build-push.yml)
 
