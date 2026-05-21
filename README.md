@@ -1,6 +1,6 @@
 # mcp-archimate
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/lacrif/mcp-archimate?logo=docker&link=https%3A%2F%2Fhub.docker.com%2Fr%2Frs%2Flacrif%2Fmcp-archimate)](https://hub.docker.com/r/lacrif/mcp-archimate)
+[![Docker Pulls](https://img.shields.io/docker/pulls/lacrif/mcp-archimate?link=https%3A%2F%2Fhub.docker.com%2Fr%2Flacrif%2Fmcp-archimate)](https://hub.docker.com/r/lacrif/mcp-archimate)
 [![Unit Tests](https://github.com/lacrif/mcp-archimate/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/lacrif/mcp-archimate/actions/workflows/unit-tests.yml)
 [![Docker Build & Push](https://github.com/lacrif/mcp-archimate/actions/workflows/docker-build-push.yml/badge.svg)](https://github.com/lacrif/mcp-archimate/actions/workflows/docker-build-push.yml)
 
@@ -41,7 +41,7 @@ Les elements sont lies par des relations standardisees (`Serving`, `Access`, `Co
 
 ## Structure du projet
 
-```
+```text
 .
 ├── archisurance.archimate          # Source du modele (Archi Tool)
 ├── data/
@@ -231,5 +231,5 @@ pytest tests/test_api.py::test_function_name
 - **Serveur MCP** : FastMCP (Protocol Model Context)
 - **Framework** : Python 3.x
 - **Port par defaut** : 8000
-- **Documentation API** : http://localhost:8000/docs
-- **Endpoint MCP** : http://localhost:8000/mcp (streamable-http)
+- **Documentation API** : [http://localhost:8000/docs](http://localhost:8000/docs)
+- **Endpoint MCP** : [http://localhost:8000/mcp](http://localhost:8000/mcp) (streamable-http)
