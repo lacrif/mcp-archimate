@@ -1,5 +1,10 @@
 # mcp-archimate
 
+[![Docker Pulls](https://img.shields.io/docker/pulls/lacrif/mcp-archimate?logo=docker&link=https%3A%2F%2Fhub.docker.com%2Frepository%2Fdocker%2Flacrif%2Fmcp-archimate)](https://hub.docker.com/repository/docker/lacrif/mcp-archimate)
+[![Docker Stars](https://img.shields.io/docker/stars/lacrif/mcp-archimate?logo=docker&link=https%3A%2F%2Fhub.docker.com%2Frepository%2Fdocker%2Flacrif%2Fmcp-archimate)](https://hub.docker.com/repository/docker/lacrif/mcp-archimate)
+[![Unit Tests](https://github.com/lacrif/mcp-archimate/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/lacrif/mcp-archimate/actions/workflows/unit-tests.yml)
+[![Docker Build & Push](https://github.com/lacrif/mcp-archimate/actions/workflows/docker-build-push.yml/badge.svg)](https://github.com/lacrif/mcp-archimate/actions/workflows/docker-build-push.yml)
+
 Ce depot expose une **API REST** et un **serveur MCP (Model Context Protocol)** pour interroger un modele ArchiMate stocke dans un fichier XML standardise.
 
 ## Objectif du depot
@@ -54,6 +59,23 @@ Les elements sont lies par des relations standardisees (`Serving`, `Access`, `Co
 └── README.md                       # Ce fichier
 ```
 
+## L'API REST (FastAPI)
+
+L'API sera accessible sur `http://localhost:8000` et la documentation interactive swagger sur `http://localhost:8000/docs`.
+
+### Endpoints principaux
+
+| Methode | Chemin | Description |
+| ------- | ------ | ----------- |
+| GET | `/` | Informations generales sur le modele |
+| GET | `/elements` | Liste des elements (filtre par `type`, `name`) |
+| GET | `/elements/types` | Liste des types d'elements |
+| GET | `/elements/{id}` | Detail d'un element |
+| GET | `/relationships` | Liste des relations (filtre par `type`, `source_id`, `target_id`) |
+| GET | `/relationships/types` | Liste des types de relations |
+| GET | `/views` | Liste des vues |
+| GET | `/views/{id}` | Detail d'une vue avec ses noeuds |
+
 ## Deploiement
 
 ### Execution locale
@@ -66,63 +88,122 @@ pip install -r requirements.txt
 uvicorn api.main:app --reload
 ```
 
-L'API sera accessible sur `http://localhost:8000` et la documentation interactive sur `http://localhost:8000/docs`.
+### Execution via Docker (image Docker Hub)
 
-### Execution via Docker
+Image publiee: [lacrif/mcp-archimate:latest](https://hub.docker.com/r/lacrif/mcp-archimate)
 
 ```bash
-# Construire l'image
-docker build -t mcp-archimate .
+# Recuperer l'image Docker Hub
+docker pull lacrif/mcp-archimate:latest
 
 # Lancer le conteneur
-docker run -p 8000:8000 mcp-archimate
+docker run -p 8000:8000 lacrif/mcp-archimate:latest
 ```
 
-L'API sera accessible sur `http://localhost:8000`.
-
-### Execution des tests
+### Execution via Docker build local
 
 ```bash
-# Tests locaux
-pip install -r requirements.txt
-pytest
+# Construire l'image localement
+docker build -t mcp-archimate:local .
 
-# Tests via Docker
-docker run mcp-archimate pytest
+# Lancer le conteneur a partir de l'image locale
+docker run -p 8000:8000 mcp-archimate:local
 ```
 
-## API REST ArchiMate
+### Utiliser votre propre open-exchange.xml avec Docker
 
-Une API FastAPI est disponible pour interroger le modele de facon programmatique a partir du fichier `open-exchange.xml`.
-
-### Lancer l'API en local
+Vous pouvez remplacer le fichier de modele fourni par votre propre export ArchiMate en montant un volume dans le conteneur.
 
 ```bash
-pip install -r requirements.txt
-uvicorn api.main:app --reload
+# Exemple: monter un fichier local dans le conteneur
+docker run -p 8000:8000 \
+    -v /chemin/vers/mon-open-exchange.xml:/app/data/open-exchange.xml:ro \
+    lacrif/mcp-archimate:latest
 ```
 
-La documentation interactive est accessible sur `http://localhost:8000/docs`.
+Le fichier local est monte en lecture seule (`:ro`) et remplace `data/open-exchange.xml` utilise par l'application.
 
-### Lancer l'API via Docker
+### Option avec Docker Compose
+
+Vous pouvez aussi utiliser Docker Compose pour declarer le volume de facon persistante:
+
+```yaml
+services:
+    mcp-archimate:
+        image: lacrif/mcp-archimate:latest
+        ports:
+            - "8000:8000"
+        volumes:
+            - ./data/open-exchange.xml:/app/data/open-exchange.xml:ro
+```
+
+Puis lancer:
 
 ```bash
-docker build -t mcp-archimate .
-docker run -p 8000:8000 mcp-archimate
+docker compose up
 ```
 
-### Endpoints principaux
+## Skills archimate-api
 
-| Methode | Chemin | Description |
-|---------|--------|-------------|
-| GET | `/` | Informations generales sur le modele |
-| GET | `/elements` | Liste des elements (filtre par `type`, `name`) |
-| GET | `/elements/types` | Liste des types d'elements |
-| GET | `/elements/{id}` | Detail d'un element |
-| GET | `/relationships` | Liste des relations (filtre par `type`, `source_id`, `target_id`) |
-| GET | `/relationships/types` | Liste des types de relations |
-| GET | `/views` | Liste des vues |
-| GET | `/views/{id}` | Detail d'une vue avec ses noeuds |
+Le repository inclut un skill Copilot dedie a l'exploration du modele ArchiMate via l'API locale:
+
+- Emplacement: `.github/skills/archimate-api/SKILL.md`
+- Reference des routes: `.github/skills/archimate-api/references/endpoints.md`
+
+Ce skill est utile pour:
+
+- lister les elements du modele
+- filtrer par type (`ApplicationComponent`, `BusinessActor`, etc.)
+- retrouver les relations (ex: `Flow`, relations entrantes/sortantes)
+- parcourir les vues et leurs details
+
+Prerequis: l'API doit etre demarree avant utilisation du skill.
+
+```bash
+uvicorn api.main:app --host 127.0.0.1 --port 8000
+```
+
+## Service MCP (FastMCP)
+
+Le projet expose aussi un service MCP en lecture seule, monte dans la meme application FastAPI.
+
+### Endpoint MCP
+
+- base URL : `http://localhost:8000/mcp`
+- transport : `streamable-http`
+
+### Outils MCP exposes
+
+- `get_model_info_tool`
+- `list_element_types_tool`
+- `list_elements_tool`
+- `get_element_tool`
+- `list_relationship_types_tool`
+- `list_relationships_tool`
+- `get_relationship_tool`
+- `list_views_tool`
+- `get_view_tool`
+
+Ces outils reprennent les memes capacites de consultation que les endpoints REST (`/`, `/elements`, `/relationships`, `/views`) avec une interface MCP.
+
+### Configuration MCP
+
+Le fichier `mcp-config.json` fournit une configuration réutilisable pour les clients MCP. Il décrit l'endpoint, le transport, la version du protocole et les outils exposés.
+
+- Fichier : `mcp-config.json`
+- Endpoint : `http://localhost:8000/mcp`
+- Transport : `streamable-http`
+
+### Exemple de client MCP
+
+Un exemple Python utilise `mcp-config.json` pour initialiser une session MCP et lister les outils disponibles.
+
+```bash
+python mcp_client_example.py
+```
+
+Le script lit la configuration, envoie une requête `initialize`, puis appelle `tools/list`.
+
 
 ## Tests unitaires
 
@@ -152,48 +233,6 @@ Pour executer un test specifique :
 ```bash
 pytest tests/test_api.py::test_function_name
 ```
-
-### Executer les tests via Docker
-
-```bash
-docker build -t mcp-archimate .
-docker run mcp-archimate pytest
-```
-
-### Ecrire de nouveaux tests
-
-Les tests doivent etre places dans le repertoire `tests/` et commencer par le prefixe `test_`. Exemple :
-
-```python
-def test_elements_endpoint():
-    """Tests the /elements endpoint."""
-    # Arrange
-    # Act
-    # Assert
-```
-
-## Service MCP (FastMCP)
-
-Le projet expose aussi un service MCP en lecture seule, monte dans la meme application FastAPI.
-
-### Endpoint MCP
-
-- base URL : `http://localhost:8000/mcp`
-- transport : `streamable-http`
-
-### Outils MCP exposes
-
-- `get_model_info_tool`
-- `list_element_types_tool`
-- `list_elements_tool`
-- `get_element_tool`
-- `list_relationship_types_tool`
-- `list_relationships_tool`
-- `get_relationship_tool`
-- `list_views_tool`
-- `get_view_tool`
-
-Ces outils reprennent les memes capacites de consultation que les endpoints REST (`/`, `/elements`, `/relationships`, `/views`) avec une interface MCP.
 
 ## Reference rapide
 

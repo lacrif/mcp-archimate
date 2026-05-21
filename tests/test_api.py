@@ -3,6 +3,7 @@ Tests unitaires pour l'API ArchiMate (api/main.py).
 Utilise le TestClient de FastAPI (httpx) — pas de serveur nécessaire.
 """
 import json
+
 import pytest
 from fastapi.testclient import TestClient
 
