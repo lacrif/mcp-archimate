@@ -3,6 +3,7 @@
  * Served as JSON at GET /openapi.json and as Swagger UI at GET /docs.
  */
 
+import { version } from "../package.json";
 import { ELEMENT_TYPES, RELATIONSHIP_TYPES } from "./schemas.js";
 
 const elementTypesEnum = [...ELEMENT_TYPES].sort();
@@ -192,7 +193,7 @@ export const openApiSpec = {
   openapi: "3.0.3",
   info: {
     title: "mcp-archimate",
-    version: "2.0.0",
+    version,
     description:
       "API REST pour interroger des modeles ArchiMate 3.1 (Open Exchange XML et format Archi Tool natif). " +
       "Plusieurs sources de donnees peuvent etre configurees simultanement via `config.json`. " +

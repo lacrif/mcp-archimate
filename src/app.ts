@@ -23,6 +23,7 @@ import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js";
 import { z } from "zod";
 
 import type { ArchiElement, ArchiRelationship, ArchiNode, ArchiConnection, ArchiView } from "./model.js";
+import { version } from "../package.json";
 import { registry, defaultSourceId, DataSource } from "./registry.js";
 import { openApiSpec } from "./openapi.js";
 import {
@@ -402,7 +403,7 @@ sourceRouter.get("/views/:view_id", (req: Request, res: Response) => {
 // MCP server
 // ---------------------------------------------------------------------------
 
-const mcpServer = new McpServer({ name: "ArchiMate MCP", version: "2.0.0" });
+const mcpServer = new McpServer({ name: "ArchiMate MCP", version });
 
 function toContent(data: unknown): { content: [{ type: "text"; text: string }] } {
   return { content: [{ type: "text" as const, text: JSON.stringify(data) }] };
@@ -421,27 +422,27 @@ const sourceIdParam = {
   source_id: z.string().optional().describe(`Identifiant de la source de données (défaut: '${defaultSourceId}')`),
 };
 
-mcpServer.tool(
-  "get_model_info_tool",
-  "Retourne les métadonnées globales du modèle ArchiMate chargé (identifiant, nom, version, compteurs).",
-  sourceIdParam,
+mcpServer.registerTool(
+  "get_model_info",
+  { description: "Retourne les métadonnées globales du modèle ArchiMate chargé (identifiant, nom, version, compteurs).", inputSchema: sourceIdParam },
   async ({ source_id }) => toContent(getModelInfo(resolveSourceOrThrow(source_id)))
 );
 
-mcpServer.tool(
-  "list_element_types_tool",
-  "Retourne la liste triée des types d'éléments ArchiMate 3.1 présents dans le modèle.",
-  sourceIdParam,
+mcpServer.registerTool(
+  "list_element_types",
+  { description: "Retourne la liste triée des types d'éléments ArchiMate 3.1 présents dans le modèle.", inputSchema: sourceIdParam },
   async ({ source_id }) => toContent(listElementTypes(resolveSourceOrThrow(source_id)))
 );
 
-mcpServer.tool(
-  "list_elements_tool",
-  `Liste les éléments du modèle avec filtres optionnels. element_type doit être un type ArchiMate 3.1 valide parmi: ${_ELEMENT_TYPES_STR}.`,
+mcpServer.registerTool(
+  "list_elements",
   {
-    ...sourceIdParam,
-    element_type: z.string().optional().describe("Type ArchiMate 3.1 (ex: ApplicationComponent)"),
-    name: z.string().optional().describe("Filtre par nom (insensible à la casse, sous-chaîne)"),
+    description: `Liste les éléments du modèle avec filtres optionnels. element_type doit être un type ArchiMate 3.1 valide parmi: ${_ELEMENT_TYPES_STR}.`,
+    inputSchema: {
+      ...sourceIdParam,
+      element_type: z.string().optional().describe("Type ArchiMate 3.1 (ex: ApplicationComponent)"),
+      name: z.string().optional().describe("Filtre par nom (insensible à la casse, sous-chaîne)"),
+    },
   },
   async ({ source_id, element_type, name }) => {
     const ds = resolveSourceOrThrow(source_id);
@@ -452,28 +453,28 @@ mcpServer.tool(
   }
 );
 
-mcpServer.tool(
-  "get_element_tool",
-  "Retourne le détail d'un élément ArchiMate par son identifiant (champ 'identifier').",
-  { ...sourceIdParam, element_id: z.string().describe("Identifiant de l'élément") },
+mcpServer.registerTool(
+  "get_element",
+  { description: "Retourne le détail d'un élément ArchiMate par son identifiant (champ 'identifier').", inputSchema: { ...sourceIdParam, element_id: z.string().describe("Identifiant de l'élément") } },
   async ({ source_id, element_id }) => toContent(getElementById(resolveSourceOrThrow(source_id), element_id))
 );
 
-mcpServer.tool(
-  "list_relationship_types_tool",
-  "Retourne la liste triée des types de relations ArchiMate 3.1 présents dans le modèle.",
-  sourceIdParam,
+mcpServer.registerTool(
+  "list_relationship_types",
+  { description: "Retourne la liste triée des types de relations ArchiMate 3.1 présents dans le modèle.", inputSchema: sourceIdParam },
   async ({ source_id }) => toContent(listRelationshipTypes(resolveSourceOrThrow(source_id)))
 );
 
-mcpServer.tool(
-  "list_relationships_tool",
-  `Liste les relations du modèle avec filtres optionnels. rel_type doit être parmi: ${_RELATIONSHIP_TYPES_STR}.`,
+mcpServer.registerTool(
+  "list_relationships",
   {
-    ...sourceIdParam,
-    rel_type: z.string().optional().describe("Type de relation ArchiMate 3.1"),
-    source_id_filter: z.string().optional().describe("Filtrer par identifiant source"),
-    target_id: z.string().optional().describe("Filtrer par identifiant cible"),
+    description: `Liste les relations du modèle avec filtres optionnels. rel_type doit être parmi: ${_RELATIONSHIP_TYPES_STR}.`,
+    inputSchema: {
+      ...sourceIdParam,
+      rel_type: z.string().optional().describe("Type de relation ArchiMate 3.1"),
+      source_id_filter: z.string().optional().describe("Filtrer par identifiant source"),
+      target_id: z.string().optional().describe("Filtrer par identifiant cible"),
+    },
   },
   async ({ source_id, rel_type, source_id_filter, target_id }) => {
     const ds = resolveSourceOrThrow(source_id);
@@ -484,25 +485,22 @@ mcpServer.tool(
   }
 );
 
-mcpServer.tool(
-  "get_relationship_tool",
-  "Retourne le détail d'une relation ArchiMate par son identifiant.",
-  { ...sourceIdParam, relationship_id: z.string().describe("Identifiant de la relation") },
+mcpServer.registerTool(
+  "get_relationship",
+  { description: "Retourne le détail d'une relation ArchiMate par son identifiant.", inputSchema: { ...sourceIdParam, relationship_id: z.string().describe("Identifiant de la relation") } },
   async ({ source_id, relationship_id }) =>
     toContent(getRelationshipById(resolveSourceOrThrow(source_id), relationship_id))
 );
 
-mcpServer.tool(
-  "list_views_tool",
-  "Liste toutes les vues du modèle avec leur nombre de nœuds et de connexions.",
-  sourceIdParam,
+mcpServer.registerTool(
+  "list_views",
+  { description: "Liste toutes les vues du modèle avec leur nombre de nœuds et de connexions.", inputSchema: sourceIdParam },
   async ({ source_id }) => toContent(listViews(resolveSourceOrThrow(source_id)))
 );
 
-mcpServer.tool(
-  "get_view_tool",
-  "Retourne le détail d'une vue ArchiMate par son identifiant.",
-  { ...sourceIdParam, view_id: z.string().describe("Identifiant de la vue") },
+mcpServer.registerTool(
+  "get_view",
+  { description: "Retourne le détail d'une vue ArchiMate par son identifiant.", inputSchema: { ...sourceIdParam, view_id: z.string().describe("Identifiant de la vue") } },
   async ({ source_id, view_id }) => toContent(getViewById(resolveSourceOrThrow(source_id), view_id))
 );
 

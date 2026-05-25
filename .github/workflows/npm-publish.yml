@@ -5,19 +5,31 @@ on:
     tags:
       - '*'
 
+env:
+  # Run JavaScript-based actions (checkout, setup-node, etc.) on Node 24 instead
+  # of the deprecated Node 20 runner. Becomes the default on 2026-06-02 and is
+  # required from 2026-09-16 when Node 20 is removed from runners.
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write  # Required for OIDC trusted publishing
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
           registry-url: 'https://registry.npmjs.org'
+
+      - name: Upgrade npm to support OIDC trusted publishing
+        run: npm install -g npm@latest
 
       - name: Set version from tag
         run: |
@@ -31,7 +43,8 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Run tests
+        run: npm test
+
       - name: Publish to npm
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --provenance --access public
