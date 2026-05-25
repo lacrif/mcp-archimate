@@ -21,7 +21,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "hhttps://github.com/lacrif/mcp-archimate"
+    "url": "https://github.com/lacrif/mcp-archimate"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.0",
