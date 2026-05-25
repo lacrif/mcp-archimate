@@ -1,8 +1,8 @@
 # mcp-archimate
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/lacrif/mcp-archimate?link=https%3A%2F%2Fhub.docker.com%2Fr%2Flacrif%2Fmcp-archimate)](https://hub.docker.com/r/lacrif/mcp-archimate)
-[![Unit Tests](https://github.com/lacrif/mcp-archimate/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/lacrif/mcp-archimate/actions/workflows/unit-tests.yml)
-[![Docker Build & Push](https://github.com/lacrif/mcp-archimate/actions/workflows/docker-build-push.yml/badge.svg)](https://github.com/lacrif/mcp-archimate/actions/workflows/docker-build-push.yml)
+[![Unit Tests](https://github.com/lacrif/mcp-archimate/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/lacrif/mcp-archimate/actions/workflows/npm-publish.yml)
+[![Docker Build & Push](https://github.com/lacrif/mcp-archimate/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/lacrif/mcp-archimate/actions/workflows/docker-publish.yml)
 
 Ce depot expose une **API REST** et un **serveur MCP (Model Context Protocol)** pour interroger des modeles ArchiMate stockes dans des fichiers XML ou natifs Archi Tool.
 

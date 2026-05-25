@@ -10,6 +10,19 @@
     "start:dist": "node dist/main.js",
     "test": "vitest run"
   },
+  "keywords": [
+    "archimate",
+    "mcp",
+    "model-context-protocol",
+    "enterprise-architecture",
+    "coarchi"
+  ],
+  "author": "Lacrif",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "hhttps://github.com/lacrif/mcp-archimate"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.0",
     "express": "^4.21.0",
