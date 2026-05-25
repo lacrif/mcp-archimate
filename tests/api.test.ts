@@ -1042,15 +1042,15 @@ describe("MCP service", () => {
     const registeredTools = new Set((toolsPayload.result.tools as { name: string }[]).map((t) => t.name));
 
     const expectedTools = new Set([
-      "get_model_info_tool",
-      "list_element_types_tool",
-      "list_elements_tool",
-      "get_element_tool",
-      "list_relationship_types_tool",
-      "list_relationships_tool",
-      "get_relationship_tool",
-      "list_views_tool",
-      "get_view_tool",
+      "get_model_info",
+      "list_element_types",
+      "list_elements",
+      "get_element",
+      "list_relationship_types",
+      "list_relationships",
+      "get_relationship",
+      "list_views",
+      "get_view",
     ]);
 
     for (const tool of expectedTools) {
