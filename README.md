@@ -4,31 +4,87 @@
 [![Unit Tests](https://github.com/lacrif/mcp-archimate/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/lacrif/mcp-archimate/actions/workflows/unit-tests.yml)
 [![Docker Build & Push](https://github.com/lacrif/mcp-archimate/actions/workflows/docker-build-push.yml/badge.svg)](https://github.com/lacrif/mcp-archimate/actions/workflows/docker-build-push.yml)
 
-Ce depot expose une **API REST** et un **serveur MCP (Model Context Protocol)** pour interroger un modele ArchiMate stocke dans un fichier XML standardise.
+Ce depot expose une **API REST** et un **serveur MCP (Model Context Protocol)** pour interroger des modeles ArchiMate stockes dans des fichiers XML ou natifs Archi Tool.
+
+L'API supporte **plusieurs sources de donnees simultanees**, chacune declaree dans `config.json`. Toutes les routes de donnees sont prefixees par l'identifiant de la source (`/:source_id/`).
 
 Les schemas de donnees sont alignes sur les XSD officiels ArchiMate 3.1 Open Exchange Format :
 `archimate3_Model.xsd`, `archimate3_View.xsd`, `archimate3_Diagram.xsd`.
 
 ## Objectif du depot
 
-Ce projet fournit des services pour interroger et exploiter un modele ArchiMate expose via :
+Ce projet fournit des services pour interroger et exploiter des modeles ArchiMate exposes via :
 
-1. **Une API REST** (FastAPI) pour acceder programmatiquement aux elements, relations et vues du modele
-2. **Un serveur MCP** (Model Context Protocol) pour integrer le modele dans des workflows d'IA
+1. **Une API REST** (Express / Node.js) pour acceder programmatiquement aux elements, relations et vues de chaque modele
+2. **Un serveur MCP** (Model Context Protocol) pour integrer les modeles dans des workflows d'IA
 
-Le fichier source du modele (`data/open-exchange.xml`) contient une architecture d'entreprise documentee et structuree selon la norme ArchiMate.
+## Sources de donnees supportees
 
-## Modele ArchiMate
+| Format | Extension | Description |
+| ------ | --------- | ----------- |
+| Open Exchange Format (OEF) | `.xml` | Export standardise ArchiMate 3.1, conforme aux XSD officiels |
+| Archi Tool natif | `.archimate` | Format natif de l'outil Archi (Archi Tool) |
 
-Le fichier `data/open-exchange.xml` est un export standardise au format Open Exchange XML d'un modele ArchiMate. Il est genere avec Archi Tool et contient une documentation complete d'une architecture d'entreprise.
+## Configuration (`config.json`)
 
-Le modele peut etre consulte et modifie localement avec Archi Tool (non decrit ici), puis exporte en XML standardise pour etre utilise par cette API.
+Le fichier `config.json` a la racine du projet declare les sources de donnees a charger au demarrage :
+
+```json
+{
+  "sources": [
+    {
+      "id": "open-exchange",
+      "name": "Open Exchange Demo",
+      "path": "data/open-exchange.xml",
+      "format": "oef"
+    },
+    {
+      "id": "archisurance",
+      "name": "ArchiSurance",
+      "path": "data/archisurance.archimate",
+      "format": "archi"
+    }
+  ]
+}
+```
+
+| Champ | Description |
+| ----- | ----------- |
+| `id` | Identifiant unique de la source — utilise comme prefixe de route (`/:source_id/`) |
+| `name` | Nom lisible de la source |
+| `path` | Chemin vers le fichier, relatif a la racine du projet |
+| `format` | `"oef"` (Open Exchange XML) ou `"archi"` (format natif Archi Tool) |
+
+Toutes les sources sont chargees en memoire au demarrage. L'ajout d'une nouvelle source ne necessite que de modifier `config.json` et de redemarrer le serveur.
+
+## Structure du projet
+
+```text
+.
+├── config.json                     # Declaration des sources de donnees
+├── data/
+│   ├── open-exchange.xml           # Modele ArchiMate au format Open Exchange
+│   └── archisurance.archimate      # Modele ArchiMate au format Archi Tool natif
+├── src/
+│   ├── schemas.ts                  # Interfaces TypeScript et constantes ArchiMate 3.1
+│   ├── model.ts                    # Parseur Open Exchange XML (fast-xml-parser)
+│   ├── archi-parser.ts             # Parseur format natif Archi Tool (.archimate)
+│   ├── registry.ts                 # Registre des sources (chargement via config.json)
+│   ├── app.ts                      # Application Express, routes REST et serveur MCP
+│   └── main.ts                     # Point d'entree du serveur HTTP
+├── tests/
+│   └── api.test.ts                 # Tests unitaires et d'integration (128 tests)
+├── dist/                           # Code JavaScript compile (genere par tsc)
+├── package.json                    # Dependencies Node.js
+├── tsconfig.json                   # Configuration TypeScript
+├── Dockerfile                      # Image Docker (Node.js 22)
+├── docker-compose.yml              # Compose avec volumes et watch
+└── README.md                       # Ce fichier
+```
 
 ## Rappel sur la norme ArchiMate
 
 ArchiMate est une norme de modelisation d'architecture d'entreprise maintenue par The Open Group. Elle fournit un langage commun pour decrire une architecture sous plusieurs points de vue coherents.
-
-## Architecture ArchiMate - Reference
 
 Le modele est organise selon les couches ArchiMate :
 
@@ -41,29 +97,6 @@ Le modele est organise selon les couches ArchiMate :
 - **Implementation and Migration** : livrables, plateaux, gaps, work packages
 
 Les elements sont lies par des relations standardisees (`Serving`, `Access`, `Composition`, `Aggregation`, `Realization`, `Assignment`, `Flow`, `Influence`, `Association`, etc.).
-
-## Structure du projet
-
-```text
-.
-├── archisurance.archimate          # Source du modele (Archi Tool)
-├── data/
-│   └── open-exchange.xml           # Export standardise du modele
-├── models/
-│   ├── archimate3_Model.xsd        # XSD officiel ArchiMate 3.1 - elements et relations
-│   ├── archimate3_View.xsd         # XSD officiel ArchiMate 3.1 - vues et viewpoints
-│   └── archimate3_Diagram.xsd      # XSD officiel ArchiMate 3.1 - noeuds et connexions
-├── api/
-│   ├── main.py                     # Application FastAPI et serveur MCP
-│   ├── schemas.py                  # Schemas Pydantic alignes sur les XSD
-│   └── __init__.py
-├── tests/
-│   ├── test_api.py                 # Tests unitaires et d'integration (128 tests)
-│   └── __init__.py
-├── requirements.txt                # Dependencies Python
-├── Dockerfile                      # Image Docker
-└── README.md                       # Ce fichier
-```
 
 ## Schemas de donnees (alignement XSD ArchiMate 3.1)
 
@@ -130,7 +163,7 @@ Tous les champs de l'API suivent les noms definis dans les XSD officiels.
 
 ### Style visuel (`archimate3_Diagram.xsd` — `StyleType` / `RGBColorType`)
 
-Les couleurs sont exposees au format RGB decompose (r, g, b : 0-255 ; a : 0-100) conforme au XSD, converties depuis les valeurs hexadecimales de l'outil Archi.
+Les couleurs sont exposees au format RGB decompose (r, g, b : 0-255) conforme au XSD.
 
 ### Types d'elements valides (`archimate3_Model.xsd` — `ElementTypeEnum`)
 
@@ -152,25 +185,58 @@ Les couleurs sont exposees au format RGB decompose (r, g, b : 0-255 ; a : 0-100)
 
 `Composition`, `Aggregation`, `Assignment`, `Realization`, `Serving`, `Access`, `Influence`, `Triggering`, `Flow`, `Specialization`, `Association`
 
-## L'API REST (FastAPI)
+## L'API REST
 
-L'API sera accessible sur `http://localhost:8000` et la documentation interactive swagger sur `http://localhost:8000/docs`.
+L'API est accessible sur `http://localhost:8000`.
 
-### Endpoints principaux
+### Documentation interactive (Swagger UI)
+
+| Chemin | Description |
+| ------ | ----------- |
+| [`/docs`](http://localhost:8000/docs) | Swagger UI — exploration interactive de toutes les routes |
+| [`/openapi.json`](http://localhost:8000/openapi.json) | Spec OpenAPI 3.0 au format JSON |
+
+La spec est generee dynamiquement depuis le code : les enums de types ArchiMate 3.1 sont toujours synchronises avec les constantes de `src/schemas.ts`.
+
+### Endpoint global
 
 | Methode | Chemin | Description |
 | ------- | ------ | ----------- |
-| GET | `/` | Metadonnees du modele (identifier, name, version, compteurs) |
-| GET | `/elements/types` | Liste des types d'elements presents dans le modele |
-| GET | `/elements` | Liste des elements (filtres : `type`, `name`) |
-| GET | `/elements/{identifier}` | Detail d'un element |
-| GET | `/relationships/types` | Liste des types de relations presents dans le modele |
-| GET | `/relationships` | Liste des relations (filtres : `type`, `source_id`, `target_id`) |
-| GET | `/relationships/{identifier}` | Detail d'une relation |
-| GET | `/views` | Liste des vues (node_count, connection_count, viewpoint) |
-| GET | `/views/{identifier}` | Detail d'une vue avec noeuds, connexions et styles |
+| GET | `/sources` | Liste de toutes les sources de donnees configurees |
 
-**Validation des filtres** : passer un `type` invalide (non conforme ArchiMate 3.1) retourne HTTP 422 avec la liste des types valides.
+### Endpoints par source (`/:source_id/`)
+
+Remplacer `:source_id` par l'identifiant de la source declare dans `config.json` (ex: `open-exchange`, `archisurance`).
+
+| Methode | Chemin | Description |
+| ------- | ------ | ----------- |
+| GET | `/:source_id/` | Metadonnees du modele (identifier, name, version, compteurs) |
+| GET | `/:source_id/elements/types` | Types d'elements presents dans le modele |
+| GET | `/:source_id/elements` | Elements (filtres : `type`, `name`) |
+| GET | `/:source_id/elements/{identifier}` | Detail d'un element |
+| GET | `/:source_id/relationships/types` | Types de relations presents dans le modele |
+| GET | `/:source_id/relationships` | Relations (filtres : `type`, `source_id`, `target_id`) |
+| GET | `/:source_id/relationships/{identifier}` | Detail d'une relation |
+| GET | `/:source_id/views` | Vues (node_count, connection_count, viewpoint) |
+| GET | `/:source_id/views/{identifier}` | Detail d'une vue avec noeuds, connexions et styles |
+
+**Validation des filtres** : passer un `type` invalide (non conforme ArchiMate 3.1) retourne HTTP 422 avec la liste des types valides. Un `source_id` inconnu retourne HTTP 404.
+
+### Exemples d'appels
+
+```bash
+# Lister les sources configurees
+curl http://localhost:8000/sources
+
+# Metadonnees de la source open-exchange
+curl http://localhost:8000/open-exchange/
+
+# Elements ApplicationComponent de la source archisurance
+curl "http://localhost:8000/archisurance/elements?type=ApplicationComponent"
+
+# Detail d'une vue dans open-exchange
+curl http://localhost:8000/open-exchange/views/id-de-la-vue
+```
 
 ## Deploiement
 
@@ -178,10 +244,13 @@ L'API sera accessible sur `http://localhost:8000` et la documentation interactiv
 
 ```bash
 # Installer les dependencies
-pip install -r requirements.txt
+npm install
 
-# Lancer l'API FastAPI
-uvicorn api.main:app --reload
+# Lancer le serveur en mode developpement (avec rechargement automatique)
+npm run dev
+
+# Lancer le serveur en mode production
+npm start
 ```
 
 ### Execution via Docker (image Docker Hub)
@@ -189,11 +258,14 @@ uvicorn api.main:app --reload
 Image publiee: [lacrif/mcp-archimate:latest](https://hub.docker.com/r/lacrif/mcp-archimate)
 
 ```bash
-# Recuperer l'image Docker Hub
-docker pull lacrif/mcp-archimate:latest
-
-# Lancer le conteneur
+# Lancer avec les donnees et la configuration embarquees dans l'image
 docker run -p 8000:8000 lacrif/mcp-archimate:latest
+
+# Monter sa propre configuration et ses propres donnees
+docker run -p 8000:8000 \
+    -v /chemin/vers/config.json:/app/config.json:ro \
+    -v /chemin/vers/data:/app/data:ro \
+    lacrif/mcp-archimate:latest
 ```
 
 ### Execution via Docker build local
@@ -202,71 +274,91 @@ docker run -p 8000:8000 lacrif/mcp-archimate:latest
 # Construire l'image localement
 docker build -t mcp-archimate:local .
 
-# Lancer le conteneur a partir de l'image locale
-docker run -p 8000:8000 mcp-archimate:local
-```
-
-### Utiliser votre propre open-exchange.xml avec Docker
-
-Vous pouvez remplacer le fichier de modele fourni par votre propre export ArchiMate en montant un volume dans le conteneur.
-
-```bash
-# Exemple: monter un fichier local dans le conteneur
+# Lancer avec les volumes locaux (config + data)
 docker run -p 8000:8000 \
-    -v /chemin/vers/mon-open-exchange.xml:/app/data/open-exchange.xml:ro \
-    lacrif/mcp-archimate:latest
+    -v ./config.json:/app/config.json:ro \
+    -v ./data:/app/data:ro \
+    mcp-archimate:local
 ```
 
-Le fichier local est monte en lecture seule (`:ro`) et remplace `data/open-exchange.xml` utilise par l'application.
+### Docker Compose (volumes + watch)
 
-### Option avec Docker Compose
-
-Vous pouvez aussi utiliser Docker Compose pour declarer le volume de facon persistante:
-
-```yaml
-services:
-    mcp-archimate:
-        image: lacrif/mcp-archimate:latest
-        ports:
-            - "8000:8000"
-        volumes:
-            - ./data/open-exchange.xml:/app/data/open-exchange.xml:ro
-```
-
-Puis lancer:
+Le fichier `docker-compose.yml` monte automatiquement `config.json` et le repertoire `data/` comme volumes, et active le **rechargement automatique** via `docker compose watch`.
 
 ```bash
-docker compose up
+# Build et demarrer le service avec les volumes montes
+docker compose up --build
+
+# Mode watch : rebuild ou sync automatique a chaque modification
+docker compose watch
 ```
 
-## Skills archimate-api
+Comportement du watch :
 
-Le repository inclut un skill Copilot dedie a l'exploration du modele ArchiMate via l'API locale:
+| Chemin surveille | Action | Detail |
+| ---------------- | ------ | ------- |
+| `src/` | `rebuild` | Recompile TypeScript et relance le conteneur |
+| `package.json`, `package-lock.json` | `rebuild` | Reinstalle les dependances |
+| `tsconfig.json` | `rebuild` | Recompile avec la nouvelle config |
+| `config.json` | `sync+restart` | Copie et redémarre le conteneur |
+| `data/` | `sync` | Copie les fichiers directement sans rebuild |
 
-- Emplacement: `.github/skills/archimate-api/SKILL.md`
-- Reference des routes: `.github/skills/archimate-api/references/endpoints.md`
+### Utiliser ses propres modeles
 
-Ce skill est utile pour:
+Pour brancher l'API sur vos propres fichiers ArchiMate :
 
-- lister les elements du modele
-- filtrer par type (`ApplicationComponent`, `BusinessActor`, etc.)
-- retrouver les relations (ex: `Flow`, relations entrantes/sortantes)
-- parcourir les vues et leurs details (noeuds, connexions, styles)
+1. Placer vos fichiers dans `data/` (`.xml` OEF ou `.archimate` Archi Tool)
+2. Modifier `config.json` pour declarer vos sources
+3. Redemarrer le serveur (ou laisser `docker compose watch` le faire)
+
+```json
+{
+  "sources": [
+    {
+      "id": "mon-modele",
+      "name": "Mon Architecture d'Entreprise",
+      "path": "data/mon-modele.xml",
+      "format": "oef"
+    }
+  ]
+}
+```
+
+## Service MCP
+
+Le projet expose un service MCP en lecture seule, monte dans la meme application Express.
+
+### Endpoint MCP
+
+- base URL : `http://localhost:8000/mcp`
+- transport : `streamable-http`
+
+### Outils MCP exposes
+
+Chaque outil accepte un parametre optionnel `source_id` (defaut : premiere source configuree).
+
+| Outil | Description |
+| ----- | ----------- |
+| `get_model_info_tool` | Metadonnees globales du modele |
+| `list_element_types_tool` | Types d'elements presents dans le modele |
+| `list_elements_tool` | Elements avec filtres optionnels (`element_type`, `name`) |
+| `get_element_tool` | Detail d'un element par `identifier` |
+| `list_relationship_types_tool` | Types de relations presents dans le modele |
+| `list_relationships_tool` | Relations avec filtres (`rel_type`, `source_id_filter`, `target_id`) |
+| `get_relationship_tool` | Detail d'une relation par `identifier` |
+| `list_views_tool` | Vues avec `node_count`, `connection_count`, `viewpoint` |
+| `get_view_tool` | Detail d'une vue avec noeuds, connexions et styles |
+
+Les descriptions des outils MCP incluent les types valides ArchiMate 3.1 pour guider les LLM.
 
 ## Configuration MCP par client
 
 Le serveur MCP utilise le transport **streamable-http** sur `http://localhost:8000/mcp`.
-Le serveur doit être démarré avant toute connexion MCP :
-
-```bash
-uvicorn api.main:app --host 127.0.0.1 --port 8000
-# ou via Docker :
-docker run -p 8000:8000 lacrif/mcp-archimate:latest
-```
+Le serveur doit etre demarre avant toute connexion MCP.
 
 ### Claude Code (CLI)
 
-Le fichier `.mcp.json` à la racine du projet est **automatiquement détecté** par Claude Code :
+Le fichier `.mcp.json` a la racine du projet est **automatiquement detecte** par Claude Code :
 
 ```json
 {
@@ -287,7 +379,7 @@ claude mcp add mcp-archimate http://localhost:8000/mcp --transport http
 
 ### Claude Desktop
 
-Éditer le fichier de configuration Claude Desktop :
+Editer le fichier de configuration Claude Desktop :
 
 - **macOS** : `~/Library/Application Support/Claude/claude_desktop_config.json`
 - **Windows** : `%APPDATA%\Claude\claude_desktop_config.json`
@@ -304,11 +396,11 @@ claude mcp add mcp-archimate http://localhost:8000/mcp --transport http
 }
 ```
 
-Redémarrer Claude Desktop après modification.
+Redemarrer Claude Desktop apres modification.
 
 ### VS Code / GitHub Copilot
 
-Le fichier `.vscode/mcp.json` est **déjà inclus** dans le projet :
+Le fichier `.vscode/mcp.json` est **deja inclus** dans le projet :
 
 ```json
 {
@@ -331,8 +423,7 @@ Activer le support MCP dans VS Code :
 }
 ```
 
-Les outils MCP apparaissent ensuite dans le panneau **Copilot Chat** (icône outil).
-Les instructions contextuelles du modèle sont définies dans `.github/copilot-instructions.md`.
+Les outils MCP apparaissent ensuite dans le panneau **Copilot Chat** (icone outil).
 
 ### OpenAI Codex CLI
 
@@ -344,89 +435,28 @@ type = "http"
 url = "http://localhost:8000/mcp"
 ```
 
-Ou pour une configuration spécifique au projet, créer `.codex/config.toml` à la racine :
-
-```toml
-[mcp_servers.mcp-archimate]
-type = "http"
-url = "http://localhost:8000/mcp"
-```
-
----
-
-## Service MCP (FastMCP)
-
-Le projet expose aussi un service MCP en lecture seule, monte dans la meme application FastAPI.
-
-### Endpoint MCP
-
-- base URL : `http://localhost:8000/mcp`
-- transport : `streamable-http`
-
-### Outils MCP exposes
-
-| Outil | Description |
-| ----- | ----------- |
-| `get_model_info_tool` | Metadonnees globales du modele |
-| `list_element_types_tool` | Types d'elements presents dans le modele |
-| `list_elements_tool` | Elements avec filtres optionnels (`element_type`, `name`) |
-| `get_element_tool` | Detail d'un element par `identifier` |
-| `list_relationship_types_tool` | Types de relations presents dans le modele |
-| `list_relationships_tool` | Relations avec filtres (`rel_type`, `source_id`, `target_id`) |
-| `get_relationship_tool` | Detail d'une relation par `identifier` |
-| `list_views_tool` | Vues avec `node_count`, `connection_count`, `viewpoint` |
-| `get_view_tool` | Detail d'une vue avec noeuds, connexions et styles |
-
-Les descriptions des outils MCP incluent les types valides ArchiMate 3.1 pour guider les LLM.
-
-### Configuration MCP
-
-Le fichier `.vscode/mcp.json` fournit une configuration reutilisable pour les clients MCP.
-
-```json
-{
-    "servers": {
-        "mcp-archimate": {
-            "url": "http://localhost:8000/mcp",
-            "type": "http"
-        }
-    },
-    "inputs": []
-}
-```
-
 ## Tests
 
-Les tests sont situes dans `tests/test_api.py` (128 tests) et couvrent :
+Les tests sont situes dans `tests/api.test.ts` (128 tests) et couvrent :
 
-- **Tests unitaires** : helpers de conversion (`_element_out`, `_rel_out`, `_node_out`, `_connection_out`, `_view_out`), conversion de couleurs (`_hex_to_rgb`), constantes XSD (`ELEMENT_TYPES`, `RELATIONSHIP_TYPES`, `ACCESS_TYPES`, `VIEWPOINTS`)
-- **Tests d'integration** : tous les endpoints REST avec le modele reel, validation des types ArchiMate, connexions et styles dans les vues, service MCP (initialize + tools/list)
+- **Tests unitaires** : helpers de conversion (`elementOut`, `relOut`, `nodeOut`, `connectionOut`, `viewOut`), conversion de couleurs (`hexToRgb`), constantes XSD (`ELEMENT_TYPES`, `RELATIONSHIP_TYPES`, `ACCESS_TYPES`, `VIEWPOINTS`)
+- **Tests d'integration** : tous les endpoints REST avec le modele reel (`/sources`, `/:source_id/`, elements, relations, vues), validation des types ArchiMate, service MCP (initialize + tools/list)
 
 ### Executer les tests en local
 
 ```bash
-pip install -r requirements.txt
-pytest
-```
+# Installer les dependencies
+npm install
 
-Avec verbosité augmentée :
-
-```bash
-pytest -v
-```
-
-Avec rapport de couverture :
-
-```bash
-pytest --cov=api tests/
+# Lancer les tests
+npm test
 ```
 
 ## Reference rapide
 
-- **Format de donnees** : ArchiMate 3.1 Open Exchange XML (conforme XSD officiel)
-- **API** : FastAPI (REST) — version 2.0.0
-- **Serveur MCP** : FastMCP (Protocol Model Context)
-- **Framework** : Python 3.x
+- **Format de donnees** : ArchiMate 3.1 Open Exchange XML et format natif Archi Tool
+- **API** : Express (REST) — version 2.0.0
+- **Serveur MCP** : @modelcontextprotocol/sdk (streamable-http)
+- **Runtime** : Node.js 22 / TypeScript
 - **Port par defaut** : 8000
-- **Documentation API** : [http://localhost:8000/docs](http://localhost:8000/docs)
 - **Endpoint MCP** : [http://localhost:8000/mcp](http://localhost:8000/mcp) (streamable-http)

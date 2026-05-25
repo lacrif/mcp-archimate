@@ -1,25 +1,9 @@
 *.bak
 
-# Python
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-*.egg
-*.egg-info/
+# Node.js / TypeScript
+node_modules/
 dist/
-build/
-.eggs/
-.env
-.venv
-venv/
-env/
+*.tsbuildinfo
 
-# Pytest
-.pytest_cache/
-.coverage
-htmlcov/
-
-# mypy / pyright
-.mypy_cache/
-.pyright/
+# Vitest
+coverage/

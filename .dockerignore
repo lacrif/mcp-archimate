@@ -1,10 +1,8 @@
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
 .git/
 .gitignore
 tests/
 *.bak
-*.archimate
-
+node_modules/
+dist/
+*.tsbuildinfo
+coverage/
