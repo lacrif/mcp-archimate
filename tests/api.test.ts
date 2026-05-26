@@ -2461,7 +2461,7 @@ describe("renderViewToSvg – with nodes", () => {
     const n2 = makeNode({ uuid: "n2", ref: elem, x: 200, y: 10, w: 120, h: 55 });
     const conn = makeConnection({ uuid: "c1", source: "n1", target: "n2", ref: null });
     const svg = renderViewToSvg(makeView({ nodes: [n1, n2], conns: [conn] }), model);
-    expect(svg).toContain("<line ");
+    expect(svg).toContain("<polyline ");
   });
 
   it("applies dashed stroke for Realization connection type", () => {
@@ -2530,9 +2530,9 @@ describe("GET /views/:view_id/image", () => {
     expect(res.body).toHaveProperty("detail");
   });
 
-  it("returns 500 with useful message for PNG when sharp is not installed", async () => {
+  it("returns 200 with PNG image when sharp is installed", async () => {
     const res = await request(app).get(`/views/${knownView.identifier}/image?format=png`);
-    expect(res.status).toBe(500);
-    expect(res.body.detail).toMatch(/sharp/i);
+    expect(res.status).toBe(200);
+    expect(res.headers["content-type"]).toMatch(/image\/png/);
   });
 });

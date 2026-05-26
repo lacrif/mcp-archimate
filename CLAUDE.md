@@ -4,7 +4,16 @@
 
 1. **Run the tests**: `npm test` — all tests must pass before considering the change done.
 2. **Check coverage**: `npm test -- --coverage` — line/branch/function coverage must stay at or above **80%**. If a change drops coverage below 80%, add tests before finishing.
-3. **Update the documentation**: keep `README.md` in sync with any API, MCP tool, or behaviour change.
+3. **Validate the .archimate file**: after any write/save operation, verify the file is valid by loading it with Archi:
+   ```bash
+   archi -application com.archimatetool.commandline.app -consoleLog -nosplash --loadModel "data/archisurance.archimate"
+   ```
+   A successful load (no error in console output) confirms the file is well-formed and accepted by Archi.
+   If the file is corrupted or Archi reports errors, restore from backup:
+   ```bash
+   cp data/archisurance.archimate.backup data/archisurance.archimate
+   ```
+4. **Update the documentation**: keep `README.md` in sync with any API, MCP tool, or behaviour change.
 
 ## Project conventions
 

@@ -209,9 +209,12 @@ export function renderViewToSvg(view: ArchiView, model: ArchiModel): string {
   const TITLE_H = 32;
   const FONT = "Arial,Helvetica,sans-serif";
 
-  // Build relationship lookup (id → type)
+  // Build relationship lookup (id → type, name)
   const relTypeMap = new Map<string, string>(
     model.relationships.map((r) => [r.uuid, r.type])
+  );
+  const relNameMap = new Map<string, string | null>(
+    model.relationships.map((r) => [r.uuid, r.name])
   );
 
   // Build flat node geometry map
@@ -232,6 +235,16 @@ export function renderViewToSvg(view: ArchiView, model: ArchiModel): string {
   const oy = PADDING - minY + TITLE_H;
   const totalW = maxX - minX + PADDING * 2;
   const totalH = maxY - minY + PADDING * 2 + TITLE_H;
+
+  // Build visual parent-child pairs (to suppress Composition arrows for nested nodes)
+  const visualChildPairs = new Set<string>();
+  function collectChildPairs(nodes: ArchiNode[], parentId: string | null): void {
+    for (const n of nodes) {
+      if (parentId) visualChildPairs.add(`${parentId}→${n.uuid}`);
+      collectChildPairs(n.nodes, n.uuid);
+    }
+  }
+  collectChildPairs(view.nodes, null);
 
   // Sort: Groupings first, then by depth (parents before children)
   const geomList = [...geomMap.values()].sort((a, b) => {
@@ -333,15 +346,19 @@ export function renderViewToSvg(view: ArchiView, model: ArchiModel): string {
     const tgtG = geomMap.get(conn.target);
     if (!srcG || !tgtG) continue;
 
+    const relType = conn.ref ? (relTypeMap.get(conn.ref) ?? "Association") : "Association";
+
+    // Skip Composition/Aggregation when target is visually nested inside source
+    if (
+      (relType === "Composition" || relType === "Aggregation") &&
+      visualChildPairs.has(`${conn.source}→${conn.target}`)
+    ) continue;
+
     const sx = srcG.absX + ox, sy = srcG.absY + oy;
     const tx = tgtG.absX + ox, ty = tgtG.absY + oy;
     const srcCx = sx + srcG.absW / 2, srcCy = sy + srcG.absH / 2;
     const tgtCx = tx + tgtG.absW / 2, tgtCy = ty + tgtG.absH / 2;
 
-    const start = rectEdge(tgtCx, tgtCy, sx, sy, srcG.absW, srcG.absH);
-    const end   = rectEdge(srcCx, srcCy, tx, ty, tgtG.absW, tgtG.absH);
-
-    const relType = conn.ref ? (relTypeMap.get(conn.ref) ?? "Association") : "Association";
     const style = REL_LINE[relType] ?? DEFAULT_REL_LINE;
     const lineColor = rgbStr(conn.line_color) ?? "#444444";
     const lw = conn.line_width ?? 1;
@@ -350,19 +367,39 @@ export function renderViewToSvg(view: ArchiView, model: ArchiModel): string {
     const msAttr   = style.markerStart ? ` marker-start="${style.markerStart}"` : "";
     const meAttr   = style.markerEnd   ? ` marker-end="${style.markerEnd}"`     : "";
 
+    // Build waypoints using bendpoints (Archi: offsets from src/tgt centers)
+    const waypoints: Array<{ x: number; y: number }> = [];
+    for (const bp of conn.bendpoints ?? []) {
+      waypoints.push({
+        x: (srcCx + bp.startX + tgtCx + bp.endX) / 2,
+        y: (srcCy + bp.startY + tgtCy + bp.endY) / 2,
+      });
+    }
+
+    const firstWp = waypoints[0] ?? { x: tgtCx, y: tgtCy };
+    const lastWp  = waypoints[waypoints.length - 1] ?? { x: srcCx, y: srcCy };
+    const start = rectEdge(firstWp.x, firstWp.y, sx, sy, srcG.absW, srcG.absH);
+    const end   = rectEdge(lastWp.x,  lastWp.y,  tx, ty, tgtG.absW, tgtG.absH);
+
+    const allPts = [start, ...waypoints, end];
+    const pointsAttr = allPts.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ");
+
     out.push(
-      `<line x1="${start.x.toFixed(1)}" y1="${start.y.toFixed(1)}" ` +
-      `x2="${end.x.toFixed(1)}" y2="${end.y.toFixed(1)}" ` +
+      `<polyline points="${pointsAttr}" fill="none" ` +
       `stroke="${lineColor}" stroke-width="${lw}"${dashAttr}${msAttr}${meAttr}/>`
     );
 
-    // Connection label (if any)
-    if (conn.name) {
-      const mx = (start.x + end.x) / 2;
-      const my = (start.y + end.y) / 2 - 4;
+    // Label: prefer connection name, fall back to relationship name
+    const label = conn.name ?? (conn.ref ? (relNameMap.get(conn.ref) ?? null) : null);
+    if (label) {
+      const midIdx = Math.floor((allPts.length - 1) / 2);
+      const p1 = allPts[midIdx]!;
+      const p2 = allPts[midIdx + 1] ?? p1;
+      const mx = (p1.x + p2.x) / 2;
+      const my = (p1.y + p2.y) / 2 - 4;
       out.push(
         `<text x="${mx.toFixed(1)}" y="${my.toFixed(1)}" font-family="${FONT}" font-size="9" ` +
-        `text-anchor="middle" fill="#555">${escXml(conn.name)}</text>`
+        `text-anchor="middle" fill="#555" font-style="italic">${escXml(label)}</text>`
       );
     }
   }

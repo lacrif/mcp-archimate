@@ -6,7 +6,7 @@
 
 import { XMLParser } from "fast-xml-parser";
 import { ELEMENT_TYPES, RELATIONSHIP_TYPES } from "./schemas.js";
-import type { ArchiColor, ArchiElement, ArchiRelationship, ArchiNode, ArchiConnection, ArchiView, ArchiModel } from "./model.js";
+import type { ArchiColor, ArchiElement, ArchiRelationship, ArchiNode, ArchiConnection, ArchiView, ArchiModel, BendPoint } from "./model.js";
 
 type XmlNode = Record<string, unknown>;
 
@@ -96,6 +96,12 @@ function parseArchiNode(childRaw: XmlNode, elementMap: Map<string, ArchiElement>
 
 function collectConnections(childRaw: XmlNode, into: ArchiConnection[]): void {
   for (const conn of ensureArray<XmlNode>(childRaw["sourceConnection"])) {
+    const bendpoints: BendPoint[] = ensureArray<XmlNode>(conn["bendpoint"]).map((bp) => ({
+      startX: bp["@_startX"] != null ? Number(bp["@_startX"]) : 0,
+      startY: bp["@_startY"] != null ? Number(bp["@_startY"]) : 0,
+      endX: bp["@_endX"] != null ? Number(bp["@_endX"]) : 0,
+      endY: bp["@_endY"] != null ? Number(bp["@_endY"]) : 0,
+    }));
     into.push({
       uuid: String(conn["@_id"]),
       name: conn["@_name"] ? String(conn["@_name"]) : null,
@@ -107,6 +113,7 @@ function collectConnections(childRaw: XmlNode, into: ArchiConnection[]): void {
       font_size: null,
       font_color: hexToArchiColor(conn["@_fontColor"] ? String(conn["@_fontColor"]) : undefined),
       line_width: null,
+      bendpoints,
     });
   }
   for (const sub of ensureArray<XmlNode>(childRaw["child"])) {
@@ -121,7 +128,7 @@ export function parseArchiFormat(xmlContent: string): ArchiModel {
     parseAttributeValue: true,
     textNodeName: "#text",
     isArray: (name) =>
-      ["element", "folder", "child", "sourceConnection", "property", "feature"].includes(name),
+      ["element", "folder", "child", "sourceConnection", "bendpoint", "property", "feature"].includes(name),
   });
 
   const parsed = parser.parse(xmlContent);

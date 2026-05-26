@@ -55,6 +55,13 @@ export interface ArchiNode {
   nodes: ArchiNode[];
 }
 
+export interface BendPoint {
+  startX: number;
+  startY: number;
+  endX: number;
+  endY: number;
+}
+
 export interface ArchiConnection {
   uuid: string;
   name: string | null;
@@ -66,6 +73,7 @@ export interface ArchiConnection {
   font_size: number | null;
   font_color: ArchiColor | null;
   line_width: number | null;
+  bendpoints?: BendPoint[];
 }
 
 export interface ArchiView {

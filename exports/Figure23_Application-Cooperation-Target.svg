@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="829" height="729" viewBox="0 0 829 729">
+  <defs>
+    <marker id="arrow-open" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#333" stroke-width="1.2"/>
+    </marker>
+    <marker id="arrow-filled" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#333" stroke="none"/>
+    </marker>
+    <marker id="arrow-hollow" markerWidth="11" markerHeight="9" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#333" stroke-width="1.2"/>
+    </marker>
+    <marker id="diamond-filled" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#333" stroke="#333" stroke-width="0.5"/>
+    </marker>
+    <marker id="diamond-open" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#333" stroke-width="1"/>
+    </marker>
+    <marker id="circle-solid" markerWidth="7" markerHeight="7" refX="0" refY="3.5" orient="auto-start-reverse">
+      <circle cx="3.5" cy="3.5" r="3" fill="#333" stroke="#333"/>
+    </marker>
+  </defs>
+<rect width="829" height="729" fill="white"/>
+<rect width="829" height="32" fill="#F0F0F0" stroke="#CCCCCC" stroke-width="1"/>
+<text x="414.5" y="21" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#222">Figure23_Application-Coorperation(Target)</text>
+<rect x="24" y="56" width="781" height="199" rx="2" fill="#FFFFFF" stroke="#666666" stroke-width="1" stroke-dasharray="6,4"/>
+<text x="29" y="70" font-family="Arial,Helvetica,sans-serif" font-size="11" font-style="italic" fill="#444">Front Office</text>
+<rect x="24" y="272" width="781" height="277" rx="2" fill="#FFFFFF" stroke="#666666" stroke-width="1" stroke-dasharray="6,4"/>
+<text x="29" y="286" font-family="Arial,Helvetica,sans-serif" font-size="11" font-style="italic" fill="#444">Back Office</text>
+<rect x="24" y="584" width="781" height="121" rx="2" fill="#FFFFFF" stroke="#666666" stroke-width="1" stroke-dasharray="6,4"/>
+<text x="29" y="598" font-family="Arial,Helvetica,sans-serif" font-size="11" font-style="italic" fill="#444">Shared Service Center</text>
+<rect x="478" y="80" width="120" height="163" rx="2" fill="#99CCFF" stroke="#666666" stroke-width="1"/>
+<text x="595" y="90" font-family="Arial,Helvetica,sans-serif" font-size="8" text-anchor="end" fill="#555" opacity="0.9">A:Component</text>
+<text x="538" y="165.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">General CRM System</text>
+<rect x="132" y="188" width="120" height="55" rx="2" fill="#99CCFF" stroke="#666666" stroke-width="1"/>
+<text x="249" y="198" font-family="Arial,Helvetica,sans-serif" font-size="8" text-anchor="end" fill="#555" opacity="0.9">A:Component</text>
+<text x="192" y="212.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Call Center</text>
+<text x="192" y="226.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Application</text>
+<rect x="132" y="80" width="120" height="55" rx="2" fill="#99CCFF" stroke="#666666" stroke-width="1"/>
+<text x="249" y="90" font-family="Arial,Helvetica,sans-serif" font-size="8" text-anchor="end" fill="#555" opacity="0.9">A:Component</text>
+<text x="192" y="111.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Web Portal</text>
+<rect x="48" y="290" width="517" height="247" rx="2" fill="#99CCFF" stroke="#666666" stroke-width="1"/>
+<text x="562" y="300" font-family="Arial,Helvetica,sans-serif" font-size="8" text-anchor="end" fill="#555" opacity="0.9">A:Component</text>
+<text x="306.5" y="417.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">ArchiSurance Back Office Suite</text>
+<rect x="660" y="320" width="120" height="205" rx="2" fill="#99CCFF" stroke="#666666" stroke-width="1"/>
+<text x="777" y="330" font-family="Arial,Helvetica,sans-serif" font-size="8" text-anchor="end" fill="#555" opacity="0.9">A:Component</text>
+<text x="720" y="419.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Data Warehousing</text>
+<text x="720" y="433.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Solution</text>
+<rect x="96" y="620" width="648" height="55" rx="2" fill="#99CCFF" stroke="#666666" stroke-width="1"/>
+<text x="741" y="630" font-family="Arial,Helvetica,sans-serif" font-size="8" text-anchor="end" fill="#555" opacity="0.9">A:Component</text>
+<text x="420" y="651.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Document Management System</text>
+<rect x="243" y="314" width="120" height="55" rx="2" fill="#99CCFF" stroke="#666666" stroke-width="1"/>
+<text x="360" y="324" font-family="Arial,Helvetica,sans-serif" font-size="8" text-anchor="end" fill="#555" opacity="0.9">A:Component</text>
+<text x="303" y="345.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">P-ADMIN</text>
+<rect x="252" y="470" width="120" height="55" rx="2" fill="#99CCFF" stroke="#666666" stroke-width="1"/>
+<text x="369" y="480" font-family="Arial,Helvetica,sans-serif" font-size="8" text-anchor="end" fill="#555" opacity="0.9">A:Component</text>
+<text x="312" y="501.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">BRIMS</text>
+<rect x="84" y="314" width="120" height="55" rx="2" fill="#99CCFF" stroke="#666666" stroke-width="1"/>
+<text x="201" y="324" font-family="Arial,Helvetica,sans-serif" font-size="8" text-anchor="end" fill="#555" opacity="0.9">A:Component</text>
+<text x="144" y="345.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">AUTO-U</text>
+<rect x="399" y="314" width="120" height="55" rx="2" fill="#99CCFF" stroke="#666666" stroke-width="1"/>
+<text x="516" y="324" font-family="Arial,Helvetica,sans-serif" font-size="8" text-anchor="end" fill="#555" opacity="0.9">A:Component</text>
+<text x="459" y="345.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">VERSA-CLAIM</text>
+<rect x="171" y="402" width="120" height="55" rx="2" fill="#99CCFF" stroke="#666666" stroke-width="1"/>
+<text x="288" y="412" font-family="Arial,Helvetica,sans-serif" font-size="8" text-anchor="end" fill="#555" opacity="0.9">A:Component</text>
+<text x="231" y="433.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">P-CONFIG</text>
+<polyline points="478.0,152.1 252.0,116.9" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="365.0" y="130.5" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">CRM data</text>
+<polyline points="478.0,183.0 365.0,223.5 252.0,218.3" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<polyline points="192.0,188.0 192.0,135.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="192.0" y="157.5" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">call report</text>
+<polyline points="252.0,212.2 365.0,206.0 478.0,176.9" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="421.5" y="187.5" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">call report</text>
+<polyline points="565.0,408.4 586.3,408.0 660.0,416.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<polyline points="420.0,290.0 478.0,226.8" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="449.0" y="254.4" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">customer data</text>
+<polyline points="313.5,537.0 315.3,568.5 383.5,620.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<polyline points="243.0,347.5 223.5,349.5 204.0,347.5" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<polyline points="363.0,341.5 399.0,341.5" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<polyline points="310.4,470.0 304.6,369.0" fill="none" stroke="#444444" stroke-width="1" marker-end="url(#arrow-open)"/>
+<polyline points="372.0,499.6 457.5,502.5 458.7,369.0" fill="none" stroke="#444444" stroke-width="1" marker-end="url(#arrow-open)"/>
+<polyline points="252.0,499.2 133.5,502.5 142.2,369.0" fill="none" stroke="#444444" stroke-width="1" marker-end="url(#arrow-open)"/>
+<polyline points="204.0,334.7 223.5,332.5 243.0,334.7" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<polyline points="203.8,402.0 171.2,369.0" fill="none" stroke="#444444" stroke-width="1" marker-end="url(#arrow-open)"/>
+<polyline points="253.5,402.0 280.5,369.0" fill="none" stroke="#444444" stroke-width="1" marker-end="url(#arrow-open)"/>
+<polyline points="291.0,432.3 423.0,438.5 448.8,369.0" fill="none" stroke="#444444" stroke-width="1" marker-end="url(#arrow-open)"/>
+<polyline points="660.0,424.5 586.3,427.0 565.0,426.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="575.6" y="422.5" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">customer profile data</text>
+<polyline points="385.2,620.0 345.3,588.5 333.8,537.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+</svg>
