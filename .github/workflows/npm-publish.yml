@@ -43,7 +43,7 @@ jobs:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Upload to Codecov
-        run: npx @codecov/cli upload-process
+        run: npx -y @codecov/cli upload-process
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
