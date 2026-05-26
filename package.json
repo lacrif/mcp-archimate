@@ -35,7 +35,6 @@
     "zod": "^3.23.0"
   },
   "devDependencies": {
-    "@codecov/vite-plugin": "^2.0.1",
     "@eslint/js": "^10.0.1",
     "@types/express": "^5.0.0",
     "@types/node": "^22.0.0",
