@@ -34,22 +34,32 @@ def fetch_data(url: str, timeout: int = 30) -> dict:
 
 ## ArchiMate Model — MCP Server
 
-This project exposes a **read-only MCP server** at `http://localhost:8000/mcp` (streamable-http transport).
-The MCP server is the preferred way to query the ArchiMate model from AI workflows.
+This project exposes an **MCP server** at `http://localhost:8000/mcp` (streamable-http transport).
+The MCP server is the preferred way to query and modify the ArchiMate model from AI workflows.
 
 ### Available MCP Tools
 
 | Tool | Description |
 | ---- | ----------- |
-| `get_model_info_tool` | Global metadata (identifier, name, version, counts) |
-| `list_element_types_tool` | Distinct element types present in the model |
-| `list_elements_tool` | Elements with optional filters (`element_type`, `name`) |
-| `get_element_tool` | Element detail by `element_id` |
-| `list_relationship_types_tool` | Distinct relationship types in the model |
-| `list_relationships_tool` | Relationships with filters (`rel_type`, `source_id`, `target_id`) |
-| `get_relationship_tool` | Relationship detail by `relationship_id` |
-| `list_views_tool` | Views with `node_count`, `connection_count`, `viewpoint` |
-| `get_view_tool` | View detail with nodes (position, style) and connections |
+| `get_model_info` | Global metadata (identifier, name, version, counts) |
+| `list_element_types` | Distinct element types present in the model |
+| `list_elements` | Elements with optional filters (`element_type`, `name`) |
+| `get_element` | Element detail by `element_id` |
+| `list_relationship_types` | Distinct relationship types in the model |
+| `list_relationships` | Relationships with filters (`rel_type`, `source_id_filter`, `target_id`) |
+| `get_relationship` | Relationship detail by `relationship_id` |
+| `list_views` | Views with `node_count`, `connection_count`, `viewpoint` |
+| `get_view` | View detail with nodes (position, style) and connections |
+| `create_element` | Create an ArchiMate element (`name`, `type` required) |
+| `update_element` | Update an element (partial patch by `element_id`) |
+| `delete_element` | Delete an element and its relationships |
+| `create_relationship` | Create a relationship (`type`, `source`, `target` required) |
+| `update_relationship` | Update a relationship (partial patch by `relationship_id`) |
+| `delete_relationship` | Delete a relationship |
+| `create_view` | Create a new view/diagram (`name` required) |
+| `create_node` | Add a node (visual element) to a view |
+| `save_model` | Write the in-memory model back to disk |
+| `render_view` | Generate an SVG or PNG image of a view (`format`: `"svg"` default, `"png"` requires `sharp`) |
 
 ### Response Field Names (XSD-aligned)
 
@@ -72,7 +82,7 @@ All fields follow **archimate3_Model.xsd / archimate3_View.xsd / archimate3_Diag
 The server must be running before any MCP tool call:
 
 ```bash
-uvicorn api.main:app --host 127.0.0.1 --port 8000
+npm start
 ```
 
 ### VS Code MCP Configuration

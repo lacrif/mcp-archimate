@@ -1,22 +1,26 @@
 /**
- * REST and MCP services to explore ArchiMate models.
+ * REST and MCP services to explore and edit an ArchiMate model.
  *
- * All data endpoints are prefixed by /:source_id/ so that multiple models
- * can be served simultaneously. Available sources are declared in config.json.
+ * Single-source mode: one .archimate file configured in config.json.
  *
  * Routes:
  *   GET /openapi.json
  *   GET /docs
- *   GET /sources
- *   GET /:source_id/
- *   GET /:source_id/elements[/types|/:id]
- *   GET /:source_id/relationships[/types|/:id]
- *   GET /:source_id/views[/:id]
+ *   GET /
+ *   POST /save
+ *   GET /elements[/types|/:id]
+ *   POST|PUT|DELETE /elements[/:id]
+ *   GET /relationships[/types|/:id]
+ *   POST|PUT|DELETE /relationships[/:id]
+ *   GET /views[/:id]
+ *   POST /views
+ *   POST /views/:view_id/nodes
  *   POST|GET|DELETE /mcp/
  */
 
-import express, { NextFunction, Request, Response } from "express";
+import express, { Request, Response } from "express";
 import { randomUUID } from "crypto";
+import { join } from "path";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js";
@@ -24,20 +28,29 @@ import { z } from "zod";
 
 import type { ArchiElement, ArchiRelationship, ArchiNode, ArchiConnection, ArchiView } from "./model.js";
 import { version } from "../package.json";
-import { registry, defaultSourceId, DataSource } from "./registry.js";
+import { dataSource, DataSource, recomputeDataSourceTypes } from "./registry.js";
+import { saveModelToFile } from "./serializer.js";
 import { openApiSpec } from "./openapi.js";
+import { renderViewToSvg, renderViewToPng } from "./renderer.js";
 import {
   ELEMENT_TYPES,
   RELATIONSHIP_TYPES,
   ConnectionOut,
+  ElementCreateIn,
   ElementOut,
+  ElementUpdateIn,
   FontOut,
   ModelInfo,
   NodeOut,
   PropertyOut,
   RGBColorOut,
+  RelationshipCreateIn,
   RelationshipOut,
+  RelationshipUpdateIn,
+  NodeCreateIn,
+  SaveResult,
   StyleOut,
+  ViewCreateIn,
   ViewDetailOut,
   ViewOut,
 } from "./schemas.js";
@@ -176,6 +189,14 @@ export function viewOut(v: ArchiView, detail = false): ViewOut | ViewDetailOut {
 }
 
 // ---------------------------------------------------------------------------
+// Internal helpers
+// ---------------------------------------------------------------------------
+
+function propsIn(properties: PropertyOut[] | undefined): Record<string, string> {
+  return Object.fromEntries((properties ?? []).map((p) => [p.property_definition_ref, p.value]));
+}
+
+// ---------------------------------------------------------------------------
 // Business logic (shared by REST + MCP)
 // ---------------------------------------------------------------------------
 
@@ -256,6 +277,154 @@ export function getViewById(ds: DataSource, view_id: string): ViewDetailOut {
 }
 
 // ---------------------------------------------------------------------------
+// Mutation business logic – Views & Nodes
+// ---------------------------------------------------------------------------
+
+export function createView(ds: DataSource, input: ViewCreateIn): ViewDetailOut {
+  const view: ArchiView = {
+    uuid: randomUUID(),
+    name: input.name,
+    desc: input.documentation ?? null,
+    primary_viewpoint: input.viewpoint ?? null,
+    nodes: [],
+    conns: [],
+  };
+  ds.model.views.push(view);
+  return viewOut(view, true);
+}
+
+export function createNode(ds: DataSource, view_id: string, input: NodeCreateIn): NodeOut {
+  const view = ds.model.views.find((v) => v.uuid === view_id);
+  if (!view) throw new Error(`Vue '${view_id}' introuvable.`);
+  const element = ds.model.elements.find((e) => e.uuid === input.element_id);
+  if (!element) throw new Error(`Élément '${input.element_id}' introuvable.`);
+  const node: ArchiNode = {
+    uuid: randomUUID(),
+    name: null,
+    ref: element,
+    x: input.x ?? null,
+    y: input.y ?? null,
+    w: input.w ?? null,
+    h: input.h ?? null,
+    fill_color: null,
+    line_color: null,
+    font_name: null,
+    font_size: null,
+    font_color: null,
+    line_width: null,
+    nodes: [],
+  };
+  view.nodes.push(node);
+  return nodeOut(node);
+}
+
+// ---------------------------------------------------------------------------
+// Mutation business logic – Elements
+// ---------------------------------------------------------------------------
+
+export function createElement(ds: DataSource, input: ElementCreateIn): ElementOut {
+  const element: ArchiElement = {
+    uuid: randomUUID(),
+    name: input.name,
+    type: input.type,
+    desc: input.documentation ?? null,
+    props: propsIn(input.properties),
+  };
+  ds.model.elements.push(element);
+  recomputeDataSourceTypes(ds);
+  return elementOut(element);
+}
+
+export function updateElement(ds: DataSource, element_id: string, input: ElementUpdateIn): ElementOut {
+  const match = ds.model.elements.find((e) => e.uuid === element_id);
+  if (!match) throw new Error(`Élément '${element_id}' introuvable.`);
+  if (input.name !== undefined) match.name = input.name;
+  if (input.type !== undefined) match.type = input.type;
+  if (input.documentation !== undefined) match.desc = input.documentation ?? null;
+  if (input.properties !== undefined) match.props = propsIn(input.properties);
+  recomputeDataSourceTypes(ds);
+  return elementOut(match);
+}
+
+export function deleteElement(ds: DataSource, element_id: string): void {
+  const idx = ds.model.elements.findIndex((e) => e.uuid === element_id);
+  if (idx === -1) throw new Error(`Élément '${element_id}' introuvable.`);
+  ds.model.elements.splice(idx, 1);
+  ds.model.relationships = ds.model.relationships.filter((r) => {
+    const srcId = typeof r.source === "string" ? r.source : r.source.uuid;
+    const tgtId = typeof r.target === "string" ? r.target : r.target.uuid;
+    return srcId !== element_id && tgtId !== element_id;
+  });
+  recomputeDataSourceTypes(ds);
+}
+
+// ---------------------------------------------------------------------------
+// Mutation business logic – Relationships
+// ---------------------------------------------------------------------------
+
+export function createRelationship(ds: DataSource, input: RelationshipCreateIn): RelationshipOut {
+  const srcElem = ds.model.elements.find((e) => e.uuid === input.source);
+  const tgtElem = ds.model.elements.find((e) => e.uuid === input.target);
+  if (!srcElem) throw new Error(`Élément source '${input.source}' introuvable.`);
+  if (!tgtElem) throw new Error(`Élément cible '${input.target}' introuvable.`);
+  const rel: ArchiRelationship = {
+    uuid: randomUUID(),
+    name: input.name ?? null,
+    type: input.type,
+    source: srcElem,
+    target: tgtElem,
+    desc: input.documentation ?? null,
+    props: propsIn(input.properties),
+    access_type: input.access_type ?? null,
+    is_directed: input.is_directed ?? null,
+    influence_strength: input.influence_strength ?? null,
+  };
+  ds.model.relationships.push(rel);
+  recomputeDataSourceTypes(ds);
+  return relOut(rel);
+}
+
+export function updateRelationship(ds: DataSource, relationship_id: string, input: RelationshipUpdateIn): RelationshipOut {
+  const match = ds.model.relationships.find((r) => r.uuid === relationship_id);
+  if (!match) throw new Error(`Relation '${relationship_id}' introuvable.`);
+  if (input.name !== undefined) match.name = input.name;
+  if (input.type !== undefined) match.type = input.type;
+  if (input.source !== undefined) {
+    const srcElem = ds.model.elements.find((e) => e.uuid === input.source);
+    if (!srcElem) throw new Error(`Élément source '${input.source}' introuvable.`);
+    match.source = srcElem;
+  }
+  if (input.target !== undefined) {
+    const tgtElem = ds.model.elements.find((e) => e.uuid === input.target);
+    if (!tgtElem) throw new Error(`Élément cible '${input.target}' introuvable.`);
+    match.target = tgtElem;
+  }
+  if (input.documentation !== undefined) match.desc = input.documentation ?? null;
+  if (input.properties !== undefined) match.props = propsIn(input.properties);
+  if (input.access_type !== undefined) match.access_type = input.access_type;
+  if (input.is_directed !== undefined) match.is_directed = input.is_directed;
+  if (input.influence_strength !== undefined) match.influence_strength = input.influence_strength;
+  recomputeDataSourceTypes(ds);
+  return relOut(match);
+}
+
+export function deleteRelationship(ds: DataSource, relationship_id: string): void {
+  const idx = ds.model.relationships.findIndex((r) => r.uuid === relationship_id);
+  if (idx === -1) throw new Error(`Relation '${relationship_id}' introuvable.`);
+  ds.model.relationships.splice(idx, 1);
+  recomputeDataSourceTypes(ds);
+}
+
+// ---------------------------------------------------------------------------
+// Business logic – persistence
+// ---------------------------------------------------------------------------
+
+export function saveModel(ds: DataSource): SaveResult {
+  saveModelToFile(ds.model, join(process.cwd(), ds.path));
+  return { saved: true, path: ds.path };
+}
+
+// ---------------------------------------------------------------------------
 // Input validation helper
 // ---------------------------------------------------------------------------
 
@@ -314,88 +483,198 @@ app.get("/docs", (_req: Request, res: Response) => {
 </html>`);
 });
 
-// List all configured sources
-app.get("/sources", (_req: Request, res: Response) => {
-  res.json([...registry.values()].map((ds) => ({ id: ds.id, name: ds.name })));
+// Model info
+app.get("/", (_req: Request, res: Response) => {
+  res.json(getModelInfo(dataSource));
 });
 
-// ---------------------------------------------------------------------------
-// Per-source router (mounted at /:source_id)
-// ---------------------------------------------------------------------------
-
-const sourceRouter = express.Router({ mergeParams: true });
-
-function resolveSource(req: Request, res: Response, next: NextFunction): void {
-  const id = req.params["source_id"] as string;
-  const ds = registry.get(id);
-  if (!ds) {
-    res.status(404).json({ detail: `Source '${id}' introuvable.` });
-    return;
+// Save model to file
+app.post("/save", (_req: Request, res: Response) => {
+  try {
+    res.json(saveModel(dataSource));
+  } catch (err) {
+    res.status(500).json({ detail: (err as Error).message });
   }
-  res.locals["ds"] = ds;
-  next();
-}
-
-sourceRouter.use(resolveSource);
-
-// Model info
-sourceRouter.get("/", (_req: Request, res: Response) => {
-  res.json(getModelInfo(res.locals["ds"] as DataSource));
 });
 
 // Elements
-sourceRouter.get("/elements/types", (_req: Request, res: Response) => {
-  res.json(listElementTypes(res.locals["ds"] as DataSource));
+app.get("/elements/types", (_req: Request, res: Response) => {
+  res.json(listElementTypes(dataSource));
 });
 
-sourceRouter.get("/elements", (req: Request, res: Response) => {
-  const ds = res.locals["ds"] as DataSource;
+app.get("/elements", (req: Request, res: Response) => {
   const type = (req.query["type"] as string) || null;
   const name = (req.query["name"] as string) || null;
   if (!validateType(type, ELEMENT_TYPES, _ELEMENT_TYPES_STR, "d'élément ArchiMate", res)) return;
-  res.json(listElements(ds, type, name));
+  res.json(listElements(dataSource, type, name));
 });
 
-sourceRouter.get("/elements/:element_id", (req: Request, res: Response) => {
+app.get("/elements/:element_id", (req: Request, res: Response) => {
   try {
-    res.json(getElementById(res.locals["ds"] as DataSource, req.params["element_id"] as string));
+    res.json(getElementById(dataSource, req.params["element_id"] as string));
+  } catch (err) {
+    res.status(404).json({ detail: (err as Error).message });
+  }
+});
+
+app.post("/elements", (req: Request, res: Response) => {
+  const body = req.body as ElementCreateIn;
+  if (!body.name || typeof body.name !== "string") {
+    res.status(422).json({ detail: "Le champ 'name' est requis." });
+    return;
+  }
+  if (!body.type || typeof body.type !== "string") {
+    res.status(422).json({ detail: "Le champ 'type' est requis." });
+    return;
+  }
+  if (!validateType(body.type, ELEMENT_TYPES, _ELEMENT_TYPES_STR, "d'élément ArchiMate", res)) return;
+  try {
+    res.status(201).json(createElement(dataSource, body));
+  } catch (err) {
+    res.status(422).json({ detail: (err as Error).message });
+  }
+});
+
+app.put("/elements/:element_id", (req: Request, res: Response) => {
+  const body = req.body as ElementUpdateIn;
+  if (body.type !== undefined && !validateType(body.type, ELEMENT_TYPES, _ELEMENT_TYPES_STR, "d'élément ArchiMate", res)) return;
+  try {
+    res.json(updateElement(dataSource, req.params["element_id"] as string, body));
+  } catch (err) {
+    res.status(404).json({ detail: (err as Error).message });
+  }
+});
+
+app.delete("/elements/:element_id", (req: Request, res: Response) => {
+  try {
+    deleteElement(dataSource, req.params["element_id"] as string);
+    res.status(204).send();
   } catch (err) {
     res.status(404).json({ detail: (err as Error).message });
   }
 });
 
 // Relationships
-sourceRouter.get("/relationships/types", (_req: Request, res: Response) => {
-  res.json(listRelationshipTypes(res.locals["ds"] as DataSource));
+app.get("/relationships/types", (_req: Request, res: Response) => {
+  res.json(listRelationshipTypes(dataSource));
 });
 
-sourceRouter.get("/relationships", (req: Request, res: Response) => {
-  const ds = res.locals["ds"] as DataSource;
+app.get("/relationships", (req: Request, res: Response) => {
   const type = (req.query["type"] as string) || null;
   const source_id = (req.query["source_id"] as string) || null;
   const target_id = (req.query["target_id"] as string) || null;
   if (!validateType(type, RELATIONSHIP_TYPES, _RELATIONSHIP_TYPES_STR, "de relation ArchiMate", res)) return;
-  res.json(listRelationships(ds, type, source_id, target_id));
+  res.json(listRelationships(dataSource, type, source_id, target_id));
 });
 
-sourceRouter.get("/relationships/:relationship_id", (req: Request, res: Response) => {
+app.get("/relationships/:relationship_id", (req: Request, res: Response) => {
   try {
-    res.json(getRelationshipById(res.locals["ds"] as DataSource, req.params["relationship_id"] as string));
+    res.json(getRelationshipById(dataSource, req.params["relationship_id"] as string));
+  } catch (err) {
+    res.status(404).json({ detail: (err as Error).message });
+  }
+});
+
+app.post("/relationships", (req: Request, res: Response) => {
+  const body = req.body as RelationshipCreateIn;
+  if (!body.type || typeof body.type !== "string") {
+    res.status(422).json({ detail: "Le champ 'type' est requis." });
+    return;
+  }
+  if (!body.source || typeof body.source !== "string") {
+    res.status(422).json({ detail: "Le champ 'source' est requis." });
+    return;
+  }
+  if (!body.target || typeof body.target !== "string") {
+    res.status(422).json({ detail: "Le champ 'target' est requis." });
+    return;
+  }
+  if (!validateType(body.type, RELATIONSHIP_TYPES, _RELATIONSHIP_TYPES_STR, "de relation ArchiMate", res)) return;
+  try {
+    res.status(201).json(createRelationship(dataSource, body));
+  } catch (err) {
+    res.status(422).json({ detail: (err as Error).message });
+  }
+});
+
+app.put("/relationships/:relationship_id", (req: Request, res: Response) => {
+  const body = req.body as RelationshipUpdateIn;
+  if (body.type !== undefined && !validateType(body.type, RELATIONSHIP_TYPES, _RELATIONSHIP_TYPES_STR, "de relation ArchiMate", res)) return;
+  try {
+    res.json(updateRelationship(dataSource, req.params["relationship_id"] as string, body));
+  } catch (err) {
+    const msg = (err as Error).message;
+    res.status(msg.startsWith("Relation ") ? 404 : 422).json({ detail: msg });
+  }
+});
+
+app.delete("/relationships/:relationship_id", (req: Request, res: Response) => {
+  try {
+    deleteRelationship(dataSource, req.params["relationship_id"] as string);
+    res.status(204).send();
   } catch (err) {
     res.status(404).json({ detail: (err as Error).message });
   }
 });
 
 // Views
-sourceRouter.get("/views", (_req: Request, res: Response) => {
-  res.json(listViews(res.locals["ds"] as DataSource));
+app.get("/views", (_req: Request, res: Response) => {
+  res.json(listViews(dataSource));
 });
 
-sourceRouter.get("/views/:view_id", (req: Request, res: Response) => {
+app.get("/views/:view_id", (req: Request, res: Response) => {
   try {
-    res.json(getViewById(res.locals["ds"] as DataSource, req.params["view_id"] as string));
+    res.json(getViewById(dataSource, req.params["view_id"] as string));
   } catch (err) {
     res.status(404).json({ detail: (err as Error).message });
+  }
+});
+
+app.post("/views", (req: Request, res: Response) => {
+  const body = req.body as ViewCreateIn;
+  if (!body.name || typeof body.name !== "string") {
+    res.status(422).json({ detail: "Field 'name' is required." });
+    return;
+  }
+  res.status(201).json(createView(dataSource, body));
+});
+
+app.post("/views/:view_id/nodes", (req: Request, res: Response) => {
+  const body = req.body as NodeCreateIn;
+  if (!body.element_id || typeof body.element_id !== "string") {
+    res.status(422).json({ detail: "Field 'element_id' is required." });
+    return;
+  }
+  try {
+    res.status(201).json(createNode(dataSource, req.params["view_id"] as string, body));
+  } catch (err) {
+    res.status(404).json({ detail: (err as Error).message });
+  }
+});
+
+app.get("/views/:view_id/image", async (req: Request, res: Response) => {
+  const format = (req.query["format"] as string) || "svg";
+  if (format !== "svg" && format !== "png") {
+    res.status(422).json({ detail: "Format invalide. Valeurs acceptées: 'svg', 'png'." });
+    return;
+  }
+  const view = dataSource.model.views.find((v) => v.uuid === req.params["view_id"]);
+  if (!view) {
+    res.status(404).json({ detail: `Vue '${req.params["view_id"]}' introuvable.` });
+    return;
+  }
+  try {
+    if (format === "png") {
+      const buf = await renderViewToPng(view, dataSource.model);
+      res.setHeader("Content-Type", "image/png");
+      res.send(buf);
+    } else {
+      const svg = renderViewToSvg(view, dataSource.model);
+      res.setHeader("Content-Type", "image/svg+xml; charset=utf-8");
+      res.send(svg);
+    }
+  } catch (err) {
+    res.status(500).json({ detail: (err as Error).message });
   }
 });
 
@@ -409,29 +688,16 @@ function toContent(data: unknown): { content: [{ type: "text"; text: string }] }
   return { content: [{ type: "text" as const, text: JSON.stringify(data) }] };
 }
 
-function resolveSourceOrThrow(source_id: string | undefined): DataSource {
-  const id = source_id ?? defaultSourceId;
-  const ds = registry.get(id);
-  if (!ds) {
-    throw new Error(`Source '${id}' introuvable. Sources: ${[...registry.keys()].join(", ")}`);
-  }
-  return ds;
-}
-
-const sourceIdParam = {
-  source_id: z.string().optional().describe(`Identifiant de la source de données (défaut: '${defaultSourceId}')`),
-};
-
 mcpServer.registerTool(
   "get_model_info",
-  { description: "Retourne les métadonnées globales du modèle ArchiMate chargé (identifiant, nom, version, compteurs).", inputSchema: sourceIdParam },
-  async ({ source_id }) => toContent(getModelInfo(resolveSourceOrThrow(source_id)))
+  { description: "Retourne les métadonnées globales du modèle ArchiMate chargé (identifiant, nom, version, compteurs).", inputSchema: {} },
+  async () => toContent(getModelInfo(dataSource))
 );
 
 mcpServer.registerTool(
   "list_element_types",
-  { description: "Retourne la liste triée des types d'éléments ArchiMate 3.1 présents dans le modèle.", inputSchema: sourceIdParam },
-  async ({ source_id }) => toContent(listElementTypes(resolveSourceOrThrow(source_id)))
+  { description: "Retourne la liste triée des types d'éléments ArchiMate 3.1 présents dans le modèle.", inputSchema: {} },
+  async () => toContent(listElementTypes(dataSource))
 );
 
 mcpServer.registerTool(
@@ -439,30 +705,28 @@ mcpServer.registerTool(
   {
     description: `Liste les éléments du modèle avec filtres optionnels. element_type doit être un type ArchiMate 3.1 valide parmi: ${_ELEMENT_TYPES_STR}.`,
     inputSchema: {
-      ...sourceIdParam,
       element_type: z.string().optional().describe("Type ArchiMate 3.1 (ex: ApplicationComponent)"),
       name: z.string().optional().describe("Filtre par nom (insensible à la casse, sous-chaîne)"),
     },
   },
-  async ({ source_id, element_type, name }) => {
-    const ds = resolveSourceOrThrow(source_id);
+  async ({ element_type, name }) => {
     if (element_type && !ELEMENT_TYPES.has(element_type)) {
       throw new Error(`Type d'élément invalide: '${element_type}'. Types valides: ${_ELEMENT_TYPES_STR}`);
     }
-    return toContent(listElements(ds, element_type, name));
+    return toContent(listElements(dataSource, element_type, name));
   }
 );
 
 mcpServer.registerTool(
   "get_element",
-  { description: "Retourne le détail d'un élément ArchiMate par son identifiant (champ 'identifier').", inputSchema: { ...sourceIdParam, element_id: z.string().describe("Identifiant de l'élément") } },
-  async ({ source_id, element_id }) => toContent(getElementById(resolveSourceOrThrow(source_id), element_id))
+  { description: "Retourne le détail d'un élément ArchiMate par son identifiant (champ 'identifier').", inputSchema: { element_id: z.string().describe("Identifiant de l'élément") } },
+  async ({ element_id }) => toContent(getElementById(dataSource, element_id))
 );
 
 mcpServer.registerTool(
   "list_relationship_types",
-  { description: "Retourne la liste triée des types de relations ArchiMate 3.1 présents dans le modèle.", inputSchema: sourceIdParam },
-  async ({ source_id }) => toContent(listRelationshipTypes(resolveSourceOrThrow(source_id)))
+  { description: "Retourne la liste triée des types de relations ArchiMate 3.1 présents dans le modèle.", inputSchema: {} },
+  async () => toContent(listRelationshipTypes(dataSource))
 );
 
 mcpServer.registerTool(
@@ -470,38 +734,250 @@ mcpServer.registerTool(
   {
     description: `Liste les relations du modèle avec filtres optionnels. rel_type doit être parmi: ${_RELATIONSHIP_TYPES_STR}.`,
     inputSchema: {
-      ...sourceIdParam,
       rel_type: z.string().optional().describe("Type de relation ArchiMate 3.1"),
       source_id_filter: z.string().optional().describe("Filtrer par identifiant source"),
       target_id: z.string().optional().describe("Filtrer par identifiant cible"),
     },
   },
-  async ({ source_id, rel_type, source_id_filter, target_id }) => {
-    const ds = resolveSourceOrThrow(source_id);
+  async ({ rel_type, source_id_filter, target_id }) => {
     if (rel_type && !RELATIONSHIP_TYPES.has(rel_type)) {
       throw new Error(`Type de relation invalide: '${rel_type}'. Types valides: ${_RELATIONSHIP_TYPES_STR}`);
     }
-    return toContent(listRelationships(ds, rel_type, source_id_filter, target_id));
+    return toContent(listRelationships(dataSource, rel_type, source_id_filter, target_id));
   }
 );
 
 mcpServer.registerTool(
   "get_relationship",
-  { description: "Retourne le détail d'une relation ArchiMate par son identifiant.", inputSchema: { ...sourceIdParam, relationship_id: z.string().describe("Identifiant de la relation") } },
-  async ({ source_id, relationship_id }) =>
-    toContent(getRelationshipById(resolveSourceOrThrow(source_id), relationship_id))
+  { description: "Retourne le détail d'une relation ArchiMate par son identifiant.", inputSchema: { relationship_id: z.string().describe("Identifiant de la relation") } },
+  async ({ relationship_id }) => toContent(getRelationshipById(dataSource, relationship_id))
 );
 
 mcpServer.registerTool(
   "list_views",
-  { description: "Liste toutes les vues du modèle avec leur nombre de nœuds et de connexions.", inputSchema: sourceIdParam },
-  async ({ source_id }) => toContent(listViews(resolveSourceOrThrow(source_id)))
+  { description: "Liste toutes les vues du modèle avec leur nombre de nœuds et de connexions.", inputSchema: {} },
+  async () => toContent(listViews(dataSource))
 );
 
 mcpServer.registerTool(
   "get_view",
-  { description: "Retourne le détail d'une vue ArchiMate par son identifiant.", inputSchema: { ...sourceIdParam, view_id: z.string().describe("Identifiant de la vue") } },
-  async ({ source_id, view_id }) => toContent(getViewById(resolveSourceOrThrow(source_id), view_id))
+  { description: "Retourne le détail d'une vue ArchiMate par son identifiant.", inputSchema: { view_id: z.string().describe("Identifiant de la vue") } },
+  async ({ view_id }) => toContent(getViewById(dataSource, view_id))
+);
+
+mcpServer.registerTool(
+  "create_view",
+  {
+    description: "Crée une nouvelle vue (diagramme) dans le modèle ArchiMate.",
+    inputSchema: {
+      name: z.string().describe("Nom de la vue"),
+      viewpoint: z.string().optional().nullable().describe("Point de vue ArchiMate (optionnel)"),
+      documentation: z.string().optional().nullable().describe("Documentation (optionnel)"),
+    },
+  },
+  async ({ name, viewpoint, documentation }) =>
+    toContent(createView(dataSource, { name, viewpoint, documentation }))
+);
+
+mcpServer.registerTool(
+  "create_node",
+  {
+    description: "Ajoute un nœud (représentation visuelle d'un élément) dans une vue ArchiMate.",
+    inputSchema: {
+      view_id: z.string().describe("Identifiant de la vue"),
+      element_id: z.string().describe("Identifiant de l'élément à représenter"),
+      x: z.number().optional().nullable().describe("Position X en pixels"),
+      y: z.number().optional().nullable().describe("Position Y en pixels"),
+      w: z.number().optional().nullable().describe("Largeur en pixels"),
+      h: z.number().optional().nullable().describe("Hauteur en pixels"),
+    },
+  },
+  async ({ view_id, element_id, x, y, w, h }) =>
+    toContent(createNode(dataSource, view_id, { element_id, x, y, w, h }))
+);
+
+// ---------------------------------------------------------------------------
+// MCP tools – mutations (create / update / delete)
+// ---------------------------------------------------------------------------
+
+const propertyItemSchema = z.object({
+  property_definition_ref: z.string().describe("Référence à la définition de propriété"),
+  value: z.string().describe("Valeur de la propriété"),
+});
+
+mcpServer.registerTool(
+  "create_element",
+  {
+    description: `Crée un nouvel élément ArchiMate dans le modèle (en mémoire). Types valides: ${_ELEMENT_TYPES_STR}.`,
+    inputSchema: {
+      name: z.string().describe("Nom de l'élément"),
+      type: z.string().describe("Type ArchiMate 3.1 (ex: ApplicationComponent, BusinessActor)"),
+      documentation: z.string().optional().nullable().describe("Documentation / description"),
+      properties: z.array(propertyItemSchema).optional().describe("Propriétés personnalisées"),
+    },
+  },
+  async ({ name, type, documentation, properties }) => {
+    if (!ELEMENT_TYPES.has(type)) {
+      throw new Error(`Type d'élément invalide: '${type}'. Types valides: ${_ELEMENT_TYPES_STR}`);
+    }
+    return toContent(createElement(dataSource, { name, type, documentation, properties }));
+  }
+);
+
+mcpServer.registerTool(
+  "update_element",
+  {
+    description: "Met à jour un élément ArchiMate existant. Seuls les champs fournis sont modifiés.",
+    inputSchema: {
+      element_id: z.string().describe("Identifiant de l'élément à modifier"),
+      name: z.string().optional().describe("Nouveau nom"),
+      type: z.string().optional().describe("Nouveau type ArchiMate 3.1"),
+      documentation: z.string().optional().nullable().describe("Nouvelle documentation (null pour effacer)"),
+      properties: z.array(propertyItemSchema).optional().describe("Nouvelles propriétés (remplace les existantes)"),
+    },
+  },
+  async ({ element_id, name, type, documentation, properties }) => {
+    if (type && !ELEMENT_TYPES.has(type)) {
+      throw new Error(`Type d'élément invalide: '${type}'. Types valides: ${_ELEMENT_TYPES_STR}`);
+    }
+    const input: ElementUpdateIn = {};
+    if (name !== undefined) input.name = name;
+    if (type !== undefined) input.type = type;
+    if (documentation !== undefined) input.documentation = documentation;
+    if (properties !== undefined) input.properties = properties;
+    return toContent(updateElement(dataSource, element_id, input));
+  }
+);
+
+mcpServer.registerTool(
+  "delete_element",
+  {
+    description: "Supprime un élément ArchiMate et toutes les relations qui le référencent.",
+    inputSchema: {
+      element_id: z.string().describe("Identifiant de l'élément à supprimer"),
+    },
+  },
+  async ({ element_id }) => {
+    deleteElement(dataSource, element_id);
+    return toContent({ deleted: true, identifier: element_id });
+  }
+);
+
+mcpServer.registerTool(
+  "create_relationship",
+  {
+    description: `Crée une nouvelle relation ArchiMate entre deux éléments. Types valides: ${_RELATIONSHIP_TYPES_STR}.`,
+    inputSchema: {
+      type: z.string().describe("Type de relation ArchiMate 3.1 (ex: Association, Composition)"),
+      source: z.string().describe("Identifiant de l'élément source"),
+      target: z.string().describe("Identifiant de l'élément cible"),
+      name: z.string().optional().nullable().describe("Nom de la relation (optionnel)"),
+      documentation: z.string().optional().nullable().describe("Documentation"),
+      properties: z.array(propertyItemSchema).optional().describe("Propriétés personnalisées"),
+      access_type: z.string().optional().nullable().describe("Type d'accès (Access uniquement): Access, Read, Write, ReadWrite"),
+      is_directed: z.boolean().optional().nullable().describe("Relation dirigée (Association uniquement)"),
+      influence_strength: z.string().optional().nullable().describe("Force d'influence (Influence uniquement)"),
+    },
+  },
+  async ({ type, source, target, name, documentation, properties, access_type, is_directed, influence_strength }) => {
+    if (!RELATIONSHIP_TYPES.has(type)) {
+      throw new Error(`Type de relation invalide: '${type}'. Types valides: ${_RELATIONSHIP_TYPES_STR}`);
+    }
+    return toContent(createRelationship(dataSource, { type, source, target, name, documentation, properties, access_type, is_directed, influence_strength }));
+  }
+);
+
+mcpServer.registerTool(
+  "update_relationship",
+  {
+    description: "Met à jour une relation ArchiMate existante. Seuls les champs fournis sont modifiés.",
+    inputSchema: {
+      relationship_id: z.string().describe("Identifiant de la relation à modifier"),
+      name: z.string().optional().nullable().describe("Nouveau nom"),
+      type: z.string().optional().describe("Nouveau type de relation"),
+      source: z.string().optional().describe("Nouvel identifiant d'élément source"),
+      target: z.string().optional().describe("Nouvel identifiant d'élément cible"),
+      documentation: z.string().optional().nullable().describe("Nouvelle documentation"),
+      properties: z.array(propertyItemSchema).optional().describe("Nouvelles propriétés"),
+      access_type: z.string().optional().nullable().describe("Type d'accès"),
+      is_directed: z.boolean().optional().nullable().describe("Relation dirigée"),
+      influence_strength: z.string().optional().nullable().describe("Force d'influence"),
+    },
+  },
+  async ({ relationship_id, name, type, source, target, documentation, properties, access_type, is_directed, influence_strength }) => {
+    if (type && !RELATIONSHIP_TYPES.has(type)) {
+      throw new Error(`Type de relation invalide: '${type}'. Types valides: ${_RELATIONSHIP_TYPES_STR}`);
+    }
+    const input: RelationshipUpdateIn = {};
+    if (name !== undefined) input.name = name;
+    if (type !== undefined) input.type = type;
+    if (source !== undefined) input.source = source;
+    if (target !== undefined) input.target = target;
+    if (documentation !== undefined) input.documentation = documentation;
+    if (properties !== undefined) input.properties = properties;
+    if (access_type !== undefined) input.access_type = access_type;
+    if (is_directed !== undefined) input.is_directed = is_directed;
+    if (influence_strength !== undefined) input.influence_strength = influence_strength;
+    return toContent(updateRelationship(dataSource, relationship_id, input));
+  }
+);
+
+mcpServer.registerTool(
+  "delete_relationship",
+  {
+    description: "Supprime une relation ArchiMate du modèle.",
+    inputSchema: {
+      relationship_id: z.string().describe("Identifiant de la relation à supprimer"),
+    },
+  },
+  async ({ relationship_id }) => {
+    deleteRelationship(dataSource, relationship_id);
+    return toContent({ deleted: true, identifier: relationship_id });
+  }
+);
+
+// ---------------------------------------------------------------------------
+// MCP tools – persistence
+// ---------------------------------------------------------------------------
+
+mcpServer.registerTool(
+  "save_model",
+  {
+    description: "Saves the current in-memory model to its source file on disk (.archimate).",
+    inputSchema: {},
+  },
+  async () => toContent(saveModel(dataSource))
+);
+
+mcpServer.registerTool(
+  "render_view",
+  {
+    description:
+      "Génère une image SVG ou PNG d'une vue ArchiMate. " +
+      "SVG est retourné directement (toujours disponible). " +
+      "PNG nécessite le paquet optionnel 'sharp' (npm install sharp).",
+    inputSchema: {
+      view_id: z.string().describe("Identifiant de la vue à rendre"),
+      format: z
+        .enum(["svg", "png"])
+        .optional()
+        .describe("Format de sortie: 'svg' (défaut) ou 'png'"),
+    },
+  },
+  async ({ view_id, format = "svg" }) => {
+    const view = dataSource.model.views.find((v) => v.uuid === view_id);
+    if (!view) throw new Error(`Vue '${view_id}' introuvable.`);
+    if (format === "png") {
+      const buf = await renderViewToPng(view, dataSource.model);
+      return {
+        content: [{ type: "image" as const, data: buf.toString("base64"), mimeType: "image/png" }],
+      };
+    }
+    const svg = renderViewToSvg(view, dataSource.model);
+    return {
+      content: [{ type: "image" as const, data: Buffer.from(svg).toString("base64"), mimeType: "image/svg+xml" }],
+    };
+  }
 );
 
 // ---------------------------------------------------------------------------
@@ -565,5 +1041,3 @@ app.delete("/mcp/", async (req: Request, res: Response) => {
   }
   res.status(404).json({ error: "Session not found" });
 });
-
-app.use("/:source_id", sourceRouter);

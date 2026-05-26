@@ -4,30 +4,32 @@
 [![Unit Tests](https://github.com/lacrif/mcp-archimate/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/lacrif/mcp-archimate/actions/workflows/npm-publish.yml)
 [![Docker Build & Push](https://github.com/lacrif/mcp-archimate/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/lacrif/mcp-archimate/actions/workflows/docker-publish.yml)
 
-Ce depot expose une **API REST** et un **serveur MCP (Model Context Protocol)** pour interroger des modeles ArchiMate stockes dans des fichiers XML ou natifs Archi Tool.
+A **REST API** and **MCP (Model Context Protocol) server** for querying and modifying ArchiMate models stored in XML or native Archi Tool files.
 
-L'API supporte **plusieurs sources de donnees simultanees**, chacune declaree dans `config.json`. Toutes les routes de donnees sont prefixees par l'identifiant de la source (`/:source_id/`).
+The API supports **multiple simultaneous data sources**, each declared in `config.json`. All data routes are prefixed with the source identifier (`/:source_id/`).
 
-Les schemas de donnees sont alignes sur les XSD officiels ArchiMate 3.1 Open Exchange Format :
+Data schemas are aligned with the official ArchiMate 3.1 Open Exchange Format XSDs:
 `archimate3_Model.xsd`, `archimate3_View.xsd`, `archimate3_Diagram.xsd`.
 
-## Objectif du depot
+> **In-memory mutations**: Create / update / delete operations modify the model in memory. Changes are lost on server restart **unless you call the save endpoint** (`POST /:source_id/save`) to write them back to disk. The API also supports creating new source files and removing sources from the registry.
 
-Ce projet fournit des services pour interroger et exploiter des modeles ArchiMate exposes via :
+## Purpose
 
-1. **Une API REST** (Express / Node.js) pour acceder programmatiquement aux elements, relations et vues de chaque modele
-2. **Un serveur MCP** (Model Context Protocol) pour integrer les modeles dans des workflows d'IA
+This project provides services for querying and modifying ArchiMate models via:
 
-## Sources de donnees supportees
+1. **A REST API** (Express / Node.js) for programmatic access and modification of elements, relationships, and views
+2. **An MCP server** (Model Context Protocol) for integrating models into AI workflows (read and write)
+
+## Supported data formats
 
 | Format | Extension | Description |
 | ------ | --------- | ----------- |
-| Open Exchange Format (OEF) | `.xml` | Export standardise ArchiMate 3.1, conforme aux XSD officiels |
-| Archi Tool natif | `.archimate` | Format natif de l'outil Archi (Archi Tool) |
+| Open Exchange Format (OEF) | `.xml` | Standardised ArchiMate 3.1 export, conforming to the official XSDs |
+| Native Archi Tool | `.archimate` | Native format of the Archi modelling tool |
 
 ## Configuration (`config.json`)
 
-Le fichier `config.json` a la racine du projet declare les sources de donnees a charger au demarrage :
+The `config.json` file at the project root declares the data sources to load at startup:
 
 ```json
 {
@@ -48,129 +50,130 @@ Le fichier `config.json` a la racine du projet declare les sources de donnees a 
 }
 ```
 
-| Champ | Description |
+| Field | Description |
 | ----- | ----------- |
-| `id` | Identifiant unique de la source — utilise comme prefixe de route (`/:source_id/`) |
-| `name` | Nom lisible de la source |
-| `path` | Chemin vers le fichier, relatif a la racine du projet |
-| `format` | `"oef"` (Open Exchange XML) ou `"archi"` (format natif Archi Tool) |
+| `id` | Unique source identifier — used as the route prefix (`/:source_id/`) |
+| `name` | Human-readable source name |
+| `path` | Path to the file, relative to the project root |
+| `format` | `"oef"` (Open Exchange XML) or `"archi"` (native Archi Tool format) |
 
-Toutes les sources sont chargees en memoire au demarrage. L'ajout d'une nouvelle source ne necessite que de modifier `config.json` et de redemarrer le serveur.
+All sources are loaded into memory at startup. You can also create and delete sources at runtime via the API — `config.json` is updated automatically.
 
-## Structure du projet
+## Project structure
 
 ```text
 .
-├── config.json                     # Declaration des sources de donnees
+├── config.json                     # Data source declarations
 ├── data/
-│   ├── open-exchange.xml           # Modele ArchiMate au format Open Exchange
-│   └── archisurance.archimate      # Modele ArchiMate au format Archi Tool natif
+│   ├── open-exchange.xml           # ArchiMate model in Open Exchange format
+│   └── archisurance.archimate      # ArchiMate model in native Archi Tool format
 ├── src/
-│   ├── schemas.ts                  # Interfaces TypeScript et constantes ArchiMate 3.1
-│   ├── model.ts                    # Parseur Open Exchange XML (fast-xml-parser)
-│   ├── archi-parser.ts             # Parseur format natif Archi Tool (.archimate)
-│   ├── registry.ts                 # Registre des sources (chargement via config.json)
-│   ├── app.ts                      # Application Express, routes REST et serveur MCP
-│   └── main.ts                     # Point d'entree du serveur HTTP
+│   ├── schemas.ts                  # TypeScript interfaces: output types + CRUD input types
+│   ├── model.ts                    # Open Exchange XML parser (fast-xml-parser)
+│   ├── archi-parser.ts             # Native Archi Tool format parser (.archimate)
+│   ├── serializer.ts               # XML serializers (ArchiModel → OEF XML / Archi format)
+│   ├── registry.ts                 # Data source registry + addSource / removeSource
+│   ├── app.ts                      # Express app, REST routes, and MCP server
+│   └── main.ts                     # HTTP server entry point
 ├── tests/
-│   └── api.test.ts                 # Tests unitaires et d'integration (128 tests)
-├── dist/                           # Code JavaScript compile (genere par tsc)
-├── package.json                    # Dependencies Node.js
-├── tsconfig.json                   # Configuration TypeScript
-├── Dockerfile                      # Image Docker (Node.js 22)
-├── docker-compose.yml              # Compose avec volumes et watch
-└── README.md                       # Ce fichier
+│   └── api.test.ts                 # Unit and integration tests (206 tests)
+├── dist/                           # Compiled JavaScript output (generated by tsc)
+├── package.json                    # Node.js dependencies
+├── tsconfig.json                   # TypeScript configuration
+├── Dockerfile                      # Docker image (Node.js 22)
+├── docker-compose.yml              # Compose with volumes and watch
+└── README.md                       # This file
 ```
 
-## Rappel sur la norme ArchiMate
+## ArchiMate overview
 
-ArchiMate est une norme de modelisation d'architecture d'entreprise maintenue par The Open Group. Elle fournit un langage commun pour decrire une architecture sous plusieurs points de vue coherents.
+ArchiMate is an enterprise architecture modelling standard maintained by The Open Group. It provides a common language for describing an architecture from multiple coherent viewpoints.
 
-Le modele est organise selon les couches ArchiMate :
+The model is organised into ArchiMate layers:
 
-- **Strategy** : capacites, ressources, cours d'action, objectifs
-- **Business** : acteurs, roles, processus, fonctions, services metier
-- **Application** : composants applicatifs, interfaces, services applicatifs, flux
-- **Technology** : noeuds, systemes, services techniques, reseaux, infrastructure
-- **Physical** : equipements et materiels
-- **Motivation** : objectifs, principes, contraintes, exigences
-- **Implementation and Migration** : livrables, plateaux, gaps, work packages
+- **Strategy**: capabilities, resources, courses of action, goals
+- **Business**: actors, roles, processes, functions, business services
+- **Application**: application components, interfaces, application services, flows
+- **Technology**: nodes, systems, technical services, networks, infrastructure
+- **Physical**: equipment and materials
+- **Motivation**: goals, principles, constraints, requirements
+- **Implementation and Migration**: deliverables, plateaus, gaps, work packages
 
-Les elements sont lies par des relations standardisees (`Serving`, `Access`, `Composition`, `Aggregation`, `Realization`, `Assignment`, `Flow`, `Influence`, `Association`, etc.).
+Elements are linked by standardised relationships (`Serving`, `Access`, `Composition`, `Aggregation`, `Realization`, `Assignment`, `Flow`, `Influence`, `Association`, etc.).
 
-## Schemas de donnees (alignement XSD ArchiMate 3.1)
+## Data schemas (ArchiMate 3.1 XSD alignment)
 
-Tous les champs de l'API suivent les noms definis dans les XSD officiels.
+All API fields follow the names defined in the official XSDs.
 
 ### Element (`archimate3_Model.xsd` — `ElementType`)
 
-| Champ | Type | Description |
+| Field | Type | Description |
 | ----- | ---- | ----------- |
-| `identifier` | string | Identifiant unique (xs:ID) |
-| `name` | string | Nom de l'element |
-| `type` | string | Type ArchiMate (voir liste ci-dessous) |
-| `documentation` | string\|null | Description textuelle |
-| `properties` | `PropertyOut[]` | Proprietes : `property_definition_ref` + `value` |
+| `identifier` | string | Unique identifier (xs:ID) |
+| `name` | string | Element name |
+| `type` | string | ArchiMate type (see list below) |
+| `documentation` | string\|null | Text description |
+| `properties` | `PropertyOut[]` | Properties: `property_definition_ref` + `value` |
 
-### Relation (`archimate3_Model.xsd` — `RelationshipType`)
+### Relationship (`archimate3_Model.xsd` — `RelationshipType`)
 
-| Champ | Type | Description |
+| Field | Type | Description |
 | ----- | ---- | ----------- |
-| `identifier` | string | Identifiant unique |
-| `type` | string | Type de relation (voir liste ci-dessous) |
-| `source` | string | IDREF vers l'element source |
-| `target` | string | IDREF vers l'element cible |
-| `name` | string\|null | Nom optionnel |
+| `identifier` | string | Unique identifier |
+| `type` | string | Relationship type (see list below) |
+| `source` | string | IDREF to the source element |
+| `target` | string | IDREF to the target element |
+| `name` | string\|null | Optional name |
 | `documentation` | string\|null | Description |
-| `properties` | `PropertyOut[]` | Proprietes |
-| `access_type` | string\|null | `Access`\|`Read`\|`Write`\|`ReadWrite` (relation `Access` uniquement) |
-| `is_directed` | bool\|null | Relation dirigee (relation `Association` uniquement) |
-| `modifier` | string\|null | Force d'influence (relation `Influence` uniquement) |
+| `properties` | `PropertyOut[]` | Properties |
+| `access_type` | string\|null | `Access`\|`Read`\|`Write`\|`ReadWrite` (`Access` relationships only) |
+| `is_directed` | bool\|null | Directed relationship (`Association` only) |
+| `modifier` | string\|null | Influence strength (`Influence` only) |
 
-### Vue (`archimate3_View.xsd` — `ViewType`)
+### View (`archimate3_View.xsd` — `ViewType`)
 
-| Champ | Type | Description |
+| Field | Type | Description |
 | ----- | ---- | ----------- |
-| `identifier` | string | Identifiant unique |
-| `name` | string | Nom de la vue |
+| `identifier` | string | Unique identifier |
+| `name` | string | View name |
 | `documentation` | string\|null | Description |
-| `viewpoint` | string\|null | Viewpoint ArchiMate (ex: `Layered`, `Motivation`) |
-| `node_count` | int | Nombre de noeuds dans la vue |
-| `connection_count` | int | Nombre de connexions dans la vue |
-| `nodes` | `NodeOut[]` | Noeuds du diagramme (detail uniquement) |
-| `connections` | `ConnectionOut[]` | Connexions du diagramme (detail uniquement) |
+| `viewpoint` | string\|null | ArchiMate viewpoint (e.g. `Layered`, `Motivation`) |
+| `node_count` | int | Number of nodes in the view |
+| `connection_count` | int | Number of connections in the view |
+| `nodes` | `NodeOut[]` | Diagram nodes (detail endpoint only) |
+| `connections` | `ConnectionOut[]` | Diagram connections (detail endpoint only) |
 
-### Noeud de diagramme (`archimate3_Diagram.xsd` — `ViewNodeType`)
+### Diagram node (`archimate3_Diagram.xsd` — `ViewNodeType`)
 
-| Champ | Type | Description |
+| Field | Type | Description |
 | ----- | ---- | ----------- |
-| `identifier` | string | Identifiant unique du noeud |
-| `element_ref` | string\|null | IDREF vers l'element ArchiMate represente |
-| `x`, `y` | int\|null | Position depuis le coin superieur gauche (pixels) |
-| `w`, `h` | int\|null | Largeur et hauteur (pixels) |
-| `style` | `StyleOut`\|null | Style visuel (`line_color`, `fill_color`, `font`) |
-| `children` | `NodeOut[]` | Noeuds enfants (containers imbriques) |
+| `identifier` | string | Unique node identifier |
+| `element_ref` | string\|null | IDREF to the represented ArchiMate element |
+| `x`, `y` | int\|null | Position from the top-left corner (pixels) |
+| `w`, `h` | int\|null | Width and height (pixels) |
+| `style` | `StyleOut`\|null | Visual style (`line_color`, `fill_color`, `font`) |
+| `children` | `NodeOut[]` | Child nodes (nested containers) |
 
-### Connexion de diagramme (`archimate3_Diagram.xsd` — `ConnectionType`)
+### Diagram connection (`archimate3_Diagram.xsd` — `ConnectionType`)
 
-| Champ | Type | Description |
+| Field | Type | Description |
 | ----- | ---- | ----------- |
-| `identifier` | string | Identifiant unique de la connexion |
-| `relationship_ref` | string\|null | IDREF vers la relation ArchiMate correspondante |
-| `source` | string\|null | IDREF vers le noeud source |
-| `target` | string\|null | IDREF vers le noeud cible |
-| `style` | `StyleOut`\|null | Style visuel de la connexion |
+| `identifier` | string | Unique connection identifier |
+| `relationship_ref` | string\|null | IDREF to the corresponding ArchiMate relationship |
+| `source` | string\|null | IDREF to the source node |
+| `target` | string\|null | IDREF to the target node |
+| `style` | `StyleOut`\|null | Connection visual style |
 
-### Style visuel (`archimate3_Diagram.xsd` — `StyleType` / `RGBColorType`)
+### Visual style (`archimate3_Diagram.xsd` — `StyleType` / `RGBColorType`)
 
-Les couleurs sont exposees au format RGB decompose (r, g, b : 0-255) conforme au XSD.
+Colours are exposed as decomposed RGB values (r, g, b: 0–255) as defined in the XSD.
 
-### Types d'elements valides (`archimate3_Model.xsd` — `ElementTypeEnum`)
+### Valid element types (`archimate3_Model.xsd` — `ElementTypeEnum`)
 
-62 types au total, repartis par couche :
+62 types in total, organised by layer:
 
-| Couche | Types |
-| ------ | ----- |
+| Layer | Types |
+| ----- | ----- |
 | Business | `BusinessActor`, `BusinessRole`, `BusinessCollaboration`, `BusinessInterface`, `BusinessProcess`, `BusinessFunction`, `BusinessInteraction`, `BusinessEvent`, `BusinessService`, `BusinessObject`, `Contract`, `Representation`, `Product` |
 | Application | `ApplicationComponent`, `ApplicationCollaboration`, `ApplicationInterface`, `ApplicationFunction`, `ApplicationInteraction`, `ApplicationProcess`, `ApplicationEvent`, `ApplicationService`, `DataObject` |
 | Technology | `Node`, `Device`, `SystemSoftware`, `TechnologyCollaboration`, `TechnologyInterface`, `Path`, `CommunicationNetwork`, `TechnologyFunction`, `TechnologyProcess`, `TechnologyInteraction`, `TechnologyEvent`, `TechnologyService`, `Artifact` |
@@ -181,100 +184,214 @@ Les couleurs sont exposees au format RGB decompose (r, g, b : 0-255) conforme au
 | Composites | `Grouping`, `Location` |
 | Junctions | `AndJunction`, `OrJunction` |
 
-### Types de relations valides (`archimate3_Model.xsd` — `RelationshipTypeEnum`)
+### Valid relationship types (`archimate3_Model.xsd` — `RelationshipTypeEnum`)
 
 `Composition`, `Aggregation`, `Assignment`, `Realization`, `Serving`, `Access`, `Influence`, `Triggering`, `Flow`, `Specialization`, `Association`
 
-## L'API REST
+## REST API
 
-L'API est accessible sur `http://localhost:8000`.
+The API is available at `http://localhost:8000`.
 
-### Documentation interactive (Swagger UI)
+### Interactive documentation (Swagger UI)
 
-| Chemin | Description |
-| ------ | ----------- |
-| [`/docs`](http://localhost:8000/docs) | Swagger UI — exploration interactive de toutes les routes |
-| [`/openapi.json`](http://localhost:8000/openapi.json) | Spec OpenAPI 3.0 au format JSON |
+| Path | Description |
+| ---- | ----------- |
+| [`/docs`](http://localhost:8000/docs) | Swagger UI — interactive exploration of all routes |
+| [`/openapi.json`](http://localhost:8000/openapi.json) | OpenAPI 3.0 spec as JSON |
 
-La spec est generee dynamiquement depuis le code : les enums de types ArchiMate 3.1 sont toujours synchronises avec les constantes de `src/schemas.ts`.
+The spec is generated dynamically from code: ArchiMate 3.1 type enums are always in sync with the constants in `src/schemas.ts`.
 
-### Endpoint global
+### Source management endpoints
 
-| Methode | Chemin | Description |
-| ------- | ------ | ----------- |
-| GET | `/sources` | Liste de toutes les sources de donnees configurees |
+| Method | Path | Body | Description |
+| ------ | ---- | ---- | ----------- |
+| GET | `/sources` | — | List all configured sources (with counts) |
+| POST | `/sources` | `SourceCreateInput` | Create a new blank model file and register it (returns 201) |
+| DELETE | `/sources/{source_id}` | — | Remove a source from the registry (add `?delete_file=true` to also delete the file) |
+| POST | `/:source_id/save` | — | Serialize the in-memory model and write it back to its file |
 
-### Endpoints par source (`/:source_id/`)
+`SourceCreateInput` (all fields required):
 
-Remplacer `:source_id` par l'identifiant de la source declare dans `config.json` (ex: `open-exchange`, `archisurance`).
-
-| Methode | Chemin | Description |
-| ------- | ------ | ----------- |
-| GET | `/:source_id/` | Metadonnees du modele (identifier, name, version, compteurs) |
-| GET | `/:source_id/elements/types` | Types d'elements presents dans le modele |
-| GET | `/:source_id/elements` | Elements (filtres : `type`, `name`) |
-| GET | `/:source_id/elements/{identifier}` | Detail d'un element |
-| GET | `/:source_id/relationships/types` | Types de relations presents dans le modele |
-| GET | `/:source_id/relationships` | Relations (filtres : `type`, `source_id`, `target_id`) |
-| GET | `/:source_id/relationships/{identifier}` | Detail d'une relation |
-| GET | `/:source_id/views` | Vues (node_count, connection_count, viewpoint) |
-| GET | `/:source_id/views/{identifier}` | Detail d'une vue avec noeuds, connexions et styles |
-
-**Validation des filtres** : passer un `type` invalide (non conforme ArchiMate 3.1) retourne HTTP 422 avec la liste des types valides. Un `source_id` inconnu retourne HTTP 404.
-
-### Exemples d'appels
-
-```bash
-# Lister les sources configurees
-curl http://localhost:8000/sources
-
-# Metadonnees de la source open-exchange
-curl http://localhost:8000/open-exchange/
-
-# Elements ApplicationComponent de la source archisurance
-curl "http://localhost:8000/archisurance/elements?type=ApplicationComponent"
-
-# Detail d'une vue dans open-exchange
-curl http://localhost:8000/open-exchange/views/id-de-la-vue
+```json
+{
+  "id": "my-model",
+  "name": "My Model",
+  "path": "data/my-model.xml",
+  "format": "oef"
+}
 ```
 
-## Deploiement
+`format` must be `"oef"` (Open Exchange XML) or `"archi"` (native Archi Tool format).
 
-### Execution locale
+`POST /:source_id/save` response:
+
+```json
+{ "saved": true, "path": "data/my-model.xml" }
+```
+
+### Per-source endpoints (`/:source_id/`) — Read
+
+Replace `:source_id` with the source identifier declared in `config.json` (e.g. `open-exchange`, `archisurance`).
+
+| Method | Path | Description |
+| ------ | ---- | ----------- |
+| GET | `/:source_id/` | Model metadata (identifier, name, version, counts) |
+| GET | `/:source_id/elements/types` | Element types present in the model |
+| GET | `/:source_id/elements` | Elements (filters: `type`, `name`) |
+| GET | `/:source_id/elements/{identifier}` | Element detail |
+| GET | `/:source_id/relationships/types` | Relationship types present in the model |
+| GET | `/:source_id/relationships` | Relationships (filters: `type`, `source_id`, `target_id`) |
+| GET | `/:source_id/relationships/{identifier}` | Relationship detail |
+| GET | `/:source_id/views` | Views (node_count, connection_count, viewpoint) |
+| GET | `/:source_id/views/{identifier}` | View detail with nodes, connections, and styles |
+| GET | `/:source_id/views/{identifier}/image` | SVG or PNG render of the view (`?format=svg` default, `?format=png` requires `sharp`) |
+
+### Per-source endpoints (`/:source_id/`) — Write (in memory)
+
+| Method | Path | Body | Description |
+| ------ | ---- | ---- | ----------- |
+| POST | `/:source_id/elements` | `ElementCreateInput` | Create an element (returns 201) |
+| PUT | `/:source_id/elements/{identifier}` | `ElementUpdateInput` | Update an element (partial patch) |
+| DELETE | `/:source_id/elements/{identifier}` | — | Delete an element and its relationships (returns 204) |
+| POST | `/:source_id/relationships` | `RelationshipCreateInput` | Create a relationship (returns 201) |
+| PUT | `/:source_id/relationships/{identifier}` | `RelationshipUpdateInput` | Update a relationship (partial patch) |
+| DELETE | `/:source_id/relationships/{identifier}` | — | Delete a relationship (returns 204) |
+
+#### Request body — Elements
+
+`ElementCreateInput` (POST — `name` and `type` are required):
+
+```json
+{
+  "name": "My Application",
+  "type": "ApplicationComponent",
+  "documentation": "Optional description",
+  "properties": [
+    { "property_definition_ref": "status", "value": "active" }
+  ]
+}
+```
+
+`ElementUpdateInput` (PUT — all fields are optional; only provided fields are modified):
+
+```json
+{
+  "name": "New name",
+  "documentation": null
+}
+```
+
+#### Request body — Relationships
+
+`RelationshipCreateInput` (POST — `type`, `source`, and `target` are required):
+
+```json
+{
+  "type": "Association",
+  "source": "source-element-id",
+  "target": "target-element-id",
+  "name": "Optional name",
+  "is_directed": true
+}
+```
+
+`RelationshipUpdateInput` (PUT — all fields are optional):
+
+```json
+{
+  "name": "New name",
+  "documentation": "New description"
+}
+```
+
+**HTTP status codes**: `201` created, `204` deleted, `404` not found, `422` invalid type or unknown reference.
+
+**Type validation**: an invalid `type` (not in the ArchiMate 3.1 set) returns HTTP 422. An unknown `source_id` returns HTTP 404.
+
+**Cascade on delete**: deleting an element also removes all relationships that reference it (as source or target).
+
+### Example requests
 
 ```bash
-# Installer les dependencies
+# List configured sources
+curl http://localhost:8000/sources
+
+# Model metadata for the open-exchange source
+curl http://localhost:8000/open-exchange/
+
+# ApplicationComponent elements from archisurance
+curl "http://localhost:8000/archisurance/elements?type=ApplicationComponent"
+
+# Create an element in open-exchange
+curl -X POST http://localhost:8000/open-exchange/elements \
+  -H "Content-Type: application/json" \
+  -d '{"name": "My Service", "type": "ApplicationService"}'
+
+# Update an element's name
+curl -X PUT http://localhost:8000/open-exchange/elements/element-id \
+  -H "Content-Type: application/json" \
+  -d '{"name": "New name"}'
+
+# Create a relationship between two elements
+curl -X POST http://localhost:8000/open-exchange/relationships \
+  -H "Content-Type: application/json" \
+  -d '{"type": "Serving", "source": "source-id", "target": "target-id"}'
+
+# Delete an element (and its relationships)
+curl -X DELETE http://localhost:8000/open-exchange/elements/element-id
+
+# Save in-memory model back to disk
+curl -X POST http://localhost:8000/open-exchange/save
+
+# Create a new source (blank model written to data/new-model.xml)
+curl -X POST http://localhost:8000/sources \
+  -H "Content-Type: application/json" \
+  -d '{"id": "new-model", "name": "New Model", "path": "data/new-model.xml", "format": "oef"}'
+
+# Remove a source from the registry and delete its file
+curl -X DELETE "http://localhost:8000/sources/new-model?delete_file=true"
+
+# View detail in open-exchange
+curl http://localhost:8000/open-exchange/views/view-id
+```
+
+## Deployment
+
+### Running locally
+
+```bash
+# Install dependencies
 npm install
 
-# Lancer le serveur en mode developpement (avec rechargement automatique)
+# Start in development mode (with hot reload)
 npm run dev
 
-# Lancer le serveur en mode production
+# Start in production mode
 npm start
 ```
 
-### Execution via Docker (image Docker Hub)
+### Running via Docker (Docker Hub image)
 
-Image publiee: [lacrif/mcp-archimate:latest](https://hub.docker.com/r/lacrif/mcp-archimate)
+Published image: [lacrif/mcp-archimate:latest](https://hub.docker.com/r/lacrif/mcp-archimate)
 
 ```bash
-# Lancer avec les donnees et la configuration embarquees dans l'image
+# Run with data and configuration bundled in the image
 docker run -p 8000:8000 lacrif/mcp-archimate:latest
 
-# Monter sa propre configuration et ses propres donnees
+# Mount your own configuration and data
 docker run -p 8000:8000 \
-    -v /chemin/vers/config.json:/app/config.json:ro \
-    -v /chemin/vers/data:/app/data:ro \
+    -v /path/to/config.json:/app/config.json:ro \
+    -v /path/to/data:/app/data:ro \
     lacrif/mcp-archimate:latest
 ```
 
-### Execution via Docker build local
+### Running via local Docker build
 
 ```bash
-# Construire l'image localement
+# Build the image locally
 docker build -t mcp-archimate:local .
 
-# Lancer avec les volumes locaux (config + data)
+# Run with local volumes (config + data)
 docker run -p 8000:8000 \
     -v ./config.json:/app/config.json:ro \
     -v ./data:/app/data:ro \
@@ -283,82 +400,109 @@ docker run -p 8000:8000 \
 
 ### Docker Compose (volumes + watch)
 
-Le fichier `docker-compose.yml` monte automatiquement `config.json` et le repertoire `data/` comme volumes, et active le **rechargement automatique** via `docker compose watch`.
+The `docker-compose.yml` file automatically mounts `config.json` and the `data/` directory as volumes, and enables **automatic reloading** via `docker compose watch`.
 
 ```bash
-# Build et demarrer le service avec les volumes montes
+# Build and start the service with mounted volumes
 docker compose up --build
 
-# Mode watch : rebuild ou sync automatique a chaque modification
+# Watch mode: automatic rebuild or sync on file changes
 docker compose watch
 ```
 
-Comportement du watch :
+Watch behaviour:
 
-| Chemin surveille | Action | Detail |
-| ---------------- | ------ | ------- |
-| `src/` | `rebuild` | Recompile TypeScript et relance le conteneur |
-| `package.json`, `package-lock.json` | `rebuild` | Reinstalle les dependances |
-| `tsconfig.json` | `rebuild` | Recompile avec la nouvelle config |
-| `config.json` | `sync+restart` | Copie et redémarre le conteneur |
-| `data/` | `sync` | Copie les fichiers directement sans rebuild |
+| Watched path | Action | Detail |
+| ------------ | ------ | ------ |
+| `src/` | `rebuild` | Recompiles TypeScript and restarts the container |
+| `package.json`, `package-lock.json` | `rebuild` | Reinstalls dependencies |
+| `tsconfig.json` | `rebuild` | Recompiles with the new configuration |
+| `config.json` | `sync+restart` | Copies the file and restarts the container |
+| `data/` | `sync` | Copies files directly without a rebuild |
 
-### Utiliser ses propres modeles
+### Using your own models
 
-Pour brancher l'API sur vos propres fichiers ArchiMate :
+To point the API at your own ArchiMate files:
 
-1. Placer vos fichiers dans `data/` (`.xml` OEF ou `.archimate` Archi Tool)
-2. Modifier `config.json` pour declarer vos sources
-3. Redemarrer le serveur (ou laisser `docker compose watch` le faire)
+1. Place your files in `data/` (`.xml` OEF or `.archimate` Archi Tool)
+2. Edit `config.json` to declare your sources
+3. Restart the server (or let `docker compose watch` do it)
 
 ```json
 {
   "sources": [
     {
-      "id": "mon-modele",
-      "name": "Mon Architecture d'Entreprise",
-      "path": "data/mon-modele.xml",
+      "id": "my-model",
+      "name": "My Enterprise Architecture",
+      "path": "data/my-model.xml",
       "format": "oef"
     }
   ]
 }
 ```
 
-## Service MCP
+## MCP server
 
-Le projet expose un service MCP en lecture seule, monte dans la meme application Express.
+The project exposes an MCP server (read and write), mounted inside the same Express application.
 
-### Endpoint MCP
+### MCP endpoint
 
-- base URL : `http://localhost:8000/mcp`
-- transport : `streamable-http`
+- Base URL: `http://localhost:8000/mcp`
+- Transport: `streamable-http`
 
-### Outils MCP exposes
+### Exposed MCP tools
 
-Chaque outil accepte un parametre optionnel `source_id` (defaut : premiere source configuree).
+Every tool accepts an optional `source_id` parameter (default: first configured source).
 
-| Outil | Description |
-| ----- | ----------- |
-| `get_model_info_tool` | Metadonnees globales du modele |
-| `list_element_types_tool` | Types d'elements presents dans le modele |
-| `list_elements_tool` | Elements avec filtres optionnels (`element_type`, `name`) |
-| `get_element_tool` | Detail d'un element par `identifier` |
-| `list_relationship_types_tool` | Types de relations presents dans le modele |
-| `list_relationships_tool` | Relations avec filtres (`rel_type`, `source_id_filter`, `target_id`) |
-| `get_relationship_tool` | Detail d'une relation par `identifier` |
-| `list_views_tool` | Vues avec `node_count`, `connection_count`, `viewpoint` |
-| `get_view_tool` | Detail d'une vue avec noeuds, connexions et styles |
+#### Read
 
-Les descriptions des outils MCP incluent les types valides ArchiMate 3.1 pour guider les LLM.
+| Tool | Description |
+| ---- | ----------- |
+| `get_model_info` | Global model metadata |
+| `list_element_types` | Element types present in the model |
+| `list_elements` | Elements with optional filters (`element_type`, `name`) |
+| `get_element` | Element detail by `element_id` |
+| `list_relationship_types` | Relationship types present in the model |
+| `list_relationships` | Relationships with filters (`rel_type`, `source_id_filter`, `target_id`) |
+| `get_relationship` | Relationship detail by `relationship_id` |
+| `list_views` | Views with `node_count`, `connection_count`, `viewpoint` |
+| `get_view` | View detail with nodes, connections, and styles |
 
-## Configuration MCP par client
+#### Write (in-memory changes)
 
-Le serveur MCP utilise le transport **streamable-http** sur `http://localhost:8000/mcp`.
-Le serveur doit etre demarre avant toute connexion MCP.
+| Tool | Required parameters | Description |
+| ---- | ------------------- | ----------- |
+| `create_element` | `name`, `type` | Create an ArchiMate element |
+| `update_element` | `element_id` | Update an element (partial patch) |
+| `delete_element` | `element_id` | Delete an element and its relationships |
+| `create_relationship` | `type`, `source`, `target` | Create a relationship between two elements |
+| `update_relationship` | `relationship_id` | Update a relationship (partial patch) |
+| `delete_relationship` | `relationship_id` | Delete a relationship |
+
+#### Rendering
+
+| Tool | Required parameters | Description |
+| ---- | ------------------- | ----------- |
+| `render_view` | `view_id` | Generate an SVG or PNG image of a view (`format`: `"svg"` (default) or `"png"`). PNG requires the optional `sharp` package (`npm install sharp`). The MCP response uses the `image` content type so AI clients can display it inline. |
+
+#### File persistence
+
+| Tool | Required parameters | Description |
+| ---- | ------------------- | ----------- |
+| `save_model` | — | Write the in-memory model back to its source file on disk |
+| `create_source` | `id`, `name`, `path`, `format` | Create a new blank model file and register it as a source |
+| `delete_source` | `source_id` | Remove a source from the registry (set `delete_file: true` to also delete the file) |
+
+Tool descriptions include the valid ArchiMate 3.1 types to guide LLMs.
+
+## MCP client configuration
+
+The MCP server uses the **streamable-http** transport at `http://localhost:8000/mcp`.
+The server must be running before any MCP client connects.
 
 ### Claude Code (CLI)
 
-Le fichier `.mcp.json` a la racine du projet est **automatiquement detecte** par Claude Code :
+The `.mcp.json` file at the project root is **automatically detected** by Claude Code:
 
 ```json
 {
@@ -371,7 +515,7 @@ Le fichier `.mcp.json` a la racine du projet est **automatiquement detecte** par
 }
 ```
 
-Ou via la commande CLI :
+Or via the CLI:
 
 ```bash
 claude mcp add mcp-archimate http://localhost:8000/mcp --transport http
@@ -379,11 +523,11 @@ claude mcp add mcp-archimate http://localhost:8000/mcp --transport http
 
 ### Claude Desktop
 
-Editer le fichier de configuration Claude Desktop :
+Edit the Claude Desktop configuration file:
 
-- **macOS** : `~/Library/Application Support/Claude/claude_desktop_config.json`
-- **Windows** : `%APPDATA%\Claude\claude_desktop_config.json`
-- **Linux** : `~/.config/Claude/claude_desktop_config.json`
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+- **Linux**: `~/.config/Claude/claude_desktop_config.json`
 
 ```json
 {
@@ -396,11 +540,11 @@ Editer le fichier de configuration Claude Desktop :
 }
 ```
 
-Redemarrer Claude Desktop apres modification.
+Restart Claude Desktop after editing.
 
 ### VS Code / GitHub Copilot
 
-Le fichier `.vscode/mcp.json` est **deja inclus** dans le projet :
+The `.vscode/mcp.json` file is **already included** in the project:
 
 ```json
 {
@@ -414,7 +558,7 @@ Le fichier `.vscode/mcp.json` est **deja inclus** dans le projet :
 }
 ```
 
-Activer le support MCP dans VS Code :
+Enable MCP support in VS Code:
 
 ```json
 // .vscode/settings.json
@@ -423,11 +567,11 @@ Activer le support MCP dans VS Code :
 }
 ```
 
-Les outils MCP apparaissent ensuite dans le panneau **Copilot Chat** (icone outil).
+The MCP tools then appear in the **Copilot Chat** panel (tool icon).
 
 ### OpenAI Codex CLI
 
-Dans le fichier de configuration Codex (`~/.codex/config.toml`) :
+In the Codex configuration file (`~/.codex/config.toml`):
 
 ```toml
 [mcp_servers.mcp-archimate]
@@ -437,26 +581,26 @@ url = "http://localhost:8000/mcp"
 
 ## Tests
 
-Les tests sont situes dans `tests/api.test.ts` (128 tests) et couvrent :
+Tests are located in `tests/api.test.ts` (181 tests) and cover:
 
-- **Tests unitaires** : helpers de conversion (`elementOut`, `relOut`, `nodeOut`, `connectionOut`, `viewOut`), conversion de couleurs (`hexToRgb`), constantes XSD (`ELEMENT_TYPES`, `RELATIONSHIP_TYPES`, `ACCESS_TYPES`, `VIEWPOINTS`)
-- **Tests d'integration** : tous les endpoints REST avec le modele reel (`/sources`, `/:source_id/`, elements, relations, vues), validation des types ArchiMate, service MCP (initialize + tools/list)
+- **Unit tests**: conversion helpers, colour conversion, XSD constants, CRUD functions (`createElement`, `updateElement`, `deleteElement`, `createRelationship`, `updateRelationship`, `deleteRelationship`), serializers (`serializeToOEF`, `serializeToArchi` with round-trip tests), `saveModel`, `listSources`
+- **Integration tests**: all REST endpoints (`/sources`, CRUD cycles for elements and relationships, `POST /sources`, `DELETE /sources/:id`, `POST /:source_id/save`), MCP service (initialize + tools/list with all 18 tools)
 
-### Executer les tests en local
+### Running tests locally
 
 ```bash
-# Installer les dependencies
+# Install dependencies
 npm install
 
-# Lancer les tests
+# Run tests
 npm test
 ```
 
-## Reference rapide
+## Quick reference
 
-- **Format de donnees** : ArchiMate 3.1 Open Exchange XML et format natif Archi Tool
-- **API** : Express (REST) — version 2.0.0
-- **Serveur MCP** : @modelcontextprotocol/sdk (streamable-http)
-- **Runtime** : Node.js 22 / TypeScript
-- **Port par defaut** : 8000
-- **Endpoint MCP** : [http://localhost:8000/mcp](http://localhost:8000/mcp) (streamable-http)
+- **Data format**: ArchiMate 3.1 Open Exchange XML and native Archi Tool format
+- **API**: Express (REST)
+- **MCP server**: @modelcontextprotocol/sdk (streamable-http)
+- **Runtime**: Node.js 22 / TypeScript
+- **Default port**: 8000
+- **MCP endpoint**: [http://localhost:8000/mcp](http://localhost:8000/mcp) (streamable-http)

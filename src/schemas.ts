@@ -159,3 +159,64 @@ export interface ViewDetailOut extends ViewOut {
   nodes: NodeOut[];
   connections: ConnectionOut[];
 }
+
+// ---------------------------------------------------------------------------
+// Input schemas for mutation operations (create / update)
+// ---------------------------------------------------------------------------
+
+export interface ElementCreateIn {
+  name: string;
+  type: string;
+  documentation?: string | null;
+  properties?: PropertyOut[];
+}
+
+export interface ElementUpdateIn {
+  name?: string;
+  type?: string;
+  documentation?: string | null;
+  properties?: PropertyOut[];
+}
+
+export interface RelationshipCreateIn {
+  name?: string | null;
+  type: string;
+  source: string;
+  target: string;
+  documentation?: string | null;
+  properties?: PropertyOut[];
+  access_type?: string | null;
+  is_directed?: boolean | null;
+  influence_strength?: string | null;
+}
+
+export interface RelationshipUpdateIn {
+  name?: string | null;
+  type?: string;
+  source?: string;
+  target?: string;
+  documentation?: string | null;
+  properties?: PropertyOut[];
+  access_type?: string | null;
+  is_directed?: boolean | null;
+  influence_strength?: string | null;
+}
+
+export interface SaveResult {
+  saved: boolean;
+  path: string;
+}
+
+export interface ViewCreateIn {
+  name: string;
+  viewpoint?: string | null;
+  documentation?: string | null;
+}
+
+export interface NodeCreateIn {
+  element_id: string;
+  x?: number | null;
+  y?: number | null;
+  w?: number | null;
+  h?: number | null;
+}

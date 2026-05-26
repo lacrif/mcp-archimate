@@ -1,76 +1,61 @@
 /**
- * Data source registry.
- * Loads config.json at startup, parses each source file, and exposes a Map
- * keyed by source id so routes and MCP tools can look up sources by name.
+ * Single Archi model source loader.
+ * Reads config.json at startup and parses the configured .archimate file.
  */
 
 import { readFileSync } from "fs";
 import { join } from "path";
-import { parseArchiMateXML } from "./model.js";
 import { parseArchiFormat } from "./archi-parser.js";
 import type { ArchiModel } from "./model.js";
 
 // ---------------------------------------------------------------------------
-// Configuration types
+// Configuration
 // ---------------------------------------------------------------------------
 
-export interface SourceConfig {
-  id: string;
-  name: string;
+interface AppConfig {
   path: string;
-  format: "oef" | "archi";
-}
-
-export interface AppConfig {
-  sources: SourceConfig[];
+  name: string;
 }
 
 // ---------------------------------------------------------------------------
-// Runtime DataSource (one per configured source)
+// Runtime DataSource
 // ---------------------------------------------------------------------------
 
 export interface DataSource {
-  readonly id: string;
-  readonly name: string;
+  readonly path: string;
   readonly model: ArchiModel;
   /** Sorted unique element types present in the model. */
-  readonly elementTypes: string[];
+  elementTypes: string[];
   /** Sorted unique relationship types present in the model. */
-  readonly relationshipTypes: string[];
+  relationshipTypes: string[];
 }
 
 // ---------------------------------------------------------------------------
 // Startup loading
 // ---------------------------------------------------------------------------
 
-function loadModel(cfg: SourceConfig): ArchiModel {
-  const content = readFileSync(join(process.cwd(), cfg.path), "utf-8");
-  return cfg.format === "archi" ? parseArchiFormat(content) : parseArchiMateXML(content);
-}
-
 function loadConfig(): AppConfig {
   const raw = readFileSync(join(process.cwd(), "config.json"), "utf-8");
   return JSON.parse(raw) as AppConfig;
 }
 
-function buildRegistry(config: AppConfig): Map<string, DataSource> {
-  const map = new Map<string, DataSource>();
-  for (const src of config.sources) {
-    const model = loadModel(src);
-    map.set(src.id, {
-      id: src.id,
-      name: src.name,
-      model,
-      elementTypes: [...new Set(model.elements.map((e) => e.type).filter(Boolean))].sort(),
-      relationshipTypes: [...new Set(model.relationships.map((r) => r.type).filter(Boolean))].sort(),
-    });
-  }
-  return map;
+function buildDataSource(cfg: AppConfig): DataSource {
+  const content = readFileSync(join(process.cwd(), cfg.path), "utf-8");
+  const model = parseArchiFormat(content);
+  return {
+    path: cfg.path,
+    model,
+    elementTypes: [...new Set(model.elements.map((e) => e.type).filter(Boolean))].sort(),
+    relationshipTypes: [...new Set(model.relationships.map((r) => r.type).filter(Boolean))].sort(),
+  };
 }
 
 const _config = loadConfig();
 
-export const registry: Map<string, DataSource> = buildRegistry(_config);
+export const dataSource: DataSource = buildDataSource(_config);
 
-/** Id of the first configured source, used as MCP default. */
-export const defaultSourceId: string = _config.sources[0]?.id ?? "";
+/** Recompute elementTypes and relationshipTypes after a mutation. */
+export function recomputeDataSourceTypes(ds: DataSource): void {
+  ds.elementTypes = [...new Set(ds.model.elements.map((e) => e.type).filter(Boolean))].sort();
+  ds.relationshipTypes = [...new Set(ds.model.relationships.map((r) => r.type).filter(Boolean))].sort();
+}

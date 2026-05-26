@@ -33,6 +33,7 @@ function hexToArchiColor(hex: string | undefined): ArchiColor | null {
 function classifyType(xsiType: string): "element" | "relationship" | "view" | "skip" {
   const type = stripPrefix(xsiType);
   if (ELEMENT_TYPES.has(type)) return "element";
+  if (type === "Junction") return "element"; // Archi stores And/OrJunction as Junction + type="or" attr
   if (type === "ArchimateDiagramModel") return "view";
   if (type.endsWith("Relationship") && RELATIONSHIP_TYPES.has(type.slice(0, -12))) return "relationship";
   return "skip";
@@ -137,13 +138,23 @@ export function parseArchiFormat(xmlContent: string): ArchiModel {
     diagramRaws
   );
 
-  const elementArray: ArchiElement[] = elementRaws.map((elem) => ({
-    uuid: String(elem["@_id"]),
-    name: elem["@_name"] ? String(elem["@_name"]) : "",
-    type: stripPrefix(String(elem["@_xsi:type"] ?? "")),
-    desc: elem["documentation"] ? String(elem["documentation"]) : null,
-    props: parseArchiProps(elem),
-  }));
+  const elementArray: ArchiElement[] = elementRaws.map((elem) => {
+    const rawType = stripPrefix(String(elem["@_xsi:type"] ?? ""));
+    // Archi stores And/OrJunction as "Junction" with an optional type="or" attribute
+    const type =
+      rawType === "Junction"
+        ? elem["@_type"] === "or"
+          ? "OrJunction"
+          : "AndJunction"
+        : rawType;
+    return {
+      uuid: String(elem["@_id"]),
+      name: elem["@_name"] ? String(elem["@_name"]) : "",
+      type,
+      desc: elem["documentation"] ? String(elem["documentation"]) : null,
+      props: parseArchiProps(elem),
+    };
+  });
 
   const elementMap = new Map<string, ArchiElement>(elementArray.map((e) => [e.uuid, e]));
 
@@ -192,5 +203,6 @@ export function parseArchiFormat(xmlContent: string): ArchiModel {
     elements: elementArray,
     relationships: relationshipArray,
     views: viewArray,
+    _rawArchi: modelRaw,
   };
 }

@@ -52,15 +52,6 @@ const Property = {
   },
 };
 
-const SourceInfo = {
-  type: "object",
-  required: ["id", "name"],
-  properties: {
-    id:   { type: "string", example: "open-exchange" },
-    name: { type: "string", example: "Open Exchange Demo" },
-  },
-};
-
 const ModelInfo = {
   type: "object",
   required: ["identifier", "name", "element_count", "relationship_count", "view_count"],
@@ -173,16 +164,87 @@ const ErrorDetail = {
   },
 };
 
-// ---------------------------------------------------------------------------
-// Reusable parameters
-// ---------------------------------------------------------------------------
+const ElementCreateInput = {
+  type: "object",
+  required: ["name", "type"],
+  properties: {
+    name:          { type: "string", example: "Mon Application" },
+    type:          { type: "string", enum: elementTypesEnum, example: "ApplicationComponent" },
+    documentation: { type: "string", nullable: true },
+    properties:    { type: "array", items: { $ref: "#/components/schemas/Property" } },
+  },
+};
 
-const sourceIdParam = {
-  name: "source_id",
-  in: "path",
-  required: true,
-  schema: { type: "string", example: "open-exchange" },
-  description: "Identifiant de la source de donnees declare dans config.json",
+const ElementUpdateInput = {
+  type: "object",
+  properties: {
+    name:          { type: "string" },
+    type:          { type: "string", enum: elementTypesEnum },
+    documentation: { type: "string", nullable: true },
+    properties:    { type: "array", items: { $ref: "#/components/schemas/Property" } },
+  },
+};
+
+const RelationshipCreateInput = {
+  type: "object",
+  required: ["type", "source", "target"],
+  properties: {
+    name:               { type: "string", nullable: true },
+    type:               { type: "string", enum: relationshipTypesEnum },
+    source:             { type: "string", description: "Identifiant de l'element source" },
+    target:             { type: "string", description: "Identifiant de l'element cible" },
+    documentation:      { type: "string", nullable: true },
+    properties:         { type: "array", items: { $ref: "#/components/schemas/Property" } },
+    access_type:        { type: "string", enum: ["Access", "Read", "Write", "ReadWrite"], nullable: true },
+    is_directed:        { type: "boolean", nullable: true },
+    influence_strength: { type: "string", nullable: true },
+  },
+};
+
+const RelationshipUpdateInput = {
+  type: "object",
+  properties: {
+    name:               { type: "string", nullable: true },
+    type:               { type: "string", enum: relationshipTypesEnum },
+    source:             { type: "string" },
+    target:             { type: "string" },
+    documentation:      { type: "string", nullable: true },
+    properties:         { type: "array", items: { $ref: "#/components/schemas/Property" } },
+    access_type:        { type: "string", enum: ["Access", "Read", "Write", "ReadWrite"], nullable: true },
+    is_directed:        { type: "boolean", nullable: true },
+    influence_strength: { type: "string", nullable: true },
+  },
+};
+
+const SaveResult = {
+  type: "object",
+  required: ["saved", "path"],
+  properties: {
+    saved: { type: "boolean", example: true },
+    path:  { type: "string", example: "data/archisurance.archimate" },
+  },
+};
+
+const ViewCreateInput = {
+  type: "object",
+  required: ["name"],
+  properties: {
+    name:          { type: "string", example: "Vue applicative" },
+    viewpoint:     { type: "string", nullable: true, example: "Application Structure" },
+    documentation: { type: "string", nullable: true },
+  },
+};
+
+const NodeCreateInput = {
+  type: "object",
+  required: ["element_id"],
+  properties: {
+    element_id: { type: "string", description: "Identifiant de l'élément à représenter" },
+    x: { type: "number", nullable: true, example: 10 },
+    y: { type: "number", nullable: true, example: 10 },
+    w: { type: "number", nullable: true, example: 120 },
+    h: { type: "number", nullable: true, example: 55 },
+  },
 };
 
 // ---------------------------------------------------------------------------
@@ -195,15 +257,14 @@ export const openApiSpec = {
     title: "mcp-archimate",
     version,
     description:
-      "API REST pour interroger des modeles ArchiMate 3.1 (Open Exchange XML et format Archi Tool natif). " +
-      "Plusieurs sources de donnees peuvent etre configurees simultanement via `config.json`. " +
-      "Toutes les routes de donnees sont prefixees par l'identifiant de la source (`/{source_id}/`).",
+      "API REST pour interroger et modifier un modèle ArchiMate 3.1 au format Archi Tool natif (.archimate). " +
+      "La source est configurée dans `config.json`.",
     contact: { name: "GitHub", url: "https://github.com/lacrif/mcp-archimate" },
   },
   servers: [{ url: "http://localhost:8000", description: "Serveur local" }],
 
   tags: [
-    { name: "Sources",       description: "Gestion des sources de donnees" },
+    { name: "Model",         description: "Informations et persistance du modèle" },
     { name: "Elements",      description: "Elements ArchiMate" },
     { name: "Relationships", description: "Relations ArchiMate" },
     { name: "Views",         description: "Vues et diagrammes" },
@@ -211,67 +272,60 @@ export const openApiSpec = {
   ],
 
   paths: {
-    "/sources": {
+    "/": {
       get: {
-        tags: ["Sources"],
-        summary: "Lister les sources configurees",
-        operationId: "listSources",
-        responses: {
-          "200": {
-            description: "Liste des sources de donnees",
-            content: {
-              "application/json": {
-                schema: { type: "array", items: { $ref: "#/components/schemas/SourceInfo" } },
-              },
-            },
-          },
-        },
-      },
-    },
-
-    "/{source_id}/": {
-      get: {
-        tags: ["Sources"],
-        summary: "Metadonnees d'un modele",
+        tags: ["Model"],
+        summary: "Métadonnées du modèle",
         operationId: "getModelInfo",
-        parameters: [sourceIdParam],
         responses: {
           "200": {
-            description: "Informations globales du modele",
+            description: "Informations globales du modèle",
             content: { "application/json": { schema: { $ref: "#/components/schemas/ModelInfo" } } },
           },
-          "404": { $ref: "#/components/responses/NotFound" },
         },
       },
     },
 
-    "/{source_id}/elements/types": {
-      get: {
-        tags: ["Elements"],
-        summary: "Types d'elements presents dans la source",
-        operationId: "listElementTypes",
-        parameters: [sourceIdParam],
+    "/save": {
+      post: {
+        tags: ["Model"],
+        summary: "Sauvegarder le modèle sur disque",
+        operationId: "saveModel",
+        description: "Sérialise le modèle en mémoire et l'écrit dans son fichier .archimate.",
         responses: {
           "200": {
-            description: "Liste triee des types d'elements ArchiMate 3.1 presents",
+            description: "Modèle sauvegardé",
+            content: { "application/json": { schema: { $ref: "#/components/schemas/SaveResult" } } },
+          },
+          "500": { description: "Erreur d'écriture", content: { "application/json": { schema: { $ref: "#/components/schemas/ErrorDetail" } } } },
+        },
+      },
+    },
+
+    "/elements/types": {
+      get: {
+        tags: ["Elements"],
+        summary: "Types d'éléments présents",
+        operationId: "listElementTypes",
+        responses: {
+          "200": {
+            description: "Liste triée des types d'éléments ArchiMate 3.1 présents",
             content: {
               "application/json": {
                 schema: { type: "array", items: { type: "string" }, example: ["ApplicationComponent", "BusinessActor"] },
               },
             },
           },
-          "404": { $ref: "#/components/responses/NotFound" },
         },
       },
     },
 
-    "/{source_id}/elements": {
+    "/elements": {
       get: {
         tags: ["Elements"],
-        summary: "Lister les elements",
+        summary: "Lister les éléments",
         operationId: "listElements",
         parameters: [
-          sourceIdParam,
           {
             name: "type",
             in: "query",
@@ -289,71 +343,114 @@ export const openApiSpec = {
         ],
         responses: {
           "200": {
-            description: "Liste des elements",
+            description: "Liste des éléments",
             content: {
               "application/json": {
                 schema: { type: "array", items: { $ref: "#/components/schemas/Element" } },
               },
             },
           },
-          "404": { $ref: "#/components/responses/NotFound" },
+          "422": { $ref: "#/components/responses/UnprocessableType" },
+        },
+      },
+      post: {
+        tags: ["Elements"],
+        summary: "Créer un élément",
+        operationId: "createElement",
+        requestBody: {
+          required: true,
+          content: { "application/json": { schema: { $ref: "#/components/schemas/ElementCreateInput" } } },
+        },
+        responses: {
+          "201": {
+            description: "Élément créé",
+            content: { "application/json": { schema: { $ref: "#/components/schemas/Element" } } },
+          },
           "422": { $ref: "#/components/responses/UnprocessableType" },
         },
       },
     },
 
-    "/{source_id}/elements/{identifier}": {
+    "/elements/{identifier}": {
       get: {
         tags: ["Elements"],
-        summary: "Detail d'un element",
+        summary: "Détail d'un élément",
         operationId: "getElementById",
         parameters: [
-          sourceIdParam,
           {
             name: "identifier",
             in: "path",
             required: true,
             schema: { type: "string" },
-            description: "Identifiant de l'element (champ identifier)",
+            description: "Identifiant de l'élément",
           },
         ],
         responses: {
           "200": {
-            description: "Element ArchiMate",
+            description: "Élément ArchiMate",
             content: { "application/json": { schema: { $ref: "#/components/schemas/Element" } } },
           },
           "404": { $ref: "#/components/responses/NotFound" },
         },
       },
-    },
-
-    "/{source_id}/relationships/types": {
-      get: {
-        tags: ["Relationships"],
-        summary: "Types de relations presents dans la source",
-        operationId: "listRelationshipTypes",
-        parameters: [sourceIdParam],
+      put: {
+        tags: ["Elements"],
+        summary: "Modifier un élément",
+        operationId: "updateElement",
+        parameters: [
+          { name: "identifier", in: "path", required: true, schema: { type: "string" } },
+        ],
+        requestBody: {
+          required: true,
+          content: { "application/json": { schema: { $ref: "#/components/schemas/ElementUpdateInput" } } },
+        },
         responses: {
           "200": {
-            description: "Liste triee des types de relations ArchiMate 3.1 presents",
+            description: "Élément mis à jour",
+            content: { "application/json": { schema: { $ref: "#/components/schemas/Element" } } },
+          },
+          "404": { $ref: "#/components/responses/NotFound" },
+          "422": { $ref: "#/components/responses/UnprocessableType" },
+        },
+      },
+      delete: {
+        tags: ["Elements"],
+        summary: "Supprimer un élément",
+        operationId: "deleteElement",
+        parameters: [
+          { name: "identifier", in: "path", required: true, schema: { type: "string" } },
+        ],
+        responses: {
+          "204": { description: "Élément supprimé (et relations associées)" },
+          "404": { $ref: "#/components/responses/NotFound" },
+        },
+      },
+    },
+
+    "/relationships/types": {
+      get: {
+        tags: ["Relationships"],
+        summary: "Types de relations présents",
+        operationId: "listRelationshipTypes",
+        responses: {
+          "200": {
+            description: "Liste triée des types de relations ArchiMate 3.1 présents",
             content: {
               "application/json": {
                 schema: { type: "array", items: { type: "string" }, example: ["Association", "Flow"] },
               },
             },
           },
-          "404": { $ref: "#/components/responses/NotFound" },
         },
       },
     },
 
-    "/{source_id}/relationships": {
+    "/relationships": {
       get: {
         tags: ["Relationships"],
         summary: "Lister les relations",
         operationId: "listRelationships",
         parameters: [
-          sourceIdParam,
           {
             name: "type",
             in: "query",
@@ -366,14 +463,14 @@ export const openApiSpec = {
             in: "query",
             required: false,
             schema: { type: "string" },
-            description: "Filtrer par identifiant de l'element source",
+            description: "Filtrer par identifiant de l'élément source",
           },
           {
             name: "target_id",
             in: "query",
             required: false,
             schema: { type: "string" },
-            description: "Filtrer par identifiant de l'element cible",
+            description: "Filtrer par identifiant de l'élément cible",
           },
         ],
         responses: {
@@ -385,19 +482,34 @@ export const openApiSpec = {
               },
             },
           },
+          "422": { $ref: "#/components/responses/UnprocessableType" },
+        },
+      },
+      post: {
+        tags: ["Relationships"],
+        summary: "Créer une relation",
+        operationId: "createRelationship",
+        requestBody: {
+          required: true,
+          content: { "application/json": { schema: { $ref: "#/components/schemas/RelationshipCreateInput" } } },
+        },
+        responses: {
+          "201": {
+            description: "Relation créée",
+            content: { "application/json": { schema: { $ref: "#/components/schemas/Relationship" } } },
+          },
           "404": { $ref: "#/components/responses/NotFound" },
           "422": { $ref: "#/components/responses/UnprocessableType" },
         },
       },
     },
 
-    "/{source_id}/relationships/{identifier}": {
+    "/relationships/{identifier}": {
       get: {
         tags: ["Relationships"],
-        summary: "Detail d'une relation",
+        summary: "Détail d'une relation",
         operationId: "getRelationshipById",
         parameters: [
-          sourceIdParam,
           {
             name: "identifier",
             in: "path",
@@ -414,14 +526,45 @@ export const openApiSpec = {
           "404": { $ref: "#/components/responses/NotFound" },
         },
       },
+      put: {
+        tags: ["Relationships"],
+        summary: "Modifier une relation",
+        operationId: "updateRelationship",
+        parameters: [
+          { name: "identifier", in: "path", required: true, schema: { type: "string" } },
+        ],
+        requestBody: {
+          required: true,
+          content: { "application/json": { schema: { $ref: "#/components/schemas/RelationshipUpdateInput" } } },
+        },
+        responses: {
+          "200": {
+            description: "Relation mise à jour",
+            content: { "application/json": { schema: { $ref: "#/components/schemas/Relationship" } } },
+          },
+          "404": { $ref: "#/components/responses/NotFound" },
+          "422": { $ref: "#/components/responses/UnprocessableType" },
+        },
+      },
+      delete: {
+        tags: ["Relationships"],
+        summary: "Supprimer une relation",
+        operationId: "deleteRelationship",
+        parameters: [
+          { name: "identifier", in: "path", required: true, schema: { type: "string" } },
+        ],
+        responses: {
+          "204": { description: "Relation supprimée" },
+          "404": { $ref: "#/components/responses/NotFound" },
+        },
+      },
     },
 
-    "/{source_id}/views": {
+    "/views": {
       get: {
         tags: ["Views"],
         summary: "Lister les vues",
         operationId: "listViews",
-        parameters: [sourceIdParam],
         responses: {
           "200": {
             description: "Liste des vues avec compteurs",
@@ -431,18 +574,94 @@ export const openApiSpec = {
               },
             },
           },
-          "404": { $ref: "#/components/responses/NotFound" },
+        },
+      },
+      post: {
+        tags: ["Views"],
+        summary: "Créer une vue",
+        operationId: "createView",
+        requestBody: {
+          required: true,
+          content: { "application/json": { schema: { $ref: "#/components/schemas/ViewCreateInput" } } },
+        },
+        responses: {
+          "201": {
+            description: "Vue créée",
+            content: { "application/json": { schema: { $ref: "#/components/schemas/ViewDetail" } } },
+          },
+          "422": { $ref: "#/components/responses/UnprocessableType" },
         },
       },
     },
 
-    "/{source_id}/views/{identifier}": {
+    "/views/{view_id}/nodes": {
+      post: {
+        tags: ["Views"],
+        summary: "Ajouter un nœud à une vue",
+        operationId: "createNode",
+        parameters: [
+          { name: "view_id", in: "path", required: true, schema: { type: "string" }, description: "Identifiant de la vue" },
+        ],
+        requestBody: {
+          required: true,
+          content: { "application/json": { schema: { $ref: "#/components/schemas/NodeCreateInput" } } },
+        },
+        responses: {
+          "201": {
+            description: "Nœud créé",
+            content: { "application/json": { schema: { $ref: "#/components/schemas/Node" } } },
+          },
+          "404": { $ref: "#/components/responses/NotFound" },
+          "422": { $ref: "#/components/responses/UnprocessableType" },
+        },
+      },
+    },
+
+    "/views/{view_id}/image": {
       get: {
         tags: ["Views"],
-        summary: "Detail d'une vue",
+        summary: "Rendu SVG ou PNG d'une vue",
+        operationId: "renderView",
+        parameters: [
+          {
+            name: "view_id",
+            in: "path",
+            required: true,
+            schema: { type: "string" },
+            description: "Identifiant de la vue",
+          },
+          {
+            name: "format",
+            in: "query",
+            required: false,
+            schema: { type: "string", enum: ["svg", "png"], default: "svg" },
+            description: "Format de sortie (svg par défaut, png nécessite le paquet sharp)",
+          },
+        ],
+        responses: {
+          "200": {
+            description: "Image de la vue",
+            content: {
+              "image/svg+xml": { schema: { type: "string", format: "binary" } },
+              "image/png":     { schema: { type: "string", format: "binary" } },
+            },
+          },
+          "404": { $ref: "#/components/responses/NotFound" },
+          "422": { $ref: "#/components/responses/UnprocessableType" },
+          "500": {
+            description: "Erreur de rendu (ex: paquet sharp manquant pour PNG)",
+            content: { "application/json": { schema: { $ref: "#/components/schemas/ErrorDetail" } } },
+          },
+        },
+      },
+    },
+
+    "/views/{identifier}": {
+      get: {
+        tags: ["Views"],
+        summary: "Détail d'une vue",
         operationId: "getViewById",
         parameters: [
-          sourceIdParam,
           {
             name: "identifier",
             in: "path",
@@ -453,7 +672,7 @@ export const openApiSpec = {
         ],
         responses: {
           "200": {
-            description: "Vue avec noeuds et connexions",
+            description: "Vue avec nœuds et connexions",
             content: { "application/json": { schema: { $ref: "#/components/schemas/ViewDetail" } } },
           },
           "404": { $ref: "#/components/responses/NotFound" },
@@ -464,19 +683,19 @@ export const openApiSpec = {
     "/mcp/": {
       post: {
         tags: ["MCP"],
-        summary: "Requete MCP (JSON-RPC)",
+        summary: "Requête MCP (JSON-RPC)",
         operationId: "mcpPost",
         description:
-          "Point d'entree JSON-RPC 2.0 du transport streamable-http MCP. " +
-          "La premiere requete doit etre une `initialize`. " +
-          "Les requetes suivantes doivent inclure l'en-tete `mcp-session-id` retourne par `initialize`.",
+          "Point d'entrée JSON-RPC 2.0 du transport streamable-http MCP. " +
+          "La première requête doit être une `initialize`. " +
+          "Les requêtes suivantes doivent inclure l'en-tête `mcp-session-id` retourné par `initialize`.",
         requestBody: {
           required: true,
           content: { "application/json": { schema: { type: "object" } } },
         },
         responses: {
-          "200": { description: "Reponse JSON-RPC (text/event-stream ou application/json)" },
-          "400": { description: "Session invalide ou requete non-initialize sans session" },
+          "200": { description: "Réponse JSON-RPC (text/event-stream ou application/json)" },
+          "400": { description: "Session invalide ou requête non-initialize sans session" },
         },
       },
       get: {
@@ -487,8 +706,8 @@ export const openApiSpec = {
           { name: "mcp-session-id", in: "header", required: true, schema: { type: "string" } },
         ],
         responses: {
-          "200": { description: "Flux d'evenements SSE" },
-          "405": { description: "Session non trouvee" },
+          "200": { description: "Flux d'événements SSE" },
+          "405": { description: "Session non trouvée" },
         },
       },
       delete: {
@@ -499,8 +718,8 @@ export const openApiSpec = {
           { name: "mcp-session-id", in: "header", required: true, schema: { type: "string" } },
         ],
         responses: {
-          "200": { description: "Session fermee" },
-          "404": { description: "Session non trouvee" },
+          "200": { description: "Session fermée" },
+          "404": { description: "Session non trouvée" },
         },
       },
     },
@@ -512,14 +731,20 @@ export const openApiSpec = {
       Font,
       Style,
       Property,
-      SourceInfo,
+      SaveResult,
       ModelInfo,
       Element,
+      ElementCreateInput,
+      ElementUpdateInput,
       Relationship,
+      RelationshipCreateInput,
+      RelationshipUpdateInput,
       Node,
       Connection,
       View,
       ViewDetail,
+      ViewCreateInput,
+      NodeCreateInput,
       ErrorDetail,
     },
     responses: {

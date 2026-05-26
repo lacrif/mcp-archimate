@@ -6,8 +6,13 @@
  * - Integration tests: supertest against the Express app with the real model.
  */
 
-import { describe, it, expect, beforeAll } from "vitest";
+import { describe, it, expect, beforeAll, afterEach } from "vitest";
 import request from "supertest";
+import { rmSync, existsSync } from "fs";
+import { join } from "path";
+import { serializeToArchi } from "../src/serializer.js";
+import { renderViewToSvg } from "../src/renderer.js";
+import { parseArchiFormat } from "../src/archi-parser.js";
 
 import {
   app,
@@ -17,9 +22,19 @@ import {
   nodeOut,
   connectionOut,
   viewOut,
+  createElement,
+  updateElement,
+  deleteElement,
+  createRelationship,
+  updateRelationship,
+  deleteRelationship,
+  createView,
+  createNode,
+  saveModel,
 } from "../src/app.js";
-import { registry } from "../src/registry.js";
+import { dataSource } from "../src/registry.js";
 import type { DataSource } from "../src/registry.js";
+import type { ArchiModel } from "../src/model.js";
 import {
   ACCESS_TYPES,
   ELEMENT_TYPES,
@@ -32,7 +47,6 @@ import {
 } from "../src/schemas.js";
 import type { ArchiElement, ArchiRelationship, ArchiNode, ArchiConnection, ArchiView } from "../src/model.js";
 
-const SOURCE_ID = "open-exchange";
 const UNKNOWN_ID = "id-does-not-exist";
 
 // ---------------------------------------------------------------------------
@@ -129,23 +143,24 @@ let relationshipsData: RelationshipOut[];
 let knownRelationship: RelationshipOut;
 let knownRelationshipType: string;
 let knownView: ViewOut;
+let sharedMcpSessionId = "";
 
 beforeAll(async () => {
-  ds = registry.get(SOURCE_ID)!;
+  ds = dataSource;
 
-  const elemRes = await request(app).get(`/${SOURCE_ID}/elements`);
+  const elemRes = await request(app).get(`/elements`);
   elementsData = elemRes.body as ElementOut[];
   knownElement = elementsData.find((e) => e.identifier && e.type) ?? elementsData[0]!;
   knownElementType = knownElement.type;
   const name = knownElement.name ?? "";
   knownElementNameFragment = (name.length >= 3 ? name.slice(0, 3) : name).toLowerCase();
 
-  const relRes = await request(app).get(`/${SOURCE_ID}/relationships`);
+  const relRes = await request(app).get(`/relationships`);
   relationshipsData = relRes.body as RelationshipOut[];
   knownRelationship = relationshipsData.find((r) => r.identifier && r.type) ?? relationshipsData[0]!;
   knownRelationshipType = knownRelationship.type;
 
-  const viewRes = await request(app).get(`/${SOURCE_ID}/views`);
+  const viewRes = await request(app).get(`/views`);
   const views = viewRes.body as ViewOut[];
   knownView = views.find((v) => v.identifier) ?? views[0]!;
 });
@@ -496,46 +511,17 @@ describe("viewOut helper", () => {
 });
 
 // ===========================================================================
-// Integration tests – GET /sources
+// Integration tests – GET /
 // ===========================================================================
 
-describe("GET /sources", () => {
+describe("GET /", () => {
   it("returns 200", async () => {
-    expect((await request(app).get("/sources")).status).toBe(200);
-  });
-
-  it("returns an array of sources", async () => {
-    const data = (await request(app).get("/sources")).body;
-    expect(Array.isArray(data)).toBe(true);
-    expect(data.length).toBeGreaterThan(0);
-  });
-
-  it("each source has id and name", async () => {
-    const data = (await request(app).get("/sources")).body as { id: string; name: string }[];
-    for (const src of data) {
-      expect(typeof src.id).toBe("string");
-      expect(typeof src.name).toBe("string");
-    }
-  });
-
-  it("contains the open-exchange source", async () => {
-    const data = (await request(app).get("/sources")).body as { id: string }[];
-    expect(data.some((s) => s.id === SOURCE_ID)).toBe(true);
-  });
-});
-
-// ===========================================================================
-// Integration tests – GET /:source_id/
-// ===========================================================================
-
-describe(`GET /${SOURCE_ID}/`, () => {
-  it("returns 200", async () => {
-    const res = await request(app).get(`/${SOURCE_ID}/`);
+    const res = await request(app).get(`/`);
     expect(res.status).toBe(200);
   });
 
   it("response has required fields", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/`)).body;
+    const data = (await request(app).get(`/`)).body;
     expect(data).toHaveProperty("identifier");
     expect(data).toHaveProperty("name");
     expect(data).toHaveProperty("element_count");
@@ -544,60 +530,56 @@ describe(`GET /${SOURCE_ID}/`, () => {
   });
 
   it("model name is non-empty string", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/`)).body;
+    const data = (await request(app).get(`/`)).body;
     expect(typeof data.name).toBe("string");
     expect(data.name.trim()).not.toBe("");
   });
 
   it("counts are positive", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/`)).body;
+    const data = (await request(app).get(`/`)).body;
     expect(data.element_count).toBeGreaterThan(0);
     expect(data.relationship_count).toBeGreaterThan(0);
     expect(data.view_count).toBeGreaterThan(0);
   });
 
   it("identifier is non-empty", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/`)).body;
+    const data = (await request(app).get(`/`)).body;
     expect(data.identifier.trim()).not.toBe("");
-  });
-
-  it("unknown source_id returns 404", async () => {
-    expect((await request(app).get("/unknown-source/")).status).toBe(404);
   });
 });
 
 // ===========================================================================
-// Integration tests – GET /:source_id/elements/types
+// Integration tests – GET /elements/types
 // ===========================================================================
 
-describe(`GET /${SOURCE_ID}/elements/types`, () => {
+describe("GET /elements/types", () => {
   it("returns 200", async () => {
-    expect((await request(app).get(`/${SOURCE_ID}/elements/types`)).status).toBe(200);
+    expect((await request(app).get(`/elements/types`)).status).toBe(200);
   });
 
   it("returns array of strings", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/elements/types`)).body as string[];
+    const data = (await request(app).get(`/elements/types`)).body as string[];
     expect(Array.isArray(data)).toBe(true);
     expect(data.every((t) => typeof t === "string")).toBe(true);
   });
 
   it("is sorted", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/elements/types`)).body as string[];
+    const data = (await request(app).get(`/elements/types`)).body as string[];
     expect(data).toEqual([...data].sort());
   });
 
   it("has no duplicates", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/elements/types`)).body as string[];
+    const data = (await request(app).get(`/elements/types`)).body as string[];
     expect(data.length).toBe(new Set(data).size);
   });
 
   it("contains known element type", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/elements/types`)).body as string[];
+    const data = (await request(app).get(`/elements/types`)).body as string[];
     expect(data.includes(knownElementType)).toBe(true);
   });
 
   it("all types are valid ArchiMate 3.1", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/elements/types`)).body as string[];
+    const data = (await request(app).get(`/elements/types`)).body as string[];
     for (const t of data) {
       expect(ELEMENT_TYPES.has(t), `Type '${t}' not in ArchiMate 3.1 spec`).toBe(true);
     }
@@ -605,21 +587,21 @@ describe(`GET /${SOURCE_ID}/elements/types`, () => {
 });
 
 // ===========================================================================
-// Integration tests – GET /:source_id/elements
+// Integration tests – GET /elements
 // ===========================================================================
 
-describe(`GET /${SOURCE_ID}/elements`, () => {
+describe("GET /elements", () => {
   it("returns 200", async () => {
-    expect((await request(app).get(`/${SOURCE_ID}/elements`)).status).toBe(200);
+    expect((await request(app).get(`/elements`)).status).toBe(200);
   });
 
   it("returns all elements", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/elements`)).body as ElementOut[];
+    const data = (await request(app).get(`/elements`)).body as ElementOut[];
     expect(data.length).toBe(ds.model.elements.length);
   });
 
   it("element has required shape", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/elements`)).body as ElementOut[];
+    const data = (await request(app).get(`/elements`)).body as ElementOut[];
     const e = data[0]!;
     expect(e).toHaveProperty("identifier");
     expect(e).toHaveProperty("name");
@@ -629,12 +611,12 @@ describe(`GET /${SOURCE_ID}/elements`, () => {
   });
 
   it("properties is an array", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/elements`)).body as ElementOut[];
+    const data = (await request(app).get(`/elements`)).body as ElementOut[];
     expect(data.every((e) => Array.isArray(e.properties))).toBe(true);
   });
 
   it("property has correct shape", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/elements`)).body as ElementOut[];
+    const data = (await request(app).get(`/elements`)).body as ElementOut[];
     const withProps = data.find((e) => e.properties.length > 0);
     if (withProps) {
       const p = withProps.properties[0]!;
@@ -644,93 +626,93 @@ describe(`GET /${SOURCE_ID}/elements`, () => {
   });
 
   it("filter by type works", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/elements?type=${knownElementType}`)).body as ElementOut[];
+    const data = (await request(app).get(`/elements?type=${knownElementType}`)).body as ElementOut[];
     expect(data.length).toBeGreaterThan(0);
     expect(data.every((e) => e.type === knownElementType)).toBe(true);
   });
 
   it("filter by type + name returns empty when no match", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/elements?type=Capability&name=xyznotfound123`)).body;
+    const data = (await request(app).get(`/elements?type=Capability&name=xyznotfound123`)).body;
     expect(data).toEqual([]);
   });
 
   it("invalid type returns 422", async () => {
-    const res = await request(app).get(`/${SOURCE_ID}/elements?type=NonExistentType`);
+    const res = await request(app).get(`/elements?type=NonExistentType`);
     expect(res.status).toBe(422);
   });
 
   it("filter by name is case-insensitive", async () => {
     if (!knownElementNameFragment) return;
-    const data = (await request(app).get(`/${SOURCE_ID}/elements?name=${knownElementNameFragment}`)).body as ElementOut[];
+    const data = (await request(app).get(`/elements?name=${knownElementNameFragment}`)).body as ElementOut[];
     expect(data.length).toBeGreaterThan(0);
     expect(data.every((e) => (e.name ?? "").toLowerCase().includes(knownElementNameFragment))).toBe(true);
   });
 
   it("name filter with no match returns empty array", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/elements?name=xyznotfound123`)).body;
+    const data = (await request(app).get(`/elements?name=xyznotfound123`)).body;
     expect(data).toEqual([]);
   });
 
   it("combined filter by type and name", async () => {
     if (!knownElementNameFragment) return;
-    const data = (await request(app).get(`/${SOURCE_ID}/elements?type=${knownElementType}&name=${knownElementNameFragment}`)).body as ElementOut[];
+    const data = (await request(app).get(`/elements?type=${knownElementType}&name=${knownElementNameFragment}`)).body as ElementOut[];
     expect(data.every((e) => e.type === knownElementType)).toBe(true);
   });
 });
 
 // ===========================================================================
-// Integration tests – GET /:source_id/elements/:id
+// Integration tests – GET /elements/:id
 // ===========================================================================
 
-describe(`GET /${SOURCE_ID}/elements/:id`, () => {
+describe("GET /elements/:id", () => {
   it("known id returns 200", async () => {
-    const res = await request(app).get(`/${SOURCE_ID}/elements/${knownElement.identifier}`);
+    const res = await request(app).get(`/elements/${knownElement.identifier}`);
     expect(res.status).toBe(200);
   });
 
   it("known id returns correct data", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/elements/${knownElement.identifier}`)).body;
+    const data = (await request(app).get(`/elements/${knownElement.identifier}`)).body;
     expect(data.identifier).toBe(knownElement.identifier);
     expect(data.name).toBe(knownElement.name);
     expect(data.type).toBe(knownElement.type);
   });
 
   it("unknown id returns 404", async () => {
-    expect((await request(app).get(`/${SOURCE_ID}/elements/${UNKNOWN_ID}`)).status).toBe(404);
+    expect((await request(app).get(`/elements/${UNKNOWN_ID}`)).status).toBe(404);
   });
 
   it("404 message contains the id", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/elements/${UNKNOWN_ID}`)).body;
+    const data = (await request(app).get(`/elements/${UNKNOWN_ID}`)).body;
     expect(data.detail).toContain(UNKNOWN_ID);
   });
 
   it("properties is an array", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/elements/${knownElement.identifier}`)).body;
+    const data = (await request(app).get(`/elements/${knownElement.identifier}`)).body;
     expect(Array.isArray(data.properties)).toBe(true);
   });
 });
 
 // ===========================================================================
-// Integration tests – GET /:source_id/relationships/types
+// Integration tests – GET /relationships/types
 // ===========================================================================
 
-describe(`GET /${SOURCE_ID}/relationships/types`, () => {
+describe("GET /relationships/types", () => {
   it("returns 200", async () => {
-    expect((await request(app).get(`/${SOURCE_ID}/relationships/types`)).status).toBe(200);
+    expect((await request(app).get(`/relationships/types`)).status).toBe(200);
   });
 
   it("is sorted", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/relationships/types`)).body as string[];
+    const data = (await request(app).get(`/relationships/types`)).body as string[];
     expect(data).toEqual([...data].sort());
   });
 
   it("contains known relationship type", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/relationships/types`)).body as string[];
+    const data = (await request(app).get(`/relationships/types`)).body as string[];
     expect(data.includes(knownRelationshipType)).toBe(true);
   });
 
   it("all types are valid ArchiMate 3.1", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/relationships/types`)).body as string[];
+    const data = (await request(app).get(`/relationships/types`)).body as string[];
     for (const t of data) {
       expect(RELATIONSHIP_TYPES.has(t), `Type '${t}' not in ArchiMate 3.1 spec`).toBe(true);
     }
@@ -738,21 +720,21 @@ describe(`GET /${SOURCE_ID}/relationships/types`, () => {
 });
 
 // ===========================================================================
-// Integration tests – GET /:source_id/relationships
+// Integration tests – GET /relationships
 // ===========================================================================
 
-describe(`GET /${SOURCE_ID}/relationships`, () => {
+describe("GET /relationships", () => {
   it("returns 200", async () => {
-    expect((await request(app).get(`/${SOURCE_ID}/relationships`)).status).toBe(200);
+    expect((await request(app).get(`/relationships`)).status).toBe(200);
   });
 
   it("returns all relationships", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/relationships`)).body as RelationshipOut[];
+    const data = (await request(app).get(`/relationships`)).body as RelationshipOut[];
     expect(data.length).toBe(ds.model.relationships.length);
   });
 
   it("relationship has required shape", async () => {
-    const r = ((await request(app).get(`/${SOURCE_ID}/relationships`)).body as RelationshipOut[])[0]!;
+    const r = ((await request(app).get(`/relationships`)).body as RelationshipOut[])[0]!;
     expect(r).toHaveProperty("identifier");
     expect(r).toHaveProperty("type");
     expect(r).toHaveProperty("source");
@@ -762,41 +744,41 @@ describe(`GET /${SOURCE_ID}/relationships`, () => {
   });
 
   it("filter by type works", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/relationships?type=${knownRelationshipType}`)).body as RelationshipOut[];
+    const data = (await request(app).get(`/relationships?type=${knownRelationshipType}`)).body as RelationshipOut[];
     expect(data.length).toBeGreaterThan(0);
     expect(data.every((r) => r.type === knownRelationshipType)).toBe(true);
   });
 
   it("invalid type returns 422", async () => {
-    expect((await request(app).get(`/${SOURCE_ID}/relationships?type=NotARelType`)).status).toBe(422);
+    expect((await request(app).get(`/relationships?type=NotARelType`)).status).toBe(422);
   });
 
   it("filter by source_id works", async () => {
     const source = knownRelationship.source;
-    const data = (await request(app).get(`/${SOURCE_ID}/relationships?source_id=${source}`)).body as RelationshipOut[];
+    const data = (await request(app).get(`/relationships?source_id=${source}`)).body as RelationshipOut[];
     expect(data.length).toBeGreaterThan(0);
     expect(data.every((r) => r.source === source)).toBe(true);
   });
 
   it("filter by target_id works", async () => {
     const target = knownRelationship.target;
-    const data = (await request(app).get(`/${SOURCE_ID}/relationships?target_id=${target}`)).body as RelationshipOut[];
+    const data = (await request(app).get(`/relationships?target_id=${target}`)).body as RelationshipOut[];
     expect(data.length).toBeGreaterThan(0);
     expect(data.every((r) => r.target === target)).toBe(true);
   });
 
   it("filter with no match returns empty array", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/relationships?source_id=${UNKNOWN_ID}`)).body;
+    const data = (await request(app).get(`/relationships?source_id=${UNKNOWN_ID}`)).body;
     expect(data).toEqual([]);
   });
 
   it("source_name and target_name are present", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/relationships`)).body as RelationshipOut[];
+    const data = (await request(app).get(`/relationships`)).body as RelationshipOut[];
     expect(data.every((r) => "source_name" in r && "target_name" in r)).toBe(true);
   });
 
   it("Access relationships have access_type in ACCESS_TYPES or null", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/relationships?type=Access`)).body as RelationshipOut[];
+    const data = (await request(app).get(`/relationships?type=Access`)).body as RelationshipOut[];
     for (const r of data) {
       if (r.access_type !== null && r.access_type !== undefined) {
         expect(ACCESS_TYPES.has(r.access_type)).toBe(true);
@@ -805,14 +787,14 @@ describe(`GET /${SOURCE_ID}/relationships`, () => {
   });
 
   it("Association relationships have is_directed field", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/relationships?type=Association`)).body as RelationshipOut[];
+    const data = (await request(app).get(`/relationships?type=Association`)).body as RelationshipOut[];
     for (const r of data) {
       expect("is_directed" in r).toBe(true);
     }
   });
 
   it("Influence relationships have modifier field", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/relationships?type=Influence`)).body as RelationshipOut[];
+    const data = (await request(app).get(`/relationships?type=Influence`)).body as RelationshipOut[];
     for (const r of data) {
       expect("modifier" in r).toBe(true);
     }
@@ -820,41 +802,41 @@ describe(`GET /${SOURCE_ID}/relationships`, () => {
 });
 
 // ===========================================================================
-// Integration tests – GET /:source_id/relationships/:id
+// Integration tests – GET /relationships/:id
 // ===========================================================================
 
-describe(`GET /${SOURCE_ID}/relationships/:id`, () => {
+describe("GET /relationships/:id", () => {
   it("known id returns 200", async () => {
-    expect((await request(app).get(`/${SOURCE_ID}/relationships/${knownRelationship.identifier}`)).status).toBe(200);
+    expect((await request(app).get(`/relationships/${knownRelationship.identifier}`)).status).toBe(200);
   });
 
   it("known id returns correct data", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/relationships/${knownRelationship.identifier}`)).body;
+    const data = (await request(app).get(`/relationships/${knownRelationship.identifier}`)).body;
     expect(data.identifier).toBe(knownRelationship.identifier);
     expect(data.type).toBe(knownRelationship.type);
   });
 
   it("unknown id returns 404", async () => {
-    expect((await request(app).get(`/${SOURCE_ID}/relationships/${UNKNOWN_ID}`)).status).toBe(404);
+    expect((await request(app).get(`/relationships/${UNKNOWN_ID}`)).status).toBe(404);
   });
 });
 
 // ===========================================================================
-// Integration tests – GET /:source_id/views
+// Integration tests – GET /views
 // ===========================================================================
 
-describe(`GET /${SOURCE_ID}/views`, () => {
+describe("GET /views", () => {
   it("returns 200", async () => {
-    expect((await request(app).get(`/${SOURCE_ID}/views`)).status).toBe(200);
+    expect((await request(app).get(`/views`)).status).toBe(200);
   });
 
   it("returns all views", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/views`)).body as ViewOut[];
+    const data = (await request(app).get(`/views`)).body as ViewOut[];
     expect(data.length).toBe(ds.model.views.length);
   });
 
   it("view has required shape", async () => {
-    const v = ((await request(app).get(`/${SOURCE_ID}/views`)).body as ViewOut[])[0]!;
+    const v = ((await request(app).get(`/views`)).body as ViewOut[])[0]!;
     expect(v).toHaveProperty("identifier");
     expect(v).toHaveProperty("name");
     expect(v).toHaveProperty("node_count");
@@ -864,50 +846,50 @@ describe(`GET /${SOURCE_ID}/views`, () => {
   });
 
   it("node_count is an integer", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/views`)).body as ViewOut[];
+    const data = (await request(app).get(`/views`)).body as ViewOut[];
     expect(data.every((v) => Number.isInteger(v.node_count))).toBe(true);
   });
 
   it("connection_count is an integer", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/views`)).body as ViewOut[];
+    const data = (await request(app).get(`/views`)).body as ViewOut[];
     expect(data.every((v) => Number.isInteger(v.connection_count))).toBe(true);
   });
 
   it("contains known view", async () => {
-    const ids = ((await request(app).get(`/${SOURCE_ID}/views`)).body as ViewOut[]).map((v) => v.identifier);
+    const ids = ((await request(app).get(`/views`)).body as ViewOut[]).map((v) => v.identifier);
     expect(ids.includes(knownView.identifier)).toBe(true);
   });
 });
 
 // ===========================================================================
-// Integration tests – GET /:source_id/views/:id
+// Integration tests – GET /views/:id
 // ===========================================================================
 
-describe(`GET /${SOURCE_ID}/views/:id`, () => {
+describe("GET /views/:id", () => {
   it("known id returns 200", async () => {
-    expect((await request(app).get(`/${SOURCE_ID}/views/${knownView.identifier}`)).status).toBe(200);
+    expect((await request(app).get(`/views/${knownView.identifier}`)).status).toBe(200);
   });
 
   it("known id returns correct data", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/views/${knownView.identifier}`)).body;
+    const data = (await request(app).get(`/views/${knownView.identifier}`)).body;
     expect(data.identifier).toBe(knownView.identifier);
     expect(data.name).toBe(knownView.name);
   });
 
   it("nodes are present and count matches", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/views/${knownView.identifier}`)).body as ViewDetailOut;
+    const data = (await request(app).get(`/views/${knownView.identifier}`)).body as ViewDetailOut;
     expect(Array.isArray(data.nodes)).toBe(true);
     expect(data.nodes.length).toBe(data.node_count);
   });
 
   it("connections are present and count matches", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/views/${knownView.identifier}`)).body as ViewDetailOut;
+    const data = (await request(app).get(`/views/${knownView.identifier}`)).body as ViewDetailOut;
     expect(Array.isArray(data.connections)).toBe(true);
     expect(data.connections.length).toBe(data.connection_count);
   });
 
   it("node has correct shape (if view has nodes)", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/views/${knownView.identifier}`)).body as ViewDetailOut;
+    const data = (await request(app).get(`/views/${knownView.identifier}`)).body as ViewDetailOut;
     if (!data.nodes.length) return;
     const n = data.nodes[0]!;
     expect(n).toHaveProperty("identifier");
@@ -921,7 +903,7 @@ describe(`GET /${SOURCE_ID}/views/:id`, () => {
   });
 
   it("node coordinates are integers", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/views/${knownView.identifier}`)).body as ViewDetailOut;
+    const data = (await request(app).get(`/views/${knownView.identifier}`)).body as ViewDetailOut;
     for (const n of data.nodes) {
       if (n.x !== null && n.x !== undefined) expect(Number.isInteger(n.x)).toBe(true);
       if (n.w !== null && n.w !== undefined) expect(Number.isInteger(n.w)).toBe(true);
@@ -929,7 +911,7 @@ describe(`GET /${SOURCE_ID}/views/:id`, () => {
   });
 
   it("node style RGB colors are in 0-255 range", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/views/${knownView.identifier}`)).body as ViewDetailOut;
+    const data = (await request(app).get(`/views/${knownView.identifier}`)).body as ViewDetailOut;
     for (const n of data.nodes) {
       const fc = n.style?.fill_color;
       if (fc) {
@@ -944,7 +926,7 @@ describe(`GET /${SOURCE_ID}/views/:id`, () => {
   });
 
   it("connection has correct shape (if view has connections)", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/views/${knownView.identifier}`)).body as ViewDetailOut;
+    const data = (await request(app).get(`/views/${knownView.identifier}`)).body as ViewDetailOut;
     if (!data.connections.length) return;
     const c = data.connections[0]!;
     expect(c).toHaveProperty("identifier");
@@ -954,7 +936,7 @@ describe(`GET /${SOURCE_ID}/views/:id`, () => {
   });
 
   it("connection source references a node in the view", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/views/${knownView.identifier}`)).body as ViewDetailOut;
+    const data = (await request(app).get(`/views/${knownView.identifier}`)).body as ViewDetailOut;
     if (!data.connections.length) return;
     const nodeIds = new Set(data.nodes.map((n) => n.identifier));
     for (const c of data.connections) {
@@ -963,9 +945,9 @@ describe(`GET /${SOURCE_ID}/views/:id`, () => {
   });
 
   it("connection relationship_ref references a known relationship", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/views/${knownView.identifier}`)).body as ViewDetailOut;
+    const data = (await request(app).get(`/views/${knownView.identifier}`)).body as ViewDetailOut;
     const relIds = new Set(
-      ((await request(app).get(`/${SOURCE_ID}/relationships`)).body as RelationshipOut[]).map((r) => r.identifier)
+      ((await request(app).get(`/relationships`)).body as RelationshipOut[]).map((r) => r.identifier)
     );
     for (const c of data.connections) {
       if (c.relationship_ref) expect(relIds.has(c.relationship_ref)).toBe(true);
@@ -973,9 +955,9 @@ describe(`GET /${SOURCE_ID}/views/:id`, () => {
   });
 
   it("node element_ref references a known element", async () => {
-    const data = (await request(app).get(`/${SOURCE_ID}/views/${knownView.identifier}`)).body as ViewDetailOut;
+    const data = (await request(app).get(`/views/${knownView.identifier}`)).body as ViewDetailOut;
     const elemIds = new Set(
-      ((await request(app).get(`/${SOURCE_ID}/elements`)).body as ElementOut[]).map((e) => e.identifier)
+      ((await request(app).get(`/elements`)).body as ElementOut[]).map((e) => e.identifier)
     );
     const refs = data.nodes.filter((n) => n.element_ref).map((n) => n.element_ref!);
     if (refs.length > 0) {
@@ -984,7 +966,539 @@ describe(`GET /${SOURCE_ID}/views/:id`, () => {
   });
 
   it("unknown id returns 404", async () => {
-    expect((await request(app).get(`/${SOURCE_ID}/views/${UNKNOWN_ID}`)).status).toBe(404);
+    expect((await request(app).get(`/views/${UNKNOWN_ID}`)).status).toBe(404);
+  });
+});
+
+// ===========================================================================
+// Integration tests – POST /views and POST /views/:view_id/nodes
+// ===========================================================================
+
+describe("POST /views", () => {
+  const createdViewIds: string[] = [];
+  afterEach(async () => {
+    for (const id of createdViewIds.splice(0)) {
+      const idx = dataSource.model.views.findIndex((v) => v.uuid === id);
+      if (idx !== -1) dataSource.model.views.splice(idx, 1);
+    }
+  });
+
+  it("returns 201 with ViewDetail shape", async () => {
+    const res = await request(app)
+      .post(`/views`)
+      .send({ name: "Test View" });
+    expect(res.status).toBe(201);
+    expect(res.body).toHaveProperty("identifier");
+    expect(res.body.name).toBe("Test View");
+    expect(Array.isArray(res.body.nodes)).toBe(true);
+    createdViewIds.push(res.body.identifier);
+  });
+
+  it("accepts optional viewpoint and documentation", async () => {
+    const res = await request(app)
+      .post(`/views`)
+      .send({ name: "VP View", viewpoint: "Layered", documentation: "desc" });
+    expect(res.status).toBe(201);
+    expect(res.body.viewpoint).toBe("Layered");
+    createdViewIds.push(res.body.identifier);
+  });
+
+  it("returns 422 when name is missing", async () => {
+    expect((await request(app).post(`/views`).send({})).status).toBe(422);
+  });
+
+  it("created view appears in GET /views", async () => {
+    const viewId = (await request(app).post(`/views`).send({ name: "Listed View" })).body.identifier;
+    createdViewIds.push(viewId);
+    const list = (await request(app).get(`/views`)).body as ViewOut[];
+    expect(list.some((v) => v.identifier === viewId)).toBe(true);
+  });
+});
+
+describe("POST /views/:view_id/nodes", () => {
+  let testViewId: string;
+  let knownElementId: string;
+
+  beforeAll(async () => {
+    const viewRes = await request(app).post(`/views`).send({ name: "Node Test View" });
+    testViewId = viewRes.body.identifier;
+    knownElementId = ((await request(app).get(`/elements`)).body as ElementOut[])[0]!.identifier;
+  });
+
+  afterEach(async () => {
+    const view = dataSource.model.views.find((v) => v.uuid === testViewId);
+    if (view) view.nodes = [];
+  });
+
+  it("returns 201 with Node shape", async () => {
+    const res = await request(app)
+      .post(`/views/${testViewId}/nodes`)
+      .send({ element_id: knownElementId, x: 10, y: 20, w: 120, h: 55 });
+    expect(res.status).toBe(201);
+    expect(res.body).toHaveProperty("identifier");
+    expect(res.body.element_ref).toBe(knownElementId);
+    expect(res.body.x).toBe(10);
+    expect(res.body.y).toBe(20);
+  });
+
+  it("node appears in GET /views/:id", async () => {
+    await request(app).post(`/views/${testViewId}/nodes`).send({ element_id: knownElementId });
+    const view = (await request(app).get(`/views/${testViewId}`)).body as ViewDetailOut;
+    expect(view.nodes.length).toBe(1);
+    expect(view.nodes[0]!.element_ref).toBe(knownElementId);
+  });
+
+  it("returns 404 for unknown view_id", async () => {
+    const res = await request(app).post(`/views/${UNKNOWN_ID}/nodes`).send({ element_id: knownElementId });
+    expect(res.status).toBe(404);
+  });
+
+  it("returns 404 for unknown element_id", async () => {
+    const res = await request(app).post(`/views/${testViewId}/nodes`).send({ element_id: UNKNOWN_ID });
+    expect(res.status).toBe(404);
+  });
+
+  it("returns 422 when element_id is missing", async () => {
+    expect((await request(app).post(`/views/${testViewId}/nodes`).send({})).status).toBe(422);
+  });
+});
+
+// ===========================================================================
+// Unit tests – mutation helpers (makeDataSource factory)
+// ===========================================================================
+
+function makeDataSource(overrides: Partial<ArchiModel> = {}): DataSource {
+  const model: ArchiModel = {
+    uuid: "model-001",
+    name: "Test Model",
+    desc: null,
+    version: null,
+    elements: [],
+    relationships: [],
+    views: [],
+    ...overrides,
+  };
+  return { path: "data/test.archimate", model, elementTypes: [], relationshipTypes: [] };
+}
+
+describe("createElement", () => {
+  it("adds element to model and returns ElementOut", () => {
+    const ds = makeDataSource();
+    const result = createElement(ds, { name: "My App", type: "ApplicationComponent" });
+    expect(ds.model.elements).toHaveLength(1);
+    expect(result.name).toBe("My App");
+    expect(result.type).toBe("ApplicationComponent");
+    expect(result.identifier).toBeTruthy();
+  });
+
+  it("updates elementTypes after creation", () => {
+    const ds = makeDataSource();
+    createElement(ds, { name: "App", type: "ApplicationComponent" });
+    expect(ds.elementTypes).toContain("ApplicationComponent");
+  });
+
+  it("sets documentation and properties", () => {
+    const ds = makeDataSource();
+    const result = createElement(ds, {
+      name: "Goal1",
+      type: "Goal",
+      documentation: "A test goal",
+      properties: [{ property_definition_ref: "status", value: "active" }],
+    });
+    expect(result.documentation).toBe("A test goal");
+    expect(result.properties).toHaveLength(1);
+    expect(result.properties[0]!.property_definition_ref).toBe("status");
+  });
+
+  it("documentation defaults to null when omitted", () => {
+    const ds = makeDataSource();
+    const result = createElement(ds, { name: "Test", type: "Goal" });
+    expect(result.documentation).toBeNull();
+  });
+});
+
+describe("updateElement", () => {
+  it("updates name", () => {
+    const ds = makeDataSource({ elements: [makeElement()] });
+    const result = updateElement(ds, "elem-001", { name: "New Name" });
+    expect(result.name).toBe("New Name");
+  });
+
+  it("updates type and recomputes elementTypes", () => {
+    const ds = makeDataSource({ elements: [makeElement()] });
+    ds.elementTypes = ["ApplicationComponent"];
+    updateElement(ds, "elem-001", { type: "BusinessActor" });
+    expect(ds.elementTypes).toContain("BusinessActor");
+    expect(ds.elementTypes).not.toContain("ApplicationComponent");
+  });
+
+  it("updates documentation", () => {
+    const ds = makeDataSource({ elements: [makeElement({ desc: "old" })] });
+    updateElement(ds, "elem-001", { documentation: "new doc" });
+    expect(ds.model.elements[0]!.desc).toBe("new doc");
+  });
+
+  it("clears documentation when null passed", () => {
+    const ds = makeDataSource({ elements: [makeElement({ desc: "something" })] });
+    updateElement(ds, "elem-001", { documentation: null });
+    expect(ds.model.elements[0]!.desc).toBeNull();
+  });
+
+  it("does not touch documentation when key absent", () => {
+    const ds = makeDataSource({ elements: [makeElement({ desc: "kept" })] });
+    updateElement(ds, "elem-001", { name: "New Name" });
+    expect(ds.model.elements[0]!.desc).toBe("kept");
+  });
+
+  it("updates properties", () => {
+    const ds = makeDataSource({ elements: [makeElement()] });
+    const result = updateElement(ds, "elem-001", {
+      properties: [{ property_definition_ref: "key", value: "val" }],
+    });
+    expect(result.properties).toHaveLength(1);
+    expect(result.properties[0]!.value).toBe("val");
+  });
+
+  it("throws for unknown id", () => {
+    const ds = makeDataSource();
+    expect(() => updateElement(ds, "unknown", {})).toThrow("introuvable");
+  });
+});
+
+describe("deleteElement", () => {
+  it("removes element from model", () => {
+    const ds = makeDataSource({ elements: [makeElement()] });
+    deleteElement(ds, "elem-001");
+    expect(ds.model.elements).toHaveLength(0);
+  });
+
+  it("updates elementTypes after deletion", () => {
+    const ds = makeDataSource({ elements: [makeElement()] });
+    ds.elementTypes = ["ApplicationComponent"];
+    deleteElement(ds, "elem-001");
+    expect(ds.elementTypes).toHaveLength(0);
+  });
+
+  it("throws for unknown id", () => {
+    const ds = makeDataSource();
+    expect(() => deleteElement(ds, "unknown")).toThrow("introuvable");
+  });
+
+  it("cascades: removes relationships that reference the deleted element", () => {
+    const elem = makeElement({ uuid: "e1" });
+    const other = makeElement({ uuid: "e2", name: "Other", type: "BusinessActor" });
+    const rel = makeRelationship({ uuid: "r1", source: elem, target: other });
+    const ds = makeDataSource({ elements: [elem, other], relationships: [rel] });
+    deleteElement(ds, "e1");
+    expect(ds.model.relationships).toHaveLength(0);
+  });
+
+  it("cascades when element is the target", () => {
+    const e1 = makeElement({ uuid: "e1" });
+    const e2 = makeElement({ uuid: "e2" });
+    const rel = makeRelationship({ uuid: "r1", source: e1, target: e2 });
+    const ds = makeDataSource({ elements: [e1, e2], relationships: [rel] });
+    deleteElement(ds, "e2");
+    expect(ds.model.relationships).toHaveLength(0);
+  });
+
+  it("does not remove unrelated relationships", () => {
+    const e1 = makeElement({ uuid: "e1" });
+    const e2 = makeElement({ uuid: "e2" });
+    const e3 = makeElement({ uuid: "e3" });
+    const rel = makeRelationship({ uuid: "r1", source: e2, target: e3 });
+    const ds = makeDataSource({ elements: [e1, e2, e3], relationships: [rel] });
+    deleteElement(ds, "e1");
+    expect(ds.model.relationships).toHaveLength(1);
+  });
+});
+
+describe("createRelationship", () => {
+  it("adds relationship to model and returns RelationshipOut", () => {
+    const e1 = makeElement({ uuid: "e1" });
+    const e2 = makeElement({ uuid: "e2" });
+    const ds = makeDataSource({ elements: [e1, e2] });
+    const result = createRelationship(ds, { type: "Association", source: "e1", target: "e2" });
+    expect(ds.model.relationships).toHaveLength(1);
+    expect(result.type).toBe("Association");
+    expect(result.source).toBe("e1");
+    expect(result.target).toBe("e2");
+    expect(result.identifier).toBeTruthy();
+  });
+
+  it("sets name and documentation", () => {
+    const e1 = makeElement({ uuid: "e1" });
+    const e2 = makeElement({ uuid: "e2" });
+    const ds = makeDataSource({ elements: [e1, e2] });
+    const result = createRelationship(ds, { type: "Flow", source: "e1", target: "e2", name: "My Flow", documentation: "doc" });
+    expect(result.name).toBe("My Flow");
+    expect(result.documentation).toBe("doc");
+  });
+
+  it("sets access_type for Access relationship", () => {
+    const e1 = makeElement({ uuid: "e1" });
+    const e2 = makeElement({ uuid: "e2" });
+    const ds = makeDataSource({ elements: [e1, e2] });
+    const result = createRelationship(ds, { type: "Access", source: "e1", target: "e2", access_type: "Write" });
+    expect(result.access_type).toBe("Write");
+  });
+
+  it("throws for unknown source", () => {
+    const e2 = makeElement({ uuid: "e2" });
+    const ds = makeDataSource({ elements: [e2] });
+    expect(() => createRelationship(ds, { type: "Association", source: "unknown", target: "e2" })).toThrow("source");
+  });
+
+  it("throws for unknown target", () => {
+    const e1 = makeElement({ uuid: "e1" });
+    const ds = makeDataSource({ elements: [e1] });
+    expect(() => createRelationship(ds, { type: "Association", source: "e1", target: "unknown" })).toThrow("cible");
+  });
+
+  it("updates relationshipTypes", () => {
+    const e1 = makeElement({ uuid: "e1" });
+    const e2 = makeElement({ uuid: "e2" });
+    const ds = makeDataSource({ elements: [e1, e2] });
+    createRelationship(ds, { type: "Composition", source: "e1", target: "e2" });
+    expect(ds.relationshipTypes).toContain("Composition");
+  });
+});
+
+describe("updateRelationship", () => {
+  it("updates name", () => {
+    const e1 = makeElement({ uuid: "src-001" });
+    const e2 = makeElement({ uuid: "tgt-001" });
+    const ds = makeDataSource({ elements: [e1, e2], relationships: [makeRelationship()] });
+    const result = updateRelationship(ds, "rel-001", { name: "New Name" });
+    expect(result.name).toBe("New Name");
+  });
+
+  it("updates documentation", () => {
+    const e1 = makeElement({ uuid: "src-001" });
+    const e2 = makeElement({ uuid: "tgt-001" });
+    const ds = makeDataSource({ elements: [e1, e2], relationships: [makeRelationship()] });
+    updateRelationship(ds, "rel-001", { documentation: "doc updated" });
+    expect(ds.model.relationships[0]!.desc).toBe("doc updated");
+  });
+
+  it("does not touch fields not provided", () => {
+    const e1 = makeElement({ uuid: "src-001" });
+    const e2 = makeElement({ uuid: "tgt-001" });
+    const ds = makeDataSource({ elements: [e1, e2], relationships: [makeRelationship({ desc: "original" })] });
+    updateRelationship(ds, "rel-001", { name: "X" });
+    expect(ds.model.relationships[0]!.desc).toBe("original");
+  });
+
+  it("throws for unknown relationship id", () => {
+    const ds = makeDataSource();
+    expect(() => updateRelationship(ds, "unknown", {})).toThrow("introuvable");
+  });
+
+  it("throws when new source element does not exist", () => {
+    const e1 = makeElement({ uuid: "src-001" });
+    const e2 = makeElement({ uuid: "tgt-001" });
+    const ds = makeDataSource({ elements: [e1, e2], relationships: [makeRelationship()] });
+    expect(() => updateRelationship(ds, "rel-001", { source: "no-such-id" })).toThrow("source");
+  });
+});
+
+describe("deleteRelationship", () => {
+  it("removes relationship from model", () => {
+    const e1 = makeElement({ uuid: "src-001" });
+    const e2 = makeElement({ uuid: "tgt-001" });
+    const ds = makeDataSource({ elements: [e1, e2], relationships: [makeRelationship()] });
+    deleteRelationship(ds, "rel-001");
+    expect(ds.model.relationships).toHaveLength(0);
+  });
+
+  it("throws for unknown id", () => {
+    const ds = makeDataSource();
+    expect(() => deleteRelationship(ds, "unknown")).toThrow("introuvable");
+  });
+
+  it("updates relationshipTypes after deletion", () => {
+    const e1 = makeElement({ uuid: "src-001" });
+    const e2 = makeElement({ uuid: "tgt-001" });
+    const ds = makeDataSource({ elements: [e1, e2], relationships: [makeRelationship({ type: "Flow" })] });
+    ds.relationshipTypes = ["Flow"];
+    deleteRelationship(ds, "rel-001");
+    expect(ds.relationshipTypes).toHaveLength(0);
+  });
+});
+
+// ===========================================================================
+// Integration tests – POST /elements (CRUD cycle)
+// ===========================================================================
+
+describe("Mutation - éléments POST/PUT/DELETE", () => {
+  let createdElementId: string;
+
+  it("POST /elements crée un élément (201)", async () => {
+    const res = await request(app)
+      .post(`/elements`)
+      .send({ name: "Test App CRUD", type: "ApplicationComponent", documentation: "test doc" });
+    expect(res.status).toBe(201);
+    expect(res.body.identifier).toBeTruthy();
+    expect(res.body.name).toBe("Test App CRUD");
+    expect(res.body.type).toBe("ApplicationComponent");
+    expect(res.body.documentation).toBe("test doc");
+    createdElementId = res.body.identifier as string;
+  });
+
+  it("GET /elements/:id retrouve l'élément créé", async () => {
+    const res = await request(app).get(`/elements/${createdElementId}`);
+    expect(res.status).toBe(200);
+    expect(res.body.name).toBe("Test App CRUD");
+  });
+
+  it("PUT /elements/:id modifie le nom et la documentation", async () => {
+    const res = await request(app)
+      .put(`/elements/${createdElementId}`)
+      .send({ name: "Test App Updated", documentation: "updated doc" });
+    expect(res.status).toBe(200);
+    expect(res.body.name).toBe("Test App Updated");
+    expect(res.body.documentation).toBe("updated doc");
+  });
+
+  it("PUT /elements/:id avec type invalide retourne 422", async () => {
+    const res = await request(app)
+      .put(`/elements/${createdElementId}`)
+      .send({ type: "NotAType" });
+    expect(res.status).toBe(422);
+  });
+
+  it("DELETE /elements/:id supprime l'élément (204)", async () => {
+    const res = await request(app).delete(`/elements/${createdElementId}`);
+    expect(res.status).toBe(204);
+  });
+
+  it("GET /elements/:id après suppression retourne 404", async () => {
+    const res = await request(app).get(`/elements/${createdElementId}`);
+    expect(res.status).toBe(404);
+  });
+
+  it("POST /elements sans name retourne 422", async () => {
+    const res = await request(app)
+      .post(`/elements`)
+      .send({ type: "ApplicationComponent" });
+    expect(res.status).toBe(422);
+  });
+
+  it("POST /elements sans type retourne 422", async () => {
+    const res = await request(app)
+      .post(`/elements`)
+      .send({ name: "No type" });
+    expect(res.status).toBe(422);
+  });
+
+  it("POST /elements avec type invalide retourne 422", async () => {
+    const res = await request(app)
+      .post(`/elements`)
+      .send({ name: "Bad", type: "Nonexistent" });
+    expect(res.status).toBe(422);
+  });
+
+  it("PUT /elements/:id inconnu retourne 404", async () => {
+    const res = await request(app)
+      .put(`/elements/${UNKNOWN_ID}`)
+      .send({ name: "X" });
+    expect(res.status).toBe(404);
+  });
+
+  it("DELETE /elements/:id inconnu retourne 404", async () => {
+    expect((await request(app).delete(`/elements/${UNKNOWN_ID}`)).status).toBe(404);
+  });
+});
+
+// ===========================================================================
+// Integration tests – POST /relationships (CRUD cycle)
+// ===========================================================================
+
+describe("Mutation - relations POST/PUT/DELETE", () => {
+  let createdRelId: string;
+  let srcElemId: string;
+  let tgtElemId: string;
+
+  beforeAll(async () => {
+    const res = await request(app).get(`/elements`);
+    const elems = res.body as ElementOut[];
+    srcElemId = elems[0]!.identifier;
+    tgtElemId = elems[1]!.identifier;
+  });
+
+  it("POST /relationships crée une relation (201)", async () => {
+    const res = await request(app)
+      .post(`/relationships`)
+      .send({ type: "Association", source: srcElemId, target: tgtElemId, name: "Test Rel" });
+    expect(res.status).toBe(201);
+    expect(res.body.identifier).toBeTruthy();
+    expect(res.body.type).toBe("Association");
+    expect(res.body.source).toBe(srcElemId);
+    expect(res.body.target).toBe(tgtElemId);
+    createdRelId = res.body.identifier as string;
+  });
+
+  it("GET /relationships/:id retrouve la relation créée", async () => {
+    const res = await request(app).get(`/relationships/${createdRelId}`);
+    expect(res.status).toBe(200);
+    expect(res.body.name).toBe("Test Rel");
+  });
+
+  it("PUT /relationships/:id modifie le nom", async () => {
+    const res = await request(app)
+      .put(`/relationships/${createdRelId}`)
+      .send({ name: "Updated Rel" });
+    expect(res.status).toBe(200);
+    expect(res.body.name).toBe("Updated Rel");
+  });
+
+  it("PUT /relationships/:id avec type invalide retourne 422", async () => {
+    const res = await request(app)
+      .put(`/relationships/${createdRelId}`)
+      .send({ type: "BadType" });
+    expect(res.status).toBe(422);
+  });
+
+  it("DELETE /relationships/:id supprime la relation (204)", async () => {
+    const res = await request(app).delete(`/relationships/${createdRelId}`);
+    expect(res.status).toBe(204);
+  });
+
+  it("GET /relationships/:id après suppression retourne 404", async () => {
+    const res = await request(app).get(`/relationships/${createdRelId}`);
+    expect(res.status).toBe(404);
+  });
+
+  it("POST /relationships sans type retourne 422", async () => {
+    const res = await request(app)
+      .post(`/relationships`)
+      .send({ source: srcElemId, target: tgtElemId });
+    expect(res.status).toBe(422);
+  });
+
+  it("POST /relationships avec type invalide retourne 422", async () => {
+    const res = await request(app)
+      .post(`/relationships`)
+      .send({ type: "BadType", source: srcElemId, target: tgtElemId });
+    expect(res.status).toBe(422);
+  });
+
+  it("POST /relationships avec source inconnue retourne 422", async () => {
+    const res = await request(app)
+      .post(`/relationships`)
+      .send({ type: "Association", source: UNKNOWN_ID, target: tgtElemId });
+    expect(res.status).toBe(422);
+  });
+
+  it("PUT /relationships/:id inconnu retourne 404", async () => {
+    const res = await request(app)
+      .put(`/relationships/${UNKNOWN_ID}`)
+      .send({ name: "X" });
+    expect(res.status).toBe(404);
+  });
+
+  it("DELETE /relationships/:id inconnu retourne 404", async () => {
+    expect((await request(app).delete(`/relationships/${UNKNOWN_ID}`)).status).toBe(404);
   });
 });
 
@@ -993,23 +1507,15 @@ describe(`GET /${SOURCE_ID}/views/:id`, () => {
 // ===========================================================================
 
 describe("MCP service", () => {
-  it("POST /mcp/ without session returns 400 for non-initialize request", async () => {
-    const res = await request(app)
-      .post("/mcp/")
-      .set("Content-Type", "application/json")
-      .send({ jsonrpc: "2.0", id: "1", method: "tools/list", params: {} });
-    expect(res.status).toBe(400);
-  });
+  const mcpHeaders = {
+    Accept: "application/json, text/event-stream",
+    "Content-Type": "application/json",
+  };
 
-  it("initialize and list tools via JSON-RPC", async () => {
-    const headers = {
-      Accept: "application/json, text/event-stream",
-      "Content-Type": "application/json",
-    };
-
+  beforeAll(async () => {
     const initRes = await request(app)
       .post("/mcp/")
-      .set(headers)
+      .set(mcpHeaders)
       .send({
         jsonrpc: "2.0",
         id: "init-1",
@@ -1020,20 +1526,24 @@ describe("MCP service", () => {
           clientInfo: { name: "vitest", version: "1.0" },
         },
       });
+    sharedMcpSessionId = initRes.headers["mcp-session-id"] as string;
+  }, 15000);
 
-    expect(initRes.status).toBe(200);
-    const sessionId = initRes.headers["mcp-session-id"] as string;
-    expect(sessionId).toBeTruthy();
+  it("POST /mcp/ without session returns 400 for non-initialize request", async () => {
+    const res = await request(app)
+      .post("/mcp/")
+      .set("Content-Type", "application/json")
+      .send({ jsonrpc: "2.0", id: "1", method: "tools/list", params: {} });
+    expect(res.status).toBe(400);
+  });
 
-    const initLine = initRes.text.split("\n").find((l) => l.startsWith("data: "));
-    expect(initLine).toBeTruthy();
-    const initPayload = JSON.parse(initLine!.replace("data: ", ""));
-    expect(initPayload.jsonrpc).toBe("2.0");
-    expect(initPayload).toHaveProperty("result");
+  it("initialize and list tools via JSON-RPC", async () => {
+    expect(sharedMcpSessionId).toBeTruthy();
+
 
     const toolsRes = await request(app)
       .post("/mcp/")
-      .set({ ...headers, "mcp-session-id": sessionId })
+      .set({ ...mcpHeaders, "mcp-session-id": sharedMcpSessionId })
       .send({ jsonrpc: "2.0", id: "tools-1", method: "tools/list", params: {} });
 
     expect(toolsRes.status).toBe(200);
@@ -1042,19 +1552,987 @@ describe("MCP service", () => {
     const registeredTools = new Set((toolsPayload.result.tools as { name: string }[]).map((t) => t.name));
 
     const expectedTools = new Set([
-      "get_model_info",
-      "list_element_types",
-      "list_elements",
-      "get_element",
-      "list_relationship_types",
-      "list_relationships",
-      "get_relationship",
-      "list_views",
-      "get_view",
+      "get_model_info", "list_element_types", "list_elements", "get_element",
+      "list_relationship_types", "list_relationships", "get_relationship",
+      "list_views", "get_view", "create_view", "create_node",
+      "create_element", "update_element", "delete_element",
+      "create_relationship", "update_relationship", "delete_relationship",
+      "save_model",
     ]);
 
     for (const tool of expectedTools) {
       expect(registeredTools.has(tool), `Tool '${tool}' not registered`).toBe(true);
     }
+  });
+});
+
+// ===========================================================================
+// Unit tests – serializeToArchi
+// ===========================================================================
+
+describe("serializeToArchi", () => {
+  it("produces XML with archimate:model root", () => {
+    const xml = serializeToArchi(makeDataSource().model);
+    expect(xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>')).toBe(true);
+    expect(xml).toContain("<archimate:model");
+    expect(xml).toContain("</archimate:model>");
+  });
+
+  it("embeds model name and id as attributes", () => {
+    const xml = serializeToArchi(makeDataSource({ uuid: "a-uuid", name: "Archi Model" }).model);
+    expect(xml).toContain('name="Archi Model"');
+    expect(xml).toContain('id="a-uuid"');
+  });
+
+  it("uses archimate: prefix on element type", () => {
+    const elem = makeElement({ uuid: "app-1", name: "My App", type: "ApplicationComponent" });
+    const xml = serializeToArchi(makeDataSource({ elements: [elem] }).model);
+    expect(xml).toContain('xsi:type="archimate:ApplicationComponent"');
+    expect(xml).toContain('name="My App"');
+    expect(xml).toContain('id="app-1"');
+    expect(xml).toContain('type="application"');
+  });
+
+  it("appends Relationship suffix to relation type", () => {
+    const src = makeElement({ uuid: "s2" });
+    const tgt = makeElement({ uuid: "t2" });
+    const rel = makeRelationship({ uuid: "r2", source: src, target: tgt, type: "Association" });
+    const xml = serializeToArchi(makeDataSource({ elements: [src, tgt], relationships: [rel] }).model);
+    expect(xml).toContain('xsi:type="archimate:AssociationRelationship"');
+    expect(xml).toContain('source="s2"');
+    expect(xml).toContain('target="t2"');
+  });
+
+  it("places elements in the correct layer folder", () => {
+    const e1 = makeElement({ type: "BusinessActor" });
+    const e2 = makeElement({ uuid: "u2", type: "Capability" });
+    const xml = serializeToArchi(makeDataSource({ elements: [e1, e2] }).model);
+    expect(xml).toContain('type="business"');
+    expect(xml).toContain('type="strategy"');
+  });
+
+  it("round-trips through parseArchiFormat", () => {
+    const src = makeElement({ uuid: "as", name: "Src", type: "BusinessActor" });
+    const tgt = makeElement({ uuid: "at", name: "Tgt", type: "BusinessService" });
+    const rel = makeRelationship({ uuid: "ar", source: src, target: tgt, type: "Serving" });
+    const original = makeDataSource({ uuid: "am", name: "Test Archi", elements: [src, tgt], relationships: [rel] }).model;
+    const parsed = parseArchiFormat(serializeToArchi(original));
+    expect(parsed.uuid).toBe("am");
+    expect(parsed.name).toBe("Test Archi");
+    expect(parsed.elements).toHaveLength(2);
+    expect(parsed.relationships).toHaveLength(1);
+    expect(parsed.elements.find((e) => e.uuid === "as")?.type).toBe("BusinessActor");
+    expect(parsed.relationships[0]!.type).toBe("Serving");
+  });
+});
+
+// ===========================================================================
+// Unit tests – Archi Junction type mapping
+// ===========================================================================
+
+const JUNCTION_XML = `<?xml version="1.0" encoding="UTF-8"?>
+<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="J" id="jm" version="5.0.0">
+  <folder name="Other" id="other-f" type="other">
+    <element xsi:type="archimate:Junction" name="AndJ" id="and-id"/>
+    <element xsi:type="archimate:Junction" name="OrJ" id="or-id" type="or"/>
+  </folder>
+  <folder name="Relations" id="rels-f" type="relations"/>
+  <folder name="Diagrams" id="diag-f" type="diagrams"/>
+</archimate:model>`;
+
+describe("Archi Junction mapping", () => {
+  it("parses Junction without type= as AndJunction", () => {
+    const model = parseArchiFormat(JUNCTION_XML);
+    expect(model.elements.find((e) => e.uuid === "and-id")?.type).toBe("AndJunction");
+  });
+
+  it("parses Junction with type=or as OrJunction", () => {
+    const model = parseArchiFormat(JUNCTION_XML);
+    expect(model.elements.find((e) => e.uuid === "or-id")?.type).toBe("OrJunction");
+  });
+
+  it("round-trips Junction types without loss", () => {
+    const model = parseArchiFormat(JUNCTION_XML);
+    const xml = serializeToArchi(model);
+    const reparsed = parseArchiFormat(xml);
+    expect(reparsed.elements.find((e) => e.uuid === "and-id")?.type).toBe("AndJunction");
+    expect(reparsed.elements.find((e) => e.uuid === "or-id")?.type).toBe("OrJunction");
+  });
+
+  it("preserves Junction ids in round-trip via _rawArchi", () => {
+    const model = parseArchiFormat(JUNCTION_XML);
+    const xml = serializeToArchi(model);
+    expect(xml).toContain('id="and-id"');
+    expect(xml).toContain('id="or-id"');
+  });
+});
+
+// ===========================================================================
+// Unit tests – serializeToArchi round-trip with raw Archi tree
+// ===========================================================================
+
+const ARCHI_ROUNDTRIP_XML = `<?xml version="1.0" encoding="UTF-8"?>
+<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="Test" id="model-rt-id" version="5.0.0">
+  <folder name="Application" id="app-folder-id" type="application">
+    <folder name="Components" id="comp-subfolder-id">
+      <element xsi:type="archimate:ApplicationComponent" name="ExistingApp" id="existing-app-id"/>
+    </folder>
+  </folder>
+  <folder name="Relations" id="rels-folder-id" type="relations"/>
+  <folder name="Diagrams" id="diagrams-folder-id" type="diagrams"/>
+</archimate:model>`;
+
+describe("serializeToArchi – round-trip with _rawArchi", () => {
+  it("preserves nested sub-folder ids", () => {
+    const model = parseArchiFormat(ARCHI_ROUNDTRIP_XML);
+    const xml = serializeToArchi(model);
+    expect(xml).toContain('id="comp-subfolder-id"');
+    expect(xml).toContain('id="app-folder-id"');
+  });
+
+  it("updates existing element in-place", () => {
+    const model = parseArchiFormat(ARCHI_ROUNDTRIP_XML);
+    model.elements[0]!.name = "RenamedApp";
+    const xml = serializeToArchi(model);
+    expect(xml).toContain("RenamedApp");
+    expect(xml).not.toContain("ExistingApp");
+  });
+
+  it("inserts new element into correct layer folder", () => {
+    const model = parseArchiFormat(ARCHI_ROUNDTRIP_XML);
+    model.elements.push({ uuid: "new-id", name: "NewApp", type: "ApplicationComponent", desc: null, props: {} });
+    const xml = serializeToArchi(model);
+    const reparsed = parseArchiFormat(xml);
+    expect(reparsed.elements).toHaveLength(2);
+    expect(reparsed.elements.find((e) => e.name === "NewApp")).toBeTruthy();
+  });
+
+  it("removes deleted elements", () => {
+    const model = parseArchiFormat(ARCHI_ROUNDTRIP_XML);
+    model.elements = [];
+    const xml = serializeToArchi(model);
+    const reparsed = parseArchiFormat(xml);
+    expect(reparsed.elements).toHaveLength(0);
+  });
+});
+
+// ===========================================================================
+// Unit tests – createView / createNode
+// ===========================================================================
+
+describe("createView", () => {
+  it("adds a view to the model", () => {
+    const ds = makeDataSource();
+    const before = ds.model.views.length;
+    createView(ds, { name: "My View" });
+    expect(ds.model.views.length).toBe(before + 1);
+  });
+
+  it("returns ViewDetailOut with correct name", () => {
+    const ds = makeDataSource();
+    const out = createView(ds, { name: "My View", viewpoint: "Layered", documentation: "doc" });
+    expect(out.name).toBe("My View");
+    expect(out.viewpoint).toBe("Layered");
+    expect(out.nodes).toEqual([]);
+    expect(out.connections).toEqual([]);
+  });
+
+  it("assigns a unique identifier", () => {
+    const ds = makeDataSource();
+    const a = createView(ds, { name: "A" });
+    const b = createView(ds, { name: "B" });
+    expect(a.identifier).not.toBe(b.identifier);
+  });
+});
+
+describe("createNode", () => {
+  it("adds a node to the view", () => {
+    const elem = makeElement();
+    const ds = makeDataSource({ elements: [elem] });
+    const view = createView(ds, { name: "V" });
+    createNode(ds, view.identifier, { element_id: elem.uuid });
+    expect(ds.model.views[0]!.nodes.length).toBe(1);
+  });
+
+  it("returns NodeOut with element_ref and coordinates", () => {
+    const elem = makeElement();
+    const ds = makeDataSource({ elements: [elem] });
+    const view = createView(ds, { name: "V" });
+    const node = createNode(ds, view.identifier, { element_id: elem.uuid, x: 10, y: 20, w: 120, h: 55 });
+    expect(node.element_ref).toBe(elem.uuid);
+    expect(node.x).toBe(10);
+    expect(node.y).toBe(20);
+    expect(node.w).toBe(120);
+    expect(node.h).toBe(55);
+  });
+
+  it("throws when view_id is unknown", () => {
+    const elem = makeElement();
+    const ds = makeDataSource({ elements: [elem] });
+    expect(() => createNode(ds, "no-such-view", { element_id: elem.uuid })).toThrow();
+  });
+
+  it("throws when element_id is unknown", () => {
+    const ds = makeDataSource();
+    const view = createView(ds, { name: "V" });
+    expect(() => createNode(ds, view.identifier, { element_id: "no-such-elem" })).toThrow();
+  });
+});
+
+// ===========================================================================
+// Unit tests – saveModel
+// ===========================================================================
+
+describe("saveModel", () => {
+  it("returns { saved: true, path } and writes the file", () => {
+    const tmpPath = `data/test-save-unit-${Date.now()}.archimate`;
+    const ds = { ...makeDataSource({ name: "Save Test" }), path: tmpPath };
+    const result = saveModel(ds);
+    expect(result.saved).toBe(true);
+    expect(result.path).toBe(tmpPath);
+    const fullPath = join(process.cwd(), tmpPath);
+    expect(existsSync(fullPath)).toBe(true);
+    rmSync(fullPath);
+  });
+});
+
+// ===========================================================================
+// Unit tests – serializeToArchi flat path (no _rawArchi)
+// ===========================================================================
+
+describe("serializeToArchi – flat path branches", () => {
+  it("includes documentation and properties for an element", () => {
+    const elem = makeElement({
+      uuid: "e-docs",
+      name: "Documented",
+      type: "BusinessActor",
+      desc: "Important actor",
+      props: { owner: "team-a", priority: "high" },
+    });
+    const xml = serializeToArchi(makeDataSource({ elements: [elem] }).model);
+    expect(xml).toContain("<documentation>Important actor</documentation>");
+    expect(xml).toContain('key="owner"');
+    expect(xml).toContain('value="team-a"');
+  });
+
+  it("serializes OrJunction with type=or attribute in flat path", () => {
+    const junction = makeElement({ uuid: "or-j", name: "OrGate", type: "OrJunction" });
+    const xml = serializeToArchi(makeDataSource({ elements: [junction] }).model);
+    expect(xml).toContain('xsi:type="archimate:Junction"');
+    expect(xml).toContain('type="or"');
+  });
+
+  it("serializes relationship optional fields: name, access_type, is_directed, influence_strength", () => {
+    const src = makeElement({ uuid: "rs1" });
+    const tgt = makeElement({ uuid: "rt1" });
+    const rel = makeRelationship({
+      uuid: "r-full",
+      source: src,
+      target: tgt,
+      type: "Access",
+      name: "reads data",
+      access_type: "Read",
+      is_directed: true,
+      influence_strength: "high",
+    });
+    const xml = serializeToArchi(makeDataSource({ elements: [src, tgt], relationships: [rel] }).model);
+    expect(xml).toContain('name="reads data"');
+    expect(xml).toContain('accessType="Read"');
+    expect(xml).toContain('directed="true"');
+    expect(xml).toContain('strength="high"');
+  });
+
+  it("serializes relationship with properties (inner element block)", () => {
+    const src = makeElement({ uuid: "rsp1" });
+    const tgt = makeElement({ uuid: "rtp1" });
+    const rel = makeRelationship({
+      uuid: "r-props",
+      source: src,
+      target: tgt,
+      type: "Flow",
+      props: { bandwidth: "100mbps" },
+    });
+    const xml = serializeToArchi(makeDataSource({ elements: [src, tgt], relationships: [rel] }).model);
+    expect(xml).toContain('key="bandwidth"');
+    expect(xml).toContain('value="100mbps"');
+  });
+
+  it("serializes view with nodes, connections, viewpoint, and documentation", () => {
+    const elem = makeElement({ uuid: "ve1", type: "ApplicationComponent" });
+    const node = makeNode({
+      uuid: "vn1",
+      name: "App Node",
+      ref: elem.uuid,
+      x: 10,
+      y: 20,
+      w: 120,
+      h: 55,
+      fill_color: { r: 255, g: 128, b: 0 },
+      line_color: { r: 0, g: 0, b: 128 },
+      font_color: { r: 50, g: 50, b: 50 },
+    });
+    const childNode = makeNode({ uuid: "vn2", name: null, ref: null, x: null, y: null, w: null, h: null, fill_color: null, line_color: null, font_color: null });
+    const nodeWithChild = { ...node, nodes: [childNode] };
+    const conn = makeConnection({ uuid: "vc1", source: "vn1", target: "vn2", ref: "rel-x", name: "arrow" });
+    const view = makeView({
+      uuid: "vv1",
+      name: "App View",
+      desc: "Application architecture",
+      primary_viewpoint: "Application Platform",
+      nodes: [nodeWithChild],
+      conns: [conn],
+    });
+    const xml = serializeToArchi(makeDataSource({ elements: [elem], views: [view] }).model);
+    expect(xml).toContain('viewpoint="Application Platform"');
+    expect(xml).toContain("<documentation>Application architecture</documentation>");
+    expect(xml).toContain('archimateElement="ve1"');
+    expect(xml).toContain('fillColor="#ff8000"');
+    expect(xml).toContain('lineColor="#000080"');
+    expect(xml).toContain('x="10"');
+    expect(xml).toContain('archimateRelationship="rel-x"');
+    expect(xml).toContain('name="arrow"');
+    expect(xml).toContain('name="App Node"');
+  });
+
+  it("serializes view with empty node list as self-closing element", () => {
+    const view = makeView({ uuid: "empty-v", name: "Empty View" });
+    const xml = serializeToArchi(makeDataSource({ views: [view] }).model);
+    expect(xml).toContain('id="empty-v"');
+    expect(xml).toContain('xsi:type="archimate:ArchimateDiagramModel"');
+  });
+});
+
+// ===========================================================================
+// Unit tests – serializeToArchi raw path with relationships and diagram nodes
+// ===========================================================================
+
+const FULL_ARCHI_XML = `<?xml version="1.0" encoding="UTF-8"?>
+<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="Full" id="fm1" version="5.0.0">
+  <folder name="Business" id="bf1" type="business">
+    <element xsi:type="archimate:BusinessActor" name="Actor" id="ba1"/>
+    <element xsi:type="archimate:BusinessService" name="Service" id="bs1"/>
+  </folder>
+  <folder name="Relations" id="rf1" type="relations">
+    <element xsi:type="archimate:AssociationRelationship" id="rel1" source="ba1" target="bs1" name="uses"/>
+  </folder>
+  <folder name="Diagrams" id="df1" type="diagrams">
+    <element xsi:type="archimate:ArchimateDiagramModel" name="View1" id="view1" viewpoint="Layered">
+      <child xsi:type="archimate:DiagramObject" id="node1" archimateElement="ba1" fillColor="#ff0000">
+        <bounds x="10" y="20" width="120" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="conn1" source="node1" target="node2" archimateRelationship="rel1" name="arrow"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="node2" archimateElement="bs1">
+        <bounds x="200" y="20" width="120" height="55"/>
+      </child>
+    </element>
+  </folder>
+</archimate:model>`;
+
+describe("serializeToArchi – raw path with relationships and views", () => {
+  it("preserves existing relationships through raw round-trip", () => {
+    const model = parseArchiFormat(FULL_ARCHI_XML);
+    const xml = serializeToArchi(model);
+    const reparsed = parseArchiFormat(xml);
+    expect(reparsed.relationships).toHaveLength(1);
+    expect(reparsed.relationships[0]!.type).toBe("Association");
+    expect(reparsed.relationships[0]!.name).toBe("uses");
+  });
+
+  it("preserves diagram nodes and connections through raw round-trip", () => {
+    const model = parseArchiFormat(FULL_ARCHI_XML);
+    const xml = serializeToArchi(model);
+    const reparsed = parseArchiFormat(xml);
+    expect(reparsed.views).toHaveLength(1);
+    expect(reparsed.views[0]!.nodes).toHaveLength(2);
+    expect(reparsed.views[0]!.conns).toHaveLength(1);
+  });
+
+  it("appends new relationship not in original raw tree", () => {
+    const model = parseArchiFormat(FULL_ARCHI_XML);
+    const newRel: ArchiRelationship = {
+      uuid: "new-rel",
+      name: "new-assoc",
+      type: "Association",
+      source: "ba1",
+      target: "bs1",
+      desc: null,
+      props: {},
+      access_type: null,
+      is_directed: null,
+      influence_strength: null,
+    };
+    model.relationships.push(newRel);
+    const xml = serializeToArchi(model);
+    expect(xml).toContain('id="new-rel"');
+    const reparsed = parseArchiFormat(xml);
+    expect(reparsed.relationships).toHaveLength(2);
+  });
+
+  it("appends new view not in original raw tree", () => {
+    const model = parseArchiFormat(FULL_ARCHI_XML);
+    const newView: ArchiView = {
+      uuid: "view2",
+      name: "New View",
+      desc: null,
+      primary_viewpoint: null,
+      nodes: [],
+      conns: [],
+    };
+    model.views.push(newView);
+    const xml = serializeToArchi(model);
+    expect(xml).toContain('id="view2"');
+    const reparsed = parseArchiFormat(xml);
+    expect(reparsed.views).toHaveLength(2);
+  });
+
+  it("serializes relationship with all optional raw fields (name, access_type, is_directed, influence_strength, props)", () => {
+    const model = parseArchiFormat(FULL_ARCHI_XML);
+    model.relationships[0]!.name = "named-rel";
+    model.relationships[0]!.access_type = "ReadWrite";
+    model.relationships[0]!.is_directed = false;
+    model.relationships[0]!.influence_strength = "low";
+    model.relationships[0]!.props = { tag: "important" };
+    const xml = serializeToArchi(model);
+    expect(xml).toContain('name="named-rel"');
+    expect(xml).toContain("ReadWrite");
+    expect(xml).toContain("low");
+    expect(xml).toContain('key="tag"');
+  });
+});
+
+// ===========================================================================
+// Unit tests – updateRelationship source and target
+// ===========================================================================
+
+describe("updateRelationship – source and target update", () => {
+  it("successfully updates source element", () => {
+    const e1 = makeElement({ uuid: "src-001" });
+    const e2 = makeElement({ uuid: "tgt-001" });
+    const e3 = makeElement({ uuid: "new-src-999" });
+    const ds = makeDataSource({ elements: [e1, e2, e3], relationships: [makeRelationship()] });
+    const result = updateRelationship(ds, "rel-001", { source: "new-src-999" });
+    expect(result.source).toBe("new-src-999");
+  });
+
+  it("successfully updates target element", () => {
+    const e1 = makeElement({ uuid: "src-001" });
+    const e2 = makeElement({ uuid: "tgt-001" });
+    const e3 = makeElement({ uuid: "new-tgt-999" });
+    const ds = makeDataSource({ elements: [e1, e2, e3], relationships: [makeRelationship()] });
+    const result = updateRelationship(ds, "rel-001", { target: "new-tgt-999" });
+    expect(result.target).toBe("new-tgt-999");
+  });
+
+  it("throws when new target element does not exist", () => {
+    const e1 = makeElement({ uuid: "src-001" });
+    const e2 = makeElement({ uuid: "tgt-001" });
+    const ds = makeDataSource({ elements: [e1, e2], relationships: [makeRelationship()] });
+    expect(() => updateRelationship(ds, "rel-001", { target: "no-such-tgt" })).toThrow("cible");
+  });
+});
+
+// ===========================================================================
+// Integration tests – REST validation gaps
+// ===========================================================================
+
+describe("POST /relationships – source and target field validation", () => {
+  let srcId: string;
+  let tgtId: string;
+
+  beforeAll(async () => {
+    const res = await request(app).get("/elements");
+    const elems = res.body as ElementOut[];
+    srcId = elems[0]!.identifier;
+    tgtId = elems[1]!.identifier;
+  });
+
+  it("returns 422 when source field is missing", async () => {
+    const res = await request(app)
+      .post("/relationships")
+      .send({ type: "Association", target: tgtId });
+    expect(res.status).toBe(422);
+    expect(res.body.detail).toContain("source");
+  });
+
+  it("returns 422 when target field is missing", async () => {
+    const res = await request(app)
+      .post("/relationships")
+      .send({ type: "Association", source: srcId });
+    expect(res.status).toBe(422);
+    expect(res.body.detail).toContain("target");
+  });
+});
+
+describe("GET /docs", () => {
+  it("returns HTML swagger UI page", async () => {
+    const res = await request(app).get("/docs");
+    expect(res.status).toBe(200);
+    expect(res.headers["content-type"]).toContain("text/html");
+    expect(res.text).toContain("swagger-ui");
+  });
+});
+
+// ===========================================================================
+// Integration tests – MCP tool calls via JSON-RPC
+// ===========================================================================
+
+describe("MCP tool calls via JSON-RPC", () => {
+  async function callTool(toolName: string, args: Record<string, unknown> = {}) {
+    const res = await request(app)
+      .post("/mcp/")
+      .set({ Accept: "application/json, text/event-stream", "Content-Type": "application/json", "mcp-session-id": sharedMcpSessionId })
+      .send({ jsonrpc: "2.0", id: `t-${Date.now()}`, method: "tools/call", params: { name: toolName, arguments: args } });
+    const line = res.text.split("\n").find((l) => l.startsWith("data: "));
+    return JSON.parse(line!.replace("data: ", "")) as { result?: { content: { text: string }[]; isError?: boolean }; error?: unknown };
+  }
+
+  function parseToolResult(payload: { result?: { content: { text: string }[]; isError?: boolean } }) {
+    return JSON.parse(payload.result!.content[0]!.text) as Record<string, unknown>;
+  }
+
+  it("get_model_info returns model metadata", async () => {
+    const payload = await callTool("get_model_info");
+    expect(payload.result).toBeTruthy();
+    const data = parseToolResult(payload);
+    expect(data).toHaveProperty("name");
+    expect(data).toHaveProperty("element_count");
+  });
+
+  it("list_element_types returns sorted types array", async () => {
+    const payload = await callTool("list_element_types");
+    const types = parseToolResult(payload) as unknown as string[];
+    expect(Array.isArray(types)).toBe(true);
+    expect(types.length).toBeGreaterThan(0);
+  });
+
+  it("list_elements with valid element_type filter", async () => {
+    const payload = await callTool("list_elements", { element_type: "BusinessActor" });
+    const elems = parseToolResult(payload) as unknown as unknown[];
+    expect(Array.isArray(elems)).toBe(true);
+  });
+
+  it("list_elements with invalid element_type throws MCP error", async () => {
+    const payload = await callTool("list_elements", { element_type: "NotAValidType" });
+    expect(payload.error || payload.result?.isError).toBeTruthy();
+  });
+
+  it("get_element returns element detail", async () => {
+    const payload = await callTool("get_element", { element_id: knownElement.identifier });
+    const data = parseToolResult(payload);
+    expect(data["identifier"]).toBe(knownElement.identifier);
+  });
+
+  it("list_relationship_types returns sorted types array", async () => {
+    const payload = await callTool("list_relationship_types");
+    const types = parseToolResult(payload) as unknown as string[];
+    expect(Array.isArray(types)).toBe(true);
+  });
+
+  it("list_relationships with valid rel_type filter", async () => {
+    const payload = await callTool("list_relationships", { rel_type: "Association" });
+    const rels = parseToolResult(payload) as unknown as unknown[];
+    expect(Array.isArray(rels)).toBe(true);
+  });
+
+  it("list_relationships with invalid rel_type throws MCP error", async () => {
+    const payload = await callTool("list_relationships", { rel_type: "NotARelType" });
+    expect(payload.error || payload.result?.isError).toBeTruthy();
+  });
+
+  it("get_relationship returns relationship detail", async () => {
+    const payload = await callTool("get_relationship", { relationship_id: knownRelationship.identifier });
+    const data = parseToolResult(payload);
+    expect(data["identifier"]).toBe(knownRelationship.identifier);
+  });
+
+  it("list_views returns view list", async () => {
+    const payload = await callTool("list_views");
+    const views = parseToolResult(payload) as unknown as unknown[];
+    expect(Array.isArray(views)).toBe(true);
+    expect(views.length).toBeGreaterThan(0);
+  });
+
+  it("get_view returns view detail", async () => {
+    const payload = await callTool("get_view", { view_id: knownView.identifier });
+    const data = parseToolResult(payload);
+    expect(data["identifier"]).toBe(knownView.identifier);
+  });
+
+  it("create_view creates a view with viewpoint and documentation", async () => {
+    const payload = await callTool("create_view", { name: "MCP View", viewpoint: "Layered", documentation: "mcp-created" });
+    const data = parseToolResult(payload);
+    expect(data["identifier"]).toBeTruthy();
+    expect(data["name"]).toBe("MCP View");
+    expect(data["viewpoint"]).toBe("Layered");
+  });
+
+  it("create_element (valid type), update_element (all fields), delete_element", async () => {
+    const created = parseToolResult(await callTool("create_element", {
+      name: "MCP App",
+      type: "ApplicationComponent",
+      documentation: "mcp doc",
+      properties: [{ property_definition_ref: "k", value: "v" }],
+    }));
+    const elemId = created["identifier"] as string;
+    expect(elemId).toBeTruthy();
+
+    const updated = parseToolResult(await callTool("update_element", {
+      element_id: elemId,
+      name: "MCP App Updated",
+      type: "ApplicationComponent",
+      documentation: "updated doc",
+      properties: [{ property_definition_ref: "k2", value: "v2" }],
+    }));
+    expect(updated["name"]).toBe("MCP App Updated");
+
+    const deleted = parseToolResult(await callTool("delete_element", { element_id: elemId }));
+    expect(deleted["deleted"]).toBe(true);
+  });
+
+  it("create_element with invalid type throws MCP error", async () => {
+    const payload = await callTool("create_element", { name: "Bad", type: "NotValid" });
+    expect(payload.error || payload.result?.isError).toBeTruthy();
+  });
+
+  it("update_element with invalid type throws MCP error", async () => {
+    const tmp = parseToolResult(await callTool("create_element", { name: "TmpE", type: "BusinessActor" }));
+    const tmpId = tmp["identifier"] as string;
+    const payload = await callTool("update_element", { element_id: tmpId, type: "BadType" });
+    expect(payload.error || payload.result?.isError).toBeTruthy();
+    await callTool("delete_element", { element_id: tmpId });
+  });
+
+  it("create_relationship (all fields), update_relationship (all fields), delete_relationship", async () => {
+    const e1 = parseToolResult(await callTool("create_element", { name: "MCP-E1", type: "BusinessActor" }));
+    const e2 = parseToolResult(await callTool("create_element", { name: "MCP-E2", type: "BusinessService" }));
+    const e1Id = e1["identifier"] as string;
+    const e2Id = e2["identifier"] as string;
+
+    const rel = parseToolResult(await callTool("create_relationship", {
+      type: "Association",
+      source: e1Id,
+      target: e2Id,
+      name: "mcp-rel",
+      documentation: "rel doc",
+      is_directed: true,
+    }));
+    const relId = rel["identifier"] as string;
+    expect(relId).toBeTruthy();
+
+    const updated = parseToolResult(await callTool("update_relationship", {
+      relationship_id: relId,
+      name: "updated-mcp-rel",
+      type: "Serving",
+      source: e1Id,
+      target: e2Id,
+      documentation: "updated doc",
+      properties: [{ property_definition_ref: "rk", value: "rv" }],
+      access_type: null,
+      is_directed: false,
+      influence_strength: null,
+    }));
+    expect(updated["name"]).toBe("updated-mcp-rel");
+    expect(updated["type"]).toBe("Serving");
+
+    const deleted = parseToolResult(await callTool("delete_relationship", { relationship_id: relId }));
+    expect(deleted["deleted"]).toBe(true);
+
+    await callTool("delete_element", { element_id: e1Id });
+    await callTool("delete_element", { element_id: e2Id });
+  });
+
+  it("create_relationship with invalid type throws MCP error", async () => {
+    const payload = await callTool("create_relationship", { type: "BadRel", source: "x", target: "y" });
+    expect(payload.error || payload.result?.isError).toBeTruthy();
+  });
+
+  it("update_relationship with invalid type throws MCP error", async () => {
+    const payload = await callTool("update_relationship", { relationship_id: "any", type: "BadRelType" });
+    expect(payload.error || payload.result?.isError).toBeTruthy();
+  });
+
+  it("create_node adds a node to a view", async () => {
+    const view = parseToolResult(await callTool("create_view", { name: "MCP Node Test View" }));
+    const viewId = view["identifier"] as string;
+    const elem = parseToolResult(await callTool("create_element", { name: "MCP-NodeElem", type: "ApplicationComponent" }));
+    const elemId = elem["identifier"] as string;
+
+    const node = parseToolResult(await callTool("create_node", { view_id: viewId, element_id: elemId, x: 10, y: 20, w: 100, h: 50 }));
+    expect(node["element_ref"]).toBe(elemId);
+    expect(node["x"]).toBe(10);
+
+    await callTool("delete_element", { element_id: elemId });
+  });
+
+  it("save_model returns saved: true", async () => {
+    const data = parseToolResult(await callTool("save_model"));
+    expect(data["saved"]).toBe(true);
+  });
+
+  it("GET /mcp/ without session returns 405", async () => {
+    const res = await request(app).get("/mcp/");
+    expect(res.status).toBe(405);
+  });
+
+  it("GET /mcp/ with valid session handles SSE request", async () => {
+    const res = await request(app).get("/mcp/").set({ "mcp-session-id": sharedMcpSessionId });
+    expect([200, 204, 405, 406]).toContain(res.status);
+  });
+
+  it("DELETE /mcp/ without session returns 404", async () => {
+    const res = await request(app).delete("/mcp/");
+    expect(res.status).toBe(404);
+  });
+});
+
+// ===========================================================================
+// Unit tests – archi-parser classifyType skip branch
+// ===========================================================================
+
+describe("archi-parser – unknown xsi:type is skipped", () => {
+  it("ignores elements with unknown xsi:type in classifyType", () => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="Skip" id="skip-m">
+  <folder name="Other" id="fo1" type="other">
+    <element xsi:type="archimate:UnknownFutureConcept" name="Unknown" id="x1"/>
+    <element xsi:type="archimate:AndJunction" name="And" id="j1"/>
+  </folder>
+</archimate:model>`;
+    const model = parseArchiFormat(xml);
+    expect(model.elements).toHaveLength(1);
+    expect(model.elements[0]!.uuid).toBe("j1");
+  });
+});
+
+// ===========================================================================
+// Unit tests – serializer raw path remaining branches
+// ===========================================================================
+
+const XML_FOR_RAW_BRANCHES = `<?xml version="1.0" encoding="UTF-8"?>
+<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="RawBranches" id="rb1" version="5.0.0">
+  <folder name="Business" id="bf2" type="business">
+    <element xsi:type="archimate:BusinessActor" name="Actor2" id="bact2"/>
+    <element xsi:type="archimate:BusinessService" name="Svc2" id="bsvc2"/>
+  </folder>
+  <folder name="Diagrams" id="df2" type="diagrams">
+    <folder name="DiagramsSub" id="dsub1">
+      <element xsi:type="archimate:ArchimateDiagramModel" name="SubView" id="subview1"/>
+    </folder>
+  </folder>
+</archimate:model>`;
+
+describe("serializeToArchi – raw path remaining branches", () => {
+  it("serializes element props in raw model (elemToRawArchiNode props branch)", () => {
+    const model = parseArchiFormat(FULL_ARCHI_XML);
+    model.elements[0]!.props = { tag: "important", owner: "team-b" };
+    const xml = serializeToArchi(model);
+    const reparsed = parseArchiFormat(xml);
+    expect(reparsed.elements[0]!.props).toMatchObject({ tag: "important" });
+  });
+
+  it("creates new folder for element type not in raw model (insertNewElements new folder)", () => {
+    const model = parseArchiFormat(FULL_ARCHI_XML);
+    model.elements.push(makeElement({ uuid: "cap-new-1", name: "MyCap", type: "Capability" }));
+    const xml = serializeToArchi(model);
+    expect(xml).toContain('id="cap-new-1"');
+    const reparsed = parseArchiFormat(xml);
+    expect(reparsed.elements.find((e) => e.uuid === "cap-new-1")).toBeTruthy();
+  });
+
+  it("collectRawViewIds recurses into nested diagram subfolder", () => {
+    const model = parseArchiFormat(XML_FOR_RAW_BRANCHES);
+    expect(model.views).toHaveLength(1);
+    expect(model.views[0]!.uuid).toBe("subview1");
+    const xml = serializeToArchi(model);
+    expect(xml).toContain('id="subview1"');
+  });
+
+  it("new view with nodes and connections via viewToRawArchiNode/diagramChildToRaw", () => {
+    const model = parseArchiFormat(FULL_ARCHI_XML);
+    const childNode: ArchiNode = {
+      uuid: "nn2", name: null, ref: null,
+      x: null, y: null, w: null, h: null,
+      fill_color: null, line_color: null,
+      font_name: null, font_size: null, font_color: null, line_width: null,
+      nodes: [],
+    };
+    const newNode: ArchiNode = {
+      uuid: "nn1", name: "DiagNode", ref: "ba1",
+      x: 10, y: 20, w: 100, h: 50,
+      fill_color: { r: 200, g: 100, b: 50 },
+      line_color: { r: 0, g: 0, b: 200 },
+      font_name: null, font_size: null, font_color: null, line_width: null,
+      nodes: [childNode],
+    };
+    const newConn: ArchiConnection = {
+      uuid: "nc1", name: "Link", ref: "rel1",
+      source: "nn1", target: "nn2",
+      line_color: null, font_name: null, font_size: null, font_color: null, line_width: null,
+    };
+    model.views.push({
+      uuid: "nv1", name: "New Diagram", desc: "test desc",
+      primary_viewpoint: "Layered",
+      nodes: [newNode], conns: [newConn],
+    });
+    const xml = serializeToArchi(model);
+    expect(xml).toContain('id="nv1"');
+    expect(xml).toContain('id="nn1"');
+    expect(xml).toContain('id="nc1"');
+    const reparsed = parseArchiFormat(xml);
+    const nv = reparsed.views.find((v) => v.uuid === "nv1")!;
+    expect(nv.nodes).toHaveLength(1);
+    expect(nv.conns).toHaveLength(1);
+  });
+
+  it("model without relations folder gets one created for new relationships", () => {
+    const model = parseArchiFormat(XML_FOR_RAW_BRANCHES);
+    model.relationships.push({
+      uuid: "new-rel-nf", name: "nf-assoc", type: "Association",
+      source: "bact2", target: "bsvc2",
+      desc: null, props: {}, access_type: null, is_directed: null, influence_strength: null,
+    });
+    const xml = serializeToArchi(model);
+    expect(xml).toContain('id="new-rel-nf"');
+    const reparsed = parseArchiFormat(xml);
+    expect(reparsed.relationships).toHaveLength(1);
+    expect(reparsed.relationships[0]!.uuid).toBe("new-rel-nf");
+  });
+});
+
+// ===========================================================================
+// Unit tests – renderViewToSvg
+// ===========================================================================
+
+describe("renderViewToSvg – empty view", () => {
+  const emptyModel: ArchiModel = {
+    uuid: "m1", name: "Model", desc: null, version: null,
+    elements: [], relationships: [], views: [],
+  };
+
+  it("returns a string starting with <svg", () => {
+    const svg = renderViewToSvg(makeView(), emptyModel);
+    expect(svg.trimStart()).toMatch(/^<svg /);
+  });
+
+  it("includes the view name in the output", () => {
+    const svg = renderViewToSvg(makeView({ name: "My Test View" }), emptyModel);
+    expect(svg).toContain("My Test View");
+  });
+
+  it("includes SVG namespace declaration", () => {
+    const svg = renderViewToSvg(makeView(), emptyModel);
+    expect(svg).toContain('xmlns="http://www.w3.org/2000/svg"');
+  });
+
+  it("closes the svg tag", () => {
+    const svg = renderViewToSvg(makeView(), emptyModel);
+    expect(svg).toContain("</svg>");
+  });
+
+  it("escapes XML special characters in view name", () => {
+    const svg = renderViewToSvg(makeView({ name: "View <A> & 'B'" }), emptyModel);
+    expect(svg).toContain("&amp;");
+    expect(svg).toContain("&lt;");
+    expect(svg).not.toContain("<A>");
+  });
+});
+
+describe("renderViewToSvg – with nodes", () => {
+  const elem: ArchiElement = { uuid: "e1", name: "My App", type: "ApplicationComponent", desc: null, props: {} };
+  const model: ArchiModel = {
+    uuid: "m1", name: "Model", desc: null, version: null,
+    elements: [elem], relationships: [], views: [],
+  };
+
+  it("includes element name in rendered SVG", () => {
+    const node = makeNode({ uuid: "n1", ref: elem, x: 10, y: 10, w: 120, h: 55 });
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), model);
+    expect(svg).toContain("My App");
+  });
+
+  it("renders a rect for the node", () => {
+    const node = makeNode({ uuid: "n1", ref: elem });
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), model);
+    expect(svg).toContain("<rect ");
+  });
+
+  it("renders a connection line between two nodes", () => {
+    const n1 = makeNode({ uuid: "n1", ref: elem, x: 10,  y: 10, w: 120, h: 55 });
+    const n2 = makeNode({ uuid: "n2", ref: elem, x: 200, y: 10, w: 120, h: 55 });
+    const conn = makeConnection({ uuid: "c1", source: "n1", target: "n2", ref: null });
+    const svg = renderViewToSvg(makeView({ nodes: [n1, n2], conns: [conn] }), model);
+    expect(svg).toContain("<line ");
+  });
+
+  it("applies dashed stroke for Realization connection type", () => {
+    const rel: ArchiRelationship = {
+      uuid: "rel-r1", name: null, type: "Realization",
+      source: elem, target: elem,
+      desc: null, props: {}, access_type: null, is_directed: null, influence_strength: null,
+    };
+    const relModel = { ...model, relationships: [rel] };
+    const n1 = makeNode({ uuid: "n1", ref: elem, x: 10,  y: 10, w: 120, h: 55 });
+    const n2 = makeNode({ uuid: "n2", ref: elem, x: 200, y: 10, w: 120, h: 55 });
+    const conn = makeConnection({ uuid: "c1", source: "n1", target: "n2", ref: "rel-r1" });
+    const svg = renderViewToSvg(makeView({ nodes: [n1, n2], conns: [conn] }), relModel);
+    expect(svg).toContain('stroke-dasharray="6,3"');
+  });
+
+  it("renders junctions as circles (no element rect)", () => {
+    const junction: ArchiElement = { uuid: "j1", name: "", type: "AndJunction", desc: null, props: {} };
+    const jModel = { ...model, elements: [junction] };
+    // null fill_color so ELEMENT_FILL default kicks in
+    const node = makeNode({ uuid: "n1", ref: junction, x: 50, y: 50, w: 14, h: 14, fill_color: null, line_color: null });
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), jModel);
+    expect(svg).toContain("<circle ");
+    // junction renders as fill="#000000" from ELEMENT_FILL["AndJunction"]
+    expect(svg).toContain('fill="#000000"');
+  });
+
+  it("renders Grouping with dashed border", () => {
+    const grouping: ArchiElement = { uuid: "g1", name: "My Group", type: "Grouping", desc: null, props: {} };
+    const gModel = { ...model, elements: [grouping] };
+    const node = makeNode({ uuid: "n1", ref: grouping, x: 0, y: 0, w: 300, h: 200 });
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), gModel);
+    expect(svg).toContain('stroke-dasharray="6,4"');
+  });
+});
+
+// ===========================================================================
+// Integration tests – GET /views/:view_id/image
+// ===========================================================================
+
+describe("GET /views/:view_id/image", () => {
+  it("returns SVG for a real view (default format)", async () => {
+    const res = await request(app).get(`/views/${knownView.identifier}/image`);
+    expect(res.status).toBe(200);
+    expect(res.headers["content-type"]).toMatch(/svg/);
+    // supertest buffers image/* as Buffer; convert to string for content check
+    const body = Buffer.isBuffer(res.body) ? res.body.toString() : String(res.body);
+    expect(body).toMatch(/^<svg /);
+  });
+
+  it("returns SVG when format=svg", async () => {
+    const res = await request(app).get(`/views/${knownView.identifier}/image?format=svg`);
+    expect(res.status).toBe(200);
+    expect(res.headers["content-type"]).toMatch(/svg/);
+  });
+
+  it("returns 404 for unknown view id", async () => {
+    const res = await request(app).get(`/views/${UNKNOWN_ID}/image`);
+    expect(res.status).toBe(404);
+    expect(res.body).toHaveProperty("detail");
+  });
+
+  it("returns 422 for invalid format", async () => {
+    const res = await request(app).get(`/views/${knownView.identifier}/image?format=gif`);
+    expect(res.status).toBe(422);
+    expect(res.body).toHaveProperty("detail");
+  });
+
+  it("returns 500 with useful message for PNG when sharp is not installed", async () => {
+    const res = await request(app).get(`/views/${knownView.identifier}/image?format=png`);
+    expect(res.status).toBe(500);
+    expect(res.body.detail).toMatch(/sharp/i);
   });
 });

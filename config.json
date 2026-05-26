@@ -1,16 +1,4 @@
 {
-  "sources": [
-    {
-      "id": "open-exchange",
-      "name": "Open Exchange Demo",
-      "path": "data/open-exchange.xml",
-      "format": "oef"
-    },
-    {
-      "id": "archisurance",
-      "name": "ArchiSurance",
-      "path": "data/archisurance.archimate",
-      "format": "archi"
-    }
-  ]
+  "path": "data/archisurance.archimate",
+  "name": "ArchiSurance"
 }
