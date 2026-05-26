@@ -1,4 +1,4 @@
-name: Publish to npm
+name: CI to npm
 
 on:
   push:
@@ -13,8 +13,12 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
 jobs:
-  publish:
+  ci:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write  # Required for OIDC trusted publishing
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
