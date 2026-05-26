@@ -1,6 +1,9 @@
 # mcp-archimate
 
+[![CI](https://github.com/lacrif/mcp-archimate/actions/workflows/npm-ci.yml/badge.svg)](https://github.com/lacrif/mcp-archimate/actions/workflows/npm-ci.yml)
+[![Codecov](https://codecov.io/github/lacrif/mcp-archimate/graph/badge.svg?token=RZRF5TU53A)](https://codecov.io/github/lacrif/mcp-archimate)
 [![Publish](https://github.com/lacrif/mcp-archimate/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/lacrif/mcp-archimate/actions/workflows/npm-publish.yml)
+[![npm](https://img.shields.io/npm/v/mcp-archimate)](https://img.shields.io/npm/v/mcp-archimate)
 
 A **REST API** and **MCP (Model Context Protocol) server** for querying and modifying ArchiMate models stored in native Archi Tool files.
 

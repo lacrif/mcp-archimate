@@ -2499,6 +2499,326 @@ describe("renderViewToSvg – with nodes", () => {
   });
 });
 
+describe("renderViewToSvg – specialized shapes (archi_type=1)", () => {
+  const baseModel = (type: string, uuid = "e1"): ArchiModel => ({
+    uuid: "m1", name: "Model", desc: null, version: null,
+    elements: [{ uuid, name: type, type, desc: null, props: {} }],
+    relationships: [], views: [],
+  });
+
+  function makeIconNode(type: string, uuid = "e1") {
+    const m = baseModel(type, uuid);
+    const node = makeNode({
+      uuid: "n1",
+      ref: m.elements[0]!,
+      archi_type: 1,
+      x: 10, y: 10, w: 120, h: 55,
+    });
+    return { node, model: m };
+  }
+
+  it("Service shape renders pill rect (large rx)", () => {
+    const { node, model: m } = makeIconNode("BusinessService");
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), m);
+    expect(svg).toMatch(/rx="\d+(\.\d+)?" ry="\d+(\.\d+)?"/);
+  });
+
+  it("Event shape renders a path element", () => {
+    const { node, model: m } = makeIconNode("BusinessEvent");
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), m);
+    expect(svg).toContain("<path ");
+  });
+
+  it("ImplementationEvent also renders event path", () => {
+    const { node, model: m } = makeIconNode("ImplementationEvent");
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), m);
+    expect(svg).toContain("<path ");
+  });
+
+  it("ApplicationComponent renders three rects (body + 2 nubs)", () => {
+    const { node, model: m } = makeIconNode("ApplicationComponent");
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), m);
+    expect((svg.match(/<rect /g) ?? []).length).toBeGreaterThanOrEqual(3);
+  });
+
+  it("Collaboration shape renders two ellipses", () => {
+    const { node, model: m } = makeIconNode("BusinessCollaboration");
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), m);
+    expect((svg.match(/<ellipse /g) ?? []).length).toBe(2);
+  });
+
+  it("Interface shape renders a circle", () => {
+    const { node, model: m } = makeIconNode("BusinessInterface");
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), m);
+    expect(svg).toContain("<circle ");
+  });
+
+  it("Function shape renders a path element", () => {
+    const { node, model: m } = makeIconNode("BusinessFunction");
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), m);
+    expect(svg).toContain("<path ");
+  });
+
+  it("Process shape renders a path element", () => {
+    const { node, model: m } = makeIconNode("BusinessProcess");
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), m);
+    expect(svg).toContain("<path ");
+  });
+
+  it("Interaction shape renders two half-ellipse paths", () => {
+    const { node, model: m } = makeIconNode("BusinessInteraction");
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), m);
+    expect((svg.match(/<path /g) ?? []).length).toBeGreaterThanOrEqual(2);
+  });
+
+  it("Interaction shape renders wider-than-tall node (w > h branch)", () => {
+    const m = baseModel("ApplicationInteraction");
+    const node = makeNode({ uuid: "n1", ref: m.elements[0]!, archi_type: 1, x: 10, y: 10, w: 200, h: 55 });
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), m);
+    expect(svg).toContain("<path ");
+  });
+
+  it("Interaction shape renders taller-than-wide node (w <= h branch)", () => {
+    const m = baseModel("ApplicationInteraction");
+    const node = makeNode({ uuid: "n1", ref: m.elements[0]!, archi_type: 1, x: 10, y: 10, w: 55, h: 120 });
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), m);
+    expect(svg).toContain("<path ");
+  });
+});
+
+describe("renderViewToSvg – data-object shapes", () => {
+  function makeDataNode(type: string) {
+    const m: ArchiModel = {
+      uuid: "m1", name: "M", desc: null, version: null,
+      elements: [{ uuid: "e1", name: type, type, desc: null, props: {} }],
+      relationships: [], views: [],
+    };
+    const node = makeNode({ uuid: "n1", ref: m.elements[0]!, x: 10, y: 10, w: 100, h: 60 });
+    return { node, model: m };
+  }
+
+  it("DataObject renders rect + header line", () => {
+    const { node, model: m } = makeDataNode("DataObject");
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), m);
+    expect(svg).toContain("<line ");
+    expect(svg).toContain("<rect ");
+  });
+
+  it("BusinessObject renders data-object shape", () => {
+    const { node, model: m } = makeDataNode("BusinessObject");
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), m);
+    expect(svg).toContain("<line ");
+  });
+
+  it("Artifact renders data-object shape", () => {
+    const { node, model: m } = makeDataNode("Artifact");
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), m);
+    expect(svg).toContain("<line ");
+  });
+});
+
+describe("renderViewToSvg – color and style helpers", () => {
+  it("uses derivedLineColor (rgb branch) when line_color is null and fill is rgb", () => {
+    const elem: ArchiElement = { uuid: "e1", name: "Node", type: "ApplicationComponent", desc: null, props: {} };
+    const m: ArchiModel = { uuid: "m1", name: "M", desc: null, version: null, elements: [elem], relationships: [], views: [] };
+    // fill_color set → rgbStr returns "rgb(...)", line_color null → derivedLineColor("rgb(...)") used
+    const node = makeNode({ uuid: "n1", ref: elem, fill_color: { r: 180, g: 200, b: 220, a: 255 }, line_color: null });
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), m);
+    // derivedLineColor: Math.floor(180*0.7)=125, Math.floor(200*0.7)=140, Math.floor(220*0.7)=154
+    expect(svg).toContain("rgb(125,140,154)");
+  });
+
+  it("applies custom font_size and font_name from node", () => {
+    const elem: ArchiElement = { uuid: "e1", name: "Elem", type: "Node", desc: null, props: {} };
+    const m: ArchiModel = { uuid: "m1", name: "M", desc: null, version: null, elements: [elem], relationships: [], views: [] };
+    const node = makeNode({ uuid: "n1", ref: elem, font_size: 14, font_name: "Courier,monospace" });
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), m);
+    expect(svg).toContain('font-size="14"');
+    expect(svg).toContain('font-family="Courier,monospace"');
+  });
+
+  it("applies custom font_color from node", () => {
+    const elem: ArchiElement = { uuid: "e1", name: "Elem", type: "Node", desc: null, props: {} };
+    const m: ArchiModel = { uuid: "m1", name: "M", desc: null, version: null, elements: [elem], relationships: [], views: [] };
+    const node = makeNode({ uuid: "n1", ref: elem, font_color: { r: 255, g: 0, b: 0, a: 255 } });
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), m);
+    expect(svg).toContain('fill="rgb(255,0,0)"');
+  });
+
+  it("OrJunction renders inner white ring", () => {
+    const junction: ArchiElement = { uuid: "j1", name: "", type: "OrJunction", desc: null, props: {} };
+    const m: ArchiModel = { uuid: "m1", name: "M", desc: null, version: null, elements: [junction], relationships: [], views: [] };
+    const node = makeNode({ uuid: "n1", ref: junction, x: 50, y: 50, w: 14, h: 14, fill_color: null, line_color: null });
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), m);
+    expect((svg.match(/<circle /g) ?? []).length).toBeGreaterThanOrEqual(2);
+    expect(svg).toContain('fill="white"');
+  });
+});
+
+describe("renderViewToSvg – node name edge cases", () => {
+  it("uses node.name when set (overrides ref.name)", () => {
+    const elem: ArchiElement = { uuid: "e1", name: "Elem Name", type: "Node", desc: null, props: {} };
+    const m: ArchiModel = { uuid: "m1", name: "M", desc: null, version: null, elements: [elem], relationships: [], views: [] };
+    const node = makeNode({ uuid: "n1", name: "Override Name", ref: elem });
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), m);
+    expect(svg).toContain("Override Name");
+    expect(svg).not.toContain("Elem Name");
+  });
+
+  it("uses ref.name when node.name is null", () => {
+    const elem: ArchiElement = { uuid: "e1", name: "From Ref", type: "Node", desc: null, props: {} };
+    const m: ArchiModel = { uuid: "m1", name: "M", desc: null, version: null, elements: [elem], relationships: [], views: [] };
+    const node = makeNode({ uuid: "n1", name: null, ref: elem });
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), m);
+    expect(svg).toContain("From Ref");
+  });
+
+  it("treats string ref as unresolved (nodeType → Grouping, nodeName → empty)", () => {
+    const m: ArchiModel = { uuid: "m1", name: "M", desc: null, version: null, elements: [], relationships: [], views: [] };
+    // ref is a raw string UUID (unresolved) — nodeType returns "Grouping"
+    const node = makeNode({ uuid: "n1", name: null, ref: "unresolved-uuid" });
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), m);
+    // Grouping shape → dashed border
+    expect(svg).toContain('stroke-dasharray="6,4"');
+  });
+
+  it("wraps long names across multiple text lines", () => {
+    const elem: ArchiElement = { uuid: "e1", name: "Word1 Word2 Word3 Word4 Word5", type: "Node", desc: null, props: {} };
+    const m: ArchiModel = { uuid: "m1", name: "M", desc: null, version: null, elements: [elem], relationships: [], views: [] };
+    // Small width forces wrapping
+    const node = makeNode({ uuid: "n1", ref: elem, w: 40, h: 80 });
+    const svg = renderViewToSvg(makeView({ nodes: [node] }), m);
+    // Multiple <text> elements should appear for wrapped lines
+    expect((svg.match(/<text /g) ?? []).length).toBeGreaterThanOrEqual(2);
+  });
+
+  it("renders top-left label when node has children", () => {
+    const elem: ArchiElement = { uuid: "e1", name: "Parent", type: "Node", desc: null, props: {} };
+    const child: ArchiElement = { uuid: "e2", name: "Child", type: "Node", desc: null, props: {} };
+    const m: ArchiModel = { uuid: "m1", name: "M", desc: null, version: null, elements: [elem, child], relationships: [], views: [] };
+    const childNode = makeNode({ uuid: "n2", ref: child, x: 10, y: 10, w: 80, h: 40 });
+    const parentNode = makeNode({ uuid: "n1", ref: elem, x: 0, y: 0, w: 200, h: 150, nodes: [childNode] });
+    const svg = renderViewToSvg(makeView({ nodes: [parentNode] }), m);
+    expect(svg).toContain("Parent");
+    expect(svg).toContain("Child");
+  });
+});
+
+describe("renderViewToSvg – connection features", () => {
+  const e1: ArchiElement = { uuid: "e1", name: "A", type: "Node", desc: null, props: {} };
+  const e2: ArchiElement = { uuid: "e2", name: "B", type: "Node", desc: null, props: {} };
+  const baseModel: ArchiModel = { uuid: "m1", name: "M", desc: null, version: null, elements: [e1, e2], relationships: [], views: [] };
+
+  it("renders connection label from conn.name", () => {
+    const n1 = makeNode({ uuid: "n1", ref: e1, x: 10, y: 10, w: 100, h: 50 });
+    const n2 = makeNode({ uuid: "n2", ref: e2, x: 200, y: 10, w: 100, h: 50 });
+    const conn = makeConnection({ uuid: "c1", source: "n1", target: "n2", ref: null, name: "my label" });
+    const svg = renderViewToSvg(makeView({ nodes: [n1, n2], conns: [conn] }), baseModel);
+    expect(svg).toContain("my label");
+  });
+
+  it("renders connection label from relationship name when conn.name is null", () => {
+    const rel: ArchiRelationship = {
+      uuid: "rel1", name: "flows to", type: "Flow",
+      source: e1, target: e2, desc: null, props: {},
+      access_type: null, is_directed: null, influence_strength: null,
+    };
+    const m = { ...baseModel, relationships: [rel] };
+    const n1 = makeNode({ uuid: "n1", ref: e1, x: 10, y: 10, w: 100, h: 50 });
+    const n2 = makeNode({ uuid: "n2", ref: e2, x: 200, y: 10, w: 100, h: 50 });
+    const conn = makeConnection({ uuid: "c1", source: "n1", target: "n2", ref: "rel1", name: null });
+    const svg = renderViewToSvg(makeView({ nodes: [n1, n2], conns: [conn] }), m);
+    expect(svg).toContain("flows to");
+  });
+
+  it("renders connection with bendpoints (waypoints path)", () => {
+    const n1 = makeNode({ uuid: "n1", ref: e1, x: 10, y: 10, w: 100, h: 50 });
+    const n2 = makeNode({ uuid: "n2", ref: e2, x: 200, y: 10, w: 100, h: 50 });
+    const conn = makeConnection({
+      uuid: "c1", source: "n1", target: "n2", ref: null,
+      bendpoints: [{ startX: 0, startY: -30, endX: 0, endY: -30 }],
+    });
+    const svg = renderViewToSvg(makeView({ nodes: [n1, n2], conns: [conn] }), baseModel);
+    expect(svg).toContain("<polyline ");
+  });
+
+  it("skips connection when source node not in geomMap", () => {
+    const n2 = makeNode({ uuid: "n2", ref: e2, x: 200, y: 10, w: 100, h: 50 });
+    const conn = makeConnection({ uuid: "c1", source: "no-such-node", target: "n2", ref: null });
+    const svg = renderViewToSvg(makeView({ nodes: [n2], conns: [conn] }), baseModel);
+    expect(svg).not.toContain("<polyline ");
+  });
+
+  it("skips connection when target node not in geomMap", () => {
+    const n1 = makeNode({ uuid: "n1", ref: e1, x: 10, y: 10, w: 100, h: 50 });
+    const conn = makeConnection({ uuid: "c1", source: "n1", target: "no-such-node", ref: null });
+    const svg = renderViewToSvg(makeView({ nodes: [n1], conns: [conn] }), baseModel);
+    expect(svg).not.toContain("<polyline ");
+  });
+
+  it("suppresses Composition arrow when target is visually nested inside source", () => {
+    const rel: ArchiRelationship = {
+      uuid: "rel1", name: null, type: "Composition",
+      source: e1, target: e2, desc: null, props: {},
+      access_type: null, is_directed: null, influence_strength: null,
+    };
+    const m = { ...baseModel, relationships: [rel] };
+    const childNode = makeNode({ uuid: "n2", ref: e2, x: 10, y: 10, w: 80, h: 40 });
+    const parentNode = makeNode({ uuid: "n1", ref: e1, x: 0, y: 0, w: 200, h: 150, nodes: [childNode] });
+    const conn = makeConnection({ uuid: "c1", source: "n1", target: "n2", ref: "rel1" });
+    const svg = renderViewToSvg(makeView({ nodes: [parentNode], conns: [conn] }), m);
+    expect(svg).not.toContain("<polyline ");
+  });
+
+  it("does NOT suppress non-structural relation for nested nodes", () => {
+    const rel: ArchiRelationship = {
+      uuid: "rel1", name: null, type: "Association",
+      source: e1, target: e2, desc: null, props: {},
+      access_type: null, is_directed: null, influence_strength: null,
+    };
+    const m = { ...baseModel, relationships: [rel] };
+    const childNode = makeNode({ uuid: "n2", ref: e2, x: 10, y: 10, w: 80, h: 40 });
+    const parentNode = makeNode({ uuid: "n1", ref: e1, x: 0, y: 0, w: 200, h: 150, nodes: [childNode] });
+    const conn = makeConnection({ uuid: "c1", source: "n1", target: "n2", ref: "rel1" });
+    const svg = renderViewToSvg(makeView({ nodes: [parentNode], conns: [conn] }), m);
+    expect(svg).toContain("<polyline ");
+  });
+
+  it("renders connection with custom line_color", () => {
+    const n1 = makeNode({ uuid: "n1", ref: e1, x: 10, y: 10, w: 100, h: 50 });
+    const n2 = makeNode({ uuid: "n2", ref: e2, x: 200, y: 10, w: 100, h: 50 });
+    const conn = makeConnection({ uuid: "c1", source: "n1", target: "n2", ref: null, line_color: { r: 255, g: 0, b: 0, a: 255 } });
+    const svg = renderViewToSvg(makeView({ nodes: [n1, n2], conns: [conn] }), baseModel);
+    expect(svg).toContain('stroke="rgb(255,0,0)"');
+  });
+
+  it("applies marker-start and marker-end for Composition relation", () => {
+    const rel: ArchiRelationship = {
+      uuid: "rel1", name: null, type: "Composition",
+      source: e1, target: e2, desc: null, props: {},
+      access_type: null, is_directed: null, influence_strength: null,
+    };
+    const m = { ...baseModel, relationships: [rel] };
+    const n1 = makeNode({ uuid: "n1", ref: e1, x: 10, y: 10, w: 100, h: 50 });
+    const n2 = makeNode({ uuid: "n2", ref: e2, x: 200, y: 10, w: 100, h: 50 });
+    const conn = makeConnection({ uuid: "c1", source: "n1", target: "n2", ref: "rel1" });
+    const svg = renderViewToSvg(makeView({ nodes: [n1, n2], conns: [conn] }), m);
+    expect(svg).toContain('marker-start="url(#diamond-filled)"');
+  });
+
+  it("sorts Grouping nodes before other nodes", () => {
+    const groupElem: ArchiElement = { uuid: "g1", name: "Group", type: "Grouping", desc: null, props: {} };
+    const m: ArchiModel = { ...baseModel, elements: [e1, groupElem] };
+    const groupNode = makeNode({ uuid: "ng", ref: groupElem, x: 0, y: 0, w: 300, h: 200 });
+    const childNode = makeNode({ uuid: "n1", ref: e1, x: 20, y: 20, w: 100, h: 50 });
+    const svg = renderViewToSvg(makeView({ nodes: [childNode, groupNode] }), m);
+    // Grouping dashed rect should appear before the child rect
+    const groupIdx = svg.indexOf('stroke-dasharray="6,4"');
+    const childIdx = svg.indexOf("<rect ", groupIdx + 1);
+    expect(groupIdx).toBeLessThan(childIdx);
+  });
+});
+
 // ===========================================================================
 // Integration tests – GET /views/:view_id/image
 // ===========================================================================
