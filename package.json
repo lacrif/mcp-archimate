@@ -10,7 +10,8 @@
     "start:dist": "node dist/main.js",
     "test": "vitest run",
     "test:watch": "vitest watch",
-    "test:coverage": "vitest run --coverage",
+    "test:coverage": "vitest run --coverage.enabled --coverage.reporter=lcov",
+    "test:ci": "vitest run --reporter=junit --outputFile=test-report.junit.xml",
     "lint": "eslint . --ext .ts"
   },
   "keywords": [
