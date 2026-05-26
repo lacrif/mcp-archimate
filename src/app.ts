@@ -312,6 +312,7 @@ export function createNode(ds: DataSource, view_id: string, input: NodeCreateIn)
     font_size: null,
     font_color: null,
     line_width: null,
+    archi_type: null,
     nodes: [],
   };
   view.nodes.push(node);
