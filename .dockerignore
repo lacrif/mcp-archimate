@@ -1,8 +1,0 @@
-.git/
-.gitignore
-tests/
-*.bak
-node_modules/
-dist/
-*.tsbuildinfo
-coverage/
