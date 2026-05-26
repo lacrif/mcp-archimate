@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="817" height="402" viewBox="0 0 817 402">
+  <defs>
+    <marker id="arrow-open" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#333" stroke-width="1.2"/>
+    </marker>
+    <marker id="arrow-filled" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#333" stroke="none"/>
+    </marker>
+    <marker id="arrow-hollow" markerWidth="11" markerHeight="9" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#333" stroke-width="1.2"/>
+    </marker>
+    <marker id="diamond-filled" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#333" stroke="#333" stroke-width="0.5"/>
+    </marker>
+    <marker id="diamond-open" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#333" stroke-width="1"/>
+    </marker>
+    <marker id="circle-solid" markerWidth="7" markerHeight="7" refX="0" refY="3.5" orient="auto-start-reverse">
+      <circle cx="3.5" cy="3.5" r="3" fill="#333" stroke="#333"/>
+    </marker>
+  </defs>
+<rect width="817" height="402" fill="white"/>
+<rect width="817" height="32" fill="#F0F0F0" stroke="#CCCCCC" stroke-width="1"/>
+<text x="408.5" y="21" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#222">Figure32_IoT-Device-Services(Target)</text>
+<rect x="197" y="64" width="176" height="284" rx="2" fill="#FFFFFF" stroke="#666666" stroke-width="1" stroke-dasharray="6,4"/>
+<text x="202" y="78" font-family="Arial,Helvetica,sans-serif" font-size="11" font-style="italic" fill="#444">Communication</text>
+<rect x="24" y="188" width="120" height="55" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfgCQULNzRduJgBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAJ5JREFUeNqtU9sNgCAMpIRPFnASZ3BiZ3ASB9B/DA0ltbSI0SZN5HHXaz3A2ZHEGrRLvkPgtn3FVCJKglgq8tQUUR5EwmUlo1oT87RUrB9CdCI8VLnNwxpi0zMDA0mVhIQLHXYQ37UI3c+k/8yA5AkliamwWkQF4ITLGFGdj9Im4sy/MOqJzzOg0KycnYmpnRVMNdLp2tc29BrVzTcEFwfLQzqf8GEWAAAAAElFTkSuQmCC" x="124.0" y="192.0" width="16" height="16"/>
+<text x="84.0" y="219.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">IoT Devices</text>
+<rect x="600" y="56" width="193" height="241" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxNjoxMzoyMyAtMDAwMCPI/rIAAAAHdElNRQfaAhMMKxAlwCqRAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFdJREFUeNpjYKAQMGIR+0+JAf9Xn5xJlMZQ83QwzUSuZphamAtIcjZMM8ggFpjgyefbidJsLumJwmciShceMGrAQBoATYmMZBkA0wwnGEhMiQzYMyF5AABINhUMtB7iwgAAAABJRU5ErkJggg==" x="773.0" y="60.0" width="16" height="16"/>
+<text x="696.5" y="180.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Data Acquisition Gateway</text>
+<circle cx="492" cy="269.5" r="23.375" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMJBZLO5NrAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE9JREFUeNpjYBhK4D8UowBGIjUynHy+Hcwxl/RE0UvIgP8wjegAahAjE6X+wucCnLYju4IFW8CQAljwuIIogwd3IKJ4BVc6IAVgTYnDAAAAeWUaDFxTXB0AAAAASUVORK5CYII=" x="532.0" y="246.0" width="16" height="16"/>
+<text x="492.0" y="298.9" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">REST API</text>
+<rect x="636" y="323" width="120" height="55" rx="27.5" ry="27.5" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxNjoxMzoyMyAtMDAwMCPI/rIAAAAHdElNRQfaAhMMJgCN2US4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAADdJREFUeNpjYBgFjEjs/+TohRnw/+Tz7STpNpf0BOtnJEczsiFMlIbBwBtAlUCEAbKicRQwMAAAAg8OC7JLzuoAAAAASUVORK5CYII=" x="722.3" y="327.0" width="16" height="16"/>
+<text x="696.0" y="347.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">PaaS</text>
+<text x="696.0" y="361.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Service</text>
+<path d="M 636,147 L 636,103 L 696,92 L 756,103 L 756,147 L 696,136 Z" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfcARoQOiSuYHFnAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAGlJREFUeNqdk8ENgDAMA+NswSTMwMTMwCSM0QpEf8R26299lyhSI3iaeI9k8HWfUgIBv9m3o+xCwUoCB2YSuHAlwQz8J0mbKkIF36Q1wVhTSZLB405MkgIOJUkDlpInLYyPw7ouvNqv0wEp4iTaCHqQIAAAAABJRU5ErkJggg==" x="736.0" y="107.0" width="16" height="16"/>
+<text x="696.0" y="116.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Data</text>
+<text x="696.0" y="130.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Acquisition</text>
+<rect x="636" y="188" width="120" height="55" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMOjE6cBnfAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAHNJREFUeNpjYBhowEiEmv/41DMSo3H1yZlgOtQ8HUMfIy6NJ59vhwuYS3piMwislwVdM7JGGICJgQyCGQIDTOQEHNSQ/+gGYLUd3SVI4UC+Cyg2ADkQkQ1ghIU2LkCVQES2HYWBBHCmAwZyUyIDcUl+gAAAB2UofTPnyuQAAAAASUVORK5CYII=" x="736.0" y="192.0" width="16" height="16"/>
+<text x="696.0" y="219.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Container</text>
+<rect x="224" y="184" width="120" height="55" rx="27.5" ry="27.5" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxNjoxMzoyMyAtMDAwMCPI/rIAAAAHdElNRQfaAhMMJgCN2US4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAADdJREFUeNpjYBgFjEjs/+TohRnw/+Tz7STpNpf0BOtnJEczsiFMlIbBwBtAlUCEAbKicRQwMAAAAg8OC7JLzuoAAAAASUVORK5CYII=" x="310.3" y="188.0" width="16" height="16"/>
+<text x="284.0" y="201.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Device</text>
+<text x="284.0" y="215.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Operation</text>
+<text x="284.0" y="229.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Service</text>
+<rect x="224" y="112" width="120" height="55" rx="27.5" ry="27.5" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxNjoxMzoyMyAtMDAwMCPI/rIAAAAHdElNRQfaAhMMJgCN2US4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAADdJREFUeNpjYBgFjEjs/+TohRnw/+Tz7STpNpf0BOtnJEczsiFMlIbBwBtAlUCEAbKicRQwMAAAAg8OC7JLzuoAAAAASUVORK5CYII=" x="310.3" y="116.0" width="16" height="16"/>
+<text x="284.0" y="129.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Device</text>
+<text x="284.0" y="143.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Registration</text>
+<text x="284.0" y="157.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Service</text>
+<rect x="224" y="256" width="120" height="55" rx="27.5" ry="27.5" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxNjoxMzoyMyAtMDAwMCPI/rIAAAAHdElNRQfaAhMMJgCN2US4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAADdJREFUeNpjYBgFjEjs/+TohRnw/+Tz7STpNpf0BOtnJEczsiFMlIbBwBtAlUCEAbKicRQwMAAAAg8OC7JLzuoAAAAASUVORK5CYII=" x="310.3" y="260.0" width="16" height="16"/>
+<text x="284.0" y="280.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Notification</text>
+<text x="284.0" y="294.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Service</text>
+<polyline points="695.4,56.0 696.2,147.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="695.0,297.0 696.4,188.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="600.0,220.4 552.0,242.2" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#diamond-filled)"/>
+<polyline points="636.0,132.1 373.0,187.5" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="696.0,188.0 696.0,147.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="197.0,210.2 144.0,212.7" fill="none" stroke="#444444" stroke-width="1" marker-end="url(#arrow-open)"/>
+<polyline points="432.0,251.1 373.0,233.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="696.1,323.0 696.2,297.0" fill="none" stroke="#444444" stroke-width="1" marker-end="url(#arrow-open)"/>
+</svg>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="543" height="279" viewBox="0 0 543 279">
+  <defs>
+    <marker id="arrow-open" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#333" stroke-width="1.2"/>
+    </marker>
+    <marker id="arrow-filled" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#333" stroke="none"/>
+    </marker>
+    <marker id="arrow-hollow" markerWidth="11" markerHeight="9" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#333" stroke-width="1.2"/>
+    </marker>
+    <marker id="diamond-filled" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#333" stroke="#333" stroke-width="0.5"/>
+    </marker>
+    <marker id="diamond-open" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#333" stroke-width="1"/>
+    </marker>
+    <marker id="circle-solid" markerWidth="7" markerHeight="7" refX="0" refY="3.5" orient="auto-start-reverse">
+      <circle cx="3.5" cy="3.5" r="3" fill="#333" stroke="#333"/>
+    </marker>
+  </defs>
+<rect width="543" height="279" fill="white"/>
+<rect width="543" height="32" fill="#F0F0F0" stroke="#CCCCCC" stroke-width="1"/>
+<text x="271.5" y="21" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#222">Figure-17_ValueStream_and_BusinessProcess_Mapping</text>
+<rect x="208" y="56" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfjCA0NDCF2GpyRAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEpJREFUeNpjYKAQMALxfxLUYjfg671VBHVzK4VhNQQmQLYhyByyDEF3EsmGYAsYkgxhxCFPtCFUdwFFYUBRLFCUDihOiRTlhYEHAOzTLg2GRiKPAAAAAElFTkSuQmCC" x="308.0" y="60.0" width="16" height="16"/>
+<text x="268.0" y="73.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">03 Manage</text>
+<text x="268.0" y="87.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Policies and</text>
+<text x="268.0" y="101.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Claims</text>
+<path d="M 208,211 L 292,211 L 292,200 L 328,227.5 L 292,255 L 292,244 L 208,244 Z" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KKg7YlrImAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFBJREFUeNpjYBgq4D8uCSZKDSHagP//t2I1BGbAfwIYpyGMcDmIJFGAkdEbrpeUMMDqHbIMQHYB3AtE2oqimTRX/9+KEqAkG0CJZqK8OIQBAP2PJhRoErNqAAAAAElFTkSuQmCC" x="272.0" y="215.0" width="16" height="16"/>
+<text x="354.0" y="217.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">L1 Issue</text>
+<text x="354.0" y="231.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">New</text>
+<text x="354.0" y="245.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Policy</text>
+<path d="M 399,211 L 483,211 L 483,200 L 519,227.5 L 483,255 L 483,244 L 399,244 Z" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KKg7YlrImAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFBJREFUeNpjYBgq4D8uCSZKDSHagP//t2I1BGbAfwIYpyGMcDmIJFGAkdEbrpeUMMDqHbIMQHYB3AtE2oqimTRX/9+KEqAkG0CJZqK8OIQBAP2PJhRoErNqAAAAAElFTkSuQmCC" x="463.0" y="215.0" width="16" height="16"/>
+<text x="640.5" y="224.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">L1 Handle</text>
+<text x="640.5" y="238.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Claim</text>
+<path d="M 24,211 L 108,211 L 108,200 L 144,227.5 L 108,255 L 108,244 L 24,244 Z" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KKg7YlrImAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFBJREFUeNpjYBgq4D8uCSZKDSHagP//t2I1BGbAfwIYpyGMcDmIJFGAkdEbrpeUMMDqHbIMQHYB3AtE2oqimTRX/9+KEqAkG0CJZqK8OIQBAP2PJhRoErNqAAAAAElFTkSuQmCC" x="88.0" y="215.0" width="16" height="16"/>
+<text x="78.0" y="210.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">L1</text>
+<text x="78.0" y="224.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Calculate</text>
+<text x="78.0" y="238.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Insurance</text>
+<text x="78.0" y="252.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Premium</text>
+<circle cx="267.5" cy="151.5" r="7.5" fill="#000000" stroke="#666666" stroke-width="1"/>
+<polyline points="267.8,200.0 267.5,159.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="459.1,200.0 459.3,152.5 275.0,151.5" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="85.2,200.0 87.3,152.5 260.0,151.5" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="267.6,144.0 267.8,111.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+</svg>

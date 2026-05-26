@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="447" viewBox="0 0 720 447">
+  <defs>
+    <marker id="arrow-open" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#333" stroke-width="1.2"/>
+    </marker>
+    <marker id="arrow-filled" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#333" stroke="none"/>
+    </marker>
+    <marker id="arrow-hollow" markerWidth="11" markerHeight="9" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#333" stroke-width="1.2"/>
+    </marker>
+    <marker id="diamond-filled" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#333" stroke="#333" stroke-width="0.5"/>
+    </marker>
+    <marker id="diamond-open" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#333" stroke-width="1"/>
+    </marker>
+    <marker id="circle-solid" markerWidth="7" markerHeight="7" refX="0" refY="3.5" orient="auto-start-reverse">
+      <circle cx="3.5" cy="3.5" r="3" fill="#333" stroke="#333"/>
+    </marker>
+  </defs>
+<rect width="720" height="447" fill="white"/>
+<rect width="720" height="32" fill="#F0F0F0" stroke="#CCCCCC" stroke-width="1"/>
+<text x="360" y="21" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#222">Figure-20_Resource-Map-View</text>
+<rect x="24" y="56" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="124.0" y="60.0" width="16" height="16"/>
+<text x="84.0" y="80.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Customer</text>
+<text x="84.0" y="94.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="324" y="56" width="217" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="521.0" y="60.0" width="16" height="16"/>
+<text x="432.5" y="87.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Digital Channel Management</text>
+<rect x="24" y="255" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="124.0" y="259.0" width="16" height="16"/>
+<text x="84.0" y="272.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Policy and</text>
+<text x="84.0" y="286.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Claim</text>
+<text x="84.0" y="300.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="252" y="255" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="352.0" y="259.0" width="16" height="16"/>
+<text x="312.0" y="279.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Data</text>
+<text x="312.0" y="293.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Acquisition</text>
+<rect x="480" y="255" width="157" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="617.0" y="259.0" width="16" height="16"/>
+<text x="558.5" y="286.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Data Analysis</text>
+<rect x="396" y="368" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQEWMRylyzAJAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjYBhowAil/5OpD8z4//XeKpJ0cyuFwQ1hotQLKAZATcagcYD/FLkA6u3/1PXC0DIAFpUDnw4oTsoDDwDDkRCdt3EEIwAAAABJRU5ErkJggg==" x="496.0" y="372.0" width="16" height="16"/>
+<text x="456.0" y="392.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Data Analysis</text>
+<text x="456.0" y="406.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Automation</text>
+<rect x="24" y="152" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQEWMRylyzAJAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjYBhowAil/5OpD8z4//XeKpJ0cyuFwQ1hotQLKAZATcagcYD/FLkA6u3/1PXC0DIAFpUDnw4oTsoDDwDDkRCdt3EEIwAAAABJRU5ErkJggg==" x="124.0" y="156.0" width="16" height="16"/>
+<text x="84.0" y="176.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Enterprise-Wide</text>
+<text x="84.0" y="190.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">CRM Automation</text>
+<rect x="252" y="368" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQEWMRylyzAJAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjYBhowAil/5OpD8z4//XeKpJ0cyuFwQ1hotQLKAZATcagcYD/FLkA6u3/1PXC0DIAFpUDnw4oTsoDDwDDkRCdt3EEIwAAAABJRU5ErkJggg==" x="352.0" y="372.0" width="16" height="16"/>
+<text x="312.0" y="399.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Data Sources</text>
+<rect x="24" y="368" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQEWMRylyzAJAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjYBhowAil/5OpD8z4//XeKpJ0cyuFwQ1hotQLKAZATcagcYD/FLkA6u3/1PXC0DIAFpUDnw4oTsoDDwDDkRCdt3EEIwAAAABJRU5ErkJggg==" x="124.0" y="372.0" width="16" height="16"/>
+<text x="84.0" y="385.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Integrated</text>
+<text x="84.0" y="399.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Back Office</text>
+<text x="84.0" y="413.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Automation</text>
+<rect x="486" y="152" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQEWMRylyzAJAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjYBhowAil/5OpD8z4//XeKpJ0cyuFwQ1hotQLKAZATcagcYD/FLkA6u3/1PXC0DIAFpUDnw4oTsoDDwDDkRCdt3EEIwAAAABJRU5ErkJggg==" x="586.0" y="156.0" width="16" height="16"/>
+<text x="546.0" y="176.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Social Media</text>
+<text x="546.0" y="190.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Apps</text>
+<rect x="576" y="368" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQEWMRylyzAJAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjYBhowAil/5OpD8z4//XeKpJ0cyuFwQ1hotQLKAZATcagcYD/FLkA6u3/1PXC0DIAFpUDnw4oTsoDDwDDkRCdt3EEIwAAAABJRU5ErkJggg==" x="676.0" y="372.0" width="16" height="16"/>
+<text x="636.0" y="385.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Staff with</text>
+<text x="636.0" y="399.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Data Analysis</text>
+<text x="636.0" y="413.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Competency</text>
+<rect x="252" y="152" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQEWMRylyzAJAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjYBhowAil/5OpD8z4//XeKpJ0cyuFwQ1hotQLKAZATcagcYD/FLkA6u3/1PXC0DIAFpUDnw4oTsoDDwDDkRCdt3EEIwAAAABJRU5ErkJggg==" x="352.0" y="156.0" width="16" height="16"/>
+<text x="312.0" y="169.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Staff with</text>
+<text x="312.0" y="183.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Social Media</text>
+<text x="312.0" y="197.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Competency</text>
+<polyline points="480.9,368.0 533.6,310.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="84.0,152.0 84.0,111.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="312.0,368.0 312.0,310.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="84.0,368.0 84.0,310.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="513.5,152.0 465.0,111.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="617.1,368.0 577.4,310.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="346.5,152.0 398.0,111.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+</svg>

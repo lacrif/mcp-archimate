@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="996" height="705" viewBox="0 0 996 705">
+  <defs>
+    <marker id="arrow-open" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#333" stroke-width="1.2"/>
+    </marker>
+    <marker id="arrow-filled" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#333" stroke="none"/>
+    </marker>
+    <marker id="arrow-hollow" markerWidth="11" markerHeight="9" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#333" stroke-width="1.2"/>
+    </marker>
+    <marker id="diamond-filled" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#333" stroke="#333" stroke-width="0.5"/>
+    </marker>
+    <marker id="diamond-open" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#333" stroke-width="1"/>
+    </marker>
+    <marker id="circle-solid" markerWidth="7" markerHeight="7" refX="0" refY="3.5" orient="auto-start-reverse">
+      <circle cx="3.5" cy="3.5" r="3" fill="#333" stroke="#333"/>
+    </marker>
+  </defs>
+<rect width="996" height="705" fill="white"/>
+<rect width="996" height="32" fill="#F0F0F0" stroke="#CCCCCC" stroke-width="1"/>
+<text x="498" y="21" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#222">Figure30_Infrastructure-View(Target)</text>
+<rect x="48" y="80" width="349" height="264" rx="2" fill="#FFFFFF" stroke="#666666" stroke-width="1" stroke-dasharray="6,4"/>
+<text x="53" y="94" font-family="Arial,Helvetica,sans-serif" font-size="11" font-style="italic" fill="#444">Front Office</text>
+<rect x="600" y="68" width="301" height="276" rx="2" fill="#FFFFFF" stroke="#666666" stroke-width="1" stroke-dasharray="6,4"/>
+<text x="605" y="82" font-family="Arial,Helvetica,sans-serif" font-size="11" font-style="italic" fill="#444">Homeowner's &amp; Travel Back Office</text>
+<rect x="492" y="477" width="457" height="168" rx="2" fill="#FFFFFF" stroke="#666666" stroke-width="1" stroke-dasharray="6,4"/>
+<text x="497" y="491" font-family="Arial,Helvetica,sans-serif" font-size="11" font-style="italic" fill="#444">Shared Service Center</text>
+<rect x="24" y="56" width="901" height="300" rx="2" fill="#EDCFE2" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfmChMLOS1D24zBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNpjZMAN/mMRYyQoANP89vwjDEFhQzkMPYzEasZlCCMpmrEZwkRQNQFAsQFUDwO8hmCLBZp4AasrsNlOFRcQAiBXgJL0f1wKaO4CBny2080FeAEAw2wfrl8TEl4AAAAASUVORK5CYII=" x="905.0" y="60.0" width="16" height="16"/>
+<text x="474.5" y="210.0" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Home &amp; Away Headquarters</text>
+<rect x="468" y="369" width="504" height="312" rx="2" fill="#EDCFE2" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfmChMLOS1D24zBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNpjZMAN/mMRYyQoANP89vwjDEFhQzkMPYzEasZlCCMpmrEZwkRQNQFAsQFUDwO8hmCLBZp4AasrsNlOFRcQAiBXgJL0f1wKaO4CBny2080FeAEAw2wfrl8TEl4AAAAASUVORK5CYII=" x="952.0" y="373.0" width="16" height="16"/>
+<text x="720.0" y="529.0" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">PRO-FIT Headquarters</text>
+<rect x="276" y="452" width="120" height="55" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMIjovuVgOAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAF1JREFUeNpjYKAQMKLx/+ORw6oGWdH/k8+3wznmkp5YLUBXw0LAhf8JyBM0AJ8XqRMGJDsZXR0TkRpIM5UUdRS7ABYIZAceiEFWAoKpwZUOiA0PnAYQTEBUCwOKAQBw8SAUStVa0wAAAABJRU5ErkJggg==" x="376.0" y="456.0" width="16" height="16"/>
+<text x="336.0" y="476.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">ArchiSurance</text>
+<text x="336.0" y="490.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">WAN</text>
+<rect x="432" y="212" width="120" height="55" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMIjovuVgOAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAF1JREFUeNpjYKAQMKLx/+ORw6oGWdH/k8+3wznmkp5YLUBXw0LAhf8JyBM0AJ8XqRMGJDsZXR0TkRpIM5UUdRS7ABYIZAceiEFWAoKpwZUOiA0PnAYQTEBUCwOKAQBw8SAUStVa0wAAAABJRU5ErkJggg==" x="532.0" y="216.0" width="16" height="16"/>
+<text x="492.0" y="236.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Home &amp; Away</text>
+<text x="492.0" y="250.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">LAN</text>
+<rect x="432" y="80" width="120" height="55" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxNjoxMzoyMyAtMDAwMCPI/rIAAAAHdElNRQfaAhMMKxAlwCqRAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFdJREFUeNpjYKAQMGIR+0+JAf9Xn5xJlMZQ83QwzUSuZphamAtIcjZMM8ggFpjgyefbidJsLumJwmciShceMGrAQBoATYmMZBkA0wwnGEhMiQzYMyF5AABINhUMtB7iwgAAAABJRU5ErkJggg==" x="532.0" y="84.0" width="16" height="16"/>
+<text x="492.0" y="97.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Data</text>
+<text x="492.0" y="111.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Acquisition</text>
+<text x="492.0" y="125.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Gateway</text>
+<rect x="528" y="393" width="120" height="55" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMIjovuVgOAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAF1JREFUeNpjYKAQMKLx/+ORw6oGWdH/k8+3wznmkp5YLUBXw0LAhf8JyBM0AJ8XqRMGJDsZXR0TkRpIM5UUdRS7ABYIZAceiEFWAoKpwZUOiA0PnAYQTEBUCwOKAQBw8SAUStVa0wAAAABJRU5ErkJggg==" x="628.0" y="397.0" width="16" height="16"/>
+<text x="588.0" y="424.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">PRO-FIT LAN</text>
+<rect x="144" y="104" width="181" height="97" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMNAhaJJ3p4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjYBhowIjG/0+qPmQD/p98vp0o3eaSnnC9TJR6YdQAKhhAcTpgQZchlBagaQCrC8hKSIykakY3BG4AiWGHzQfkAQCWpBIXmCT6FAAAAABJRU5ErkJggg==" x="305.0" y="108.0" width="16" height="16"/>
+<text x="234.5" y="156.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">FO Web Hosting Server</text>
+<rect x="60" y="224" width="325" height="109" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMNAhaJJ3p4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjYBhowIjG/0+qPmQD/p98vp0o3eaSnnC9TJR6YdQAKhhAcTpgQZchlBagaQCrC8hKSIykakY3BG4AiWGHzQfkAQCWpBIXmCT6FAAAAABJRU5ErkJggg==" x="365.0" y="228.0" width="16" height="16"/>
+<text x="222.5" y="282.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">FO General-Purpose Server</text>
+<rect x="624" y="92" width="253" height="109" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMNAhaJJ3p4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjYBhowIjG/0+qPmQD/p98vp0o3eaSnnC9TJR6YdQAKhhAcTpgQZchlBagaQCrC8hKSIykakY3BG4AiWGHzQfkAQCWpBIXmCT6FAAAAABJRU5ErkJggg==" x="857.0" y="96.0" width="16" height="16"/>
+<text x="750.5" y="143.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">ArchiSurance General-Purpose Server</text>
+<text x="750.5" y="157.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Cluster</text>
+<rect x="624" y="215" width="253" height="109" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMNAhaJJ3p4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjYBhowIjG/0+qPmQD/p98vp0o3eaSnnC9TJR6YdQAKhhAcTpgQZchlBagaQCrC8hKSIykakY3BG4AiWGHzQfkAQCWpBIXmCT6FAAAAABJRU5ErkJggg==" x="857.0" y="219.0" width="16" height="16"/>
+<text x="750.5" y="273.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Document Management Back-Up Server</text>
+<rect x="528" y="513" width="164" height="109" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMNAhaJJ3p4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjYBhowIjG/0+qPmQD/p98vp0o3eaSnnC9TJR6YdQAKhhAcTpgQZchlBagaQCrC8hKSIykakY3BG4AiWGHzQfkAQCWpBIXmCT6FAAAAABJRU5ErkJggg==" x="672.0" y="517.0" width="16" height="16"/>
+<text x="610.0" y="564.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Document Management</text>
+<text x="610.0" y="578.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Server</text>
+<rect x="705" y="513" width="232" height="109" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMNAhaJJ3p4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjYBhowIjG/0+qPmQD/p98vp0o3eaSnnC9TJR6YdQAKhhAcTpgQZchlBagaQCrC8hKSIykakY3BG4AiWGHzQfkAQCWpBIXmCT6FAAAAABJRU5ErkJggg==" x="917.0" y="517.0" width="16" height="16"/>
+<text x="821.0" y="564.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">ArchiSurance General-Purpose</text>
+<text x="821.0" y="578.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Back-Up Server Cluster</text>
+<rect x="163" y="130" width="137" height="55" rx="1" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<line x1="163" y1="144" x2="300" y2="144" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMGCTwH7sUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEdJREFUeNpjYBhowIjG/0+kOtwGnHy+HUXAXNITryFMxDgTauh/sg3AZwgLMZqRvAEzhJFoA/CECWlewAVGDSA+KRPSN4AAAD3CEX9wrOCFAAAAAElFTkSuQmCC" x="280.0" y="134.0" width="16" height="16"/>
+<text x="231.5" y="161.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Web Portal</text>
+<text x="231.5" y="175.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Implementation</text>
+<rect x="72" y="257" width="131" height="55" rx="1" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<line x1="72" y1="271" x2="203" y2="271" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMGCTwH7sUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEdJREFUeNpjYBhowIjG/0+kOtwGnHy+HUXAXNITryFMxDgTauh/sg3AZwgLMZqRvAEzhJFoA/CECWlewAVGDSA+KRPSN4AAAD3CEX9wrOCFAAAAAElFTkSuQmCC" x="183.0" y="261.0" width="16" height="16"/>
+<text x="137.5" y="288.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Call Center</text>
+<text x="137.5" y="302.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Implementation</text>
+<rect x="228" y="257" width="131" height="55" rx="1" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<line x1="228" y1="271" x2="359" y2="271" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMGCTwH7sUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEdJREFUeNpjYBhowIjG/0+kOtwGnHy+HUXAXNITryFMxDgTauh/sg3AZwgLMZqRvAEzhJFoA/CECWlewAVGDSA+KRPSN4AAAD3CEX9wrOCFAAAAAElFTkSuQmCC" x="339.0" y="261.0" width="16" height="16"/>
+<text x="293.5" y="288.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">CRM System</text>
+<text x="293.5" y="302.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Implementation</text>
+<rect x="675" y="137" width="142" height="55" rx="1" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<line x1="675" y1="151" x2="817" y2="151" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMGCTwH7sUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEdJREFUeNpjYBhowIjG/0+kOtwGnHy+HUXAXNITryFMxDgTauh/sg3AZwgLMZqRvAEzhJFoA/CECWlewAVGDSA+KRPSN4AAAD3CEX9wrOCFAAAAAElFTkSuQmCC" x="797.0" y="141.0" width="16" height="16"/>
+<text x="746.0" y="168.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Back Office Suite</text>
+<text x="746.0" y="182.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Implementation</text>
+<rect x="672" y="251" width="140" height="55" rx="1" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<line x1="672" y1="265" x2="812" y2="265" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMGCTwH7sUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEdJREFUeNpjYBhowIjG/0+kOtwGnHy+HUXAXNITryFMxDgTauh/sg3AZwgLMZqRvAEzhJFoA/CECWlewAVGDSA+KRPSN4AAAD3CEX9wrOCFAAAAAElFTkSuQmCC" x="792.0" y="255.0" width="16" height="16"/>
+<text x="742.0" y="282.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">DMS</text>
+<text x="742.0" y="296.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Implementation</text>
+<rect x="540" y="561" width="140" height="55" rx="1" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<line x1="540" y1="575" x2="680" y2="575" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMGCTwH7sUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEdJREFUeNpjYBhowIjG/0+kOtwGnHy+HUXAXNITryFMxDgTauh/sg3AZwgLMZqRvAEzhJFoA/CECWlewAVGDSA+KRPSN4AAAD3CEX9wrOCFAAAAAElFTkSuQmCC" x="660.0" y="565.0" width="16" height="16"/>
+<text x="610.0" y="592.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">DMS</text>
+<text x="610.0" y="606.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Implementation</text>
+<rect x="753" y="561" width="142" height="55" rx="1" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<line x1="753" y1="575" x2="895" y2="575" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMGCTwH7sUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEdJREFUeNpjYBhowIjG/0+kOtwGnHy+HUXAXNITryFMxDgTauh/sg3AZwgLMZqRvAEzhJFoA/CECWlewAVGDSA+KRPSN4AAAD3CEX9wrOCFAAAAAElFTkSuQmCC" x="875.0" y="565.0" width="16" height="16"/>
+<text x="824.0" y="592.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Back Office Suite</text>
+<text x="824.0" y="606.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Implementation</text>
+<polyline points="432.0,219.2 325.0,183.1" fill="none" stroke="#444444" stroke-width="1"/>
+<polyline points="432.0,248.2 385.0,255.0" fill="none" stroke="#444444" stroke-width="1"/>
+<polyline points="552.0,217.9 624.0,192.0" fill="none" stroke="#444444" stroke-width="1"/>
+<polyline points="492.0,212.0 492.0,135.0" fill="none" stroke="#444444" stroke-width="1"/>
+<polyline points="205.4,201.0 248.0,130.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="385.0,292.2 228.0,279.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="60.0,290.0 203.0,279.9" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="736.9,201.0 752.9,137.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="699.0,324.0 768.0,251.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="592.1,448.0 601.8,513.0" fill="none" stroke="#444444" stroke-width="1"/>
+<polyline points="610.0,622.0 610.0,561.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="828.8,622.0 820.1,561.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow-open)"/>
+<polyline points="353.9,452.0 474.1,267.0" fill="none" stroke="#444444" stroke-width="1"/>
+<polyline points="396.0,465.5 528.0,434.5" fill="none" stroke="#444444" stroke-width="1"/>
+</svg>

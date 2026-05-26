@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="613" height="405" viewBox="0 0 613 405">
+  <defs>
+    <marker id="arrow-open" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#333" stroke-width="1.2"/>
+    </marker>
+    <marker id="arrow-filled" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#333" stroke="none"/>
+    </marker>
+    <marker id="arrow-hollow" markerWidth="11" markerHeight="9" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#333" stroke-width="1.2"/>
+    </marker>
+    <marker id="diamond-filled" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#333" stroke="#333" stroke-width="0.5"/>
+    </marker>
+    <marker id="diamond-open" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#333" stroke-width="1"/>
+    </marker>
+    <marker id="circle-solid" markerWidth="7" markerHeight="7" refX="0" refY="3.5" orient="auto-start-reverse">
+      <circle cx="3.5" cy="3.5" r="3" fill="#333" stroke="#333"/>
+    </marker>
+  </defs>
+<rect width="613" height="405" fill="white"/>
+<rect width="613" height="32" fill="#F0F0F0" stroke="#CCCCCC" stroke-width="1"/>
+<text x="306.5" y="21" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#222">Figure-10_Organization_Decomposition(Nested)</text>
+<rect x="24" y="56" width="565" height="325" rx="2" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="569.0" y="60.0" width="16" height="16"/>
+<text x="306.5" y="222.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">ArchiSurance</text>
+<rect x="60" y="104" width="493" height="55" rx="2" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="533.0" y="108.0" width="16" height="16"/>
+<text x="306.5" y="135.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Front Office</text>
+<rect x="60" y="176" width="493" height="109" rx="2" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="533.0" y="180.0" width="16" height="16"/>
+<text x="306.5" y="234.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Back Office</text>
+<rect x="60" y="308" width="493" height="55" rx="2" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="533.0" y="312.0" width="16" height="16"/>
+<text x="306.5" y="339.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Shared Service Center</text>
+<rect x="113" y="212" width="120" height="55" rx="2" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="213.0" y="216.0" width="16" height="16"/>
+<text x="173.0" y="229.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Homeowner's &amp;</text>
+<text x="173.0" y="243.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Travel Back</text>
+<text x="173.0" y="257.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Office</text>
+<rect x="372" y="212" width="120" height="55" rx="2" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="472.0" y="216.0" width="16" height="16"/>
+<text x="432.0" y="236.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Auto Back</text>
+<text x="432.0" y="250.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Office</text>
+<rect x="245" y="212" width="120" height="55" rx="2" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="345.0" y="216.0" width="16" height="16"/>
+<text x="305.0" y="236.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Legal Expense</text>
+<text x="305.0" y="250.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Back Office</text>
+</svg>

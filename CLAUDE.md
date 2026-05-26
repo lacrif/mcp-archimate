@@ -15,6 +15,11 @@
    ```
 4. **Update the documentation**: keep `README.md` in sync with any API, MCP tool, or behaviour change.
 
+## Image export conventions
+
+- **SVG/PNG exports**: all view exports (SVG and PNG) go to `exports/views/`. Never write generated images to `public/images/views/` or any other directory.
+- **Reference SVGs**: `exports/references/` contains SVGs exported directly by the Archi tool — these are the ground truth. When improving the renderer (`src/renderer.ts`), compare generated output against the matching file in `exports/references/` and minimize visual differences (shapes, colors, layout, connectors, labels, fonts).
+
 ## Project conventions
 
 - **In-memory mutations**: write operations (create / update / delete) modify the loaded model in memory. Use `POST /save` to write changes back to disk.

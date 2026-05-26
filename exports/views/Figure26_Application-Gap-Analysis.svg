@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1129" height="615" viewBox="0 0 1129 615">
+  <defs>
+    <marker id="arrow-open" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#333" stroke-width="1.2"/>
+    </marker>
+    <marker id="arrow-filled" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#333" stroke="none"/>
+    </marker>
+    <marker id="arrow-hollow" markerWidth="11" markerHeight="9" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#333" stroke-width="1.2"/>
+    </marker>
+    <marker id="diamond-filled" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#333" stroke="#333" stroke-width="0.5"/>
+    </marker>
+    <marker id="diamond-open" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#333" stroke-width="1"/>
+    </marker>
+    <marker id="circle-solid" markerWidth="7" markerHeight="7" refX="0" refY="3.5" orient="auto-start-reverse">
+      <circle cx="3.5" cy="3.5" r="3" fill="#333" stroke="#333"/>
+    </marker>
+  </defs>
+<rect width="1129" height="615" fill="white"/>
+<rect width="1129" height="32" fill="#F0F0F0" stroke="#CCCCCC" stroke-width="1"/>
+<text x="564.5" y="21" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#222">Figure26_Application-Gap-Analysis</text>
+<rect x="24" y="56" width="1081" height="199" rx="2" fill="#FFFFFF" stroke="#666666" stroke-width="1" stroke-dasharray="6,4"/>
+<text x="29" y="70" font-family="Arial,Helvetica,sans-serif" font-size="11" font-style="italic" fill="#444">Front Office</text>
+<rect x="24" y="278" width="1081" height="145" rx="2" fill="#FFFFFF" stroke="#666666" stroke-width="1" stroke-dasharray="6,4"/>
+<text x="29" y="292" font-family="Arial,Helvetica,sans-serif" font-size="11" font-style="italic" fill="#444">Back Office</text>
+<rect x="24" y="446" width="1081" height="145" rx="2" fill="#FFFFFF" stroke="#666666" stroke-width="1" stroke-dasharray="6,4"/>
+<text x="29" y="460" font-family="Arial,Helvetica,sans-serif" font-size="11" font-style="italic" fill="#444">Shared Service Center</text>
+<rect x="454" y="188" width="108" height="55" rx="1" fill="rgb(0,255,255)" stroke="#666666" stroke-width="1"/>
+<rect x="442" y="199" width="24" height="11" rx="1" fill="rgb(0,255,255)" stroke="#666666" stroke-width="1"/>
+<rect x="442" y="218.8" width="24" height="11" rx="1" fill="rgb(0,255,255)" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="542.0" y="192.0" width="16" height="16"/>
+<text x="508.0" y="212.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">General CRM</text>
+<text x="508.0" y="226.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">System</text>
+<rect x="454" y="80" width="108" height="55" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
+<rect x="442" y="91" width="24" height="11" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
+<rect x="442" y="110.8" width="24" height="11" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="542.0" y="84.0" width="16" height="16"/>
+<text x="508.0" y="97.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Legal</text>
+<text x="508.0" y="111.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Expense CRM</text>
+<text x="508.0" y="125.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">System</text>
+<rect x="108" y="188" width="108" height="55" rx="1" fill="rgb(0,255,255)" stroke="#666666" stroke-width="1"/>
+<rect x="96" y="199" width="24" height="11" rx="1" fill="rgb(0,255,255)" stroke="#666666" stroke-width="1"/>
+<rect x="96" y="218.8" width="24" height="11" rx="1" fill="rgb(0,255,255)" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="196.0" y="192.0" width="16" height="16"/>
+<text x="162.0" y="212.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Call Center</text>
+<text x="162.0" y="226.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Application</text>
+<rect x="108" y="80" width="108" height="55" rx="1" fill="rgb(0,255,255)" stroke="#666666" stroke-width="1"/>
+<rect x="96" y="91" width="24" height="11" rx="1" fill="rgb(0,255,255)" stroke="#666666" stroke-width="1"/>
+<rect x="96" y="110.8" width="24" height="11" rx="1" fill="rgb(0,255,255)" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="196.0" y="84.0" width="16" height="16"/>
+<text x="162.0" y="111.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Web Portal</text>
+<rect x="448" y="326" width="108" height="55" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
+<rect x="436" y="337" width="24" height="11" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
+<rect x="436" y="356.8" width="24" height="11" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="536.0" y="330.0" width="16" height="16"/>
+<text x="502.0" y="343.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Auto</text>
+<text x="502.0" y="357.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Insurance</text>
+<text x="502.0" y="371.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Application</text>
+<rect x="597" y="326" width="108" height="55" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
+<rect x="585" y="337" width="24" height="11" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
+<rect x="585" y="356.8" width="24" height="11" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="685.0" y="330.0" width="16" height="16"/>
+<text x="651.0" y="336.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Legal</text>
+<text x="651.0" y="350.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Expense</text>
+<text x="651.0" y="364.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Back-Office</text>
+<text x="651.0" y="378.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">System</text>
+<rect x="304" y="326" width="108" height="55" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
+<rect x="292" y="337" width="24" height="11" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
+<rect x="292" y="356.8" width="24" height="11" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="392.0" y="330.0" width="16" height="16"/>
+<text x="358.0" y="343.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Home &amp; Away</text>
+<text x="358.0" y="357.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Policy</text>
+<text x="358.0" y="371.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Administration</text>
+<rect x="60" y="326" width="108" height="55" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
+<rect x="48" y="337" width="24" height="11" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
+<rect x="48" y="356.8" width="24" height="11" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="148.0" y="330.0" width="16" height="16"/>
+<text x="114.0" y="343.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Home &amp; Away</text>
+<text x="114.0" y="357.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Financial</text>
+<text x="114.0" y="371.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Application</text>
+<rect x="732" y="326" width="108" height="55" rx="1" fill="rgb(0,255,64)" stroke="#666666" stroke-width="1"/>
+<rect x="720" y="337" width="24" height="11" rx="1" fill="rgb(0,255,64)" stroke="#666666" stroke-width="1"/>
+<rect x="720" y="356.8" width="24" height="11" rx="1" fill="rgb(0,255,64)" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="820.0" y="330.0" width="16" height="16"/>
+<text x="786.0" y="343.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">ArchiSurance</text>
+<text x="786.0" y="357.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Back Office</text>
+<text x="786.0" y="371.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Suite</text>
+<rect x="972" y="326" width="108" height="55" rx="1" fill="rgb(0,255,64)" stroke="#666666" stroke-width="1"/>
+<rect x="960" y="337" width="24" height="11" rx="1" fill="rgb(0,255,64)" stroke="#666666" stroke-width="1"/>
+<rect x="960" y="356.8" width="24" height="11" rx="1" fill="rgb(0,255,64)" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="1060.0" y="330.0" width="16" height="16"/>
+<text x="1026.0" y="343.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Data</text>
+<text x="1026.0" y="357.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Warehousing</text>
+<text x="1026.0" y="371.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Solution</text>
+<rect x="72" y="506" width="1009" height="55" rx="1" fill="rgb(0,255,255)" stroke="#666666" stroke-width="1"/>
+<rect x="60" y="517" width="24" height="11" rx="1" fill="rgb(0,255,255)" stroke="#666666" stroke-width="1"/>
+<rect x="60" y="536.8" width="24" height="11" rx="1" fill="rgb(0,255,255)" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="1061.0" y="510.0" width="16" height="16"/>
+<text x="576.5" y="537.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Document Management System</text>
+<polyline points="442.0,196.8 216.0,126.2" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="329.0" y="157.5" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">CRM data</text>
+<polyline points="442.0,217.6 329.0,221.5 216.0,217.6" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<polyline points="442.0,107.5 216.0,107.5" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="329.0" y="103.5" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">CRM data</text>
+<polyline points="445.4,135.0 360.0,176.5 216.0,204.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<polyline points="156.0,188.0 156.0,135.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="156.0" y="157.5" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">call report</text>
+<polyline points="216.0,213.1 329.0,208.5 442.0,213.1" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="385.5" y="206.8" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">call report</text>
+<polyline points="201.5,188.0 300.0,128.5 442.0,113.7" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="371.0" y="117.1" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">call report</text>
+<polyline points="497.2,326.0 500.8,243.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="499.0" y="280.5" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">customer data</text>
+<polyline points="490.8,381.0 480.8,433.5 545.8,506.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<polyline points="645.3,326.0 648.0,104.5 562.0,106.3" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="605.0" y="101.4" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">customer data</text>
+<polyline points="639.8,381.0 629.8,433.5 586.8,506.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<polyline points="355.9,326.0 360.0,296.5 456.0,296.5 486.4,243.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<polyline points="292.0,357.4 230.0,361.5 168.0,357.4" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<polyline points="346.8,381.0 336.8,433.5 506.2,506.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<polyline points="168.0,349.1 230.0,344.5 292.0,349.1" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<polyline points="784.7,326.0 804.0,212.5 562.0,214.9" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="683.0" y="209.7" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">customer data</text>
+<polyline points="778.9,381.0 776.8,433.5 627.2,506.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<polyline points="840.0,349.0 900.0,344.5 960.0,349.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<polyline points="960.0,357.5 900.0,361.5 840.0,357.5" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="870.0" y="355.5" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">customer profile data</text>
+<polyline points="499.8,506.0 168.0,376.9" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="333.9" y="437.4" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">document data</text>
+<polyline points="500.5,506.0 366.8,453.5 356.1,381.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="361.4" y="413.3" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">document data</text>
+<polyline points="550.0,506.0 510.8,453.5 500.1,381.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="505.4" y="413.3" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">document data</text>
+<polyline points="601.2,506.0 659.8,453.5 649.1,381.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="654.4" y="413.3" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">document data</text>
+<polyline points="651.7,506.0 806.8,453.5 787.4,381.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+</svg>

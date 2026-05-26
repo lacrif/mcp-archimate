@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1082" height="717" viewBox="0 0 1082 717">
+  <defs>
+    <marker id="arrow-open" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#333" stroke-width="1.2"/>
+    </marker>
+    <marker id="arrow-filled" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#333" stroke="none"/>
+    </marker>
+    <marker id="arrow-hollow" markerWidth="11" markerHeight="9" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#333" stroke-width="1.2"/>
+    </marker>
+    <marker id="diamond-filled" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#333" stroke="#333" stroke-width="0.5"/>
+    </marker>
+    <marker id="diamond-open" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#333" stroke-width="1"/>
+    </marker>
+    <marker id="circle-solid" markerWidth="7" markerHeight="7" refX="0" refY="3.5" orient="auto-start-reverse">
+      <circle cx="3.5" cy="3.5" r="3" fill="#333" stroke="#333"/>
+    </marker>
+  </defs>
+<rect width="1082" height="717" fill="white"/>
+<rect width="1082" height="32" fill="#F0F0F0" stroke="#CCCCCC" stroke-width="1"/>
+<text x="541" y="21" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#222">Figure-12_Capability-Model-View</text>
+<rect x="24" y="380" width="277" height="181" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="281.0" y="384.0" width="16" height="16"/>
+<text x="162.5" y="474.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Asset Management</text>
+<rect x="24" y="56" width="900" height="121" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="904.0" y="60.0" width="16" height="16"/>
+<text x="474.0" y="120.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Business Management</text>
+<rect x="24" y="584" width="901" height="109" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="905.0" y="588.0" width="16" height="16"/>
+<text x="474.5" y="642.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Business Support</text>
+<rect x="618" y="194" width="440" height="163" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="1038.0" y="198.0" width="16" height="16"/>
+<text x="838.0" y="279.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Customer Management</text>
+<rect x="216" y="194" width="169" height="163" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="365.0" y="198.0" width="16" height="16"/>
+<text x="300.5" y="279.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Marketing</text>
+<rect x="326" y="377" width="295" height="187" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="601.0" y="381.0" width="16" height="16"/>
+<text x="473.5" y="474.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Money Market Management</text>
+<rect x="635" y="380" width="422" height="181" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="1037.0" y="384.0" width="16" height="16"/>
+<text x="846.0" y="474.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Policy and Claim Management</text>
+<rect x="24" y="194" width="169" height="163" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="173.0" y="198.0" width="16" height="16"/>
+<text x="108.5" y="279.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Product Management</text>
+<rect x="408" y="194" width="180" height="163" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="568.0" y="198.0" width="16" height="16"/>
+<text x="498.0" y="279.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Sales And Distribution</text>
+<rect x="168" y="488" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="268.0" y="492.0" width="16" height="16"/>
+<text x="228.0" y="505.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Asset</text>
+<text x="228.0" y="519.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Inventory</text>
+<text x="228.0" y="533.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Maintenance</text>
+<rect x="36" y="488" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="136.0" y="492.0" width="16" height="16"/>
+<text x="96.0" y="505.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Investment</text>
+<text x="96.0" y="519.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Portfolio</text>
+<text x="96.0" y="533.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="168" y="416" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="268.0" y="420.0" width="16" height="16"/>
+<text x="228.0" y="433.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Investment</text>
+<text x="228.0" y="447.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Performance</text>
+<text x="228.0" y="461.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="36" y="416" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="136.0" y="420.0" width="16" height="16"/>
+<text x="96.0" y="433.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Investment</text>
+<text x="96.0" y="447.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Strategy</text>
+<text x="96.0" y="461.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="60" y="92" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="160.0" y="96.0" width="16" height="16"/>
+<text x="120.0" y="116.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Strategic</text>
+<text x="120.0" y="130.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="228" y="92" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="328.0" y="96.0" width="16" height="16"/>
+<text x="288.0" y="109.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Fiscal &amp;</text>
+<text x="288.0" y="123.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Accounting</text>
+<text x="288.0" y="137.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="744" y="92" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="844.0" y="96.0" width="16" height="16"/>
+<text x="804.0" y="116.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Enterprise</text>
+<text x="804.0" y="130.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Architecture</text>
+<rect x="564" y="92" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="664.0" y="96.0" width="16" height="16"/>
+<text x="624.0" y="116.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Performance</text>
+<text x="624.0" y="130.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="396" y="92" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="496.0" y="96.0" width="16" height="16"/>
+<text x="456.0" y="109.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Risk &amp;</text>
+<text x="456.0" y="123.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Compliance</text>
+<text x="456.0" y="137.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="180" y="608" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="280.0" y="612.0" width="16" height="16"/>
+<text x="240.0" y="639.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">HR Management</text>
+<rect x="312" y="608" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="412.0" y="612.0" width="16" height="16"/>
+<text x="372.0" y="632.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Process</text>
+<text x="372.0" y="646.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="456" y="608" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="556.0" y="612.0" width="16" height="16"/>
+<text x="516.0" y="632.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Office</text>
+<text x="516.0" y="646.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="600" y="608" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="700.0" y="612.0" width="16" height="16"/>
+<text x="660.0" y="632.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Facility</text>
+<text x="660.0" y="646.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="756" y="608" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="856.0" y="612.0" width="16" height="16"/>
+<text x="816.0" y="639.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">IT Management</text>
+<rect x="47" y="608" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="147.0" y="612.0" width="16" height="16"/>
+<text x="107.0" y="632.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Organization</text>
+<text x="107.0" y="646.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Development</text>
+<rect x="775" y="223" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="875.0" y="227.0" width="16" height="16"/>
+<text x="835.0" y="240.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Customer</text>
+<text x="835.0" y="254.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Relation</text>
+<text x="835.0" y="268.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="775" y="290" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="875.0" y="294.0" width="16" height="16"/>
+<text x="835.0" y="314.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Customer Data</text>
+<text x="835.0" y="328.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="642" y="223" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="742.0" y="227.0" width="16" height="16"/>
+<text x="702.0" y="240.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Customer</text>
+<text x="702.0" y="254.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Contact</text>
+<text x="702.0" y="268.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="642" y="290" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="742.0" y="294.0" width="16" height="16"/>
+<text x="702.0" y="307.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Service</text>
+<text x="702.0" y="321.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Channel</text>
+<text x="702.0" y="335.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="906" y="223" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="1006.0" y="227.0" width="16" height="16"/>
+<text x="966.0" y="240.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Digital</text>
+<text x="966.0" y="254.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Customer</text>
+<text x="966.0" y="268.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="240" y="290" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="340.0" y="294.0" width="16" height="16"/>
+<text x="300.0" y="314.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Campaign</text>
+<text x="300.0" y="328.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="240" y="219" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="340.0" y="223.0" width="16" height="16"/>
+<text x="300.0" y="243.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Market</text>
+<text x="300.0" y="257.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Development</text>
+<rect x="350" y="485" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="450.0" y="489.0" width="16" height="16"/>
+<text x="410.0" y="509.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Cash Flow</text>
+<text x="410.0" y="523.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="350" y="413" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="450.0" y="417.0" width="16" height="16"/>
+<text x="410.0" y="437.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Banking</text>
+<text x="410.0" y="451.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="483" y="413" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="583.0" y="417.0" width="16" height="16"/>
+<text x="543.0" y="437.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Accounts</text>
+<text x="543.0" y="451.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="483" y="485" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="583.0" y="489.0" width="16" height="16"/>
+<text x="543.0" y="509.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Money</text>
+<text x="543.0" y="523.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="791" y="488" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="891.0" y="492.0" width="16" height="16"/>
+<text x="851.0" y="512.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Claim</text>
+<text x="851.0" y="526.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Administration</text>
+<rect x="663" y="488" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="763.0" y="492.0" width="16" height="16"/>
+<text x="723.0" y="512.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Contract</text>
+<text x="723.0" y="526.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Administration</text>
+<rect x="791" y="416" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="891.0" y="420.0" width="16" height="16"/>
+<text x="851.0" y="440.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Claim</text>
+<text x="851.0" y="454.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Settlement</text>
+<rect x="660" y="416" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="760.0" y="420.0" width="16" height="16"/>
+<text x="720.0" y="433.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Contract</text>
+<text x="720.0" y="447.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Lifecycle</text>
+<text x="720.0" y="461.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<rect x="923" y="416" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="1023.0" y="420.0" width="16" height="16"/>
+<text x="983.0" y="440.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Data-Driven</text>
+<text x="983.0" y="454.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Insurance</text>
+<rect x="48" y="290" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="148.0" y="294.0" width="16" height="16"/>
+<text x="108.0" y="314.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Product</text>
+<text x="108.0" y="328.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Engineering</text>
+<rect x="48" y="218" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="148.0" y="222.0" width="16" height="16"/>
+<text x="108.0" y="242.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Product</text>
+<text x="108.0" y="256.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Definition</text>
+<rect x="444" y="290" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="544.0" y="294.0" width="16" height="16"/>
+<text x="504.0" y="314.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Sales</text>
+<text x="504.0" y="328.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Execution</text>
+<rect x="444" y="218" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="544.0" y="222.0" width="16" height="16"/>
+<text x="504.0" y="235.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Distribution</text>
+<text x="504.0" y="249.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Channel</text>
+<text x="504.0" y="263.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+</svg>

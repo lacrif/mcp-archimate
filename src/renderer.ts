@@ -5,42 +5,77 @@
  * renderViewToPng  – requires the optional "sharp" package
  */
 
+import { readFileSync, existsSync } from "fs";
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
 import type { ArchiView, ArchiNode, ArchiModel } from "./model.js";
+
+const _srcDir = dirname(fileURLToPath(import.meta.url));
+const ICONS_DIR = join(_srcDir, "..", "public", "images", "archimate");
+
+// ---------------------------------------------------------------------------
+// PNG icon loader (lazy, cached)
+// ---------------------------------------------------------------------------
+
+const _iconCache = new Map<string, string | null>();
+
+function _typeToKebab(type: string): string {
+  return type.replace(/([A-Z])/g, (m, _, i) => (i > 0 ? `-${m.toLowerCase()}` : m.toLowerCase()));
+}
+
+function loadIconDataUri(type: string): string | null {
+  if (_iconCache.has(type)) return _iconCache.get(type) ?? null;
+  const file = join(ICONS_DIR, `${_typeToKebab(type)}.png`);
+  try {
+    if (existsSync(file)) {
+      const b64 = readFileSync(file).toString("base64");
+      const uri = `data:image/png;base64,${b64}`;
+      _iconCache.set(type, uri);
+      return uri;
+    }
+  } catch { /* ignore */ }
+  _iconCache.set(type, null);
+  return null;
+}
 
 // ---------------------------------------------------------------------------
 // ArchiMate layer default fill colours
 // ---------------------------------------------------------------------------
 
+// Colors from Archi source: AbstractArchimateElementUIProvider.java
+// Business: new Color(255,255,181), Application: new Color(181,255,255), Technology: new Color(201,231,183)
+// Motivation: new Color(204,204,255), Strategy: new Color(245,222,170), ImplMigration: new Color(255,224,224)
+// Grouping: new Color(255,255,255), Location: new Color(237,207,226)
 const ELEMENT_FILL: Record<string, string> = {
   // Business Layer
-  BusinessActor: "#FFFF99", BusinessRole: "#FFFF99", BusinessCollaboration: "#FFFF99",
-  BusinessInterface: "#FFFF99", BusinessProcess: "#FFFF99", BusinessFunction: "#FFFF99",
-  BusinessInteraction: "#FFFF99", BusinessEvent: "#FFFF99", BusinessService: "#FFFF99",
-  BusinessObject: "#FFFF99", Contract: "#FFFF99", Representation: "#FFFF99", Product: "#FFFF99",
+  BusinessActor: "#FFFFB5", BusinessRole: "#FFFFB5", BusinessCollaboration: "#FFFFB5",
+  BusinessInterface: "#FFFFB5", BusinessProcess: "#FFFFB5", BusinessFunction: "#FFFFB5",
+  BusinessInteraction: "#FFFFB5", BusinessEvent: "#FFFFB5", BusinessService: "#FFFFB5",
+  BusinessObject: "#FFFFB5", Contract: "#FFFFB5", Representation: "#FFFFB5", Product: "#FFFFB5",
   // Application Layer
-  ApplicationComponent: "#99CCFF", ApplicationCollaboration: "#99CCFF",
-  ApplicationInterface: "#99CCFF", ApplicationFunction: "#99CCFF",
-  ApplicationInteraction: "#99CCFF", ApplicationProcess: "#99CCFF",
-  ApplicationEvent: "#99CCFF", ApplicationService: "#99CCFF", DataObject: "#99CCFF",
-  // Technology Layer
-  Node: "#C9E6B4", Device: "#C9E6B4", SystemSoftware: "#C9E6B4",
-  TechnologyCollaboration: "#C9E6B4", TechnologyInterface: "#C9E6B4",
-  Path: "#C9E6B4", CommunicationNetwork: "#C9E6B4", TechnologyFunction: "#C9E6B4",
-  TechnologyProcess: "#C9E6B4", TechnologyInteraction: "#C9E6B4",
-  TechnologyEvent: "#C9E6B4", TechnologyService: "#C9E6B4", Artifact: "#C9E6B4",
-  // Physical Layer
-  Equipment: "#E8D5B0", Facility: "#E8D5B0", DistributionNetwork: "#E8D5B0", Material: "#E8D5B0",
+  ApplicationComponent: "#B5FFFF", ApplicationCollaboration: "#B5FFFF",
+  ApplicationInterface: "#B5FFFF", ApplicationFunction: "#B5FFFF",
+  ApplicationInteraction: "#B5FFFF", ApplicationProcess: "#B5FFFF",
+  ApplicationEvent: "#B5FFFF", ApplicationService: "#B5FFFF", DataObject: "#B5FFFF",
+  // Technology Layer (physical elements share the same default color in Archi)
+  Node: "#C9E7B7", Device: "#C9E7B7", SystemSoftware: "#C9E7B7",
+  TechnologyCollaboration: "#C9E7B7", TechnologyInterface: "#C9E7B7",
+  Path: "#C9E7B7", CommunicationNetwork: "#C9E7B7", TechnologyFunction: "#C9E7B7",
+  TechnologyProcess: "#C9E7B7", TechnologyInteraction: "#C9E7B7",
+  TechnologyEvent: "#C9E7B7", TechnologyService: "#C9E7B7", Artifact: "#C9E7B7",
+  // Physical Layer (uses defaultTechnologyColor in Archi)
+  Equipment: "#C9E7B7", Facility: "#C9E7B7", DistributionNetwork: "#C9E7B7", Material: "#C9E7B7",
   // Motivation
   Stakeholder: "#CCCCFF", Driver: "#CCCCFF", Assessment: "#CCCCFF", Goal: "#CCCCFF",
   Outcome: "#CCCCFF", Principle: "#CCCCFF", Requirement: "#CCCCFF", Constraint: "#CCCCFF",
   Meaning: "#CCCCFF", Value: "#CCCCFF",
   // Strategy
-  Resource: "#F0E68C", Capability: "#F0E68C", CourseOfAction: "#F0E68C", ValueStream: "#F0E68C",
+  Resource: "#F5DEAA", Capability: "#F5DEAA", CourseOfAction: "#F5DEAA", ValueStream: "#F5DEAA",
   // Implementation & Migration
-  WorkPackage: "#FFD5AA", Deliverable: "#FFD5AA", ImplementationEvent: "#FFD5AA",
-  Plateau: "#FFD5AA", Gap: "#FFD5AA",
+  WorkPackage: "#FFE0E0", Deliverable: "#FFE0E0", ImplementationEvent: "#FFE0E0",
+  Plateau: "#FFE0E0", Gap: "#FFE0E0",
   // Composites
-  Grouping: "#FFFFFF", Location: "#E8E8E8",
+  Grouping: "#FFFFFF", Location: "#EDCFE2",
   AndJunction: "#000000", OrJunction: "#000000",
 };
 
@@ -163,20 +198,404 @@ function rectEdge(
   return { x: cx - dx * s, y: cy - dy * s };
 }
 
-// Short prefix badge for ArchiMate element type (e.g. "AC" for ApplicationComponent)
-function typeBadge(type: string): string {
-  return type
-    .replace(/^Business/, "B:")
-    .replace(/^Application/, "A:")
-    .replace(/^Technology/, "T:")
-    .replace(/^Physical/, "Ph:")
-    .replace(/^Implementation/, "I:")
-    .substring(0, 14);
+// Orthogonal (Manhattan) route when no bendpoints are stored.
+// Matches Archi's default router: use x-overlap or y-overlap midpoint for
+// straight segments; L-shape when no overlap.
+// Returns [start, ...intermediates, end] as absolute SVG points.
+function orthogonalRoute(
+  sx: number, sy: number, sw: number, sh: number,
+  tx: number, ty: number, tw: number, th: number,
+): Array<{ x: number; y: number }> {
+  const scy = sy + sh / 2;
+  const scx = sx + sw / 2;
+  const tcx = tx + tw / 2;
+  const tcy = ty + th / 2;
+  const dy = tcy - scy;
+  const dx = tcx - scx;
+
+  // X-overlap → straight vertical line at the midpoint of the shared x-band
+  const xOvL = Math.max(sx, tx);
+  const xOvR = Math.min(sx + sw, tx + tw);
+  if (xOvL < xOvR) {
+    const midX  = (xOvL + xOvR) / 2;
+    const startY = dy < 0 ? sy : sy + sh;       // exit top if target above
+    const endY   = dy < 0 ? ty + th : ty;       // enter bottom if target above
+    return [{ x: midX, y: startY }, { x: midX, y: endY }];
+  }
+
+  // Y-overlap → straight horizontal line at the midpoint of the shared y-band
+  const yOvT = Math.max(sy, ty);
+  const yOvB = Math.min(sy + sh, ty + th);
+  if (yOvT < yOvB) {
+    const midY  = (yOvT + yOvB) / 2;
+    const startX = dx < 0 ? sx : sx + sw;       // exit left if target to left
+    const endX   = dx < 0 ? tx + tw : tx;
+    return [{ x: startX, y: midY }, { x: endX, y: midY }];
+  }
+
+  // No overlap → L-shape.  Prefer vertical-first when |dy| > |dx|.
+  if (Math.abs(dy) > Math.abs(dx)) {
+    const startY = dy < 0 ? sy : sy + sh;
+    const endX   = dx < 0 ? tx + tw : tx;
+    return [
+      { x: scx,  y: startY },
+      { x: scx,  y: tcy },
+      { x: endX, y: tcy },
+    ];
+  } else {
+    const startX = dx < 0 ? sx : sx + sw;
+    const endY   = dy < 0 ? ty + th : ty;
+    return [
+      { x: startX, y: scy },
+      { x: tcx,    y: scy },
+      { x: tcx,    y: endY },
+    ];
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Shape category detection (based on Archi Java figure classes)
+// ---------------------------------------------------------------------------
+
+type ShapeKind =
+  | "junction"     // And/OrJunction — circle
+  | "grouping"     // Grouping — dashed rect
+  | "service"      // *Service — rounded pill (ServiceFigureDelegate)
+  | "event"        // *Event — chevron (EventFigure)
+  | "component"    // ApplicationComponent — rect with nubs
+  | "collaboration"// *Collaboration — two overlapping circles
+  | "interface"    // *Interface — circle
+  | "function"     // *Function — hexagon (FunctionFigure)
+  | "process"      // *Process — right-arrow (ProcessFigureDelegate)
+  | "interaction"  // *Interaction — two overlapping ellipses (InteractionFigure)
+  | "data-object"  // DataObject / BusinessObject / Artifact — rect with header line
+  | "rect";        // default — plain rectangle
+
+function getShapeKind(type: string): ShapeKind {
+  if (type === "AndJunction" || type === "OrJunction") return "junction";
+  if (type === "Grouping") return "grouping";
+  if (type.endsWith("Service")) return "service";
+  if (type.endsWith("Event") || type === "ImplementationEvent") return "event";
+  if (type === "ApplicationComponent") return "component";
+  if (type.endsWith("Collaboration")) return "collaboration";
+  if (type.endsWith("Interface")) return "interface";
+  if (type.endsWith("Function")) return "function";
+  if (type.endsWith("Process")) return "process";
+  if (type.endsWith("Interaction")) return "interaction";
+  if (type === "DataObject" || type === "BusinessObject" || type === "Artifact") return "data-object";
+  return "rect";
+}
+
+// ---------------------------------------------------------------------------
+// Shape SVG generators
+// Each returns an array of SVG element strings.
+// All coordinates are already in absolute SVG space.
+// ---------------------------------------------------------------------------
+
+const ICON_SIZE = 16;   // px for embedded icons
+const ICON_PAD = 4;     // padding from right/top edge
+const DATA_HEADER = 14; // px for data-object header line
+
+interface ShapeOut {
+  svg: string[];            // shape + fill SVG elements
+  textX: number;            // center x for the label
+  textY: number;            // center y for the label
+  textW: number;            // available width for text wrap
+  textH: number;            // available height for text
+  iconX: number | null;     // icon top-left x (null = no icon)
+  iconY: number | null;     // icon top-left y
+}
+
+function shapeRect(
+  x: number, y: number, w: number, h: number,
+  fill: string, stroke: string, lw: number,
+  rx = 2
+): ShapeOut {
+  const svg = [
+    `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" ` +
+    `fill="${fill}" stroke="${stroke}" stroke-width="${lw}"/>`,
+  ];
+  return {
+    svg,
+    textX: x + w / 2,
+    textY: y + h / 2,
+    textW: w - ICON_SIZE - ICON_PAD * 2 - 4,
+    textH: h,
+    iconX: x + w - ICON_SIZE - ICON_PAD,
+    iconY: y + ICON_PAD,
+  };
+}
+
+function shapeGrouping(
+  x: number, y: number, w: number, h: number,
+  fill: string, stroke: string, lw: number,
+  FONT: string
+): { svg: string[]; nameY: number } {
+  return {
+    svg: [
+      `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2" ` +
+      `fill="${fill}" stroke="${stroke}" stroke-width="${lw}" stroke-dasharray="6,4"/>`,
+    ],
+    nameY: y + 14,
+  };
+}
+
+// Pill/stadium shape (Service) — rx/ry = half the shorter side
+function shapeService(
+  x: number, y: number, w: number, h: number,
+  fill: string, stroke: string, lw: number
+): ShapeOut {
+  const arc = Math.min(h / 2, w * 0.4);
+  const svg = [
+    `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${arc}" ry="${arc}" ` +
+    `fill="${fill}" stroke="${stroke}" stroke-width="${lw}"/>`,
+  ];
+  return {
+    svg,
+    textX: x + w / 2,
+    textY: y + h / 2,
+    textW: w - arc * 2 - ICON_SIZE - ICON_PAD * 2,
+    textH: h,
+    iconX: x + w - ICON_SIZE - ICON_PAD - arc / 2,
+    iconY: y + ICON_PAD,
+  };
+}
+
+// Chevron/event shape — left notch, right arc cap
+function shapeEvent(
+  x: number, y: number, w: number, h: number,
+  fill: string, stroke: string, lw: number
+): ShapeOut {
+  const indent = Math.min(h / 3, w / 3);
+  const cx = x + w - indent; // x where arc cap starts
+  const cy = y + h / 2;
+  // SVG path: top-left → notch-point → bottom-left → bottom-right → arc-top → close
+  const d =
+    `M ${x},${y} ` +
+    `L ${x + indent},${cy} ` +
+    `L ${x},${y + h} ` +
+    `L ${cx},${y + h} ` +
+    `A ${indent},${h / 2} 0 0 1 ${cx},${y} ` +
+    `Z`;
+  const svg = [`<path d="${d}" fill="${fill}" stroke="${stroke}" stroke-width="${lw}"/>`];
+  return {
+    svg,
+    textX: x + indent + (w - indent * 2) / 2,
+    textY: cy,
+    textW: w - indent * 2 - ICON_SIZE - ICON_PAD * 2,
+    textH: h,
+    iconX: x + w - ICON_SIZE - ICON_PAD - indent / 2,
+    iconY: y + ICON_PAD,
+  };
+}
+
+// ApplicationComponent — rectangle with two nubs on the left side
+function shapeComponent(
+  x: number, y: number, w: number, h: number,
+  fill: string, stroke: string, lw: number
+): ShapeOut {
+  const INDENT = 12;   // nub protrusion
+  const NUB_W = INDENT * 2;
+  const NUB_H = Math.max(10, Math.min(13, h / 5));
+  const nub1Y = y + Math.max(8, h / 5);
+  const nub2Y = nub1Y + NUB_H * 1.8;
+
+  // Main body (shifted right by INDENT)
+  const bodyX = x + INDENT;
+  const bodyW = w - INDENT;
+
+  const svg = [
+    // Main rectangle body
+    `<rect x="${bodyX}" y="${y}" width="${bodyW}" height="${h}" rx="1" ` +
+    `fill="${fill}" stroke="${stroke}" stroke-width="${lw}"/>`,
+    // Nub 1 (upper)
+    `<rect x="${x}" y="${nub1Y}" width="${NUB_W}" height="${NUB_H}" rx="1" ` +
+    `fill="${fill}" stroke="${stroke}" stroke-width="${lw}"/>`,
+    // Nub 2 (lower)
+    `<rect x="${x}" y="${nub2Y}" width="${NUB_W}" height="${NUB_H}" rx="1" ` +
+    `fill="${fill}" stroke="${stroke}" stroke-width="${lw}"/>`,
+  ];
+  return {
+    svg,
+    textX: bodyX + bodyW / 2,
+    textY: y + h / 2,
+    textW: bodyW - ICON_SIZE - ICON_PAD * 2 - 4,
+    textH: h,
+    iconX: bodyX + bodyW - ICON_SIZE - ICON_PAD,
+    iconY: y + ICON_PAD,
+  };
+}
+
+// Collaboration — two overlapping circles
+function shapeCollaboration(
+  x: number, y: number, w: number, h: number,
+  fill: string, stroke: string, lw: number
+): ShapeOut {
+  const diameter = Math.min(h * 0.85, (w / 3) * 2);
+  const cy = y + (h - diameter) / 2;
+  // x1 centered slightly left, x2 = x1 + diameter/2
+  const x1 = x + (w - diameter * 1.5) / 2;
+  const x2 = x1 + diameter / 2;
+  const svg = [
+    `<ellipse cx="${x1 + diameter / 2}" cy="${cy + diameter / 2}" rx="${diameter / 2}" ry="${diameter / 2}" ` +
+    `fill="${fill}" stroke="${stroke}" stroke-width="${lw}"/>`,
+    `<ellipse cx="${x2 + diameter / 2}" cy="${cy + diameter / 2}" rx="${diameter / 2}" ry="${diameter / 2}" ` +
+    `fill="${fill}" stroke="${stroke}" stroke-width="${lw}"/>`,
+  ];
+  return {
+    svg,
+    textX: x + w / 2,
+    textY: y + h / 2,
+    textW: w - 8,
+    textH: h - diameter - 4,
+    iconX: x + w - ICON_SIZE - ICON_PAD,
+    iconY: y + ICON_PAD,
+  };
+}
+
+// Interface — single circle
+function shapeInterface(
+  x: number, y: number, w: number, h: number,
+  fill: string, stroke: string, lw: number
+): ShapeOut {
+  const diameter = Math.min(w, h) * 0.85;
+  const cx = x + w / 2;
+  const cy = y + (h - diameter) / 2 + diameter / 2;
+  const svg = [
+    `<circle cx="${cx}" cy="${cy}" r="${diameter / 2}" ` +
+    `fill="${fill}" stroke="${stroke}" stroke-width="${lw}"/>`,
+  ];
+  return {
+    svg,
+    textX: x + w / 2,
+    textY: y + h - (h - diameter) / 4,
+    textW: w - 8,
+    textH: (h - diameter) / 2,
+    iconX: x + w - ICON_SIZE - ICON_PAD,
+    iconY: y + ICON_PAD,
+  };
+}
+
+// Function — hexagon (top-peak, bottom-notch)
+function shapeFunction(
+  x: number, y: number, w: number, h: number,
+  fill: string, stroke: string, lw: number
+): ShapeOut {
+  const OFFSET = 5; // fraction denominator
+  const y1 = y + h / OFFSET;
+  const y2 = y + h - h / OFFSET;
+  const cx = x + w / 2;
+  const d =
+    `M ${x},${y + h} ` +
+    `L ${x},${y1} ` +
+    `L ${cx},${y} ` +
+    `L ${x + w},${y1} ` +
+    `L ${x + w},${y + h} ` +
+    `L ${cx},${y2} ` +
+    `Z`;
+  const svg = [`<path d="${d}" fill="${fill}" stroke="${stroke}" stroke-width="${lw}"/>`];
+  return {
+    svg,
+    textX: cx,
+    textY: y + h / 2,
+    textW: w - ICON_SIZE - ICON_PAD * 2 - 4,
+    textH: h - h / OFFSET * 2,
+    iconX: x + w - ICON_SIZE - ICON_PAD,
+    iconY: y + h / OFFSET + ICON_PAD,
+  };
+}
+
+// Process — right-pointing arrow shape
+function shapeProcess(
+  x: number, y: number, w: number, h: number,
+  fill: string, stroke: string, lw: number
+): ShapeOut {
+  const x1 = x + w * 0.7;
+  const y1 = y + h / 5;
+  const y2 = y + h - h / 5;
+  const d =
+    `M ${x},${y1} ` +
+    `L ${x1},${y1} ` +
+    `L ${x1},${y} ` +
+    `L ${x + w},${y + h / 2} ` +
+    `L ${x1},${y + h} ` +
+    `L ${x1},${y2} ` +
+    `L ${x},${y2} ` +
+    `Z`;
+  const svg = [`<path d="${d}" fill="${fill}" stroke="${stroke}" stroke-width="${lw}"/>`];
+  return {
+    svg,
+    textX: x + x1 / 2,
+    textY: y + h / 2,
+    textW: x1 - x - ICON_SIZE - ICON_PAD * 2,
+    textH: h - h / 5 * 2,
+    iconX: x + w * 0.7 - ICON_SIZE - ICON_PAD,
+    iconY: y + h / 5 + ICON_PAD,
+  };
+}
+
+// Interaction — two overlapping filled ellipses (Venn-like)
+function shapeInteraction(
+  x: number, y: number, w: number, h: number,
+  fill: string, stroke: string, lw: number
+): ShapeOut {
+  const FRACTION = 0.86;
+  let diameter: number;
+  let x1: number;
+  let x2: number;
+  if (w <= h) {
+    diameter = w * FRACTION;
+    x1 = x + (w - diameter) / 2;
+    x2 = x + w - (w - diameter) / 2;
+  } else {
+    diameter = Math.min(h, w * 0.85);
+    x1 = x + (w - diameter) / 2 - diameter * (1 - FRACTION) / 2;
+    x2 = x1 + diameter * FRACTION;
+  }
+  const ey = y + (h - diameter) / 2;
+  const svg = [
+    // Left half-ellipse
+    `<path d="M ${x1 + diameter / 2},${ey} A ${diameter / 2},${diameter / 2} 0 0 0 ${x1 + diameter / 2},${ey + diameter} Z" ` +
+    `fill="${fill}" stroke="${stroke}" stroke-width="${lw}"/>`,
+    // Right half-ellipse
+    `<path d="M ${x2 + diameter / 2},${ey} A ${diameter / 2},${diameter / 2} 0 0 1 ${x2 + diameter / 2},${ey + diameter} Z" ` +
+    `fill="${fill}" stroke="${stroke}" stroke-width="${lw}"/>`,
+  ];
+  return {
+    svg,
+    textX: x + w / 2,
+    textY: y + h / 2,
+    textW: w - 8,
+    textH: h,
+    iconX: x + w - ICON_SIZE - ICON_PAD,
+    iconY: y + ICON_PAD,
+  };
+}
+
+// DataObject/BusinessObject — rectangle with a header line at the top
+function shapeDataObject(
+  x: number, y: number, w: number, h: number,
+  fill: string, stroke: string, lw: number
+): ShapeOut {
+  const svg = [
+    `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="1" ` +
+    `fill="${fill}" stroke="${stroke}" stroke-width="${lw}"/>`,
+    `<line x1="${x}" y1="${y + DATA_HEADER}" x2="${x + w}" y2="${y + DATA_HEADER}" ` +
+    `stroke="${stroke}" stroke-width="${lw}"/>`,
+  ];
+  return {
+    svg,
+    textX: x + w / 2,
+    textY: y + DATA_HEADER + (h - DATA_HEADER) / 2,
+    textW: w - ICON_SIZE - ICON_PAD * 2 - 4,
+    textH: h - DATA_HEADER,
+    iconX: x + w - ICON_SIZE - ICON_PAD,
+    iconY: y + ICON_PAD,
+  };
 }
 
 // ---------------------------------------------------------------------------
 // SVG marker defs (arrows, diamonds, circle)
-// orient="auto-start-reverse" makes start markers point away from the source node
 // ---------------------------------------------------------------------------
 
 const SVG_DEFS = `  <defs>
@@ -286,55 +705,73 @@ export function renderViewToSvg(view: ArchiView, model: ArchiModel): string {
     const fontSize = node.font_size ?? 11;
     const fontName = node.font_name ?? FONT;
 
-    if (type === "AndJunction" || type === "OrJunction") {
+    const kind = getShapeKind(type);
+
+    // Junctions — circle
+    if (kind === "junction") {
       const r = Math.min(absW, absH) / 2;
       const cx = x + absW / 2;
       const cy = y + absH / 2;
       out.push(`<circle cx="${cx}" cy="${cy}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="${lw}"/>`);
       if (type === "OrJunction") {
-        // inner ring to distinguish from AND
         out.push(`<circle cx="${cx}" cy="${cy}" r="${r * 0.55}" fill="white" stroke="${stroke}" stroke-width="${lw}"/>`);
       }
       continue;
     }
 
-    const isGrouping = type === "Grouping";
-    const dash = isGrouping ? ' stroke-dasharray="6,4"' : "";
-    out.push(
-      `<rect x="${x}" y="${y}" width="${absW}" height="${absH}" rx="2" ` +
-      `fill="${fill}" stroke="${stroke}" stroke-width="${lw}"${dash}/>`
-    );
+    // Grouping — dashed rect + name top-left
+    if (kind === "grouping") {
+      const { svg, nameY } = shapeGrouping(x, y, absW, absH, fill, stroke, lw, FONT);
+      out.push(...svg);
+      if (name) {
+        out.push(
+          `<text x="${x + 5}" y="${nameY}" font-family="${FONT}" font-size="11" ` +
+          `font-style="italic" fill="#444">${escXml(name)}</text>`
+        );
+      }
+      continue;
+    }
 
-    // Type badge (top-right, 8px)
-    if (!isGrouping && type !== "Location") {
-      const badge = typeBadge(type);
+    // All other shapes
+    let shape: ShapeOut;
+    switch (kind) {
+      case "service":      shape = shapeService(x, y, absW, absH, fill, stroke, lw); break;
+      case "event":        shape = shapeEvent(x, y, absW, absH, fill, stroke, lw); break;
+      case "component":    shape = shapeComponent(x, y, absW, absH, fill, stroke, lw); break;
+      case "collaboration":shape = shapeCollaboration(x, y, absW, absH, fill, stroke, lw); break;
+      case "interface":    shape = shapeInterface(x, y, absW, absH, fill, stroke, lw); break;
+      case "function":     shape = shapeFunction(x, y, absW, absH, fill, stroke, lw); break;
+      case "process":      shape = shapeProcess(x, y, absW, absH, fill, stroke, lw); break;
+      case "interaction":  shape = shapeInteraction(x, y, absW, absH, fill, stroke, lw); break;
+      case "data-object":  shape = shapeDataObject(x, y, absW, absH, fill, stroke, lw); break;
+      default:             shape = shapeRect(x, y, absW, absH, fill, stroke, lw); break;
+    }
+
+    out.push(...shape.svg);
+
+    // PNG icon only for plain rect notation — other shapes ARE the notation
+    const iconUri = kind === "rect" ? loadIconDataUri(type) : null;
+    if (iconUri && shape.iconX !== null && shape.iconY !== null) {
       out.push(
-        `<text x="${x + absW - 3}" y="${y + 10}" font-family="${FONT}" font-size="8" ` +
-        `text-anchor="end" fill="#555" opacity="0.9">${escXml(badge)}</text>`
+        `<image href="${iconUri}" x="${shape.iconX.toFixed(1)}" y="${shape.iconY.toFixed(1)}" ` +
+        `width="${ICON_SIZE}" height="${ICON_SIZE}"/>`
       );
     }
 
-    // Name label
+    // Name label centered in text area
     if (name) {
-      if (isGrouping) {
-        // Grouping name in top-left, italic
+      const availW = shape.textW > 0 ? shape.textW : absW - 8;
+      const maxChars = Math.max(4, Math.floor(availW / (fontSize * 0.58)));
+      const lines = wrapText(name, maxChars);
+      const lineH = fontSize + 3;
+      const textBlock = lines.length * lineH;
+      const startY = shape.textY - textBlock / 2 + fontSize;
+      for (let i = 0; i < lines.length; i++) {
         out.push(
-          `<text x="${x + 5}" y="${y + 14}" font-family="${FONT}" font-size="11" ` +
-          `font-style="italic" fill="#444">${escXml(name)}</text>`
+          `<text x="${shape.textX.toFixed(1)}" y="${(startY + i * lineH).toFixed(1)}" ` +
+          `font-family="${fontName}" font-size="${fontSize}" ` +
+          `text-anchor="middle" fill="${fontColor}">${escXml(lines[i]!)}</text>`
         );
-      } else {
-        const maxChars = Math.max(4, Math.floor(absW / (fontSize * 0.58)));
-        const lines = wrapText(name, maxChars);
-        const lineH = fontSize + 3;
-        const textBlock = lines.length * lineH;
-        const startY = y + absH / 2 - textBlock / 2 + fontSize;
-        for (let i = 0; i < lines.length; i++) {
-          out.push(
-            `<text x="${x + absW / 2}" y="${startY + i * lineH}" ` +
-            `font-family="${fontName}" font-size="${fontSize}" ` +
-            `text-anchor="middle" fill="${fontColor}">${escXml(lines[i]!)}</text>`
-          );
-        }
       }
     }
   }
@@ -376,12 +813,17 @@ export function renderViewToSvg(view: ArchiView, model: ArchiModel): string {
       });
     }
 
-    const firstWp = waypoints[0] ?? { x: tgtCx, y: tgtCy };
-    const lastWp  = waypoints[waypoints.length - 1] ?? { x: srcCx, y: srcCy };
-    const start = rectEdge(firstWp.x, firstWp.y, sx, sy, srcG.absW, srcG.absH);
-    const end   = rectEdge(lastWp.x,  lastWp.y,  tx, ty, tgtG.absW, tgtG.absH);
-
-    const allPts = [start, ...waypoints, end];
+    let allPts: Array<{ x: number; y: number }>;
+    if (waypoints.length === 0) {
+      // No bendpoints: use orthogonal (Manhattan) routing instead of diagonal
+      allPts = orthogonalRoute(sx, sy, srcG.absW, srcG.absH, tx, ty, tgtG.absW, tgtG.absH);
+    } else {
+      const firstWp = waypoints[0]!;
+      const lastWp  = waypoints[waypoints.length - 1]!;
+      const start = rectEdge(firstWp.x, firstWp.y, sx, sy, srcG.absW, srcG.absH);
+      const end   = rectEdge(lastWp.x,  lastWp.y,  tx, ty, tgtG.absW, tgtG.absH);
+      allPts = [start, ...waypoints, end];
+    }
     const pointsAttr = allPts.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ");
 
     out.push(

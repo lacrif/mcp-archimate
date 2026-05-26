@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1140" height="551" viewBox="0 0 1140 551">
+  <defs>
+    <marker id="arrow-open" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#333" stroke-width="1.2"/>
+    </marker>
+    <marker id="arrow-filled" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#333" stroke="none"/>
+    </marker>
+    <marker id="arrow-hollow" markerWidth="11" markerHeight="9" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#333" stroke-width="1.2"/>
+    </marker>
+    <marker id="diamond-filled" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#333" stroke="#333" stroke-width="0.5"/>
+    </marker>
+    <marker id="diamond-open" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#333" stroke-width="1"/>
+    </marker>
+    <marker id="circle-solid" markerWidth="7" markerHeight="7" refX="0" refY="3.5" orient="auto-start-reverse">
+      <circle cx="3.5" cy="3.5" r="3" fill="#333" stroke="#333"/>
+    </marker>
+  </defs>
+<rect width="1140" height="551" fill="white"/>
+<rect width="1140" height="32" fill="#F0F0F0" stroke="#CCCCCC" stroke-width="1"/>
+<text x="570" y="21" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#222">Figure-14_Business_Function_View(Baseline)</text>
+<rect x="552" y="60" width="564" height="313" rx="2" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="1096.0" y="64.0" width="16" height="16"/>
+<text x="834.0" y="220.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Back Office</text>
+<rect x="948" y="420" width="168" height="107" rx="2" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="1096.0" y="424.0" width="16" height="16"/>
+<text x="1032.0" y="477.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Bank</text>
+<rect x="24" y="56" width="174" height="322" rx="2" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="178.0" y="60.0" width="16" height="16"/>
+<text x="111.0" y="221.0" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Client</text>
+<rect x="300" y="60" width="181" height="313" rx="2" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="461.0" y="64.0" width="16" height="16"/>
+<text x="390.5" y="220.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Front Office</text>
+<rect x="624" y="420" width="168" height="107" rx="2" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="772.0" y="424.0" width="16" height="16"/>
+<text x="708.0" y="477.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Shared Service Center</text>
+<path d="M 960,247 L 960,203 L 1020,192 L 1080,203 L 1080,247 L 1020,236 Z" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KKzOZ5c92AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAGFJREFUeNqdk0kSgEAMAgPf872+L5blcjKAw20qdCeXqdJpMy8quHu3Ehj4KmEbu3CwkyCBlQQpPEnwB/6SMKaGSMG9aU3wnOkkVPD7FBIauJyEAWwlZ7qCj6O6Kbzan3MAzskiegZBq2gAAAAASUVORK5CYII=" x="1060.0" y="207.0" width="16" height="16"/>
+<text x="1020.0" y="223.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Underwriting</text>
+<path d="M 960,355 L 960,311 L 1020,300 L 1080,311 L 1080,355 L 1020,344 Z" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KKzOZ5c92AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAGFJREFUeNqdk0kSgEAMAgPf872+L5blcjKAw20qdCeXqdJpMy8quHu3Ehj4KmEbu3CwkyCBlQQpPEnwB/6SMKaGSMG9aU3wnOkkVPD7FBIauJyEAWwlZ7qCj6O6Kbzan3MAzskiegZBq2gAAAAASUVORK5CYII=" x="1060.0" y="315.0" width="16" height="16"/>
+<text x="1020.0" y="324.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Investment</text>
+<text x="1020.0" y="338.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Management</text>
+<path d="M 636,151 L 636,107 L 696,96 L 756,107 L 756,151 L 696,140 Z" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KKzOZ5c92AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAGFJREFUeNqdk0kSgEAMAgPf872+L5blcjKAw20qdCeXqdJpMy8quHu3Ehj4KmEbu3CwkyCBlQQpPEnwB/6SMKaGSMG9aU3wnOkkVPD7FBIauJyEAWwlZ7qCj6O6Kbzan3MAzskiegZBq2gAAAAASUVORK5CYII=" x="736.0" y="111.0" width="16" height="16"/>
+<text x="696.0" y="127.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Claims</text>
+<path d="M 636,247 L 636,203 L 696,192 L 756,203 L 756,247 L 696,236 Z" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KKzOZ5c92AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAGFJREFUeNqdk0kSgEAMAgPf872+L5blcjKAw20qdCeXqdJpMy8quHu3Ehj4KmEbu3CwkyCBlQQpPEnwB/6SMKaGSMG9aU3wnOkkVPD7FBIauJyEAWwlZ7qCj6O6Kbzan3MAzskiegZBq2gAAAAASUVORK5CYII=" x="736.0" y="207.0" width="16" height="16"/>
+<text x="696.0" y="223.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Finance</text>
+<path d="M 631,355 L 631,311 L 691,300 L 751,311 L 751,355 L 691,344 Z" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KKzOZ5c92AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAGFJREFUeNqdk0kSgEAMAgPf872+L5blcjKAw20qdCeXqdJpMy8quHu3Ehj4KmEbu3CwkyCBlQQpPEnwB/6SMKaGSMG9aU3wnOkkVPD7FBIauJyEAWwlZ7qCj6O6Kbzan3MAzskiegZBq2gAAAAASUVORK5CYII=" x="731.0" y="315.0" width="16" height="16"/>
+<text x="691.0" y="331.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Actuarial</text>
+<path d="M 972,511 L 972,467 L 1032,456 L 1092,467 L 1092,511 L 1032,500 Z" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KKzOZ5c92AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAGFJREFUeNqdk0kSgEAMAgPf872+L5blcjKAw20qdCeXqdJpMy8quHu3Ehj4KmEbu3CwkyCBlQQpPEnwB/6SMKaGSMG9aU3wnOkkVPD7FBIauJyEAWwlZ7qCj6O6Kbzan3MAzskiegZBq2gAAAAASUVORK5CYII=" x="1072.0" y="471.0" width="16" height="16"/>
+<text x="1032.0" y="487.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Banking</text>
+<path d="M 48,147 L 48,103 L 108,92 L 168,103 L 168,147 L 108,136 Z" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KKzOZ5c92AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAGFJREFUeNqdk0kSgEAMAgPf872+L5blcjKAw20qdCeXqdJpMy8quHu3Ehj4KmEbu3CwkyCBlQQpPEnwB/6SMKaGSMG9aU3wnOkkVPD7FBIauJyEAWwlZ7qCj6O6Kbzan3MAzskiegZBq2gAAAAASUVORK5CYII=" x="148.0" y="107.0" width="16" height="16"/>
+<text x="108.0" y="116.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Claims</text>
+<text x="108.0" y="130.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Submission</text>
+<path d="M 48,243 L 48,199 L 108,188 L 168,199 L 168,243 L 108,232 Z" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KKzOZ5c92AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAGFJREFUeNqdk0kSgEAMAgPf872+L5blcjKAw20qdCeXqdJpMy8quHu3Ehj4KmEbu3CwkyCBlQQpPEnwB/6SMKaGSMG9aU3wnOkkVPD7FBIauJyEAWwlZ7qCj6O6Kbzan3MAzskiegZBq2gAAAAASUVORK5CYII=" x="148.0" y="203.0" width="16" height="16"/>
+<text x="108.0" y="212.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Buying</text>
+<text x="108.0" y="226.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Insurance</text>
+<path d="M 48,339 L 48,295 L 108,284 L 168,295 L 168,339 L 108,328 Z" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KKzOZ5c92AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAGFJREFUeNqdk0kSgEAMAgPf872+L5blcjKAw20qdCeXqdJpMy8quHu3Ehj4KmEbu3CwkyCBlQQpPEnwB/6SMKaGSMG9aU3wnOkkVPD7FBIauJyEAWwlZ7qCj6O6Kbzan3MAzskiegZBq2gAAAAASUVORK5CYII=" x="148.0" y="299.0" width="16" height="16"/>
+<text x="108.0" y="308.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Information</text>
+<text x="108.0" y="322.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Provisioning</text>
+<path d="M 336,253 L 336,209 L 396,198 L 456,209 L 456,253 L 396,242 Z" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KKzOZ5c92AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAGFJREFUeNqdk0kSgEAMAgPf872+L5blcjKAw20qdCeXqdJpMy8quHu3Ehj4KmEbu3CwkyCBlQQpPEnwB/6SMKaGSMG9aU3wnOkkVPD7FBIauJyEAWwlZ7qCj6O6Kbzan3MAzskiegZBq2gAAAAASUVORK5CYII=" x="436.0" y="213.0" width="16" height="16"/>
+<text x="396.0" y="229.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Sales</text>
+<path d="M 336,355 L 336,311 L 396,300 L 456,311 L 456,355 L 396,344 Z" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KKzOZ5c92AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAGFJREFUeNqdk0kSgEAMAgPf872+L5blcjKAw20qdCeXqdJpMy8quHu3Ehj4KmEbu3CwkyCBlQQpPEnwB/6SMKaGSMG9aU3wnOkkVPD7FBIauJyEAWwlZ7qCj6O6Kbzan3MAzskiegZBq2gAAAAASUVORK5CYII=" x="436.0" y="315.0" width="16" height="16"/>
+<text x="396.0" y="331.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Marketing</text>
+<path d="M 336,157 L 336,113 L 396,102 L 456,113 L 456,157 L 396,146 Z" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KKzOZ5c92AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAGFJREFUeNqdk0kSgEAMAgPf872+L5blcjKAw20qdCeXqdJpMy8quHu3Ehj4KmEbu3CwkyCBlQQpPEnwB/6SMKaGSMG9aU3wnOkkVPD7FBIauJyEAWwlZ7qCj6O6Kbzan3MAzskiegZBq2gAAAAASUVORK5CYII=" x="436.0" y="117.0" width="16" height="16"/>
+<text x="396.0" y="126.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Customer</text>
+<text x="396.0" y="140.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Relations</text>
+<path d="M 648,511 L 648,467 L 708,456 L 768,467 L 768,511 L 708,500 Z" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KKzOZ5c92AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAGFJREFUeNqdk0kSgEAMAgPf872+L5blcjKAw20qdCeXqdJpMy8quHu3Ehj4KmEbu3CwkyCBlQQpPEnwB/6SMKaGSMG9aU3wnOkkVPD7FBIauJyEAWwlZ7qCj6O6Kbzan3MAzskiegZBq2gAAAAASUVORK5CYII=" x="748.0" y="471.0" width="16" height="16"/>
+<text x="708.0" y="480.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Document</text>
+<text x="708.0" y="494.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Processing</text>
+<polyline points="1116.0,221.0 960.0,218.5" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="1096.2,373.0 973.9,300.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="601.8,60.0 736.8,151.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="552.0,222.6 756.0,218.2" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="632.4,373.0 726.4,300.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="1020.0,192.0 1020.0,120.5 756.0,122.9" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="888.0" y="117.7" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">policies</text>
+<polyline points="960.0,214.1 852.0,204.5 756.0,213.7" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="804.0" y="205.1" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">financial obligations</text>
+<polyline points="960.0,322.8 828.0,312.5 828.0,228.5 756.0,223.6" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="828.0" y="266.5" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">money</text>
+<polyline points="1034.5,355.0 1059.5,402.5 1041.3,456.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="1050.4" y="425.3" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">money</text>
+<polyline points="719.2,151.0 744.0,180.5 729.8,192.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="736.9" y="182.3" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">claim payments due</text>
+<polyline points="670.1,192.0 648.0,168.5 666.7,151.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="657.3" y="155.8" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">premium payment status</text>
+<polyline points="756.0,232.6 792.0,240.5 792.0,336.5 960.0,329.9" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="792.0" y="284.5" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">money</text>
+<polyline points="631.0,327.5 456.0,327.5" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="543.5" y="323.5" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">premium info</text>
+<polyline points="692.3,300.0 694.7,247.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="693.5" y="269.5" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">financial risk</text>
+<polyline points="719.9,300.0 732.0,288.5 1044.0,288.5 1029.6,247.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="888.0" y="284.5" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">premium info</text>
+<polyline points="685.3,355.0 675.5,402.5 697.0,456.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="686.2" y="425.3" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">documents</text>
+<polyline points="1032.0,527.0 1032.0,456.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="1019.0,456.0 999.5,414.5 1013.5,355.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="1006.5" y="380.8" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">money</text>
+<polyline points="106.0,56.0 108.8,147.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="24.0,173.5 163.0,243.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="105.9,378.0 108.9,284.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="168.0,121.6 336.0,127.4" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="252.0" y="120.5" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">claims</text>
+<polyline points="168.0,214.7 252.0,213.5 336.0,220.5" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="294.0" y="213.0" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">requests</text>
+<polyline points="168.0,307.8 288.0,300.5 288.0,144.5 336.0,137.8" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="288.0" y="218.5" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">customer info</text>
+<polyline points="481.0,364.6 379.2,198.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="398.3,373.0 394.6,300.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="400.4,60.0 394.3,157.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="336.0,226.3 252.0,227.5 168.0,220.5" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="210.0" y="220.0" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">policies</text>
+<polyline points="456.0,224.3 636.0,220.7" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="546.0" y="218.5" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">new contracts, premiums due</text>
+<polyline points="336.0,324.2 168.0,314.8" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="252.0" y="315.5" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">product info</text>
+<polyline points="396.0,300.0 396.0,253.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="396.0" y="272.5" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">product info</text>
+<polyline points="396.0,157.0 396.0,198.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="396.0" y="173.5" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">customer info</text>
+<polyline points="456.0,128.3 636.0,124.7" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="546.0" y="122.5" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">claims</text>
+<polyline points="708.0,527.0 708.0,456.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="721.4,456.0 747.5,402.5 711.7,355.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<text x="729.6" y="374.8" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">documents</text>
+</svg>

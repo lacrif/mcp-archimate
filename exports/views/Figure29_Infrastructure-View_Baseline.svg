@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1261" height="812" viewBox="0 0 1261 812">
+  <defs>
+    <marker id="arrow-open" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#333" stroke-width="1.2"/>
+    </marker>
+    <marker id="arrow-filled" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#333" stroke="none"/>
+    </marker>
+    <marker id="arrow-hollow" markerWidth="11" markerHeight="9" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#333" stroke-width="1.2"/>
+    </marker>
+    <marker id="diamond-filled" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#333" stroke="#333" stroke-width="0.5"/>
+    </marker>
+    <marker id="diamond-open" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#333" stroke-width="1"/>
+    </marker>
+    <marker id="circle-solid" markerWidth="7" markerHeight="7" refX="0" refY="3.5" orient="auto-start-reverse">
+      <circle cx="3.5" cy="3.5" r="3" fill="#333" stroke="#333"/>
+    </marker>
+  </defs>
+<rect width="1261" height="812" fill="white"/>
+<rect width="1261" height="32" fill="#F0F0F0" stroke="#CCCCCC" stroke-width="1"/>
+<text x="630.5" y="21" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#222">Figure29_Infrastructure-View(Baseline)</text>
+<rect x="48" y="80" width="444" height="264" rx="2" fill="#FFFFFF" stroke="#666666" stroke-width="1" stroke-dasharray="6,4"/>
+<text x="53" y="94" font-family="Arial,Helvetica,sans-serif" font-size="11" font-style="italic" fill="#444">Front Office</text>
+<rect x="661" y="92" width="227" height="239" rx="2" fill="#FFFFFF" stroke="#666666" stroke-width="1" stroke-dasharray="6,4"/>
+<text x="666" y="106" font-family="Arial,Helvetica,sans-serif" font-size="11" font-style="italic" fill="#444">Homeowner's &amp; Travel Back Office</text>
+<rect x="296" y="584" width="216" height="169" rx="2" fill="#FFFFFF" stroke="#666666" stroke-width="1" stroke-dasharray="6,4"/>
+<text x="301" y="598" font-family="Arial,Helvetica,sans-serif" font-size="11" font-style="italic" fill="#444">Auto Back Office</text>
+<rect x="547" y="584" width="217" height="168" rx="2" fill="#FFFFFF" stroke="#666666" stroke-width="1" stroke-dasharray="6,4"/>
+<text x="552" y="598" font-family="Arial,Helvetica,sans-serif" font-size="11" font-style="italic" fill="#444">Shared Service Center</text>
+<rect x="960" y="260" width="258" height="170" rx="2" fill="#FFFFFF" stroke="#666666" stroke-width="1" stroke-dasharray="6,4"/>
+<text x="965" y="274" font-family="Arial,Helvetica,sans-serif" font-size="11" font-style="italic" fill="#444">Legal Expense Back Office</text>
+<rect x="24" y="56" width="876" height="300" rx="2" fill="#EDCFE2" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfmChMLOS1D24zBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNpjZMAN/mMRYyQoANP89vwjDEFhQzkMPYzEasZlCCMpmrEZwkRQNQFAsQFUDwO8hmCLBZp4AasrsNlOFRcQAiBXgJL0f1wKaO4CBny2080FeAEAw2wfrl8TEl4AAAAASUVORK5CYII=" x="880.0" y="60.0" width="16" height="16"/>
+<text x="462.0" y="210.0" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Home &amp; Away Headquarters</text>
+<rect x="283" y="476" width="504" height="312" rx="2" fill="#EDCFE2" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfmChMLOS1D24zBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNpjZMAN/mMRYyQoANP89vwjDEFhQzkMPYzEasZlCCMpmrEZwkRQNQFAsQFUDwO8hmCLBZp4AasrsNlOFRcQAiBXgJL0f1wKaO4CBny2080FeAEAw2wfrl8TEl4AAAAASUVORK5CYII=" x="767.0" y="480.0" width="16" height="16"/>
+<text x="535.0" y="636.0" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">PRO-FIT Headquarters</text>
+<rect x="936" y="224" width="301" height="312" rx="2" fill="#EDCFE2" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfmChMLOS1D24zBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNpjZMAN/mMRYyQoANP89vwjDEFhQzkMPYzEasZlCCMpmrEZwkRQNQFAsQFUDwO8hmCLBZp4AasrsNlOFRcQAiBXgJL0f1wKaO4CBny2080FeAEAw2wfrl8TEl4AAAAASUVORK5CYII=" x="1217.0" y="228.0" width="16" height="16"/>
+<text x="1086.5" y="384.0" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">LegallyYours Headquarters</text>
+<rect x="582" y="368" width="120" height="55" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMIjovuVgOAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAF1JREFUeNpjYKAQMKLx/+ORw6oGWdH/k8+3wznmkp5YLUBXw0LAhf8JyBM0AJ8XqRMGJDsZXR0TkRpIM5UUdRS7ABYIZAceiEFWAoKpwZUOiA0PnAYQTEBUCwOKAQBw8SAUStVa0wAAAABJRU5ErkJggg==" x="682.0" y="372.0" width="16" height="16"/>
+<text x="642.0" y="392.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">ArchiSurance</text>
+<text x="642.0" y="406.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">WAN</text>
+<rect x="516" y="172" width="120" height="55" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMIjovuVgOAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAF1JREFUeNpjYKAQMKLx/+ORw6oGWdH/k8+3wznmkp5YLUBXw0LAhf8JyBM0AJ8XqRMGJDsZXR0TkRpIM5UUdRS7ABYIZAceiEFWAoKpwZUOiA0PnAYQTEBUCwOKAQBw8SAUStVa0wAAAABJRU5ErkJggg==" x="616.0" y="176.0" width="16" height="16"/>
+<text x="576.0" y="196.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Home &amp; Away</text>
+<text x="576.0" y="210.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">LAN</text>
+<rect x="499" y="512" width="120" height="55" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMIjovuVgOAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAF1JREFUeNpjYKAQMKLx/+ORw6oGWdH/k8+3wznmkp5YLUBXw0LAhf8JyBM0AJ8XqRMGJDsZXR0TkRpIM5UUdRS7ABYIZAceiEFWAoKpwZUOiA0PnAYQTEBUCwOKAQBw8SAUStVa0wAAAABJRU5ErkJggg==" x="599.0" y="516.0" width="16" height="16"/>
+<text x="559.0" y="543.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">PRO-FIT LAN</text>
+<rect x="948" y="464" width="120" height="55" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMIjovuVgOAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAF1JREFUeNpjYKAQMKLx/+ORw6oGWdH/k8+3wznmkp5YLUBXw0LAhf8JyBM0AJ8XqRMGJDsZXR0TkRpIM5UUdRS7ABYIZAceiEFWAoKpwZUOiA0PnAYQTEBUCwOKAQBw8SAUStVa0wAAAABJRU5ErkJggg==" x="1048.0" y="468.0" width="16" height="16"/>
+<text x="1008.0" y="488.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">LegallyYours</text>
+<text x="1008.0" y="502.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">LAN</text>
+<rect x="144" y="104" width="240" height="97" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMNAhaJJ3p4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjYBhowIjG/0+qPmQD/p98vp0o3eaSnnC9TJR6YdQAKhhAcTpgQZchlBagaQCrC8hKSIykakY3BG4AiWGHzQfkAQCWpBIXmCT6FAAAAABJRU5ErkJggg==" x="364.0" y="108.0" width="16" height="16"/>
+<text x="264.0" y="156.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">FO Web Hosting Server</text>
+<rect x="60" y="224" width="418" height="109" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMNAhaJJ3p4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjYBhowIjG/0+qPmQD/p98vp0o3eaSnnC9TJR6YdQAKhhAcTpgQZchlBagaQCrC8hKSIykakY3BG4AiWGHzQfkAQCWpBIXmCT6FAAAAABJRU5ErkJggg==" x="458.0" y="228.0" width="16" height="16"/>
+<text x="269.0" y="282.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">FO General-Purpose Server</text>
+<rect x="685" y="116" width="180" height="192" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMNAhaJJ3p4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjYBhowIjG/0+qPmQD/p98vp0o3eaSnnC9TJR6YdQAKhhAcTpgQZchlBagaQCrC8hKSIykakY3BG4AiWGHzQfkAQCWpBIXmCT6FAAAAABJRU5ErkJggg==" x="845.0" y="120.0" width="16" height="16"/>
+<text x="775.0" y="202.0" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">ArchiSurance</text>
+<text x="775.0" y="216.0" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">General-Purpose Server</text>
+<text x="775.0" y="230.0" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Cluster</text>
+<rect x="314" y="617" width="175" height="111" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMNAhaJJ3p4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjYBhowIjG/0+qPmQD/p98vp0o3eaSnnC9TJR6YdQAKhhAcTpgQZchlBagaQCrC8hKSIykakY3BG4AiWGHzQfkAQCWpBIXmCT6FAAAAABJRU5ErkJggg==" x="469.0" y="621.0" width="16" height="16"/>
+<text x="401.5" y="669.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Auto General-Purpose</text>
+<text x="401.5" y="683.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Server</text>
+<rect x="571" y="620" width="164" height="109" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMNAhaJJ3p4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjYBhowIjG/0+qPmQD/p98vp0o3eaSnnC9TJR6YdQAKhhAcTpgQZchlBagaQCrC8hKSIykakY3BG4AiWGHzQfkAQCWpBIXmCT6FAAAAABJRU5ErkJggg==" x="715.0" y="624.0" width="16" height="16"/>
+<text x="653.0" y="671.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Document Management</text>
+<text x="653.0" y="685.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Server</text>
+<rect x="984" y="296" width="216" height="120" rx="2" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMNAhaJJ3p4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjYBhowIjG/0+qPmQD/p98vp0o3eaSnnC9TJR6YdQAKhhAcTpgQZchlBagaQCrC8hKSIykakY3BG4AiWGHzQfkAQCWpBIXmCT6FAAAAABJRU5ErkJggg==" x="1180.0" y="300.0" width="16" height="16"/>
+<text x="1092.0" y="353.0" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Legal Expense General-Purpose</text>
+<text x="1092.0" y="367.0" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Server</text>
+<rect x="199" y="130" width="137" height="55" rx="1" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<line x1="199" y1="144" x2="336" y2="144" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMGCTwH7sUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEdJREFUeNpjYBhowIjG/0+kOtwGnHy+HUXAXNITryFMxDgTauh/sg3AZwgLMZqRvAEzhJFoA/CECWlewAVGDSA+KRPSN4AAAD3CEX9wrOCFAAAAAElFTkSuQmCC" x="316.0" y="134.0" width="16" height="16"/>
+<text x="267.5" y="161.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Web Portal</text>
+<text x="267.5" y="175.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Implementation</text>
+<rect x="72" y="257" width="131" height="55" rx="1" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<line x1="72" y1="271" x2="203" y2="271" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMGCTwH7sUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEdJREFUeNpjYBhowIjG/0+kOtwGnHy+HUXAXNITryFMxDgTauh/sg3AZwgLMZqRvAEzhJFoA/CECWlewAVGDSA+KRPSN4AAAD3CEX9wrOCFAAAAAElFTkSuQmCC" x="183.0" y="261.0" width="16" height="16"/>
+<text x="137.5" y="288.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Call Center</text>
+<text x="137.5" y="302.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Implementation</text>
+<rect x="204" y="257" width="131" height="55" rx="1" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<line x1="204" y1="271" x2="335" y2="271" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMGCTwH7sUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEdJREFUeNpjYBhowIjG/0+kOtwGnHy+HUXAXNITryFMxDgTauh/sg3AZwgLMZqRvAEzhJFoA/CECWlewAVGDSA+KRPSN4AAAD3CEX9wrOCFAAAAAElFTkSuQmCC" x="315.0" y="261.0" width="16" height="16"/>
+<text x="269.5" y="288.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">CRM System</text>
+<text x="269.5" y="302.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Implementation</text>
+<rect x="336" y="257" width="131" height="55" rx="1" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<line x1="336" y1="271" x2="467" y2="271" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMGCTwH7sUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEdJREFUeNpjYBhowIjG/0+kOtwGnHy+HUXAXNITryFMxDgTauh/sg3AZwgLMZqRvAEzhJFoA/CECWlewAVGDSA+KRPSN4AAAD3CEX9wrOCFAAAAAElFTkSuQmCC" x="447.0" y="261.0" width="16" height="16"/>
+<text x="401.5" y="281.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Legal Expense</text>
+<text x="401.5" y="295.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">CRM System</text>
+<text x="401.5" y="309.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Implementation</text>
+<rect x="697" y="159" width="157" height="55" rx="1" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<line x1="697" y1="173" x2="854" y2="173" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMGCTwH7sUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEdJREFUeNpjYBhowIjG/0+kOtwGnHy+HUXAXNITryFMxDgTauh/sg3AZwgLMZqRvAEzhJFoA/CECWlewAVGDSA+KRPSN4AAAD3CEX9wrOCFAAAAAElFTkSuQmCC" x="834.0" y="163.0" width="16" height="16"/>
+<text x="775.5" y="176.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Home &amp; Away</text>
+<text x="775.5" y="190.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Financial</text>
+<text x="775.5" y="204.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Application</text>
+<text x="775.5" y="218.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Implementation</text>
+<rect x="695" y="224" width="157" height="55" rx="1" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<line x1="695" y1="238" x2="852" y2="238" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMGCTwH7sUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEdJREFUeNpjYBhowIjG/0+kOtwGnHy+HUXAXNITryFMxDgTauh/sg3AZwgLMZqRvAEzhJFoA/CECWlewAVGDSA+KRPSN4AAAD3CEX9wrOCFAAAAAElFTkSuQmCC" x="832.0" y="228.0" width="16" height="16"/>
+<text x="773.5" y="248.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Home &amp; Away Policy</text>
+<text x="773.5" y="262.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Administration</text>
+<text x="773.5" y="276.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Implementation</text>
+<rect x="326" y="665" width="140" height="55" rx="1" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<line x1="326" y1="679" x2="466" y2="679" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMGCTwH7sUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEdJREFUeNpjYBhowIjG/0+kOtwGnHy+HUXAXNITryFMxDgTauh/sg3AZwgLMZqRvAEzhJFoA/CECWlewAVGDSA+KRPSN4AAAD3CEX9wrOCFAAAAAElFTkSuQmCC" x="446.0" y="669.0" width="16" height="16"/>
+<text x="396.0" y="696.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Auto Insurance</text>
+<text x="396.0" y="710.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Implementation</text>
+<rect x="583" y="668" width="140" height="55" rx="1" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<line x1="583" y1="682" x2="723" y2="682" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMGCTwH7sUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEdJREFUeNpjYBhowIjG/0+kOtwGnHy+HUXAXNITryFMxDgTauh/sg3AZwgLMZqRvAEzhJFoA/CECWlewAVGDSA+KRPSN4AAAD3CEX9wrOCFAAAAAElFTkSuQmCC" x="703.0" y="672.0" width="16" height="16"/>
+<text x="653.0" y="699.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">DMS</text>
+<text x="653.0" y="713.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Implementation</text>
+<rect x="1020" y="344" width="140" height="55" rx="1" fill="#C9E7B7" stroke="#666666" stroke-width="1"/>
+<line x1="1020" y1="358" x2="1160" y2="358" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMMGCTwH7sUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEdJREFUeNpjYBhowIjG/0+kOtwGnHy+HUXAXNITryFMxDgTauh/sg3AZwgLMZqRvAEzhJFoA/CECWlewAVGDSA+KRPSN4AAAD3CEX9wrOCFAAAAAElFTkSuQmCC" x="1140.0" y="348.0" width="16" height="16"/>
+<text x="1090.0" y="368.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Legal Expesne</text>
+<text x="1090.0" y="382.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Back Office</text>
+<text x="1090.0" y="396.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Implementation</text>
+<polyline points="516.0,190.5 384.0,170.6" fill="none" stroke="#444444" stroke-width="1"/>
+<polyline points="516.0,214.9 478.0,224.7" fill="none" stroke="#444444" stroke-width="1"/>
+<polyline points="636.0,203.3 685.0,206.3" fill="none" stroke="#444444" stroke-width="1"/>
+<polyline points="297.9,201.0 248.3,130.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="273.5,333.0 267.2,257.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="60.0,288.0 203.0,281.5" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="478.0,288.0 336.0,281.5" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow-open)"/>
+<polyline points="776.9,116.0 775.0,214.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="771.4,308.0 774.5,224.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="578.1,567.0 615.1,620.0" fill="none" stroke="#444444" stroke-width="1"/>
+<polyline points="526.4,567.0 467.2,617.0" fill="none" stroke="#444444" stroke-width="1"/>
+<polyline points="386.2,728.0 403.6,665.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="653.0,729.0 653.0,668.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="1025.0,464.0 1054.8,416.0" fill="none" stroke="#444444" stroke-width="1"/>
+<polyline points="1084.3,416.0 1093.5,344.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#circle-solid)" marker-end="url(#arrow-open)"/>
+<polyline points="632.7,368.0 585.3,227.0" fill="none" stroke="#444444" stroke-width="1"/>
+<polyline points="702.0,411.2 948.0,475.8" fill="none" stroke="#444444" stroke-width="1"/>
+<polyline points="626.1,423.0 574.9,512.0" fill="none" stroke="#444444" stroke-width="1"/>
+</svg>

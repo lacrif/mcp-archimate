@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="874" height="291" viewBox="0 0 874 291">
+  <defs>
+    <marker id="arrow-open" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#333" stroke-width="1.2"/>
+    </marker>
+    <marker id="arrow-filled" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#333" stroke="none"/>
+    </marker>
+    <marker id="arrow-hollow" markerWidth="11" markerHeight="9" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#333" stroke-width="1.2"/>
+    </marker>
+    <marker id="diamond-filled" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#333" stroke="#333" stroke-width="0.5"/>
+    </marker>
+    <marker id="diamond-open" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#333" stroke-width="1"/>
+    </marker>
+    <marker id="circle-solid" markerWidth="7" markerHeight="7" refX="0" refY="3.5" orient="auto-start-reverse">
+      <circle cx="3.5" cy="3.5" r="3" fill="#333" stroke="#333"/>
+    </marker>
+  </defs>
+<rect width="874" height="291" fill="white"/>
+<rect width="874" height="32" fill="#F0F0F0" stroke="#CCCCCC" stroke-width="1"/>
+<text x="437" y="21" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#222">Figure34_Migration-View</text>
+<rect x="24" y="134" width="120" height="55" rx="2" fill="#FFE0E0" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfcARwUFCn5tPP2AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAClJREFUeNpjYBgFjFjE/pNiANNA+wDFCyQ5HaZ3cHiBLKfDwMB7YRgAAMsdAwm30p74AAAAAElFTkSuQmCC" x="124.0" y="138.0" width="16" height="16"/>
+<text x="84.0" y="165.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Baseline</text>
+<rect x="239" y="56" width="175" height="79" rx="2" fill="#FFE0E0" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfcARwUFCn5tPP2AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAClJREFUeNpjYBgFjFjE/pNiANNA+wDFCyQ5HaZ3cHiBLKfDwMB7YRgAAMsdAwm30p74AAAAAElFTkSuQmCC" x="394.0" y="60.0" width="16" height="16"/>
+<text x="326.5" y="78.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Transition A: One</text>
+<text x="326.5" y="92.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">enterprise-wide CRM</text>
+<text x="326.5" y="106.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">system with baseline</text>
+<text x="326.5" y="120.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">back-office systems</text>
+<rect x="239" y="188" width="175" height="79" rx="2" fill="#FFE0E0" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfcARwUFCn5tPP2AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAClJREFUeNpjYBgFjFjE/pNiANNA+wDFCyQ5HaZ3cHiBLKfDwMB7YRgAAMsdAwm30p74AAAAAElFTkSuQmCC" x="394.0" y="192.0" width="16" height="16"/>
+<text x="326.5" y="217.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Transition B: Standard</text>
+<text x="326.5" y="231.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">back-office suite with</text>
+<text x="326.5" y="245.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">baseline CRM systems</text>
+<rect x="480" y="117" width="178" height="89" rx="2" fill="#FFE0E0" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfcARwUFCn5tPP2AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAClJREFUeNpjYBgFjFjE/pNiANNA+wDFCyQ5HaZ3cHiBLKfDwMB7YRgAAMsdAwm30p74AAAAAElFTkSuQmCC" x="638.0" y="121.0" width="16" height="16"/>
+<text x="569.0" y="144.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Transition C: One</text>
+<text x="569.0" y="158.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">enterprise-wide CRM</text>
+<text x="569.0" y="172.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">system with standard</text>
+<text x="569.0" y="186.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">back office systems</text>
+<rect x="705" y="125" width="145" height="73" rx="2" fill="#FFE0E0" stroke="#666666" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfcARwUFCn5tPP2AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAClJREFUeNpjYBgFjFjE/pNiANNA+wDFCyQ5HaZ3cHiBLKfDwMB7YRgAAMsdAwm30p74AAAAAElFTkSuQmCC" x="830.0" y="129.0" width="16" height="16"/>
+<text x="777.5" y="151.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Target: CRM, back</text>
+<text x="777.5" y="165.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">office and data</text>
+<text x="777.5" y="179.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">warehouse in place</text>
+<circle cx="187.5" cy="161.5" r="7.5" fill="#000000" stroke="#666666" stroke-width="1"/>
+<circle cx="187.5" cy="161.5" r="4.125" fill="white" stroke="#666666" stroke-width="1"/>
+<circle cx="446.5" cy="161.5" r="7.5" fill="#000000" stroke="#666666" stroke-width="1"/>
+<circle cx="446.5" cy="161.5" r="4.125" fill="white" stroke="#666666" stroke-width="1"/>
+<polyline points="144.0,161.5 180.0,161.5" fill="none" stroke="#444444" stroke-width="1" marker-end="url(#arrow-filled)"/>
+<polyline points="398.3,135.0 439.0,157.4" fill="none" stroke="#444444" stroke-width="1" marker-end="url(#arrow-filled)"/>
+<polyline points="398.3,188.0 439.0,165.6" fill="none" stroke="#444444" stroke-width="1" marker-end="url(#arrow-filled)"/>
+<polyline points="658.0,161.5 705.0,161.5" fill="none" stroke="#444444" stroke-width="1" marker-end="url(#arrow-filled)"/>
+<polyline points="195.0,157.9 243.3,135.0" fill="none" stroke="#444444" stroke-width="1" marker-end="url(#arrow-filled)"/>
+<polyline points="195.0,165.1 243.3,188.0" fill="none" stroke="#444444" stroke-width="1" marker-end="url(#arrow-filled)"/>
+<polyline points="454.0,161.5 480.0,161.5" fill="none" stroke="#444444" stroke-width="1" marker-end="url(#arrow-filled)"/>
+</svg>
