@@ -2,7 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased] 
+---
+
+## [0.4.0]
+
+- SVG renderer: removed title bar; view name now in `<title>` element only.
+- SVG renderer: derived line color from fill color when no explicit line color set (Archi formula: fill × 0.7).
+- SVG renderer: `archi_type` field on nodes selects box vs. icon display mode.
+- SVG renderer: icons rendered for `Grouping` elements and `data-object` shapes.
+- SVG renderer: arrow/connector marker colors corrected to `#000`.
+- SVG renderer: fixed text centering in Process shapes.
+- `ArchiNode` model and parser now carry `archi_type` for display-mode selection.
 
 ---
 

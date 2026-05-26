@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="524" height="567" viewBox="0 0 524 567">
+<title>07 Strategy View - Long Term</title>
+  <defs>
+    <marker id="arrow-open" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#000" stroke-width="1.2"/>
+    </marker>
+    <marker id="arrow-filled" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#000" stroke="none"/>
+    </marker>
+    <marker id="arrow-hollow" markerWidth="11" markerHeight="9" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#000" stroke-width="1.2"/>
+    </marker>
+    <marker id="diamond-filled" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#000" stroke="#000" stroke-width="0.5"/>
+    </marker>
+    <marker id="diamond-open" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#000" stroke-width="1"/>
+    </marker>
+    <marker id="circle-solid" markerWidth="7" markerHeight="7" refX="0" refY="3.5" orient="auto-start-reverse">
+      <circle cx="3.5" cy="3.5" r="3" fill="#000" stroke="#000"/>
+    </marker>
+  </defs>
+<rect width="524" height="567" fill="white"/>
+<rect x="209" y="10" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjozMTo1MiAtMDAwMBNa/3UAAAAHdElNRQfgCB0IDRznLwYbAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE9JREFUeNpjYBjygBGN/59UfYzIGs+cwa3fxIQRLg9iw/QzwVjEakZXCzLqPyma0eWYGCgE8DAg1RXQcECEAVLAYACQZmR5ZDbF0TgKqAAA+WIjCwBr0xgAAAAASUVORK5CYII=" x="309.0" y="14.0" width="16" height="16"/>
+<text x="269.0" y="41.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Board</text>
+<rect x="209" y="94" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjozMTo1MiAtMDAwMBNa/3UAAAAHdElNRQfgCB0IDTI7+QvUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIdJREFUeNqlkwEKwCAMA1vf5P9f4J86HAgxprphQBhqzqZlZnvF4dz8h1HeLcIUrYX11QXfoeCFXohhZAHEM8BrrlWn6vtUyQQILJkhYF4gRb2GEDRnUziOaiMftS7NwxjJmacROHPWWAT4LjP3xGCUjJ6iMIzNHCGwEhVLNf36XzjpZsTf9ABP4lNqw/UlsQAAAABJRU5ErkJggg==" x="309.0" y="98.0" width="16" height="16"/>
+<text x="269.0" y="125.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Profitability</text>
+<rect x="22" y="94" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCB0IDR9+JlehAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFFJREFUeNpjYCAe/IdiFMBIpEaGM2cgek1MGFH0EjLgP0wjOoAaxMhEghewAnwuwGk7sito6oKBDwOwC2AMXNFIlGYk/n9CmnBpJgkMnOYhCgBLHBwDqHkCswAAAABJRU5ErkJggg==" x="122.0" y="98.0" width="16" height="16"/>
+<text x="82.0" y="90.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Customers</text>
+<text x="82.0" y="104.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">defecting to</text>
+<text x="82.0" y="118.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">competitors</text>
+<text x="82.0" y="132.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">with superior</text>
+<text x="82.0" y="146.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">digital</text>
+<text x="82.0" y="160.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">experiences</text>
+<rect x="394" y="94" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCB0IDR9+JlehAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFFJREFUeNpjYCAe/IdiFMBIpEaGM2cgek1MGFH0EjLgP0wjOoAaxMhEghewAnwuwGk7sito6oKBDwOwC2AMXNFIlGYk/n9CmnBpJgkMnOYhCgBLHBwDqHkCswAAAABJRU5ErkJggg==" x="494.0" y="98.0" width="16" height="16"/>
+<text x="454.0" y="90.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Customer</text>
+<text x="454.0" y="104.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">defecting to</text>
+<text x="454.0" y="118.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">competitors</text>
+<text x="454.0" y="132.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">with lower</text>
+<text x="454.0" y="146.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Insurance</text>
+<text x="454.0" y="160.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Premiums</text>
+<rect x="209" y="189" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfcARwQOSc5LyzCAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIFJREFUeNqlU1sOwCAIG57J+5/AO7Es0a2Dli2RLyX0YVU7dDmsTQ2ZAo7x4Hs3OR8bjsBYk8gUgQtV5iZZSuCv/cI2ZjMe49qjI6yG6kIpkcwZpw4iWCmjA1rLSXUrNESWQeyXIbLAFCk6eLlgAYa+fJpbL/EmEap0vrqjX79xu06a+VOqNYOegAAAAABJRU5ErkJggg==" x="309.0" y="193.0" width="16" height="16"/>
+<text x="269.0" y="213.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Increase in</text>
+<text x="269.0" y="227.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">revenue</text>
+<rect x="394" y="189" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfcARwQOSc5LyzCAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIFJREFUeNqlU1sOwCAIG57J+5/AO7Es0a2Dli2RLyX0YVU7dDmsTQ2ZAo7x4Hs3OR8bjsBYk8gUgQtV5iZZSuCv/cI2ZjMe49qjI6yG6kIpkcwZpw4iWCmjA1rLSXUrNESWQeyXIbLAFCk6eLlgAYa+fJpbL/EmEap0vrqjX79xu06a+VOqNYOegAAAAABJRU5ErkJggg==" x="494.0" y="193.0" width="16" height="16"/>
+<text x="454.0" y="213.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Increase in</text>
+<text x="454.0" y="227.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Market Share</text>
+<rect x="22" y="189" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfcARwQOSc5LyzCAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIFJREFUeNqlU1sOwCAIG57J+5/AO7Es0a2Dli2RLyX0YVU7dDmsTQ2ZAo7x4Hs3OR8bjsBYk8gUgQtV5iZZSuCv/cI2ZjMe49qjI6yG6kIpkcwZpw4iWCmjA1rLSXUrNESWQeyXIbLAFCk6eLlgAYa+fJpbL/EmEap0vrqjX79xu06a+VOqNYOegAAAAABJRU5ErkJggg==" x="122.0" y="193.0" width="16" height="16"/>
+<text x="82.0" y="206.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Higher</text>
+<text x="82.0" y="220.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Customer</text>
+<text x="82.0" y="234.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Retention</text>
+<rect x="22" y="295" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfcARwQOSc5LyzCAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIFJREFUeNqlU1sOwCAIG57J+5/AO7Es0a2Dli2RLyX0YVU7dDmsTQ2ZAo7x4Hs3OR8bjsBYk8gUgQtV5iZZSuCv/cI2ZjMe49qjI6yG6kIpkcwZpw4iWCmjA1rLSXUrNESWQeyXIbLAFCk6eLlgAYa+fJpbL/EmEap0vrqjX79xu06a+VOqNYOegAAAAABJRU5ErkJggg==" x="122.0" y="299.0" width="16" height="16"/>
+<text x="82.0" y="312.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Improved</text>
+<text x="82.0" y="326.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Customer</text>
+<text x="82.0" y="340.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Satisfaction</text>
+<rect x="10" y="394" width="145" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCB0JKAuNzTkMAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIFJREFUeNqdk90NwCAIhMF0JPefwJ0wGk0pHkrlgfjDfZxGie5DWuJTwQj+A+gbpbz6nNmCZI4tQLTQBgDR44lVMe2g7IkRbK6NeU8J2dx1RA5Ek0+drYvkkaNOXEATRyDLJXoiZB86mJ2jx9GVoXegu1vAAkHHsJrbv7AFfECnugp1aFVCo3KeJwAAAABJRU5ErkJggg==" x="135.0" y="398.0" width="16" height="16"/>
+<text x="82.5" y="411.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Best-in-Class</text>
+<text x="82.5" y="425.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Online Customer</text>
+<text x="82.5" y="439.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Experience</text>
+<rect x="394" y="298" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfcARwQOSc5LyzCAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIFJREFUeNqlU1sOwCAIG57J+5/AO7Es0a2Dli2RLyX0YVU7dDmsTQ2ZAo7x4Hs3OR8bjsBYk8gUgQtV5iZZSuCv/cI2ZjMe49qjI6yG6kIpkcwZpw4iWCmjA1rLSXUrNESWQeyXIbLAFCk6eLlgAYa+fJpbL/EmEap0vrqjX79xu06a+VOqNYOegAAAAABJRU5ErkJggg==" x="494.0" y="302.0" width="16" height="16"/>
+<text x="454.0" y="315.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Competitive</text>
+<text x="454.0" y="329.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Premium</text>
+<text x="454.0" y="343.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Setting</text>
+<rect x="394" y="394" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCB0JKAuNzTkMAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIFJREFUeNqdk90NwCAIhMF0JPefwJ0wGk0pHkrlgfjDfZxGie5DWuJTwQj+A+gbpbz6nNmCZI4tQLTQBgDR44lVMe2g7IkRbK6NeU8J2dx1RA5Ek0+drYvkkaNOXEATRyDLJXoiZB86mJ2jx9GVoXegu1vAAkHHsJrbv7AFfECnugp1aFVCo3KeJwAAAABJRU5ErkJggg==" x="494.0" y="398.0" width="16" height="16"/>
+<text x="454.0" y="404.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Detailed</text>
+<text x="454.0" y="418.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Insight in</text>
+<text x="454.0" y="432.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Customer</text>
+<text x="454.0" y="446.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Behavior</text>
+<rect x="196" y="394" width="145" height="55" rx="2" fill="#F5DEAA" stroke="rgb(171,155,118)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAK3RFWHRDcmVhdGlvbiBUaW1lAEZyaSAyIFNlcCAyMDE2IDE0OjQxOjIzIC0wMDAwdsoU9wAAAAd0SU1FB+AJAg0wEy6p/6YAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAEZ0FNQQAAsY8L/GEFAAAAiUlEQVR42q2S0Q2AIAxEgfDnFg7lkA7lFv4RMSWk1lrbYrwvArnX64UYbFVyjvwxWsZ9W/FimpeH7w1QqZGrg5o3W/nJ1CBBpQQ4Hcx8BfoG/uQo8ZaCywXQ+jBLlDoYKlGbflFSpp8llKPA/dg/oJAOwHW0lbOUwNlTU1Im+wQAI4EN+Gz+A3ICNYI4xchu+cQAAAAASUVORK5CYII=" x="321.0" y="398.0" width="16" height="16"/>
+<text x="268.5" y="418.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Digital Customer</text>
+<text x="268.5" y="432.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Intimacy Strategy</text>
+<rect x="394" y="502" width="120" height="55" rx="2" fill="#F5DEAA" stroke="rgb(171,155,118)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="494.0" y="506.0" width="16" height="16"/>
+<text x="454.0" y="526.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Data-Driven</text>
+<text x="454.0" y="540.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Insurance</text>
+<rect x="22" y="502" width="120" height="55" rx="2" fill="#F5DEAA" stroke="rgb(171,155,118)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCQILOzKFuUqBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEJJREFUeNpjZCAe/McmyEKCAQxf761C4XMrhTEwkWIANjDwBjDiEP9PrAE4AxFbgA3jQCQ6wLABcCASG2CjgYgdAAA42BYfsDjb3AAAAABJRU5ErkJggg==" x="122.0" y="506.0" width="16" height="16"/>
+<text x="82.0" y="519.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Digital</text>
+<text x="82.0" y="533.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Customer</text>
+<text x="82.0" y="547.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Management</text>
+<polyline points="269.0,94.0 269.0,65.0" fill="none" stroke="#000000" stroke-width="1"/>
+<polyline points="209.0,121.5 142.0,121.5" fill="none" stroke="#000000" stroke-width="1"/>
+<polyline points="394.0,121.5 329.0,121.5" fill="none" stroke="#000000" stroke-width="1"/>
+<polyline points="269.0,189.0 269.0,149.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-open)"/>
+<polyline points="394.0,216.5 329.0,216.5" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-open)"/>
+<text x="361.5" y="212.5" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">+</text>
+<polyline points="142.0,216.5 209.0,216.5" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-open)"/>
+<polyline points="82.0,295.0 82.0,244.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-open)"/>
+<polyline points="82.4,394.0 82.1,350.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="454.0,298.0 454.0,244.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-open)"/>
+<text x="454.0" y="267.0" font-family="Arial,Helvetica,sans-serif" font-size="9" text-anchor="middle" fill="#555" font-style="italic">+</text>
+<polyline points="454.0,394.0 454.0,353.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="341.0,421.5 394.0,421.5" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="196.0,421.5 155.0,421.5" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="454.0,502.0 454.0,449.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="394.0,528.3 298.3,526.5 276.3,449.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="82.1,502.0 82.4,449.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="142.0,528.3 238.3,526.5 260.6,449.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+</svg>

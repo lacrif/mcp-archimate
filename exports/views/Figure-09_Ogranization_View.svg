@@ -1,71 +1,70 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="636" height="449" viewBox="0 0 636 449">
+<svg xmlns="http://www.w3.org/2000/svg" width="608" height="389" viewBox="0 0 608 389">
+<title>Figure-09_Ogranization_View</title>
   <defs>
     <marker id="arrow-open" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
-      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#333" stroke-width="1.2"/>
+      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#000" stroke-width="1.2"/>
     </marker>
     <marker id="arrow-filled" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
-      <path d="M0,0 L8,3.5 L0,7 Z" fill="#333" stroke="none"/>
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#000" stroke="none"/>
     </marker>
     <marker id="arrow-hollow" markerWidth="11" markerHeight="9" refX="10" refY="4" orient="auto">
-      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#333" stroke-width="1.2"/>
+      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#000" stroke-width="1.2"/>
     </marker>
     <marker id="diamond-filled" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
-      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#333" stroke="#333" stroke-width="0.5"/>
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#000" stroke="#000" stroke-width="0.5"/>
     </marker>
     <marker id="diamond-open" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
-      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#333" stroke-width="1"/>
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#000" stroke-width="1"/>
     </marker>
     <marker id="circle-solid" markerWidth="7" markerHeight="7" refX="0" refY="3.5" orient="auto-start-reverse">
-      <circle cx="3.5" cy="3.5" r="3" fill="#333" stroke="#333"/>
+      <circle cx="3.5" cy="3.5" r="3" fill="#000" stroke="#000"/>
     </marker>
   </defs>
-<rect width="636" height="449" fill="white"/>
-<rect width="636" height="32" fill="#F0F0F0" stroke="#CCCCCC" stroke-width="1"/>
-<text x="318" y="21" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#222">Figure-09_Ogranization_View</text>
-<rect x="24" y="370" width="120" height="55" rx="2" fill="#EDCFE2" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfmChMLOS1D24zBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNpjZMAN/mMRYyQoANP89vwjDEFhQzkMPYzEasZlCCMpmrEZwkRQNQFAsQFUDwO8hmCLBZp4AasrsNlOFRcQAiBXgJL0f1wKaO4CBny2080FeAEAw2wfrl8TEl4AAAAASUVORK5CYII=" x="124.0" y="374.0" width="16" height="16"/>
-<text x="84.0" y="401.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Home &amp; Away</text>
-<rect x="259" y="370" width="120" height="55" rx="2" fill="#EDCFE2" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfmChMLOS1D24zBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNpjZMAN/mMRYyQoANP89vwjDEFhQzkMPYzEasZlCCMpmrEZwkRQNQFAsQFUDwO8hmCLBZp4AasrsNlOFRcQAiBXgJL0f1wKaO4CBny2080FeAEAw2wfrl8TEl4AAAAASUVORK5CYII=" x="359.0" y="374.0" width="16" height="16"/>
-<text x="319.0" y="401.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">LegallyYours</text>
-<rect x="492" y="370" width="120" height="55" rx="2" fill="#EDCFE2" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfmChMLOS1D24zBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNpjZMAN/mMRYyQoANP89vwjDEFhQzkMPYzEasZlCCMpmrEZwkRQNQFAsQFUDwO8hmCLBZp4AasrsNlOFRcQAiBXgJL0f1wKaO4CBny2080FeAEAw2wfrl8TEl4AAAAASUVORK5CYII=" x="592.0" y="374.0" width="16" height="16"/>
-<text x="552.0" y="401.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">PRO-FIT</text>
-<rect x="259" y="56" width="120" height="55" rx="2" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="359.0" y="60.0" width="16" height="16"/>
-<text x="319.0" y="87.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">ArchiSurance</text>
-<rect x="420" y="260" width="120" height="55" rx="2" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="520.0" y="264.0" width="16" height="16"/>
-<text x="480.0" y="284.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Auto Back</text>
-<text x="480.0" y="298.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Office</text>
-<rect x="259" y="152" width="120" height="55" rx="2" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="359.0" y="156.0" width="16" height="16"/>
-<text x="319.0" y="183.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Back Office</text>
-<rect x="36" y="152" width="120" height="55" rx="2" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="136.0" y="156.0" width="16" height="16"/>
-<text x="96.0" y="183.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Front Office</text>
-<rect x="96" y="260" width="120" height="55" rx="2" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="196.0" y="264.0" width="16" height="16"/>
-<text x="156.0" y="277.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Homeowner's &amp;</text>
-<text x="156.0" y="291.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Travel Back</text>
-<text x="156.0" y="305.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Office</text>
-<rect x="259" y="260" width="120" height="55" rx="2" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="359.0" y="264.0" width="16" height="16"/>
-<text x="319.0" y="284.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Legal Expense</text>
-<text x="319.0" y="298.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Back Office</text>
-<rect x="492" y="152" width="120" height="55" rx="2" fill="#FFFFB5" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="592.0" y="156.0" width="16" height="16"/>
-<text x="552.0" y="176.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Shared Service</text>
-<text x="552.0" y="190.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Center</text>
-<polyline points="85.5,370.0 94.5,207.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#diamond-open)"/>
-<polyline points="102.0,370.0 138.0,315.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#diamond-open)"/>
-<polyline points="319.0,370.0 319.0,315.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#diamond-open)"/>
-<polyline points="534.0,370.0 498.0,315.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#diamond-open)"/>
-<polyline points="552.0,370.0 552.0,207.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#diamond-open)"/>
-<polyline points="319.0,111.0 319.0,152.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#diamond-filled)"/>
-<polyline points="379.0,108.2 492.0,154.8" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#diamond-filled)"/>
-<polyline points="259.0,109.3 156.0,153.7" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#diamond-filled)"/>
-<polyline points="319.0,207.0 319.0,260.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#diamond-filled)"/>
-<polyline points="360.0,207.0 439.0,260.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#diamond-filled)"/>
-<polyline points="277.5,207.0 197.5,260.0" fill="none" stroke="#444444" stroke-width="1" marker-start="url(#diamond-filled)"/>
+<rect width="608" height="389" fill="white"/>
+<rect x="10" y="324" width="120" height="55" rx="2" fill="#EDCFE2" stroke="rgb(165,144,158)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfmChMLOS1D24zBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNpjZMAN/mMRYyQoANP89vwjDEFhQzkMPYzEasZlCCMpmrEZwkRQNQFAsQFUDwO8hmCLBZp4AasrsNlOFRcQAiBXgJL0f1wKaO4CBny2080FeAEAw2wfrl8TEl4AAAAASUVORK5CYII=" x="110.0" y="328.0" width="16" height="16"/>
+<text x="70.0" y="355.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Home &amp; Away</text>
+<rect x="245" y="324" width="120" height="55" rx="2" fill="#EDCFE2" stroke="rgb(165,144,158)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfmChMLOS1D24zBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNpjZMAN/mMRYyQoANP89vwjDEFhQzkMPYzEasZlCCMpmrEZwkRQNQFAsQFUDwO8hmCLBZp4AasrsNlOFRcQAiBXgJL0f1wKaO4CBny2080FeAEAw2wfrl8TEl4AAAAASUVORK5CYII=" x="345.0" y="328.0" width="16" height="16"/>
+<text x="305.0" y="355.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">LegallyYours</text>
+<rect x="478" y="324" width="120" height="55" rx="2" fill="#EDCFE2" stroke="rgb(165,144,158)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfmChMLOS1D24zBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNpjZMAN/mMRYyQoANP89vwjDEFhQzkMPYzEasZlCCMpmrEZwkRQNQFAsQFUDwO8hmCLBZp4AasrsNlOFRcQAiBXgJL0f1wKaO4CBny2080FeAEAw2wfrl8TEl4AAAAASUVORK5CYII=" x="578.0" y="328.0" width="16" height="16"/>
+<text x="538.0" y="355.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">PRO-FIT</text>
+<rect x="245" y="10" width="120" height="55" rx="2" fill="#FFFFB5" stroke="rgb(178,178,126)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="345.0" y="14.0" width="16" height="16"/>
+<text x="305.0" y="41.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">ArchiSurance</text>
+<rect x="406" y="214" width="120" height="55" rx="2" fill="#FFFFB5" stroke="rgb(178,178,126)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="506.0" y="218.0" width="16" height="16"/>
+<text x="466.0" y="238.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Auto Back</text>
+<text x="466.0" y="252.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Office</text>
+<rect x="245" y="106" width="120" height="55" rx="2" fill="#FFFFB5" stroke="rgb(178,178,126)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="345.0" y="110.0" width="16" height="16"/>
+<text x="305.0" y="137.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Back Office</text>
+<rect x="22" y="106" width="120" height="55" rx="2" fill="#FFFFB5" stroke="rgb(178,178,126)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="122.0" y="110.0" width="16" height="16"/>
+<text x="82.0" y="137.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Front Office</text>
+<rect x="82" y="214" width="120" height="55" rx="2" fill="#FFFFB5" stroke="rgb(178,178,126)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="182.0" y="218.0" width="16" height="16"/>
+<text x="142.0" y="231.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Homeowner's &amp;</text>
+<text x="142.0" y="245.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Travel Back</text>
+<text x="142.0" y="259.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Office</text>
+<rect x="245" y="214" width="120" height="55" rx="2" fill="#FFFFB5" stroke="rgb(178,178,126)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="345.0" y="218.0" width="16" height="16"/>
+<text x="305.0" y="238.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Legal Expense</text>
+<text x="305.0" y="252.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Back Office</text>
+<rect x="478" y="106" width="120" height="55" rx="2" fill="#FFFFB5" stroke="rgb(178,178,126)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAg8KLBadoI32AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNrNkVEKwCAMQ43X87w7X/anIo2pyGD5KvQlhBZFi9MMBakFyWdAaJKFM7uQWi51HfDJDXpIktuKDsCh6biJbfDfN671JVeNGUGYFQMDsyE7MNy9+KYcB0Foy2wAAAAASUVORK5CYII=" x="578.0" y="110.0" width="16" height="16"/>
+<text x="538.0" y="130.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Shared Service</text>
+<text x="538.0" y="144.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Center</text>
+<polyline points="71.5,324.0 80.5,161.0" fill="none" stroke="#000000" stroke-width="1" marker-start="url(#diamond-open)"/>
+<polyline points="88.0,324.0 124.0,269.0" fill="none" stroke="#000000" stroke-width="1" marker-start="url(#diamond-open)"/>
+<polyline points="305.0,324.0 305.0,269.0" fill="none" stroke="#000000" stroke-width="1" marker-start="url(#diamond-open)"/>
+<polyline points="520.0,324.0 484.0,269.0" fill="none" stroke="#000000" stroke-width="1" marker-start="url(#diamond-open)"/>
+<polyline points="538.0,324.0 538.0,161.0" fill="none" stroke="#000000" stroke-width="1" marker-start="url(#diamond-open)"/>
+<polyline points="305.0,65.0 305.0,106.0" fill="none" stroke="#000000" stroke-width="1" marker-start="url(#diamond-filled)"/>
+<polyline points="365.0,62.2 478.0,108.8" fill="none" stroke="#000000" stroke-width="1" marker-start="url(#diamond-filled)"/>
+<polyline points="245.0,63.3 142.0,107.7" fill="none" stroke="#000000" stroke-width="1" marker-start="url(#diamond-filled)"/>
+<polyline points="305.0,161.0 305.0,214.0" fill="none" stroke="#000000" stroke-width="1" marker-start="url(#diamond-filled)"/>
+<polyline points="346.0,161.0 425.0,214.0" fill="none" stroke="#000000" stroke-width="1" marker-start="url(#diamond-filled)"/>
+<polyline points="263.5,161.0 183.5,214.0" fill="none" stroke="#000000" stroke-width="1" marker-start="url(#diamond-filled)"/>
 </svg>

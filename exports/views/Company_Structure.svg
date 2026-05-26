@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="345" viewBox="0 0 420 345">
+<title>Company Structure</title>
+  <defs>
+    <marker id="arrow-open" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#000" stroke-width="1.2"/>
+    </marker>
+    <marker id="arrow-filled" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#000" stroke="none"/>
+    </marker>
+    <marker id="arrow-hollow" markerWidth="11" markerHeight="9" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#000" stroke-width="1.2"/>
+    </marker>
+    <marker id="diamond-filled" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#000" stroke="#000" stroke-width="0.5"/>
+    </marker>
+    <marker id="diamond-open" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#000" stroke-width="1"/>
+    </marker>
+    <marker id="circle-solid" markerWidth="7" markerHeight="7" refX="0" refY="3.5" orient="auto-start-reverse">
+      <circle cx="3.5" cy="3.5" r="3" fill="#000" stroke="#000"/>
+    </marker>
+  </defs>
+<rect width="420" height="345" fill="white"/>
+<rect x="10" y="10" width="400" height="325" rx="2" fill="#EDCFE2" stroke="rgb(165,144,158)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfmChMLOS1D24zBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNpjZMAN/mMRYyQoANP89vwjDEFhQzkMPYzEasZlCCMpmrEZwkRQNQFAsQFUDwO8hmCLBZp4AasrsNlOFRcQAiBXgJL0f1wKaO4CBny2080FeAEAw2wfrl8TEl4AAAAASUVORK5CYII=" x="390.0" y="14.0" width="16" height="16"/>
+<text x="210.0" y="25.0" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">ArchiSurance</text>
+<rect x="106" y="46" width="205" height="73" rx="2" fill="#EDCFE2" stroke="rgb(165,144,158)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfmChMLOS1D24zBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNpjZMAN/mMRYyQoANP89vwjDEFhQzkMPYzEasZlCCMpmrEZwkRQNQFAsQFUDwO8hmCLBZp4AasrsNlOFRcQAiBXgJL0f1wKaO4CBny2080FeAEAw2wfrl8TEl4AAAAASUVORK5CYII=" x="291.0" y="50.0" width="16" height="16"/>
+<text x="208.5" y="86.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Home &amp; Away</text>
+<rect x="106" y="240" width="205" height="73" rx="2" fill="#EDCFE2" stroke="rgb(165,144,158)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfmChMLOS1D24zBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNpjZMAN/mMRYyQoANP89vwjDEFhQzkMPYzEasZlCCMpmrEZwkRQNQFAsQFUDwO8hmCLBZp4AasrsNlOFRcQAiBXgJL0f1wKaO4CBny2080FeAEAw2wfrl8TEl4AAAAASUVORK5CYII=" x="291.0" y="244.0" width="16" height="16"/>
+<text x="208.5" y="280.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">LegallyYours</text>
+<rect x="106" y="144" width="205" height="73" rx="2" fill="#EDCFE2" stroke="rgb(165,144,158)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfmChMLOS1D24zBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNpjZMAN/mMRYyQoANP89vwjDEFhQzkMPYzEasZlCCMpmrEZwkRQNQFAsQFUDwO8hmCLBZp4AasrsNlOFRcQAiBXgJL0f1wKaO4CBny2080FeAEAw2wfrl8TEl4AAAAASUVORK5CYII=" x="291.0" y="148.0" width="16" height="16"/>
+<text x="208.5" y="184.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">PRO-FIT</text>
+</svg>

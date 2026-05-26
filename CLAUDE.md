@@ -1,5 +1,12 @@
 # Claude Instructions
 
+## Task backlog and release notes
+
+- **The `TODO.md` file centralizes all ongoing tasks for new releases.** Before starting a task, review it: select an item or add one if necessary.
+- **Once a task is complete**, check the corresponding box in `TODO.md`. 
+- **When a release is ready**, move the checked items from `TODO.md` to `CHANGELOG.md`.
+- Write concise and clear changelog entries (describe the changes, not the method). One bullet point per change.
+
 ## After every code change
 
 1. **Run the tests**: `npm test` — all tests must pass before considering the change done.

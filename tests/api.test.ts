@@ -97,6 +97,7 @@ function makeNode(overrides: Partial<ArchiNode> = {}): ArchiNode {
     font_size: null,
     font_color: null,
     line_width: null,
+    archi_type: null,
     nodes: [],
     ...overrides,
   };

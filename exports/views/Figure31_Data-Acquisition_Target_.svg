@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="717" height="453" viewBox="0 0 717 453">
+<title>Figure31_Data-Acquisition(Target)</title>
+  <defs>
+    <marker id="arrow-open" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#000" stroke-width="1.2"/>
+    </marker>
+    <marker id="arrow-filled" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#000" stroke="none"/>
+    </marker>
+    <marker id="arrow-hollow" markerWidth="11" markerHeight="9" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#000" stroke-width="1.2"/>
+    </marker>
+    <marker id="diamond-filled" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#000" stroke="#000" stroke-width="0.5"/>
+    </marker>
+    <marker id="diamond-open" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#000" stroke-width="1"/>
+    </marker>
+    <marker id="circle-solid" markerWidth="7" markerHeight="7" refX="0" refY="3.5" orient="auto-start-reverse">
+      <circle cx="3.5" cy="3.5" r="3" fill="#000" stroke="#000"/>
+    </marker>
+  </defs>
+<rect width="717" height="453" fill="white"/>
+<rect x="250" y="10" width="234" height="92" rx="2" fill="#EDCFE2" stroke="rgb(165,144,158)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfmChMLOS1D24zBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNpjZMAN/mMRYyQoANP89vwjDEFhQzkMPYzEasZlCCMpmrEZwkRQNQFAsQFUDwO8hmCLBZp4AasrsNlOFRcQAiBXgJL0f1wKaO4CBny2080FeAEAw2wfrl8TEl4AAAAASUVORK5CYII=" x="464.0" y="14.0" width="16" height="16"/>
+<text x="367.0" y="25.0" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Home &amp; Away Headquarters</text>
+<rect x="10" y="132" width="697" height="311" rx="2" fill="#EDCFE2" stroke="rgb(165,144,158)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfmChMLOS1D24zBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFhJREFUeNpjZMAN/mMRYyQoANP89vwjDEFhQzkMPYzEasZlCCMpmrEZwkRQNQFAsQFUDwO8hmCLBZp4AasrsNlOFRcQAiBXgJL0f1wKaO4CBny2080FeAEAw2wfrl8TEl4AAAAASUVORK5CYII=" x="687.0" y="136.0" width="16" height="16"/>
+<text x="358.5" y="147.0" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">External</text>
+<rect x="310" y="34" width="120" height="55" rx="2" fill="#C9E7B7" stroke="rgb(140,161,128)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxNjoxMzoyMyAtMDAwMCPI/rIAAAAHdElNRQfaAhMMKxAlwCqRAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFdJREFUeNpjYKAQMGIR+0+JAf9Xn5xJlMZQ83QwzUSuZphamAtIcjZMM8ggFpjgyefbidJsLumJwmciShceMGrAQBoATYmMZBkA0wwnGEhMiQzYMyF5AABINhUMtB7iwgAAAABJRU5ErkJggg==" x="410.0" y="38.0" width="16" height="16"/>
+<text x="370.0" y="51.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Data</text>
+<text x="370.0" y="65.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Acquisition</text>
+<text x="370.0" y="79.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Gateway</text>
+<rect x="286" y="156" width="120" height="55" rx="2" fill="#C9E7B7" stroke="rgb(140,161,128)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfgCQULNzRduJgBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAJ5JREFUeNqtU9sNgCAMpIRPFnASZ3BiZ3ASB9B/DA0ltbSI0SZN5HHXaz3A2ZHEGrRLvkPgtn3FVCJKglgq8tQUUR5EwmUlo1oT87RUrB9CdCI8VLnNwxpi0zMDA0mVhIQLHXYQ37UI3c+k/8yA5AkliamwWkQF4ITLGFGdj9Im4sy/MOqJzzOg0KycnYmpnRVMNdLp2tc29BrVzTcEFwfLQzqf8GEWAAAAAElFTkSuQmCC" x="386.0" y="160.0" width="16" height="16"/>
+<text x="346.0" y="187.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">IoT Devices</text>
+<rect x="33" y="249" width="120" height="55" rx="2" fill="#C9E7B7" stroke="rgb(140,161,128)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfgCQULNzRduJgBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAJ5JREFUeNqtU9sNgCAMpIRPFnASZ3BiZ3ASB9B/DA0ltbSI0SZN5HHXaz3A2ZHEGrRLvkPgtn3FVCJKglgq8tQUUR5EwmUlo1oT87RUrB9CdCI8VLnNwxpi0zMDA0mVhIQLHXYQ37UI3c+k/8yA5AkliamwWkQF4ITLGFGdj9Im4sy/MOqJzzOg0KycnYmpnRVMNdLp2tc29BrVzTcEFwfLQzqf8GEWAAAAAElFTkSuQmCC" x="133.0" y="253.0" width="16" height="16"/>
+<text x="93.0" y="280.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Car Black Box</text>
+<rect x="348" y="249" width="120" height="55" rx="2" fill="#C9E7B7" stroke="rgb(140,161,128)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfgCQULNzRduJgBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAJ5JREFUeNqtU9sNgCAMpIRPFnASZ3BiZ3ASB9B/DA0ltbSI0SZN5HHXaz3A2ZHEGrRLvkPgtn3FVCJKglgq8tQUUR5EwmUlo1oT87RUrB9CdCI8VLnNwxpi0zMDA0mVhIQLHXYQ37UI3c+k/8yA5AkliamwWkQF4ITLGFGdj9Im4sy/MOqJzzOg0KycnYmpnRVMNdLp2tc29BrVzTcEFwfLQzqf8GEWAAAAAElFTkSuQmCC" x="448.0" y="253.0" width="16" height="16"/>
+<text x="408.0" y="273.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Home Alarm</text>
+<text x="408.0" y="287.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">System</text>
+<rect x="192" y="249" width="120" height="55" rx="2" fill="#C9E7B7" stroke="rgb(140,161,128)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfgCQULNzRduJgBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAJ5JREFUeNqtU9sNgCAMpIRPFnASZ3BiZ3ASB9B/DA0ltbSI0SZN5HHXaz3A2ZHEGrRLvkPgtn3FVCJKglgq8tQUUR5EwmUlo1oT87RUrB9CdCI8VLnNwxpi0zMDA0mVhIQLHXYQ37UI3c+k/8yA5AkliamwWkQF4ITLGFGdj9Im4sy/MOqJzzOg0KycnYmpnRVMNdLp2tc29BrVzTcEFwfLQzqf8GEWAAAAAElFTkSuQmCC" x="292.0" y="253.0" width="16" height="16"/>
+<text x="252.0" y="273.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Fitness</text>
+<text x="252.0" y="287.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Tracker</text>
+<rect x="505" y="249" width="120" height="55" rx="2" fill="#C9E7B7" stroke="rgb(140,161,128)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfgCQULNzRduJgBAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAJ5JREFUeNqtU9sNgCAMpIRPFnASZ3BiZ3ASB9B/DA0ltbSI0SZN5HHXaz3A2ZHEGrRLvkPgtn3FVCJKglgq8tQUUR5EwmUlo1oT87RUrB9CdCI8VLnNwxpi0zMDA0mVhIQLHXYQ37UI3c+k/8yA5AkliamwWkQF4ITLGFGdj9Im4sy/MOqJzzOg0KycnYmpnRVMNdLp2tc29BrVzTcEFwfLQzqf8GEWAAAAAElFTkSuQmCC" x="605.0" y="253.0" width="16" height="16"/>
+<text x="565.0" y="273.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Smart</text>
+<text x="565.0" y="287.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Thermostat</text>
+<rect x="564" y="360" width="120" height="55" rx="2" fill="#C9E7B7" stroke="rgb(140,161,128)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfgCQULLQzFl9pEAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAD5JREFUeNpjYBiW4D+ZcsQpQFfDSKJmDL0wA/6ffL6dJN3mkp5g/YzkaEY2hCouoCgM0AHJsUCqAlJdOSIAAF8oFf0paFscAAAAAElFTkSuQmCC" x="664.0" y="364.0" width="16" height="16"/>
+<text x="624.0" y="391.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Energy Network</text>
+<rect x="420" y="360" width="120" height="55" rx="2" fill="#C9E7B7" stroke="rgb(140,161,128)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfgCQUQIxEoYdeCAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjZICA/wwIwMhAAmCCMU4+306KPkwDyAWjBtDBgP+E+EyUaMbngv9oCQsnn4kSzSDAiEMRUcBc0nMQRCPcC+QaAAAE8yLhW5sheQAAAABJRU5ErkJggg==" x="520.0" y="364.0" width="16" height="16"/>
+<text x="480.0" y="391.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Smart Home</text>
+<polyline points="351.4,156.0 364.6,89.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<polyline points="153.0,254.4 286.0,205.6" fill="none" stroke="#000000" stroke-width="1" marker-end="url(#arrow-hollow)"/>
+<polyline points="389.7,249.0 364.3,211.0" fill="none" stroke="#000000" stroke-width="1" marker-end="url(#arrow-hollow)"/>
+<polyline points="279.8,249.0 318.2,211.0" fill="none" stroke="#000000" stroke-width="1" marker-end="url(#arrow-hollow)"/>
+<polyline points="579.6,304.0 609.4,360.0" fill="none" stroke="#000000" stroke-width="1"/>
+<polyline points="505.0,251.0 406.0,209.0" fill="none" stroke="#000000" stroke-width="1" marker-end="url(#arrow-hollow)"/>
+<polyline points="501.1,360.0 543.9,304.0" fill="none" stroke="#000000" stroke-width="1" marker-start="url(#diamond-open)"/>
+<polyline points="462.2,360.0 425.8,304.0" fill="none" stroke="#000000" stroke-width="1" marker-start="url(#diamond-open)"/>
+</svg>

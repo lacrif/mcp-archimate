@@ -1,82 +1,81 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="924" height="297" viewBox="0 0 924 297">
+<svg xmlns="http://www.w3.org/2000/svg" width="896" height="237" viewBox="0 0 896 237">
+<title>Figure-11_Value-Stream</title>
   <defs>
     <marker id="arrow-open" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
-      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#333" stroke-width="1.2"/>
+      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#000" stroke-width="1.2"/>
     </marker>
     <marker id="arrow-filled" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
-      <path d="M0,0 L8,3.5 L0,7 Z" fill="#333" stroke="none"/>
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#000" stroke="none"/>
     </marker>
     <marker id="arrow-hollow" markerWidth="11" markerHeight="9" refX="10" refY="4" orient="auto">
-      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#333" stroke-width="1.2"/>
+      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#000" stroke-width="1.2"/>
     </marker>
     <marker id="diamond-filled" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
-      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#333" stroke="#333" stroke-width="0.5"/>
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#000" stroke="#000" stroke-width="0.5"/>
     </marker>
     <marker id="diamond-open" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
-      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#333" stroke-width="1"/>
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#000" stroke-width="1"/>
     </marker>
     <marker id="circle-solid" markerWidth="7" markerHeight="7" refX="0" refY="3.5" orient="auto-start-reverse">
-      <circle cx="3.5" cy="3.5" r="3" fill="#333" stroke="#333"/>
+      <circle cx="3.5" cy="3.5" r="3" fill="#000" stroke="#000"/>
     </marker>
   </defs>
-<rect width="924" height="297" fill="white"/>
-<rect width="924" height="32" fill="#F0F0F0" stroke="#CCCCCC" stroke-width="1"/>
-<text x="462" y="21" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#222">Figure-11_Value-Stream</text>
-<rect x="780" y="176" width="120" height="55" rx="2" fill="#CCCCFF" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCB0JKAuNzTkMAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIFJREFUeNqdk90NwCAIhMF0JPefwJ0wGk0pHkrlgfjDfZxGie5DWuJTwQj+A+gbpbz6nNmCZI4tQLTQBgDR44lVMe2g7IkRbK6NeU8J2dx1RA5Ek0+drYvkkaNOXEATRyDLJXoiZB86mJ2jx9GVoXegu1vAAkHHsJrbv7AFfECnugp1aFVCo3KeJwAAAABJRU5ErkJggg==" x="880.0" y="180.0" width="16" height="16"/>
-<text x="840.0" y="193.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Attractive</text>
-<text x="840.0" y="207.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Insurance</text>
-<text x="840.0" y="221.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Offering</text>
-<rect x="780" y="56" width="120" height="55" rx="2" fill="#CCCCFF" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjozMTo1MiAtMDAwMBNa/3UAAAAHdElNRQfgCB0IDRznLwYbAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE9JREFUeNpjYBjygBGN/59UfYzIGs+cwa3fxIQRLg9iw/QzwVjEakZXCzLqPyma0eWYGCgE8DAg1RXQcECEAVLAYACQZmR5ZDbF0TgKqAAA+WIjCwBr0xgAAAAASUVORK5CYII=" x="880.0" y="60.0" width="16" height="16"/>
-<text x="840.0" y="87.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Customer</text>
-<rect x="24" y="140" width="709" height="133" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfjCA0NDCF2GpyRAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEpJREFUeNpjYKAQMALxfxLUYjfg671VBHVzK4VhNQQmQLYhyByyDEF3EsmGYAsYkgxhxCFPtCFUdwFFYUBRLFCUDihOiRTlhYEHAOzTLg2GRiKPAAAAAElFTkSuQmCC" x="713.0" y="144.0" width="16" height="16"/>
-<text x="378.5" y="210.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Acquire Insurance Product</text>
-<rect x="612" y="56" width="120" height="55" rx="2" fill="#CCCCFF" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCBwSMgQFkPWyAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFVJREFUeNpjYBhowIhH7j8xahlxaTpzBlW/iQkjVn3Iov/RNeECUMMYkQ0gWjO6IYzkaEY2hIksnUhg4A2gSiAykGoItmiEGwJjkJOQGHAZRoTaAQQAOsAeD/3oMncAAAAASUVORK5CYII=" x="712.0" y="60.0" width="16" height="16"/>
-<text x="672.0" y="80.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">High Customer</text>
-<text x="672.0" y="94.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Satisfaction</text>
-<rect x="84" y="56" width="120" height="55" rx="2" fill="#CCCCFF" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCBwSMgQFkPWyAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFVJREFUeNpjYBhowIhH7j8xahlxaTpzBlW/iQkjVn3Iov/RNeECUMMYkQ0gWjO6IYzkaEY2hIksnUhg4A2gSiAykGoItmiEGwJjkJOQGHAZRoTaAQQAOsAeD/3oMncAAAAASUVORK5CYII=" x="184.0" y="60.0" width="16" height="16"/>
-<text x="144.0" y="73.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Innovative</text>
-<text x="144.0" y="87.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Insurance</text>
-<text x="144.0" y="101.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Products</text>
-<rect x="264" y="56" width="120" height="55" rx="2" fill="#CCCCFF" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCBwSMgQFkPWyAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFVJREFUeNpjYBhowIhH7j8xahlxaTpzBlW/iQkjVn3Iov/RNeECUMMYkQ0gWjO6IYzkaEY2hIksnUhg4A2gSiAykGoItmiEGwJjkJOQGHAZRoTaAQQAOsAeD/3oMncAAAAASUVORK5CYII=" x="364.0" y="60.0" width="16" height="16"/>
-<text x="324.0" y="59.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Products</text>
-<text x="324.0" y="73.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">offered and</text>
-<text x="324.0" y="87.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Sold to The</text>
-<text x="324.0" y="101.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Right</text>
-<text x="324.0" y="115.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Customers</text>
-<rect x="432" y="56" width="120" height="55" rx="2" fill="#CCCCFF" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCBwSMgQFkPWyAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFVJREFUeNpjYBhowIhH7j8xahlxaTpzBlW/iQkjVn3Iov/RNeECUMMYkQ0gWjO6IYzkaEY2hIksnUhg4A2gSiAykGoItmiEGwJjkJOQGHAZRoTaAQQAOsAeD/3oMncAAAAASUVORK5CYII=" x="532.0" y="60.0" width="16" height="16"/>
-<text x="492.0" y="59.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Products</text>
-<text x="492.0" y="73.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Perform</text>
-<text x="492.0" y="87.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">According to</text>
-<text x="492.0" y="101.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Customer</text>
-<text x="492.0" y="115.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Expectations</text>
-<rect x="90" y="188" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfjCA0NDCF2GpyRAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEpJREFUeNpjYKAQMALxfxLUYjfg671VBHVzK4VhNQQmQLYhyByyDEF3EsmGYAsYkgxhxCFPtCFUdwFFYUBRLFCUDihOiRTlhYEHAOzTLg2GRiKPAAAAAElFTkSuQmCC" x="190.0" y="192.0" width="16" height="16"/>
-<text x="150.0" y="212.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">01 Develop</text>
-<text x="150.0" y="226.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Products</text>
-<rect x="390" y="188" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfjCA0NDCF2GpyRAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEpJREFUeNpjYKAQMALxfxLUYjfg671VBHVzK4VhNQQmQLYhyByyDEF3EsmGYAsYkgxhxCFPtCFUdwFFYUBRLFCUDihOiRTlhYEHAOzTLg2GRiKPAAAAAElFTkSuQmCC" x="490.0" y="192.0" width="16" height="16"/>
-<text x="450.0" y="205.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">03 Manage</text>
-<text x="450.0" y="219.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Policies and</text>
-<text x="450.0" y="233.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Claims</text>
-<rect x="541" y="188" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfjCA0NDCF2GpyRAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEpJREFUeNpjYKAQMALxfxLUYjfg671VBHVzK4VhNQQmQLYhyByyDEF3EsmGYAsYkgxhxCFPtCFUdwFFYUBRLFCUDihOiRTlhYEHAOzTLg2GRiKPAAAAAElFTkSuQmCC" x="641.0" y="192.0" width="16" height="16"/>
-<text x="601.0" y="212.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">04 Serve</text>
-<text x="601.0" y="226.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Customers</text>
-<rect x="240" y="188" width="120" height="55" rx="2" fill="#F5DEAA" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfjCA0NDCF2GpyRAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEpJREFUeNpjYKAQMALxfxLUYjfg671VBHVzK4VhNQQmQLYhyByyDEF3EsmGYAsYkgxhxCFPtCFUdwFFYUBRLFCUDihOiRTlhYEHAOzTLg2GRiKPAAAAAElFTkSuQmCC" x="340.0" y="192.0" width="16" height="16"/>
-<text x="300.0" y="212.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">02 Market and</text>
-<text x="300.0" y="226.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Sell Products</text>
-<polyline points="840.0,176.0 840.0,111.0" fill="none" stroke="#444444" stroke-width="1"/>
-<polyline points="733.0,204.2 780.0,203.9" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-open)"/>
-<polyline points="210.0,215.5 240.0,215.5" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
-<polyline points="510.0,215.5 541.0,215.5" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
-<polyline points="661.0,212.5 780.0,206.5" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-open)"/>
-<polyline points="360.0,215.5 390.0,215.5" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<rect width="896" height="237" fill="white"/>
+<rect x="766" y="130" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCB0JKAuNzTkMAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIFJREFUeNqdk90NwCAIhMF0JPefwJ0wGk0pHkrlgfjDfZxGie5DWuJTwQj+A+gbpbz6nNmCZI4tQLTQBgDR44lVMe2g7IkRbK6NeU8J2dx1RA5Ek0+drYvkkaNOXEATRyDLJXoiZB86mJ2jx9GVoXegu1vAAkHHsJrbv7AFfECnugp1aFVCo3KeJwAAAABJRU5ErkJggg==" x="866.0" y="134.0" width="16" height="16"/>
+<text x="826.0" y="147.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Attractive</text>
+<text x="826.0" y="161.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Insurance</text>
+<text x="826.0" y="175.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Offering</text>
+<rect x="766" y="10" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjozMTo1MiAtMDAwMBNa/3UAAAAHdElNRQfgCB0IDRznLwYbAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE9JREFUeNpjYBjygBGN/59UfYzIGs+cwa3fxIQRLg9iw/QzwVjEakZXCzLqPyma0eWYGCgE8DAg1RXQcECEAVLAYACQZmR5ZDbF0TgKqAAA+WIjCwBr0xgAAAAASUVORK5CYII=" x="866.0" y="14.0" width="16" height="16"/>
+<text x="826.0" y="41.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Customer</text>
+<rect x="10" y="94" width="709" height="133" rx="2" fill="#F5DEAA" stroke="rgb(171,155,118)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfjCA0NDCF2GpyRAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEpJREFUeNpjYKAQMALxfxLUYjfg671VBHVzK4VhNQQmQLYhyByyDEF3EsmGYAsYkgxhxCFPtCFUdwFFYUBRLFCUDihOiRTlhYEHAOzTLg2GRiKPAAAAAElFTkSuQmCC" x="699.0" y="98.0" width="16" height="16"/>
+<text x="364.5" y="109.0" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Acquire Insurance Product</text>
+<rect x="598" y="10" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCBwSMgQFkPWyAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFVJREFUeNpjYBhowIhH7j8xahlxaTpzBlW/iQkjVn3Iov/RNeECUMMYkQ0gWjO6IYzkaEY2hIksnUhg4A2gSiAykGoItmiEGwJjkJOQGHAZRoTaAQQAOsAeD/3oMncAAAAASUVORK5CYII=" x="698.0" y="14.0" width="16" height="16"/>
+<text x="658.0" y="34.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">High Customer</text>
+<text x="658.0" y="48.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Satisfaction</text>
+<rect x="70" y="10" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCBwSMgQFkPWyAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFVJREFUeNpjYBhowIhH7j8xahlxaTpzBlW/iQkjVn3Iov/RNeECUMMYkQ0gWjO6IYzkaEY2hIksnUhg4A2gSiAykGoItmiEGwJjkJOQGHAZRoTaAQQAOsAeD/3oMncAAAAASUVORK5CYII=" x="170.0" y="14.0" width="16" height="16"/>
+<text x="130.0" y="27.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Innovative</text>
+<text x="130.0" y="41.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Insurance</text>
+<text x="130.0" y="55.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Products</text>
+<rect x="250" y="10" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCBwSMgQFkPWyAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFVJREFUeNpjYBhowIhH7j8xahlxaTpzBlW/iQkjVn3Iov/RNeECUMMYkQ0gWjO6IYzkaEY2hIksnUhg4A2gSiAykGoItmiEGwJjkJOQGHAZRoTaAQQAOsAeD/3oMncAAAAASUVORK5CYII=" x="350.0" y="14.0" width="16" height="16"/>
+<text x="310.0" y="13.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Products</text>
+<text x="310.0" y="27.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">offered and</text>
+<text x="310.0" y="41.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Sold to The</text>
+<text x="310.0" y="55.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Right</text>
+<text x="310.0" y="69.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Customers</text>
+<rect x="418" y="10" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCBwSMgQFkPWyAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFVJREFUeNpjYBhowIhH7j8xahlxaTpzBlW/iQkjVn3Iov/RNeECUMMYkQ0gWjO6IYzkaEY2hIksnUhg4A2gSiAykGoItmiEGwJjkJOQGHAZRoTaAQQAOsAeD/3oMncAAAAASUVORK5CYII=" x="518.0" y="14.0" width="16" height="16"/>
+<text x="478.0" y="13.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Products</text>
+<text x="478.0" y="27.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Perform</text>
+<text x="478.0" y="41.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">According to</text>
+<text x="478.0" y="55.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Customer</text>
+<text x="478.0" y="69.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Expectations</text>
+<rect x="76" y="142" width="120" height="55" rx="2" fill="#F5DEAA" stroke="rgb(171,155,118)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfjCA0NDCF2GpyRAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEpJREFUeNpjYKAQMALxfxLUYjfg671VBHVzK4VhNQQmQLYhyByyDEF3EsmGYAsYkgxhxCFPtCFUdwFFYUBRLFCUDihOiRTlhYEHAOzTLg2GRiKPAAAAAElFTkSuQmCC" x="176.0" y="146.0" width="16" height="16"/>
+<text x="136.0" y="166.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">01 Develop</text>
+<text x="136.0" y="180.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Products</text>
+<rect x="376" y="142" width="120" height="55" rx="2" fill="#F5DEAA" stroke="rgb(171,155,118)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfjCA0NDCF2GpyRAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEpJREFUeNpjYKAQMALxfxLUYjfg671VBHVzK4VhNQQmQLYhyByyDEF3EsmGYAsYkgxhxCFPtCFUdwFFYUBRLFCUDihOiRTlhYEHAOzTLg2GRiKPAAAAAElFTkSuQmCC" x="476.0" y="146.0" width="16" height="16"/>
+<text x="436.0" y="159.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">03 Manage</text>
+<text x="436.0" y="173.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Policies and</text>
+<text x="436.0" y="187.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Claims</text>
+<rect x="527" y="142" width="120" height="55" rx="2" fill="#F5DEAA" stroke="rgb(171,155,118)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfjCA0NDCF2GpyRAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEpJREFUeNpjYKAQMALxfxLUYjfg671VBHVzK4VhNQQmQLYhyByyDEF3EsmGYAsYkgxhxCFPtCFUdwFFYUBRLFCUDihOiRTlhYEHAOzTLg2GRiKPAAAAAElFTkSuQmCC" x="627.0" y="146.0" width="16" height="16"/>
+<text x="587.0" y="166.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">04 Serve</text>
+<text x="587.0" y="180.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Customers</text>
+<rect x="226" y="142" width="120" height="55" rx="2" fill="#F5DEAA" stroke="rgb(171,155,118)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfjCA0NDCF2GpyRAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEpJREFUeNpjYKAQMALxfxLUYjfg671VBHVzK4VhNQQmQLYhyByyDEF3EsmGYAsYkgxhxCFPtCFUdwFFYUBRLFCUDihOiRTlhYEHAOzTLg2GRiKPAAAAAElFTkSuQmCC" x="326.0" y="146.0" width="16" height="16"/>
+<text x="286.0" y="166.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">02 Market and</text>
+<text x="286.0" y="180.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Sell Products</text>
+<polyline points="826.0,130.0 826.0,65.0" fill="none" stroke="#000000" stroke-width="1"/>
+<polyline points="719.0,158.2 766.0,157.9" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-open)"/>
+<polyline points="196.0,169.5 226.0,169.5" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<polyline points="496.0,169.5 527.0,169.5" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
+<polyline points="647.0,166.5 766.0,160.5" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-open)"/>
+<polyline points="346.0,169.5 376.0,169.5" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-filled)"/>
 </svg>

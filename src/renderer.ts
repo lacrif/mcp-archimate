@@ -152,6 +152,20 @@ function rgbStr(c: { r: number; g: number; b: number } | null | undefined): stri
   return `rgb(${c.r},${c.g},${c.b})`;
 }
 
+// Archi's derived line color: fill_color × 0.7 (see ColorFactory.getDerivedLineColor)
+function derivedLineColor(fill: string): string {
+  let r = 0, g = 0, b = 0;
+  if (fill.startsWith("#") && fill.length === 7) {
+    r = parseInt(fill.slice(1, 3), 16);
+    g = parseInt(fill.slice(3, 5), 16);
+    b = parseInt(fill.slice(5, 7), 16);
+  } else {
+    const m = /^rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)$/.exec(fill);
+    if (m) { r = +m[1]!; g = +m[2]!; b = +m[3]!; }
+  }
+  return `rgb(${Math.floor(r * 0.7)},${Math.floor(g * 0.7)},${Math.floor(b * 0.7)})`;
+}
+
 function nodeType(n: ArchiNode): string {
   if (!n.ref || typeof n.ref === "string") return "Grouping";
   return n.ref.type || "Grouping";
@@ -271,9 +285,11 @@ type ShapeKind =
   | "data-object"  // DataObject / BusinessObject / Artifact — rect with header line
   | "rect";        // default — plain rectangle
 
-function getShapeKind(type: string): ShapeKind {
+function getShapeKind(type: string, archiType: number = 0): ShapeKind {
   if (type === "AndJunction" || type === "OrJunction") return "junction";
   if (type === "Grouping") return "grouping";
+  if (type === "DataObject" || type === "BusinessObject" || type === "Artifact") return "data-object";
+  if (archiType !== 1) return "rect";
   if (type.endsWith("Service")) return "service";
   if (type.endsWith("Event") || type === "ImplementationEvent") return "event";
   if (type === "ApplicationComponent") return "component";
@@ -282,7 +298,6 @@ function getShapeKind(type: string): ShapeKind {
   if (type.endsWith("Function")) return "function";
   if (type.endsWith("Process")) return "process";
   if (type.endsWith("Interaction")) return "interaction";
-  if (type === "DataObject" || type === "BusinessObject" || type === "Artifact") return "data-object";
   return "rect";
 }
 
@@ -525,7 +540,7 @@ function shapeProcess(
   const svg = [`<path d="${d}" fill="${fill}" stroke="${stroke}" stroke-width="${lw}"/>`];
   return {
     svg,
-    textX: x + x1 / 2,
+    textX: (x + x1) / 2,
     textY: y + h / 2,
     textW: x1 - x - ICON_SIZE - ICON_PAD * 2,
     textH: h - h / 5 * 2,
@@ -600,22 +615,22 @@ function shapeDataObject(
 
 const SVG_DEFS = `  <defs>
     <marker id="arrow-open" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
-      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#333" stroke-width="1.2"/>
+      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#000" stroke-width="1.2"/>
     </marker>
     <marker id="arrow-filled" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
-      <path d="M0,0 L8,3.5 L0,7 Z" fill="#333" stroke="none"/>
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#000" stroke="none"/>
     </marker>
     <marker id="arrow-hollow" markerWidth="11" markerHeight="9" refX="10" refY="4" orient="auto">
-      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#333" stroke-width="1.2"/>
+      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#000" stroke-width="1.2"/>
     </marker>
     <marker id="diamond-filled" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
-      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#333" stroke="#333" stroke-width="0.5"/>
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#000" stroke="#000" stroke-width="0.5"/>
     </marker>
     <marker id="diamond-open" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
-      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#333" stroke-width="1"/>
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#000" stroke-width="1"/>
     </marker>
     <marker id="circle-solid" markerWidth="7" markerHeight="7" refX="0" refY="3.5" orient="auto-start-reverse">
-      <circle cx="3.5" cy="3.5" r="3" fill="#333" stroke="#333"/>
+      <circle cx="3.5" cy="3.5" r="3" fill="#000" stroke="#000"/>
     </marker>
   </defs>`;
 
@@ -624,8 +639,7 @@ const SVG_DEFS = `  <defs>
 // ---------------------------------------------------------------------------
 
 export function renderViewToSvg(view: ArchiView, model: ArchiModel): string {
-  const PADDING = 24;
-  const TITLE_H = 32;
+  const PADDING = 10;
   const FONT = "Arial,Helvetica,sans-serif";
 
   // Build relationship lookup (id → type, name)
@@ -650,10 +664,10 @@ export function renderViewToSvg(view: ArchiView, model: ArchiModel): string {
   }
   if (geomMap.size === 0) { minX = 0; minY = 0; maxX = 400; maxY = 250; }
 
-  const ox = PADDING - minX;  // content x offset
-  const oy = PADDING - minY + TITLE_H;
+  const ox = PADDING - minX;
+  const oy = PADDING - minY;
   const totalW = maxX - minX + PADDING * 2;
-  const totalH = maxY - minY + PADDING * 2 + TITLE_H;
+  const totalH = maxY - minY + PADDING * 2;
 
   // Build visual parent-child pairs (to suppress Composition arrows for nested nodes)
   const visualChildPairs = new Set<string>();
@@ -675,21 +689,9 @@ export function renderViewToSvg(view: ArchiView, model: ArchiModel): string {
 
   const out: string[] = [];
   out.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${totalW}" height="${totalH}" viewBox="0 0 ${totalW} ${totalH}">`);
+  out.push(`<title>${escXml(view.name)}</title>`);
   out.push(SVG_DEFS);
   out.push(`<rect width="${totalW}" height="${totalH}" fill="white"/>`);
-
-  // Title bar
-  out.push(`<rect width="${totalW}" height="${TITLE_H}" fill="#F0F0F0" stroke="#CCCCCC" stroke-width="1"/>`);
-  out.push(
-    `<text x="${totalW / 2}" y="${TITLE_H / 2 + 5}" font-family="${FONT}" font-size="13" ` +
-    `font-weight="bold" text-anchor="middle" fill="#222">${escXml(view.name)}</text>`
-  );
-  if (view.primary_viewpoint) {
-    out.push(
-      `<text x="${totalW - 6}" y="${TITLE_H - 5}" font-family="${FONT}" font-size="9" ` +
-      `text-anchor="end" fill="#666" font-style="italic">${escXml(view.primary_viewpoint)}</text>`
-    );
-  }
 
   // Nodes
   for (const g of geomList) {
@@ -699,13 +701,13 @@ export function renderViewToSvg(view: ArchiView, model: ArchiModel): string {
     const type = nodeType(node);
     const name = nodeName(node);
     const fill = rgbStr(node.fill_color) ?? ELEMENT_FILL[type] ?? "#F5F5F5";
-    const stroke = rgbStr(node.line_color) ?? "#666666";
+    const stroke = rgbStr(node.line_color) ?? derivedLineColor(fill);
     const lw = node.line_width ?? 1;
-    const fontColor = rgbStr(node.font_color) ?? "#222222";
+    const fontColor = rgbStr(node.font_color) ?? "#000000";
     const fontSize = node.font_size ?? 11;
     const fontName = node.font_name ?? FONT;
 
-    const kind = getShapeKind(type);
+    const kind = getShapeKind(type, node.archi_type ?? 0);
 
     // Junctions — circle
     if (kind === "junction") {
@@ -719,10 +721,17 @@ export function renderViewToSvg(view: ArchiView, model: ArchiModel): string {
       continue;
     }
 
-    // Grouping — dashed rect + name top-left
+    // Grouping — dashed rect + name top-left + icon top-right
     if (kind === "grouping") {
       const { svg, nameY } = shapeGrouping(x, y, absW, absH, fill, stroke, lw, FONT);
       out.push(...svg);
+      const groupingIcon = loadIconDataUri(type);
+      if (groupingIcon) {
+        out.push(
+          `<image href="${groupingIcon}" x="${(x + absW - ICON_SIZE - ICON_PAD).toFixed(1)}" ` +
+          `y="${(y + ICON_PAD).toFixed(1)}" width="${ICON_SIZE}" height="${ICON_SIZE}"/>`
+        );
+      }
       if (name) {
         out.push(
           `<text x="${x + 5}" y="${nameY}" font-family="${FONT}" font-size="11" ` +
@@ -749,8 +758,8 @@ export function renderViewToSvg(view: ArchiView, model: ArchiModel): string {
 
     out.push(...shape.svg);
 
-    // PNG icon only for plain rect notation — other shapes ARE the notation
-    const iconUri = kind === "rect" ? loadIconDataUri(type) : null;
+    // PNG icon for box-mode shapes; specialized icon-mode shapes are the notation
+    const iconUri = (kind === "rect" || kind === "data-object") ? loadIconDataUri(type) : null;
     if (iconUri && shape.iconX !== null && shape.iconY !== null) {
       out.push(
         `<image href="${iconUri}" x="${shape.iconX.toFixed(1)}" y="${shape.iconY.toFixed(1)}" ` +
@@ -758,14 +767,17 @@ export function renderViewToSvg(view: ArchiView, model: ArchiModel): string {
       );
     }
 
-    // Name label centered in text area
+    // Name label — top when container has nested children, centered otherwise
     if (name) {
       const availW = shape.textW > 0 ? shape.textW : absW - 8;
       const maxChars = Math.max(4, Math.floor(availW / (fontSize * 0.58)));
       const lines = wrapText(name, maxChars);
       const lineH = fontSize + 3;
       const textBlock = lines.length * lineH;
-      const startY = shape.textY - textBlock / 2 + fontSize;
+      const hasChildren = node.nodes.length > 0;
+      const startY = hasChildren
+        ? y + fontSize + 4
+        : shape.textY - textBlock / 2 + fontSize;
       for (let i = 0; i < lines.length; i++) {
         out.push(
           `<text x="${shape.textX.toFixed(1)}" y="${(startY + i * lineH).toFixed(1)}" ` +
@@ -785,9 +797,11 @@ export function renderViewToSvg(view: ArchiView, model: ArchiModel): string {
 
     const relType = conn.ref ? (relTypeMap.get(conn.ref) ?? "Association") : "Association";
 
-    // Skip Composition/Aggregation when target is visually nested inside source
+    // Skip structural relations when target is visually nested inside source —
+    // Archi shows nesting via containment, not a redundant arrow.
+    const NESTED_SUPPRESSED = new Set(["Composition", "Aggregation", "Assignment", "Realization", "Access"]);
     if (
-      (relType === "Composition" || relType === "Aggregation") &&
+      NESTED_SUPPRESSED.has(relType) &&
       visualChildPairs.has(`${conn.source}→${conn.target}`)
     ) continue;
 
@@ -797,7 +811,7 @@ export function renderViewToSvg(view: ArchiView, model: ArchiModel): string {
     const tgtCx = tx + tgtG.absW / 2, tgtCy = ty + tgtG.absH / 2;
 
     const style = REL_LINE[relType] ?? DEFAULT_REL_LINE;
-    const lineColor = rgbStr(conn.line_color) ?? "#444444";
+    const lineColor = rgbStr(conn.line_color) ?? "#000000";
     const lw = conn.line_width ?? 1;
 
     const dashAttr = style.dashArray ? ` stroke-dasharray="${style.dashArray}"` : "";
@@ -815,8 +829,9 @@ export function renderViewToSvg(view: ArchiView, model: ArchiModel): string {
 
     let allPts: Array<{ x: number; y: number }>;
     if (waypoints.length === 0) {
-      // No bendpoints: use orthogonal (Manhattan) routing instead of diagonal
-      allPts = orthogonalRoute(sx, sy, srcG.absW, srcG.absH, tx, ty, tgtG.absW, tgtG.absH);
+      const start = rectEdge(tgtCx, tgtCy, sx, sy, srcG.absW, srcG.absH);
+      const end   = rectEdge(srcCx, srcCy, tx, ty, tgtG.absW, tgtG.absH);
+      allPts = [start, end];
     } else {
       const firstWp = waypoints[0]!;
       const lastWp  = waypoints[waypoints.length - 1]!;

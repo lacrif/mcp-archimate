@@ -1,151 +1,137 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1254" height="486" viewBox="0 0 1254 486">
+<svg xmlns="http://www.w3.org/2000/svg" width="1226" height="426" viewBox="0 0 1226 426">
+<title>Figure35_Project-Context</title>
   <defs>
     <marker id="arrow-open" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
-      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#333" stroke-width="1.2"/>
+      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#000" stroke-width="1.2"/>
     </marker>
     <marker id="arrow-filled" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
-      <path d="M0,0 L8,3.5 L0,7 Z" fill="#333" stroke="none"/>
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#000" stroke="none"/>
     </marker>
     <marker id="arrow-hollow" markerWidth="11" markerHeight="9" refX="10" refY="4" orient="auto">
-      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#333" stroke-width="1.2"/>
+      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#000" stroke-width="1.2"/>
     </marker>
     <marker id="diamond-filled" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
-      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#333" stroke="#333" stroke-width="0.5"/>
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#000" stroke="#000" stroke-width="0.5"/>
     </marker>
     <marker id="diamond-open" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
-      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#333" stroke-width="1"/>
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#000" stroke-width="1"/>
     </marker>
     <marker id="circle-solid" markerWidth="7" markerHeight="7" refX="0" refY="3.5" orient="auto-start-reverse">
-      <circle cx="3.5" cy="3.5" r="3" fill="#333" stroke="#333"/>
+      <circle cx="3.5" cy="3.5" r="3" fill="#000" stroke="#000"/>
     </marker>
   </defs>
-<rect width="1254" height="486" fill="white"/>
-<rect width="1254" height="32" fill="#F0F0F0" stroke="#CCCCCC" stroke-width="1"/>
-<text x="627" y="21" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#222">Figure35_Project-Context</text>
-<rect x="82" y="362" width="120" height="55" rx="2" fill="#FFE0E0" stroke="#666666" stroke-width="1"/>
-<text x="142.0" y="379.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Project: Data</text>
-<text x="142.0" y="393.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Wareshousing</text>
-<text x="142.0" y="407.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">and BI</text>
-<rect x="234" y="329" width="517" height="133" rx="2" fill="#FFE0E0" stroke="#666666" stroke-width="1"/>
-<text x="492.5" y="399.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Project: Back Office System Integration</text>
-<rect x="798" y="362" width="120" height="55" rx="2" fill="#FFE0E0" stroke="#666666" stroke-width="1"/>
-<text x="858.0" y="379.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Project: CRM</text>
-<text x="858.0" y="393.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">System</text>
-<text x="858.0" y="407.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Integration</text>
-<rect x="82" y="197" width="120" height="55" rx="2" fill="rgb(0,255,0)" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxNjoxMzoyMyAtMDAwMCPI/rIAAAAHdElNRQfaAhMMKxAlwCqRAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFdJREFUeNpjYKAQMGIR+0+JAf9Xn5xJlMZQ83QwzUSuZphamAtIcjZMM8ggFpjgyefbidJsLumJwmciShceMGrAQBoATYmMZBkA0wwnGEhMiQzYMyF5AABINhUMtB7iwgAAAABJRU5ErkJggg==" x="182.0" y="201.0" width="16" height="16"/>
-<text x="142.0" y="214.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Data</text>
-<text x="142.0" y="228.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Acquisition</text>
-<text x="142.0" y="242.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Gateway</text>
-<rect x="246" y="197" width="169" height="55" rx="2" fill="rgb(0,255,0)" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMNAhaJJ3p4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjYBhowIjG/0+qPmQD/p98vp0o3eaSnnC9TJR6YdQAKhhAcTpgQZchlBagaQCrC8hKSIykakY3BG4AiWGHzQfkAQCWpBIXmCT6FAAAAABJRU5ErkJggg==" x="395.0" y="201.0" width="16" height="16"/>
-<text x="330.5" y="214.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">ArchiSurance</text>
-<text x="330.5" y="228.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">General-Purpose</text>
-<text x="330.5" y="242.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Back-Up Server Cluster</text>
-<rect x="475" y="198" width="169" height="55" rx="2" fill="rgb(0,255,255)" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMNAhaJJ3p4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjYBhowIjG/0+qPmQD/p98vp0o3eaSnnC9TJR6YdQAKhhAcTpgQZchlBagaQCrC8hKSIykakY3BG4AiWGHzQfkAQCWpBIXmCT6FAAAAABJRU5ErkJggg==" x="624.0" y="202.0" width="16" height="16"/>
-<text x="559.5" y="215.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">ArchiSurance</text>
-<text x="559.5" y="229.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">General-Purpose Server</text>
-<text x="559.5" y="243.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Cluster</text>
-<rect x="700" y="199" width="120" height="55" rx="2" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMNAhaJJ3p4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjYBhowIjG/0+qPmQD/p98vp0o3eaSnnC9TJR6YdQAKhhAcTpgQZchlBagaQCrC8hKSIykakY3BG4AiWGHzQfkAQCWpBIXmCT6FAAAAABJRU5ErkJggg==" x="800.0" y="203.0" width="16" height="16"/>
-<text x="760.0" y="216.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Auto</text>
-<text x="760.0" y="230.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">General-Purpose</text>
-<text x="760.0" y="244.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Server</text>
-<rect x="846" y="196" width="120" height="55" rx="2" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMNAhaJJ3p4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjYBhowIjG/0+qPmQD/p98vp0o3eaSnnC9TJR6YdQAKhhAcTpgQZchlBagaQCrC8hKSIykakY3BG4AiWGHzQfkAQCWpBIXmCT6FAAAAABJRU5ErkJggg==" x="946.0" y="200.0" width="16" height="16"/>
-<text x="906.0" y="213.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Legal Expense</text>
-<text x="906.0" y="227.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">General-Purpose</text>
-<text x="906.0" y="241.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Server</text>
-<rect x="1002" y="196" width="120" height="55" rx="2" fill="rgb(0,255,255)" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMNAhaJJ3p4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjYBhowIjG/0+qPmQD/p98vp0o3eaSnnC9TJR6YdQAKhhAcTpgQZchlBagaQCrC8hKSIykakY3BG4AiWGHzQfkAQCWpBIXmCT6FAAAAABJRU5ErkJggg==" x="1102.0" y="200.0" width="16" height="16"/>
-<text x="1062.0" y="213.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">FO</text>
-<text x="1062.0" y="227.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">General-Purpose</text>
-<text x="1062.0" y="241.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Server</text>
-<rect x="36" y="56" width="108" height="55" rx="1" fill="rgb(0,255,0)" stroke="#666666" stroke-width="1"/>
-<rect x="24" y="67" width="24" height="11" rx="1" fill="rgb(0,255,0)" stroke="#666666" stroke-width="1"/>
-<rect x="24" y="86.8" width="24" height="11" rx="1" fill="rgb(0,255,0)" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="124.0" y="60.0" width="16" height="16"/>
-<text x="90.0" y="73.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Data</text>
-<text x="90.0" y="87.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Warehousing</text>
-<text x="90.0" y="101.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Solution</text>
-<rect x="196" y="56" width="108" height="55" rx="1" fill="rgb(0,255,0)" stroke="#666666" stroke-width="1"/>
-<rect x="184" y="67" width="24" height="11" rx="1" fill="rgb(0,255,0)" stroke="#666666" stroke-width="1"/>
-<rect x="184" y="86.8" width="24" height="11" rx="1" fill="rgb(0,255,0)" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="284.0" y="60.0" width="16" height="16"/>
-<text x="250.0" y="73.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">ArchiSurance</text>
-<text x="250.0" y="87.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Back Office</text>
-<text x="250.0" y="101.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Suite</text>
-<rect x="363" y="56" width="108" height="55" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
-<rect x="351" y="67" width="24" height="11" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
-<rect x="351" y="86.8" width="24" height="11" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="451.0" y="60.0" width="16" height="16"/>
-<text x="417.0" y="73.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Home &amp; Away</text>
-<text x="417.0" y="87.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Financial</text>
-<text x="417.0" y="101.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Application</text>
-<rect x="528" y="56" width="108" height="55" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
-<rect x="516" y="67" width="24" height="11" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
-<rect x="516" y="86.8" width="24" height="11" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="616.0" y="60.0" width="16" height="16"/>
-<text x="582.0" y="73.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Auto</text>
-<text x="582.0" y="87.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Insurance</text>
-<text x="582.0" y="101.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Application</text>
-<rect x="675" y="56" width="108" height="55" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
-<rect x="663" y="67" width="24" height="11" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
-<rect x="663" y="86.8" width="24" height="11" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="763.0" y="60.0" width="16" height="16"/>
-<text x="729.0" y="66.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Legal</text>
-<text x="729.0" y="80.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Expense</text>
-<text x="729.0" y="94.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Back-Office</text>
-<text x="729.0" y="108.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">System</text>
-<rect x="827" y="56" width="108" height="55" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
-<rect x="815" y="67" width="24" height="11" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
-<rect x="815" y="86.8" width="24" height="11" rx="1" fill="rgb(255,128,0)" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="915.0" y="60.0" width="16" height="16"/>
-<text x="881.0" y="73.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Legal</text>
-<text x="881.0" y="87.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Expense CRM</text>
-<text x="881.0" y="101.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">System</text>
-<rect x="978" y="56" width="108" height="55" rx="1" fill="rgb(0,255,255)" stroke="#666666" stroke-width="1"/>
-<rect x="966" y="67" width="24" height="11" rx="1" fill="rgb(0,255,255)" stroke="#666666" stroke-width="1"/>
-<rect x="966" y="86.8" width="24" height="11" rx="1" fill="rgb(0,255,255)" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="1066.0" y="60.0" width="16" height="16"/>
-<text x="1032.0" y="80.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">General CRM</text>
-<text x="1032.0" y="94.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">System</text>
-<rect x="1122" y="56" width="108" height="55" rx="1" fill="rgb(0,255,255)" stroke="#666666" stroke-width="1"/>
-<rect x="1110" y="67" width="24" height="11" rx="1" fill="rgb(0,255,255)" stroke="#666666" stroke-width="1"/>
-<rect x="1110" y="86.8" width="24" height="11" rx="1" fill="rgb(0,255,255)" stroke="#666666" stroke-width="1"/>
-<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="1210.0" y="60.0" width="16" height="16"/>
-<text x="1176.0" y="80.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Call Center</text>
-<text x="1176.0" y="94.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Application</text>
-<rect x="599" y="365" width="120" height="55" rx="2" fill="#FFE0E0" stroke="#666666" stroke-width="1"/>
-<text x="659.0" y="382.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Work Package:</text>
-<text x="659.0" y="396.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Phasing Out</text>
-<text x="659.0" y="410.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Legacy</text>
-<rect x="431" y="365" width="120" height="55" rx="2" fill="#FFE0E0" stroke="#666666" stroke-width="1"/>
-<text x="491.0" y="382.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Work Package:</text>
-<text x="491.0" y="396.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Hardware</text>
-<text x="491.0" y="410.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Upgrade</text>
-<rect x="270" y="365" width="120" height="55" rx="2" fill="#FFE0E0" stroke="#666666" stroke-width="1"/>
-<text x="330.0" y="382.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Work Package:</text>
-<text x="330.0" y="396.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Softrware</text>
-<text x="330.0" y="410.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#222222">Modification</text>
-<polyline points="142.0,362.0 142.0,252.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
-<polyline points="136.8,362.0 89.2,111.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
-<polyline points="675.7,365.0 743.3,254.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
-<polyline points="699.2,365.0 865.8,251.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
-<polyline points="664.7,365.0 717.3,111.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
-<polyline points="651.6,365.0 583.4,111.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
-<polyline points="636.9,365.0 433.1,111.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
-<polyline points="502.3,365.0 548.2,253.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
-<polyline points="464.7,365.0 356.8,252.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
-<polyline points="322.3,365.0 251.7,111.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
-<polyline points="859.5,362.0 873.5,111.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
-<polyline points="873.1,362.0 1010.9,111.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
-<polyline points="530.7,198.0 439.8,111.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
-<polyline points="498.4,198.0 304.0,110.5" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
-<polyline points="724.6,199.0 611.4,111.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
-<polyline points="870.1,196.0 758.9,111.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
-<polyline points="1083.2,196.0 1148.8,111.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
-<polyline points="1054.9,196.0 1033.1,111.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
-<polyline points="1025.3,196.0 911.7,111.0" fill="none" stroke="#444444" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<rect width="1226" height="426" fill="white"/>
+<rect x="68" y="316" width="120" height="55" rx="2" fill="#FFE0E0" stroke="rgb(178,156,156)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjozMTo1MiAtMDAwMBNa/3UAAAAHdElNRQfcARwQCRknCAeaAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAADpJREFUeNpjYBhowAil/5OrnxGm+f+DB6TpVFAA00zkaEbWw0RpGIwaMGgMgCUKUgBMD8VJmVIfUA4A9TQMFeMcFf4AAAAASUVORK5CYII=" x="168.0" y="320.0" width="16" height="16"/>
+<text x="128.0" y="333.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Project: Data</text>
+<text x="128.0" y="347.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Wareshousing</text>
+<text x="128.0" y="361.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">and BI</text>
+<rect x="220" y="283" width="517" height="133" rx="2" fill="#FFE0E0" stroke="rgb(178,156,156)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjozMTo1MiAtMDAwMBNa/3UAAAAHdElNRQfcARwQCRknCAeaAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAADpJREFUeNpjYBhowAil/5OrnxGm+f+DB6TpVFAA00zkaEbWw0RpGIwaMGgMgCUKUgBMD8VJmVIfUA4A9TQMFeMcFf4AAAAASUVORK5CYII=" x="717.0" y="287.0" width="16" height="16"/>
+<text x="478.5" y="298.0" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Project: Back Office System Integration</text>
+<rect x="784" y="316" width="120" height="55" rx="2" fill="#FFE0E0" stroke="rgb(178,156,156)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjozMTo1MiAtMDAwMBNa/3UAAAAHdElNRQfcARwQCRknCAeaAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAADpJREFUeNpjYBhowAil/5OrnxGm+f+DB6TpVFAA00zkaEbWw0RpGIwaMGgMgCUKUgBMD8VJmVIfUA4A9TQMFeMcFf4AAAAASUVORK5CYII=" x="884.0" y="320.0" width="16" height="16"/>
+<text x="844.0" y="333.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Project: CRM</text>
+<text x="844.0" y="347.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">System</text>
+<text x="844.0" y="361.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Integration</text>
+<rect x="68" y="151" width="120" height="55" rx="2" fill="rgb(0,255,0)" stroke="rgb(0,178,0)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxNjoxMzoyMyAtMDAwMCPI/rIAAAAHdElNRQfaAhMMKxAlwCqRAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFdJREFUeNpjYKAQMGIR+0+JAf9Xn5xJlMZQ83QwzUSuZphamAtIcjZMM8ggFpjgyefbidJsLumJwmciShceMGrAQBoATYmMZBkA0wwnGEhMiQzYMyF5AABINhUMtB7iwgAAAABJRU5ErkJggg==" x="168.0" y="155.0" width="16" height="16"/>
+<text x="128.0" y="168.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Data</text>
+<text x="128.0" y="182.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Acquisition</text>
+<text x="128.0" y="196.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Gateway</text>
+<rect x="232" y="151" width="169" height="55" rx="2" fill="rgb(0,255,0)" stroke="rgb(0,178,0)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMNAhaJJ3p4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjYBhowIjG/0+qPmQD/p98vp0o3eaSnnC9TJR6YdQAKhhAcTpgQZchlBagaQCrC8hKSIykakY3BG4AiWGHzQfkAQCWpBIXmCT6FAAAAABJRU5ErkJggg==" x="381.0" y="155.0" width="16" height="16"/>
+<text x="316.5" y="168.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">ArchiSurance</text>
+<text x="316.5" y="182.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">General-Purpose</text>
+<text x="316.5" y="196.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Back-Up Server Cluster</text>
+<rect x="461" y="152" width="169" height="55" rx="2" fill="rgb(0,255,255)" stroke="rgb(0,178,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMNAhaJJ3p4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjYBhowIjG/0+qPmQD/p98vp0o3eaSnnC9TJR6YdQAKhhAcTpgQZchlBagaQCrC8hKSIykakY3BG4AiWGHzQfkAQCWpBIXmCT6FAAAAABJRU5ErkJggg==" x="610.0" y="156.0" width="16" height="16"/>
+<text x="545.5" y="169.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">ArchiSurance</text>
+<text x="545.5" y="183.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">General-Purpose Server</text>
+<text x="545.5" y="197.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Cluster</text>
+<rect x="686" y="153" width="120" height="55" rx="2" fill="rgb(255,128,0)" stroke="rgb(178,89,0)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMNAhaJJ3p4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjYBhowIjG/0+qPmQD/p98vp0o3eaSnnC9TJR6YdQAKhhAcTpgQZchlBagaQCrC8hKSIykakY3BG4AiWGHzQfkAQCWpBIXmCT6FAAAAABJRU5ErkJggg==" x="786.0" y="157.0" width="16" height="16"/>
+<text x="746.0" y="170.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Auto</text>
+<text x="746.0" y="184.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">General-Purpose</text>
+<text x="746.0" y="198.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Server</text>
+<rect x="832" y="150" width="120" height="55" rx="2" fill="rgb(255,128,0)" stroke="rgb(178,89,0)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMNAhaJJ3p4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjYBhowIjG/0+qPmQD/p98vp0o3eaSnnC9TJR6YdQAKhhAcTpgQZchlBagaQCrC8hKSIykakY3BG4AiWGHzQfkAQCWpBIXmCT6FAAAAABJRU5ErkJggg==" x="932.0" y="154.0" width="16" height="16"/>
+<text x="892.0" y="167.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Legal Expense</text>
+<text x="892.0" y="181.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">General-Purpose</text>
+<text x="892.0" y="195.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Server</text>
+<rect x="988" y="150" width="120" height="55" rx="2" fill="rgb(0,255,255)" stroke="rgb(0,178,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfaAhMNAhaJJ3p4AAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAEhJREFUeNpjYBhowIjG/0+qPmQD/p98vp0o3eaSnnC9TJR6YdQAKhhAcTpgQZchlBagaQCrC8hKSIykakY3BG4AiWGHzQfkAQCWpBIXmCT6FAAAAABJRU5ErkJggg==" x="1088.0" y="154.0" width="16" height="16"/>
+<text x="1048.0" y="167.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">FO</text>
+<text x="1048.0" y="181.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">General-Purpose</text>
+<text x="1048.0" y="195.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Server</text>
+<rect x="10" y="10" width="120" height="55" rx="2" fill="rgb(0,255,0)" stroke="rgb(0,178,0)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="110.0" y="14.0" width="16" height="16"/>
+<text x="70.0" y="27.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Data</text>
+<text x="70.0" y="41.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Warehousing</text>
+<text x="70.0" y="55.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Solution</text>
+<rect x="170" y="10" width="120" height="55" rx="2" fill="rgb(0,255,0)" stroke="rgb(0,178,0)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="270.0" y="14.0" width="16" height="16"/>
+<text x="230.0" y="27.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">ArchiSurance</text>
+<text x="230.0" y="41.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Back Office</text>
+<text x="230.0" y="55.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Suite</text>
+<rect x="337" y="10" width="120" height="55" rx="2" fill="rgb(255,128,0)" stroke="rgb(178,89,0)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="437.0" y="14.0" width="16" height="16"/>
+<text x="397.0" y="27.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Home &amp; Away</text>
+<text x="397.0" y="41.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Financial</text>
+<text x="397.0" y="55.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Application</text>
+<rect x="502" y="10" width="120" height="55" rx="2" fill="rgb(255,128,0)" stroke="rgb(178,89,0)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="602.0" y="14.0" width="16" height="16"/>
+<text x="562.0" y="34.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Auto Insurance</text>
+<text x="562.0" y="48.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Application</text>
+<rect x="649" y="10" width="120" height="55" rx="2" fill="rgb(255,128,0)" stroke="rgb(178,89,0)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="749.0" y="14.0" width="16" height="16"/>
+<text x="709.0" y="27.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Legal Expense</text>
+<text x="709.0" y="41.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Back-Office</text>
+<text x="709.0" y="55.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">System</text>
+<rect x="801" y="10" width="120" height="55" rx="2" fill="rgb(255,128,0)" stroke="rgb(178,89,0)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="901.0" y="14.0" width="16" height="16"/>
+<text x="861.0" y="34.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Legal Expense</text>
+<text x="861.0" y="48.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">CRM System</text>
+<rect x="952" y="10" width="120" height="55" rx="2" fill="rgb(0,255,255)" stroke="rgb(0,178,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="1052.0" y="14.0" width="16" height="16"/>
+<text x="1012.0" y="34.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">General CRM</text>
+<text x="1012.0" y="48.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">System</text>
+<rect x="1096" y="10" width="120" height="55" rx="2" fill="rgb(0,255,255)" stroke="rgb(0,178,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAxNSBGZWIgMjAxMCAxMDo1OTozNyAtMDAwMIUrdykAAAAHdElNRQfaAhILDyamYS9OAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE1JREFUeNpjYKAQMOIQ/0+sfhZcMlv/4zfDmxFiN7IB/7EpIGQYiguwKUQ2iKABhBQTMgBZ939CYYDNgJEaBkwkW0ltAyjOC5Q6gHIAAPymGynoimmNAAAAAElFTkSuQmCC" x="1196.0" y="14.0" width="16" height="16"/>
+<text x="1156.0" y="34.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Call Center</text>
+<text x="1156.0" y="48.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Application</text>
+<rect x="585" y="319" width="120" height="55" rx="2" fill="#FFE0E0" stroke="rgb(178,156,156)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjozMTo1MiAtMDAwMBNa/3UAAAAHdElNRQfcARwQCRknCAeaAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAADpJREFUeNpjYBhowAil/5OrnxGm+f+DB6TpVFAA00zkaEbWw0RpGIwaMGgMgCUKUgBMD8VJmVIfUA4A9TQMFeMcFf4AAAAASUVORK5CYII=" x="685.0" y="323.0" width="16" height="16"/>
+<text x="645.0" y="336.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Work Package:</text>
+<text x="645.0" y="350.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Phasing Out</text>
+<text x="645.0" y="364.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Legacy</text>
+<rect x="417" y="319" width="120" height="55" rx="2" fill="#FFE0E0" stroke="rgb(178,156,156)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjozMTo1MiAtMDAwMBNa/3UAAAAHdElNRQfcARwQCRknCAeaAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAADpJREFUeNpjYBhowAil/5OrnxGm+f+DB6TpVFAA00zkaEbWw0RpGIwaMGgMgCUKUgBMD8VJmVIfUA4A9TQMFeMcFf4AAAAASUVORK5CYII=" x="517.0" y="323.0" width="16" height="16"/>
+<text x="477.0" y="336.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Work Package:</text>
+<text x="477.0" y="350.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Hardware</text>
+<text x="477.0" y="364.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Upgrade</text>
+<rect x="256" y="319" width="120" height="55" rx="2" fill="#FFE0E0" stroke="rgb(178,156,156)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjozMTo1MiAtMDAwMBNa/3UAAAAHdElNRQfcARwQCRknCAeaAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAADpJREFUeNpjYBhowAil/5OrnxGm+f+DB6TpVFAA00zkaEbWw0RpGIwaMGgMgCUKUgBMD8VJmVIfUA4A9TQMFeMcFf4AAAAASUVORK5CYII=" x="356.0" y="323.0" width="16" height="16"/>
+<text x="316.0" y="336.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Work Package:</text>
+<text x="316.0" y="350.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Softrware</text>
+<text x="316.0" y="364.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Modification</text>
+<polyline points="128.0,316.0 128.0,206.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="122.8,316.0 75.2,65.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="661.7,319.0 729.3,208.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="685.2,319.0 851.8,205.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="650.7,319.0 703.3,65.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="637.6,319.0 569.4,65.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="622.9,319.0 419.1,65.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="488.3,319.0 534.2,207.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="450.7,319.0 342.8,206.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="308.3,319.0 237.7,65.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="845.5,316.0 859.5,65.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="859.1,316.0 996.9,65.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="516.7,152.0 425.8,65.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="484.4,152.0 290.0,64.5" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="710.6,153.0 597.4,65.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="856.1,150.0 744.9,65.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="1069.2,150.0 1134.8,65.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="1040.9,150.0 1019.1,65.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="1011.3,150.0 897.7,65.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
 </svg>

@@ -90,6 +90,7 @@ function parseArchiNode(childRaw: XmlNode, elementMap: Map<string, ArchiElement>
     font_size: null,
     font_color: hexToArchiColor(childRaw["@_fontColor"] ? String(childRaw["@_fontColor"]) : undefined),
     line_width: null,
+    archi_type: childRaw["@_type"] != null ? Number(childRaw["@_type"]) : null,
     nodes: children,
   };
 }

@@ -52,6 +52,7 @@ export interface ArchiNode {
   font_size: number | null;
   font_color: ArchiColor | null;
   line_width: number | null;
+  archi_type: number | null;
   nodes: ArchiNode[];
 }
 

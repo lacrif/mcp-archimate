@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="752" height="287" viewBox="0 0 752 287">
+<title>03_Fragement of a Stakeholder View (v2 and v3.1)</title>
+  <defs>
+    <marker id="arrow-open" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#000" stroke-width="1.2"/>
+    </marker>
+    <marker id="arrow-filled" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#000" stroke="none"/>
+    </marker>
+    <marker id="arrow-hollow" markerWidth="11" markerHeight="9" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#000" stroke-width="1.2"/>
+    </marker>
+    <marker id="diamond-filled" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#000" stroke="#000" stroke-width="0.5"/>
+    </marker>
+    <marker id="diamond-open" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#000" stroke-width="1"/>
+    </marker>
+    <marker id="circle-solid" markerWidth="7" markerHeight="7" refX="0" refY="3.5" orient="auto-start-reverse">
+      <circle cx="3.5" cy="3.5" r="3" fill="#000" stroke="#000"/>
+    </marker>
+  </defs>
+<rect width="752" height="287" fill="white"/>
+<rect x="310" y="118" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjozMTo1MiAtMDAwMBNa/3UAAAAHdElNRQfgCB0IDTI7+QvUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIdJREFUeNqlkwEKwCAMA1vf5P9f4J86HAgxprphQBhqzqZlZnvF4dz8h1HeLcIUrYX11QXfoeCFXohhZAHEM8BrrlWn6vtUyQQILJkhYF4gRb2GEDRnUziOaiMftS7NwxjJmacROHPWWAT4LjP3xGCUjJ6iMIzNHCGwEhVLNf36XzjpZsTf9ABP4lNqw/UlsQAAAABJRU5ErkJggg==" x="410.0" y="122.0" width="16" height="16"/>
+<text x="370.0" y="142.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Customer</text>
+<text x="370.0" y="156.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">satisfaction</text>
+<rect x="622" y="118" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjozMTo1MiAtMDAwMBNa/3UAAAAHdElNRQfgCB0IDTI7+QvUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIdJREFUeNqlkwEKwCAMA1vf5P9f4J86HAgxprphQBhqzqZlZnvF4dz8h1HeLcIUrYX11QXfoeCFXohhZAHEM8BrrlWn6vtUyQQILJkhYF4gRb2GEDRnUziOaiMftS7NwxjJmacROHPWWAT4LjP3xGCUjJ6iMIzNHCGwEhVLNf36XzjpZsTf9ABP4lNqw/UlsQAAAABJRU5ErkJggg==" x="722.0" y="122.0" width="16" height="16"/>
+<text x="682.0" y="149.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Price</text>
+<rect x="466" y="118" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjozMTo1MiAtMDAwMBNa/3UAAAAHdElNRQfgCB0IDTI7+QvUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIdJREFUeNqlkwEKwCAMA1vf5P9f4J86HAgxprphQBhqzqZlZnvF4dz8h1HeLcIUrYX11QXfoeCFXohhZAHEM8BrrlWn6vtUyQQILJkhYF4gRb2GEDRnUziOaiMftS7NwxjJmacROHPWWAT4LjP3xGCUjJ6iMIzNHCGwEhVLNf36XzjpZsTf9ABP4lNqw/UlsQAAAABJRU5ErkJggg==" x="566.0" y="122.0" width="16" height="16"/>
+<text x="526.0" y="142.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Product</text>
+<text x="526.0" y="156.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Portfolio</text>
+<rect x="163" y="222" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjozMTo1MiAtMDAwMBNa/3UAAAAHdElNRQfgCB0IDTI7+QvUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIdJREFUeNqlkwEKwCAMA1vf5P9f4J86HAgxprphQBhqzqZlZnvF4dz8h1HeLcIUrYX11QXfoeCFXohhZAHEM8BrrlWn6vtUyQQILJkhYF4gRb2GEDRnUziOaiMftS7NwxjJmacROHPWWAT4LjP3xGCUjJ6iMIzNHCGwEhVLNf36XzjpZsTf9ABP4lNqw/UlsQAAAABJRU5ErkJggg==" x="263.0" y="226.0" width="16" height="16"/>
+<text x="223.0" y="253.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Profitability</text>
+<rect x="10" y="118" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjozMTo1MiAtMDAwMBNa/3UAAAAHdElNRQfgCB0IDTI7+QvUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIdJREFUeNqlkwEKwCAMA1vf5P9f4J86HAgxprphQBhqzqZlZnvF4dz8h1HeLcIUrYX11QXfoeCFXohhZAHEM8BrrlWn6vtUyQQILJkhYF4gRb2GEDRnUziOaiMftS7NwxjJmacROHPWWAT4LjP3xGCUjJ6iMIzNHCGwEhVLNf36XzjpZsTf9ABP4lNqw/UlsQAAAABJRU5ErkJggg==" x="110.0" y="122.0" width="16" height="16"/>
+<text x="70.0" y="149.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Sales target</text>
+<rect x="163" y="118" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjozMTo1MiAtMDAwMBNa/3UAAAAHdElNRQfgCB0IDTI7+QvUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIdJREFUeNqlkwEKwCAMA1vf5P9f4J86HAgxprphQBhqzqZlZnvF4dz8h1HeLcIUrYX11QXfoeCFXohhZAHEM8BrrlWn6vtUyQQILJkhYF4gRb2GEDRnUziOaiMftS7NwxjJmacROHPWWAT4LjP3xGCUjJ6iMIzNHCGwEhVLNf36XzjpZsTf9ABP4lNqw/UlsQAAAABJRU5ErkJggg==" x="263.0" y="122.0" width="16" height="16"/>
+<text x="223.0" y="142.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Stakeholder</text>
+<text x="223.0" y="156.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">satisfaction</text>
+<rect x="163" y="10" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjozMTo1MiAtMDAwMBNa/3UAAAAHdElNRQfgCB0IDRznLwYbAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE9JREFUeNpjYBjygBGN/59UfYzIGs+cwa3fxIQRLg9iw/QzwVjEakZXCzLqPyma0eWYGCgE8DAg1RXQcECEAVLAYACQZmR5ZDbF0TgKqAAA+WIjCwBr0xgAAAAASUVORK5CYII=" x="263.0" y="14.0" width="16" height="16"/>
+<text x="223.0" y="41.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Board</text>
+<rect x="466" y="10" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjozMTo1MiAtMDAwMBNa/3UAAAAHdElNRQfgCB0IDRznLwYbAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAE9JREFUeNpjYBjygBGN/59UfYzIGs+cwa3fxIQRLg9iw/QzwVjEakZXCzLqPyma0eWYGCgE8DAg1RXQcECEAVLAYACQZmR5ZDbF0TgKqAAA+WIjCwBr0xgAAAAASUVORK5CYII=" x="566.0" y="14.0" width="16" height="16"/>
+<text x="526.0" y="41.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Customer</text>
+<polyline points="332.6,118.0 260.4,65.0" fill="none" stroke="#000000" stroke-width="1"/>
+<polyline points="409.7,118.0 486.3,65.0" fill="none" stroke="#000000" stroke-width="1"/>
+<polyline points="642.3,118.0 565.7,65.0" fill="none" stroke="#000000" stroke-width="1"/>
+<polyline points="526.0,118.0 526.0,65.0" fill="none" stroke="#000000" stroke-width="1"/>
+<polyline points="109.0,118.0 184.0,65.0" fill="none" stroke="#000000" stroke-width="1"/>
+<polyline points="223.0,118.0 223.0,65.0" fill="none" stroke="#000000" stroke-width="1"/>
+<polyline points="223.0,173.0 223.0,222.0" fill="none" stroke="#000000" stroke-width="1" marker-start="url(#diamond-open)"/>
+</svg>

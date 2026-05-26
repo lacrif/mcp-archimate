@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="911" height="552" viewBox="0 0 911 552">
+<title>04 Business Goals Associated with the Driver Profitability (v3.1）</title>
+  <defs>
+    <marker id="arrow-open" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7" fill="none" stroke="#000" stroke-width="1.2"/>
+    </marker>
+    <marker id="arrow-filled" markerWidth="9" markerHeight="8" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#000" stroke="none"/>
+    </marker>
+    <marker id="arrow-hollow" markerWidth="11" markerHeight="9" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="white" stroke="#000" stroke-width="1.2"/>
+    </marker>
+    <marker id="diamond-filled" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="#000" stroke="#000" stroke-width="0.5"/>
+    </marker>
+    <marker id="diamond-open" markerWidth="12" markerHeight="8" refX="0" refY="4" orient="auto-start-reverse">
+      <path d="M0,4 L5,0 L10,4 L5,8 Z" fill="white" stroke="#000" stroke-width="1"/>
+    </marker>
+    <marker id="circle-solid" markerWidth="7" markerHeight="7" refX="0" refY="3.5" orient="auto-start-reverse">
+      <circle cx="3.5" cy="3.5" r="3" fill="#000" stroke="#000"/>
+    </marker>
+  </defs>
+<rect width="911" height="552" fill="white"/>
+<rect x="357" y="19" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjozMTo1MiAtMDAwMBNa/3UAAAAHdElNRQfgCB0IDTI7+QvUAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIdJREFUeNqlkwEKwCAMA1vf5P9f4J86HAgxprphQBhqzqZlZnvF4dz8h1HeLcIUrYX11QXfoeCFXohhZAHEM8BrrlWn6vtUyQQILJkhYF4gRb2GEDRnUziOaiMftS7NwxjJmacROHPWWAT4LjP3xGCUjJ6iMIzNHCGwEhVLNf36XzjpZsTf9ABP4lNqw/UlsQAAAABJRU5ErkJggg==" x="457.0" y="23.0" width="16" height="16"/>
+<text x="417.0" y="50.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Profitability</text>
+<rect x="110" y="10" width="174" height="73" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCB0IDR9+JlehAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFFJREFUeNpjYCAe/IdiFMBIpEaGM2cgek1MGFH0EjLgP0wjOoAaxMhEghewAnwuwGk7sito6oKBDwOwC2AMXNFIlGYk/n9CmnBpJgkMnOYhCgBLHBwDqHkCswAAAABJRU5ErkJggg==" x="264.0" y="14.0" width="16" height="16"/>
+<text x="197.0" y="29.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Customers defecting to</text>
+<text x="197.0" y="43.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">competitors with</text>
+<text x="197.0" y="57.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">superior digital</text>
+<text x="197.0" y="71.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">experiences</text>
+<rect x="488" y="199" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfcARwQOSc5LyzCAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIFJREFUeNqlU1sOwCAIG57J+5/AO7Es0a2Dli2RLyX0YVU7dDmsTQ2ZAo7x4Hs3OR8bjsBYk8gUgQtV5iZZSuCv/cI2ZjMe49qjI6yG6kIpkcwZpw4iWCmjA1rLSXUrNESWQeyXIbLAFCk6eLlgAYa+fJpbL/EmEap0vrqjX79xu06a+VOqNYOegAAAAABJRU5ErkJggg==" x="588.0" y="203.0" width="16" height="16"/>
+<text x="548.0" y="223.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Increase in</text>
+<text x="548.0" y="237.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">revenue</text>
+<rect x="190" y="199" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfcARwQOSc5LyzCAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIFJREFUeNqlU1sOwCAIG57J+5/AO7Es0a2Dli2RLyX0YVU7dDmsTQ2ZAo7x4Hs3OR8bjsBYk8gUgQtV5iZZSuCv/cI2ZjMe49qjI6yG6kIpkcwZpw4iWCmjA1rLSXUrNESWQeyXIbLAFCk6eLlgAYa+fJpbL/EmEap0vrqjX79xu06a+VOqNYOegAAAAABJRU5ErkJggg==" x="290.0" y="203.0" width="16" height="16"/>
+<text x="250.0" y="223.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Redunction of</text>
+<text x="250.0" y="237.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">costs</text>
+<rect x="580" y="295" width="133" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfcARwQOSc5LyzCAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIFJREFUeNqlU1sOwCAIG57J+5/AO7Es0a2Dli2RLyX0YVU7dDmsTQ2ZAo7x4Hs3OR8bjsBYk8gUgQtV5iZZSuCv/cI2ZjMe49qjI6yG6kIpkcwZpw4iWCmjA1rLSXUrNESWQeyXIbLAFCk6eLlgAYa+fJpbL/EmEap0vrqjX79xu06a+VOqNYOegAAAAABJRU5ErkJggg==" x="693.0" y="299.0" width="16" height="16"/>
+<text x="646.5" y="312.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Imporevement in</text>
+<text x="646.5" y="326.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">cross-selling</text>
+<text x="646.5" y="340.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">success</text>
+<rect x="94" y="295" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfcARwQOSc5LyzCAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIFJREFUeNqlU1sOwCAIG57J+5/AO7Es0a2Dli2RLyX0YVU7dDmsTQ2ZAo7x4Hs3OR8bjsBYk8gUgQtV5iZZSuCv/cI2ZjMe49qjI6yG6kIpkcwZpw4iWCmjA1rLSXUrNESWQeyXIbLAFCk6eLlgAYa+fJpbL/EmEap0vrqjX79xu06a+VOqNYOegAAAAABJRU5ErkJggg==" x="194.0" y="299.0" width="16" height="16"/>
+<text x="154.0" y="312.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Reduction of</text>
+<text x="154.0" y="326.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">maintenance</text>
+<text x="154.0" y="340.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">costs</text>
+<rect x="238" y="295" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfcARwQOSc5LyzCAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIFJREFUeNqlU1sOwCAIG57J+5/AO7Es0a2Dli2RLyX0YVU7dDmsTQ2ZAo7x4Hs3OR8bjsBYk8gUgQtV5iZZSuCv/cI2ZjMe49qjI6yG6kIpkcwZpw4iWCmjA1rLSXUrNESWQeyXIbLAFCk6eLlgAYa+fJpbL/EmEap0vrqjX79xu06a+VOqNYOegAAAAABJRU5ErkJggg==" x="338.0" y="299.0" width="16" height="16"/>
+<text x="298.0" y="312.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Reduction of</text>
+<text x="298.0" y="326.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">personnel</text>
+<text x="298.0" y="340.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">costs</text>
+<rect x="553" y="10" width="174" height="73" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCB0IDR9+JlehAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFFJREFUeNpjYCAe/IdiFMBIpEaGM2cgek1MGFH0EjLgP0wjOoAaxMhEghewAnwuwGk7sito6oKBDwOwC2AMXNFIlGYk/n9CmnBpJgkMnOYhCgBLHBwDqHkCswAAAABJRU5ErkJggg==" x="707.0" y="14.0" width="16" height="16"/>
+<text x="640.0" y="36.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Customer defecting to</text>
+<text x="640.0" y="50.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">competitors with lower</text>
+<text x="640.0" y="64.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Insurance Premiums</text>
+<rect x="345" y="103" width="144" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCB0JKAuNzTkMAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIFJREFUeNqdk90NwCAIhMF0JPefwJ0wGk0pHkrlgfjDfZxGie5DWuJTwQj+A+gbpbz6nNmCZI4tQLTQBgDR44lVMe2g7IkRbK6NeU8J2dx1RA5Ek0+drYvkkaNOXEATRyDLJXoiZB86mJ2jx9GVoXegu1vAAkHHsJrbv7AFfECnugp1aFVCo3KeJwAAAABJRU5ErkJggg==" x="469.0" y="107.0" width="16" height="16"/>
+<text x="417.0" y="120.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Profit Margin of</text>
+<text x="417.0" y="134.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">&gt;5% in Next Fiscal</text>
+<text x="417.0" y="148.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Year</text>
+<rect x="10" y="199" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCB0IDR9+JlehAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFFJREFUeNpjYCAe/IdiFMBIpEaGM2cgek1MGFH0EjLgP0wjOoAaxMhEghewAnwuwGk7sito6oKBDwOwC2AMXNFIlGYk/n9CmnBpJgkMnOYhCgBLHBwDqHkCswAAAABJRU5ErkJggg==" x="110.0" y="203.0" width="16" height="16"/>
+<text x="70.0" y="216.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Inefficiencies</text>
+<text x="70.0" y="230.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">in Internal</text>
+<text x="70.0" y="244.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Operations</text>
+<rect x="409" y="295" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfcARwQOSc5LyzCAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIFJREFUeNqlU1sOwCAIG57J+5/AO7Es0a2Dli2RLyX0YVU7dDmsTQ2ZAo7x4Hs3OR8bjsBYk8gUgQtV5iZZSuCv/cI2ZjMe49qjI6yG6kIpkcwZpw4iWCmjA1rLSXUrNESWQeyXIbLAFCk6eLlgAYa+fJpbL/EmEap0vrqjX79xu06a+VOqNYOegAAAAABJRU5ErkJggg==" x="509.0" y="299.0" width="16" height="16"/>
+<text x="469.0" y="312.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Higher</text>
+<text x="469.0" y="326.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Customer</text>
+<text x="469.0" y="340.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Retention</text>
+<rect x="409" y="390" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfcARwQOSc5LyzCAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIFJREFUeNqlU1sOwCAIG57J+5/AO7Es0a2Dli2RLyX0YVU7dDmsTQ2ZAo7x4Hs3OR8bjsBYk8gUgQtV5iZZSuCv/cI2ZjMe49qjI6yG6kIpkcwZpw4iWCmjA1rLSXUrNESWQeyXIbLAFCk6eLlgAYa+fJpbL/EmEap0vrqjX79xu06a+VOqNYOegAAAAABJRU5ErkJggg==" x="509.0" y="394.0" width="16" height="16"/>
+<text x="469.0" y="407.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Improved</text>
+<text x="469.0" y="421.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Customer</text>
+<text x="469.0" y="435.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Satisfaction</text>
+<rect x="769" y="390" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCB0IDR9+JlehAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFFJREFUeNpjYCAe/IdiFMBIpEaGM2cgek1MGFH0EjLgP0wjOoAaxMhEghewAnwuwGk7sito6oKBDwOwC2AMXNFIlGYk/n9CmnBpJgkMnOYhCgBLHBwDqHkCswAAAABJRU5ErkJggg==" x="869.0" y="394.0" width="16" height="16"/>
+<text x="829.0" y="414.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Broad Product</text>
+<text x="829.0" y="428.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Coverage</text>
+<rect x="781" y="295" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCB0IDR9+JlehAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAFFJREFUeNpjYCAe/IdiFMBIpEaGM2cgek1MGFH0EjLgP0wjOoAaxMhEghewAnwuwGk7sito6oKBDwOwC2AMXNFIlGYk/n9CmnBpJgkMnOYhCgBLHBwDqHkCswAAAABJRU5ErkJggg==" x="881.0" y="299.0" width="16" height="16"/>
+<text x="841.0" y="319.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Strong Brand</text>
+<text x="841.0" y="333.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Position</text>
+<rect x="213" y="390" width="145" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCB0JKAuNzTkMAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIFJREFUeNqdk90NwCAIhMF0JPefwJ0wGk0pHkrlgfjDfZxGie5DWuJTwQj+A+gbpbz6nNmCZI4tQLTQBgDR44lVMe2g7IkRbK6NeU8J2dx1RA5Ek0+drYvkkaNOXEATRyDLJXoiZB86mJ2jx9GVoXegu1vAAkHHsJrbv7AFfECnugp1aFVCo3KeJwAAAABJRU5ErkJggg==" x="338.0" y="394.0" width="16" height="16"/>
+<text x="285.5" y="414.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">90% of Customer</text>
+<text x="285.5" y="428.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Interaction Online</text>
+<rect x="308" y="487" width="169" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCB0JKAuNzTkMAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIFJREFUeNqdk90NwCAIhMF0JPefwJ0wGk0pHkrlgfjDfZxGie5DWuJTwQj+A+gbpbz6nNmCZI4tQLTQBgDR44lVMe2g7IkRbK6NeU8J2dx1RA5Ek0+drYvkkaNOXEATRyDLJXoiZB86mJ2jx9GVoXegu1vAAkHHsJrbv7AFfECnugp1aFVCo3KeJwAAAABJRU5ErkJggg==" x="457.0" y="491.0" width="16" height="16"/>
+<text x="392.5" y="511.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Best-in-Class Online</text>
+<text x="392.5" y="525.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Customer Experience</text>
+<rect x="595" y="390" width="120" height="55" rx="2" fill="#CCCCFF" stroke="rgb(142,142,178)" stroke-width="1"/>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALHRFWHRDcmVhdGlvbiBUaW1lAE1vbiAyNSBKYW4gMjAxMCAxMjoxNDo1NSAtMDAwMGi4s34AAAAHdElNRQfgCB0JKAuNzTkMAAAACXBIWXMAAArwAAAK8AFCrDSYAAAABGdBTUEAALGPC/xhBQAAAIFJREFUeNqdk90NwCAIhMF0JPefwJ0wGk0pHkrlgfjDfZxGie5DWuJTwQj+A+gbpbz6nNmCZI4tQLTQBgDR44lVMe2g7IkRbK6NeU8J2dx1RA5Ek0+drYvkkaNOXEATRyDLJXoiZB86mJ2jx9GVoXegu1vAAkHHsJrbv7AFfECnugp1aFVCo3KeJwAAAABJRU5ErkJggg==" x="695.0" y="394.0" width="16" height="16"/>
+<text x="655.0" y="407.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Attractive</text>
+<text x="655.0" y="421.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Insurance</text>
+<text x="655.0" y="435.5" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="middle" fill="#000000">Offering</text>
+<polyline points="357.0,46.5 284.0,46.5" fill="none" stroke="#000000" stroke-width="1"/>
+<polyline points="510.5,199.0 454.5,158.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-open)"/>
+<polyline points="263.8,254.0 284.3,295.0" fill="none" stroke="#000000" stroke-width="1" marker-start="url(#diamond-open)"/>
+<polyline points="222.5,254.0 181.5,295.0" fill="none" stroke="#000000" stroke-width="1" marker-start="url(#diamond-open)"/>
+<polyline points="297.8,199.0 369.2,158.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-open)"/>
+<polyline points="618.3,295.0 576.2,254.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-open)"/>
+<polyline points="553.0,46.5 477.0,46.5" fill="none" stroke="#000000" stroke-width="1"/>
+<polyline points="417.0,103.0 417.0,74.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-open)"/>
+<polyline points="130.0,226.5 190.0,226.5" fill="none" stroke="#000000" stroke-width="1"/>
+<polyline points="491.6,295.0 525.4,254.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-open)"/>
+<polyline points="469.0,390.0 469.0,350.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-open)"/>
+<polyline points="769.0,417.5 715.0,417.5" fill="none" stroke="#000000" stroke-width="1"/>
+<polyline points="781.0,322.5 713.0,322.5" fill="none" stroke="#000000" stroke-width="1"/>
+<polyline points="289.1,390.0 294.4,350.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-open)"/>
+<polyline points="414.2,487.0 447.3,445.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+<polyline points="362.2,487.0 315.8,445.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-open)"/>
+<polyline points="652.5,390.0 649.0,350.0" fill="none" stroke="#000000" stroke-width="1" stroke-dasharray="6,3" marker-end="url(#arrow-hollow)"/>
+</svg>
