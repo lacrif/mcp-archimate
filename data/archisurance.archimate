@@ -4393,6 +4393,123 @@ Capability Realization .........................................................
         <bounds x="10" y="20" width="100" height="50"/>
       </child>
     </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Node Test View" id="724d005b-0037-417a-8afc-8159b4b39790"/>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP View" id="4c72329e-3d70-4577-bb57-3f8d85936a50" viewpoint="Layered">
+      <documentation>mcp-created</documentation>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP Node Test View" id="eca3a291-cdfe-43d4-9391-f2a8a8da7c2e">
+      <child xsi:type="archimate:DiagramObject" id="6b11440e-3552-4689-bbb6-39a87408aa5a" archimateElement="9a6bfb2e-12e0-42d7-91b8-10579b645956">
+        <bounds x="10" y="20" width="100" height="50"/>
+      </child>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Node Test View" id="c42e14da-ec5f-4286-bbb9-2df97b71e1f6"/>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP View" id="22cd8ca1-596c-4f6d-839b-5c2a3dfff5e1" viewpoint="Layered">
+      <documentation>mcp-created</documentation>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP Node Test View" id="8c1a1cea-13ff-4da8-8289-a1e647240f40">
+      <child xsi:type="archimate:DiagramObject" id="5a7c2959-0941-45ea-97b4-acf73a785283" archimateElement="50c7e635-cecd-475d-8a11-7f1e29e04ac3">
+        <bounds x="10" y="20" width="100" height="50"/>
+      </child>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Node Test View" id="8e969ca4-3b63-4426-8db4-fe35ac3bc4cd"/>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP View" id="2b52f662-e6a3-412d-94db-474ff2d66781" viewpoint="Layered">
+      <documentation>mcp-created</documentation>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP Node Test View" id="c4af657d-9345-48af-8865-d4109a0aaeb7">
+      <child xsi:type="archimate:DiagramObject" id="7550f4fb-047e-42de-8a09-10f9fba52580" archimateElement="ce5030ef-1e0d-4eb2-8ff2-fd36b4adfc0b">
+        <bounds x="10" y="20" width="100" height="50"/>
+      </child>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Node Test View" id="d3076b90-bc03-440f-828d-c7de34846d89"/>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP View" id="c9b7e240-cb2e-42f4-bbb8-24e66516a3ec" viewpoint="Layered">
+      <documentation>mcp-created</documentation>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP Node Test View" id="e6758ee9-dcf5-4fb7-b863-2e35e799c5c2">
+      <child xsi:type="archimate:DiagramObject" id="ca3c013c-daf6-4454-8962-538aa4d4d99c" archimateElement="57cb3e9f-5fcb-4d09-8766-44b9afc25ab5">
+        <bounds x="10" y="20" width="100" height="50"/>
+      </child>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Node Test View" id="ccfa7b0d-add9-47c2-bd8a-43e6224cfd86"/>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP View" id="301d59b1-5919-4d06-af43-fe914454f33b" viewpoint="Layered">
+      <documentation>mcp-created</documentation>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP Node Test View" id="48c7e209-a882-4c32-bfb5-fd75df2b0af3">
+      <child xsi:type="archimate:DiagramObject" id="84b5a20b-a43e-4da3-adb2-e9e4ef0ba432" archimateElement="8988903c-c0bb-4f24-94e7-3cc54748c7a9">
+        <bounds x="10" y="20" width="100" height="50"/>
+      </child>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Node Test View" id="038dd5d7-6dea-42d2-b398-2ca5511c07f4"/>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP View" id="9ac79531-ae5d-4945-af0f-e6366fa92519" viewpoint="Layered">
+      <documentation>mcp-created</documentation>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP Node Test View" id="30422dcd-427d-4f1e-ac28-d3eeec7e2dfa">
+      <child xsi:type="archimate:DiagramObject" id="983ec552-bfb9-4b33-a2fd-7a5eb28dc142" archimateElement="4d97bb0a-1c15-459b-a905-ed79b0b0a2a8">
+        <bounds x="10" y="20" width="100" height="50"/>
+      </child>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Node Test View" id="e1135739-366c-4536-b2fe-3cb481a66c0d"/>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP View" id="f3c1773c-cbb0-4183-a9c3-4b64a52915d9" viewpoint="Layered">
+      <documentation>mcp-created</documentation>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP Node Test View" id="d0584824-e1c3-455d-9d3a-113ba93272ef">
+      <child xsi:type="archimate:DiagramObject" id="d3715101-5296-432b-85f6-769944ec4523" archimateElement="7d1d47d6-72c9-4e9c-a311-5f8a95a1b949">
+        <bounds x="10" y="20" width="100" height="50"/>
+      </child>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Node Test View" id="96c56ace-588d-46d3-9438-ad07eccdc11e"/>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP View" id="ab0255f7-b90b-479e-88ed-d254c58c32f8" viewpoint="Layered">
+      <documentation>mcp-created</documentation>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP Node Test View" id="348cf098-60e1-405d-896c-cffae01c4aec">
+      <child xsi:type="archimate:DiagramObject" id="b38ba6db-d5bf-4139-93a5-d58774cbdf3b" archimateElement="63b8e9d5-4372-418e-8f84-03683a87392b">
+        <bounds x="10" y="20" width="100" height="50"/>
+      </child>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Node Test View" id="009e8f49-d3dd-44fb-ade9-c58f7191189a"/>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP View" id="617354fc-e7d5-4299-918e-bd49bcb6d871" viewpoint="Layered">
+      <documentation>mcp-created</documentation>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP Node Test View" id="0d68c259-7a83-4a07-9738-85cb8c23140a">
+      <child xsi:type="archimate:DiagramObject" id="4549f30f-4285-476f-8da7-50243bcb1b6e" archimateElement="38a9956d-c2a6-4dc7-948d-895179dd7701">
+        <bounds x="10" y="20" width="100" height="50"/>
+      </child>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Node Test View" id="537e685b-189a-4c5f-b8ed-e2281489266f"/>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP View" id="a6d120ae-d1bf-40ed-aa2c-bbd8db5b0944" viewpoint="Layered">
+      <documentation>mcp-created</documentation>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP Node Test View" id="a804dc2f-416a-42e1-b597-ed132e89705c">
+      <child xsi:type="archimate:DiagramObject" id="e8e4e962-92f1-4af9-9f84-87f595bf229e" archimateElement="ead3054b-ed6a-4e53-8bfb-eeb669358a88">
+        <bounds x="10" y="20" width="100" height="50"/>
+      </child>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Node Test View" id="6f173f1a-642f-4570-ae24-3c3dcec69100"/>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP View" id="c4703331-e455-46dd-8497-c96df6d97739" viewpoint="Layered">
+      <documentation>mcp-created</documentation>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP Node Test View" id="cd99fb8c-6597-4033-8a17-1552fbb3aef2">
+      <child xsi:type="archimate:DiagramObject" id="14fd4cac-f9f6-4215-adeb-b7e119518c15" archimateElement="4dceff94-d5d7-4e25-b7e2-fe40501b17c1">
+        <bounds x="10" y="20" width="100" height="50"/>
+      </child>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Node Test View" id="c7b40d06-4050-4054-bded-487e102e94df"/>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP View" id="b3e6053e-e0f9-4369-8ffa-4ddaa2645277" viewpoint="Layered">
+      <documentation>mcp-created</documentation>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP Node Test View" id="1eb44bc6-c3c9-45a3-9e5d-0002999fee54">
+      <child xsi:type="archimate:DiagramObject" id="e3a23cf5-a1e7-4f08-bc9a-a01b4a764ed3" archimateElement="c5d6e4b2-c218-4f34-84c4-20b2c02a1078">
+        <bounds x="10" y="20" width="100" height="50"/>
+      </child>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Node Test View" id="5db8ff3f-9bc5-4aa8-9d2c-9b8837628b59"/>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP View" id="6735f65e-0e35-4570-9691-b9dc433fb3aa" viewpoint="Layered">
+      <documentation>mcp-created</documentation>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="MCP Node Test View" id="8e8bc994-d09b-4a0f-b331-1ae91465baf3">
+      <child xsi:type="archimate:DiagramObject" id="324b69d5-662e-4fa0-9f5b-509fa1565051" archimateElement="7d9949c3-28c9-44e1-92cd-1cee06cf0b5e">
+        <bounds x="10" y="20" width="100" height="50"/>
+      </child>
+    </element>
   </folder>
   <profile name="Icon for Strategy to Capability" id="id-76e4d63f8085458da25ffc6c3516c66b" imagePath="images/_7R8pcOeREe2z-r3zzNF7_w.png" conceptType="Capability"/>
   <profile name="Icon for Business to Business Function" id="id-67f91dbfafed401ea309278a37098300" imagePath="images/_zwiCQOeYEe2z-r3zzNF7_w.png" conceptType="BusinessFunction"/>
