@@ -216,7 +216,7 @@ function rectEdge(
 // Matches Archi's default router: use x-overlap or y-overlap midpoint for
 // straight segments; L-shape when no overlap.
 // Returns [start, ...intermediates, end] as absolute SVG points.
-function orthogonalRoute(
+function _orthogonalRoute(
   sx: number, sy: number, sw: number, sh: number,
   tx: number, ty: number, tw: number, th: number,
 ): Array<{ x: number; y: number }> {
@@ -344,7 +344,7 @@ function shapeRect(
 function shapeGrouping(
   x: number, y: number, w: number, h: number,
   fill: string, stroke: string, lw: number,
-  FONT: string
+  _FONT: string
 ): { svg: string[]; nameY: number } {
   return {
     svg: [
