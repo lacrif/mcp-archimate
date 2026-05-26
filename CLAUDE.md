@@ -6,6 +6,7 @@
 - **Once a task is complete**, check the corresponding box in `TODO.md`. 
 - **When a release is ready**, move the checked items from `TODO.md` to `CHANGELOG.md`.
 - Write concise and clear changelog entries (describe the changes, not the method). One bullet point per change.
+- **When tagging a release** (e.g. `git tag 0.4.0`), bump `package.json` `"version"` to match, run `npm test`, commit the bump, then create the tag and push both: `git push origin main --tags`.
 
 ## After every code change
 
