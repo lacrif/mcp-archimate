@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [0.4.2]
+
+- Replaced Archi native format parser/serializer (`archi-parser.ts`, `serializer.ts`) with Open Exchange Format equivalents (`oxf-parser.ts`, `oxf-serializer.ts`).
+- Generated IDs now prefixed with `id-` to satisfy the `xs:ID` / NCName constraint required by OEF XSDs.
+- `deleteElement` now cascades to view nodes that reference the deleted element.
+- Bendpoint model simplified: `startX/startY/endX/endY` replaced by `x/y`.
+
+---
+
 ## [0.4.0]
 
 - SVG renderer: removed title bar; view name now in `<title>` element only.
