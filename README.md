@@ -5,7 +5,7 @@
 [![Publish](https://github.com/lacrif/mcp-archimate/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/lacrif/mcp-archimate/actions/workflows/npm-publish.yml)
 [![npm](https://img.shields.io/npm/v/mcp-archimate)](https://img.shields.io/npm/v/mcp-archimate)
 
-A **REST API** and **MCP (Model Context Protocol) server** for querying and modifying ArchiMate models stored in native Archi Tool files.
+A **REST API** and **MCP (Model Context Protocol) server** for querying and modifying ArchiMate 3.1 models stored in the **Open Exchange File format** (`.xml`).
 
 ## Purpose
 
@@ -18,16 +18,21 @@ This project provides services for querying and modifying ArchiMate models via:
 
 To point the API at your own ArchiMate files:
 
-1. Place your files in `data/` (`.archimate` Archi Tool)
-2. Edit `config.json` to declare your sources
+1. Place your file in `data/` in the ArchiMate 3.1 Open Exchange XML format (`.xml`)
+2. Edit `config.json` to declare it
 3. Restart the server
 
 ```json
 {
-  "path": "data/archisurance.archimate",
+  "path": "data/archisurance.xml",
   "name": "ArchiSurance"
 }
 ```
+
+The format is the one defined by The Open Group XSDs `archimate3_Model.xsd`,
+`archimate3_View.xsd` and `archimate3_Diagram.xsd` (provided under `models/`).
+Archi can produce this file via **File → Export → Open Exchange XML** or via the
+CLI `archi --xmlexchange.export <path>`.
 
 ## REST API
 
@@ -195,8 +200,8 @@ npm start
 
 Tests are located in `tests/api.test.ts` (181 tests) and cover:
 
-- **Unit tests**: conversion helpers, colour conversion, XSD constants, CRUD functions (`createElement`, `updateElement`, `deleteElement`, `createRelationship`, `updateRelationship`, `deleteRelationship`), serializers (`serializeToOEF`, `serializeToArchi` with round-trip tests), `saveModel`, `listSources`
-- **Integration tests**: all REST endpoints (`/sources`, CRUD cycles for elements and relationships, `POST /sources`, `DELETE /sources/:id`, `POST /:source_id/save`), MCP service (initialize + tools/list with all 18 tools)
+- **Unit tests**: conversion helpers, colour conversion, XSD constants, CRUD functions (`createElement`, `updateElement`, `deleteElement`, `createRelationship`, `updateRelationship`, `deleteRelationship`), parser/serializer (`parseOpenExchange`, `serializeToOpenExchange` with round-trip tests), `saveModel`
+- **Integration tests**: all REST endpoints (CRUD cycles for elements/relationships/views, `/save`, `/views/:id/image`), MCP service (initialize + tools/list with all registered tools)
 
 ### Running tests locally
 
@@ -213,7 +218,7 @@ npm test -- --coverage
 
 ## Quick reference
 
-- **Data format**: ArchiMate 3.1 Open Exchange XML and native Archi Tool format
+- **Data format**: ArchiMate 3.1 Open Exchange XML (`.xml`)
 - **API**: Express (REST)
 - **MCP server**: @modelcontextprotocol/sdk (streamable-http)
 - **Runtime**: Node.js 24 / TypeScript

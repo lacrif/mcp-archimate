@@ -10,9 +10,9 @@ import { describe, it, expect, beforeAll, afterEach } from "vitest";
 import request from "supertest";
 import { rmSync, existsSync } from "fs";
 import { join } from "path";
-import { serializeToArchi } from "../src/serializer.js";
+import { serializeToOpenExchange } from "../src/oxf-serializer.js";
 import { renderViewToSvg } from "../src/renderer.js";
-import { parseArchiFormat } from "../src/archi-parser.js";
+import { parseOpenExchange } from "../src/oxf-parser.js";
 
 import {
   app,
@@ -1079,7 +1079,7 @@ function makeDataSource(overrides: Partial<ArchiModel> = {}): DataSource {
     views: [],
     ...overrides,
   };
-  return { path: "data/test.archimate", model, elementTypes: [], relationshipTypes: [] };
+  return { path: "data/test.xml", model, elementTypes: [], relationshipTypes: [] };
 }
 
 describe("createElement", () => {
@@ -1568,152 +1568,323 @@ describe("MCP service", () => {
 });
 
 // ===========================================================================
-// Unit tests – serializeToArchi
+// Unit tests – serializeToOpenExchange
 // ===========================================================================
 
-describe("serializeToArchi", () => {
-  it("produces XML with archimate:model root", () => {
-    const xml = serializeToArchi(makeDataSource().model);
+describe("serializeToOpenExchange", () => {
+  it("produces XML with <model> root and OEF namespace", () => {
+    const xml = serializeToOpenExchange(makeDataSource().model);
     expect(xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>')).toBe(true);
-    expect(xml).toContain("<archimate:model");
-    expect(xml).toContain("</archimate:model>");
+    expect(xml).toContain("<model ");
+    expect(xml).toContain('xmlns="http://www.opengroup.org/xsd/archimate/3.0/"');
+    expect(xml).toContain("</model>");
   });
 
-  it("embeds model name and id as attributes", () => {
-    const xml = serializeToArchi(makeDataSource({ uuid: "a-uuid", name: "Archi Model" }).model);
-    expect(xml).toContain('name="Archi Model"');
-    expect(xml).toContain('id="a-uuid"');
+  it("embeds model name and identifier", () => {
+    const xml = serializeToOpenExchange(makeDataSource({ uuid: "a-uuid", name: "OEF Model" }).model);
+    expect(xml).toContain('identifier="a-uuid"');
+    expect(xml).toContain(">OEF Model<");
   });
 
-  it("uses archimate: prefix on element type", () => {
+  it("uses bare element type name in xsi:type", () => {
     const elem = makeElement({ uuid: "app-1", name: "My App", type: "ApplicationComponent" });
-    const xml = serializeToArchi(makeDataSource({ elements: [elem] }).model);
-    expect(xml).toContain('xsi:type="archimate:ApplicationComponent"');
-    expect(xml).toContain('name="My App"');
-    expect(xml).toContain('id="app-1"');
-    expect(xml).toContain('type="application"');
+    const xml = serializeToOpenExchange(makeDataSource({ elements: [elem] }).model);
+    expect(xml).toContain('xsi:type="ApplicationComponent"');
+    expect(xml).toContain('identifier="app-1"');
+    expect(xml).toContain(">My App<");
   });
 
-  it("appends Relationship suffix to relation type", () => {
+  it("relationship has bare type name (no Relationship suffix) and source/target", () => {
     const src = makeElement({ uuid: "s2" });
     const tgt = makeElement({ uuid: "t2" });
     const rel = makeRelationship({ uuid: "r2", source: src, target: tgt, type: "Association" });
-    const xml = serializeToArchi(makeDataSource({ elements: [src, tgt], relationships: [rel] }).model);
-    expect(xml).toContain('xsi:type="archimate:AssociationRelationship"');
+    const xml = serializeToOpenExchange(makeDataSource({ elements: [src, tgt], relationships: [rel] }).model);
+    expect(xml).toContain('xsi:type="Association"');
     expect(xml).toContain('source="s2"');
     expect(xml).toContain('target="t2"');
   });
 
-  it("places elements in the correct layer folder", () => {
-    const e1 = makeElement({ type: "BusinessActor" });
-    const e2 = makeElement({ uuid: "u2", type: "Capability" });
-    const xml = serializeToArchi(makeDataSource({ elements: [e1, e2] }).model);
-    expect(xml).toContain('type="business"');
-    expect(xml).toContain('type="strategy"');
+  it("emits Access accessType, Association isDirected, Influence modifier", () => {
+    const src = makeElement({ uuid: "rs1" });
+    const tgt = makeElement({ uuid: "rt1" });
+    const acc = makeRelationship({ uuid: "r-acc", source: src, target: tgt, type: "Access", access_type: "Read" });
+    const ass = makeRelationship({ uuid: "r-ass", source: src, target: tgt, type: "Association", is_directed: true });
+    const inf = makeRelationship({ uuid: "r-inf", source: src, target: tgt, type: "Influence", influence_strength: "+" });
+    const xml = serializeToOpenExchange(makeDataSource({ elements: [src, tgt], relationships: [acc, ass, inf] }).model);
+    expect(xml).toContain('accessType="Read"');
+    expect(xml).toContain('isDirected="true"');
+    expect(xml).toContain('modifier="+"');
   });
 
-  it("round-trips through parseArchiFormat", () => {
+  it("renders element documentation and properties", () => {
+    const elem = makeElement({
+      uuid: "e-docs", name: "Documented", type: "BusinessActor",
+      desc: "Important actor", props: { "propid-1": "team-a", "propid-2": "high" },
+    });
+    const xml = serializeToOpenExchange(makeDataSource({ elements: [elem] }).model);
+    expect(xml).toContain("<documentation");
+    expect(xml).toContain("Important actor");
+    expect(xml).toContain('propertyDefinitionRef="propid-1"');
+    expect(xml).toContain(">team-a<");
+  });
+
+  it("renders view with nodes, connections, viewpoint, documentation", () => {
+    const elem = makeElement({ uuid: "ve1", type: "ApplicationComponent" });
+    const node = makeNode({
+      uuid: "vn1", name: null, ref: elem.uuid,
+      x: 10, y: 20, w: 120, h: 55,
+      fill_color: { r: 255, g: 128, b: 0 },
+      line_color: { r: 0, g: 0, b: 128 },
+    });
+    const conn = makeConnection({ uuid: "vc1", source: "vn1", target: "vn2", ref: "rel-x", name: "arrow" });
+    const view = makeView({
+      uuid: "vv1", name: "App View", desc: "Application architecture",
+      primary_viewpoint: "Application Platform",
+      nodes: [node], conns: [conn],
+    });
+    const xml = serializeToOpenExchange(makeDataSource({ elements: [elem], views: [view] }).model);
+    expect(xml).toContain('viewpoint="Application Platform"');
+    expect(xml).toContain("Application architecture");
+    expect(xml).toContain('elementRef="ve1"');
+    expect(xml).toContain('relationshipRef="rel-x"');
+    expect(xml).toContain('x="10"');
+    expect(xml).toContain('<fillColor r="255" g="128" b="0"');
+  });
+
+  it("renders connection with bendpoints", () => {
+    const conn = makeConnection({ uuid: "c-bp", source: "n1", target: "n2", bendpoints: [{ x: 100, y: 50 }, { x: 200, y: 75 }] });
+    const view = makeView({ uuid: "v-bp", nodes: [], conns: [conn] });
+    const xml = serializeToOpenExchange(makeDataSource({ views: [view] }).model);
+    expect(xml).toContain('<bendpoint x="100" y="50"');
+    expect(xml).toContain('<bendpoint x="200" y="75"');
+  });
+
+  it("renders empty-view xsi:type=Diagram as self-closing", () => {
+    const view = makeView({ uuid: "empty-v", name: "" });
+    const xml = serializeToOpenExchange(makeDataSource({ views: [view] }).model);
+    expect(xml).toContain('identifier="empty-v"');
+    expect(xml).toContain('xsi:type="Diagram"');
+  });
+
+  it("round-trips through parseOpenExchange", () => {
     const src = makeElement({ uuid: "as", name: "Src", type: "BusinessActor" });
     const tgt = makeElement({ uuid: "at", name: "Tgt", type: "BusinessService" });
-    const rel = makeRelationship({ uuid: "ar", source: src, target: tgt, type: "Serving" });
-    const original = makeDataSource({ uuid: "am", name: "Test Archi", elements: [src, tgt], relationships: [rel] }).model;
-    const parsed = parseArchiFormat(serializeToArchi(original));
+    const rel = makeRelationship({ uuid: "ar", name: "uses", source: src, target: tgt, type: "Serving" });
+    const original = makeDataSource({ uuid: "am", name: "Test OEF", elements: [src, tgt], relationships: [rel] }).model;
+    const parsed = parseOpenExchange(serializeToOpenExchange(original));
     expect(parsed.uuid).toBe("am");
-    expect(parsed.name).toBe("Test Archi");
+    expect(parsed.name).toBe("Test OEF");
     expect(parsed.elements).toHaveLength(2);
     expect(parsed.relationships).toHaveLength(1);
     expect(parsed.elements.find((e) => e.uuid === "as")?.type).toBe("BusinessActor");
     expect(parsed.relationships[0]!.type).toBe("Serving");
+    expect(parsed.relationships[0]!.name).toBe("uses");
   });
 });
 
 // ===========================================================================
-// Unit tests – Archi Junction type mapping
+// Unit tests – parseOpenExchange: Junction, modifiers, documentation, properties
 // ===========================================================================
 
-const JUNCTION_XML = `<?xml version="1.0" encoding="UTF-8"?>
-<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="J" id="jm" version="5.0.0">
-  <folder name="Other" id="other-f" type="other">
-    <element xsi:type="archimate:Junction" name="AndJ" id="and-id"/>
-    <element xsi:type="archimate:Junction" name="OrJ" id="or-id" type="or"/>
-  </folder>
-  <folder name="Relations" id="rels-f" type="relations"/>
-  <folder name="Diagrams" id="diag-f" type="diagrams"/>
-</archimate:model>`;
+const OEF_FIXTURE = `<?xml version="1.0" encoding="UTF-8"?>
+<model xmlns="http://www.opengroup.org/xsd/archimate/3.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" identifier="m1" version="3.1">
+  <name xml:lang="fr">FixtureModel</name>
+  <documentation xml:lang="fr">model doc</documentation>
+  <elements>
+    <element identifier="and-id" xsi:type="AndJunction"><name xml:lang="fr">AndJ</name></element>
+    <element identifier="or-id" xsi:type="OrJunction"><name xml:lang="fr">OrJ</name></element>
+    <element identifier="actor-id" xsi:type="BusinessActor">
+      <name xml:lang="fr">Actor</name>
+      <documentation xml:lang="fr">actor doc</documentation>
+      <properties>
+        <property propertyDefinitionRef="propid-1"><value xml:lang="fr">val-1</value></property>
+      </properties>
+    </element>
+    <element identifier="svc-id" xsi:type="BusinessService"><name xml:lang="fr">Svc</name></element>
+    <element identifier="ignored-id" xsi:type="UnknownFutureConcept"><name xml:lang="fr">Skip</name></element>
+  </elements>
+  <relationships>
+    <relationship identifier="rel-acc" source="actor-id" target="svc-id" xsi:type="Access" accessType="ReadWrite"/>
+    <relationship identifier="rel-ass" source="actor-id" target="svc-id" xsi:type="Association" isDirected="true"/>
+    <relationship identifier="rel-inf" source="actor-id" target="svc-id" xsi:type="Influence" modifier="++"/>
+    <relationship identifier="rel-named" source="actor-id" target="svc-id" xsi:type="Serving">
+      <name xml:lang="fr">serves</name>
+    </relationship>
+    <relationship identifier="rel-skip" source="actor-id" target="svc-id" xsi:type="NotARelType"/>
+  </relationships>
+  <organizations>
+    <item><label xml:lang="fr">Business</label><item identifierRef="actor-id"/></item>
+  </organizations>
+  <propertyDefinitions>
+    <propertyDefinition identifier="propid-1" type="string"><name>P1</name></propertyDefinition>
+  </propertyDefinitions>
+  <views>
+    <diagrams>
+      <view identifier="view1" xsi:type="Diagram" viewpoint="Layered">
+        <name xml:lang="fr">View1</name>
+        <documentation xml:lang="fr">view doc</documentation>
+        <node identifier="n-actor" elementRef="actor-id" xsi:type="Element" x="10" y="20" w="120" h="55">
+          <style>
+            <fillColor r="255" g="0" b="0" a="100"/>
+            <lineColor r="0" g="0" b="0"/>
+            <font name="Segoe UI" size="9"><color r="10" g="20" b="30"/></font>
+          </style>
+        </node>
+        <node identifier="n-label" xsi:type="Label" x="0" y="0" w="100" h="40">
+          <label xml:lang="fr">A label</label>
+        </node>
+        <connection identifier="c1" relationshipRef="rel-ass" xsi:type="Relationship" source="n-actor" target="n-label">
+          <bendpoint x="50" y="30"/>
+        </connection>
+      </view>
+    </diagrams>
+  </views>
+</model>`;
 
-describe("Archi Junction mapping", () => {
-  it("parses Junction without type= as AndJunction", () => {
-    const model = parseArchiFormat(JUNCTION_XML);
-    expect(model.elements.find((e) => e.uuid === "and-id")?.type).toBe("AndJunction");
+describe("parseOpenExchange – core mappings", () => {
+  it("parses model identifier, name, version, documentation", () => {
+    const m = parseOpenExchange(OEF_FIXTURE);
+    expect(m.uuid).toBe("m1");
+    expect(m.name).toBe("FixtureModel");
+    expect(m.version).toBe("3.1");
+    expect(m.desc).toBe("model doc");
   });
 
-  it("parses Junction with type=or as OrJunction", () => {
-    const model = parseArchiFormat(JUNCTION_XML);
-    expect(model.elements.find((e) => e.uuid === "or-id")?.type).toBe("OrJunction");
+  it("parses And/Or Junctions as elements", () => {
+    const m = parseOpenExchange(OEF_FIXTURE);
+    expect(m.elements.find((e) => e.uuid === "and-id")?.type).toBe("AndJunction");
+    expect(m.elements.find((e) => e.uuid === "or-id")?.type).toBe("OrJunction");
   });
 
-  it("round-trips Junction types without loss", () => {
-    const model = parseArchiFormat(JUNCTION_XML);
-    const xml = serializeToArchi(model);
-    const reparsed = parseArchiFormat(xml);
-    expect(reparsed.elements.find((e) => e.uuid === "and-id")?.type).toBe("AndJunction");
-    expect(reparsed.elements.find((e) => e.uuid === "or-id")?.type).toBe("OrJunction");
+  it("skips elements with unknown xsi:type", () => {
+    const m = parseOpenExchange(OEF_FIXTURE);
+    expect(m.elements.find((e) => e.uuid === "ignored-id")).toBeUndefined();
   });
 
-  it("preserves Junction ids in round-trip via _rawArchi", () => {
-    const model = parseArchiFormat(JUNCTION_XML);
-    const xml = serializeToArchi(model);
-    expect(xml).toContain('id="and-id"');
-    expect(xml).toContain('id="or-id"');
+  it("parses documentation and properties on element", () => {
+    const m = parseOpenExchange(OEF_FIXTURE);
+    const actor = m.elements.find((e) => e.uuid === "actor-id")!;
+    expect(actor.desc).toBe("actor doc");
+    expect(actor.props["propid-1"]).toBe("val-1");
+  });
+
+  it("parses relationship modifiers (accessType, isDirected, modifier)", () => {
+    const m = parseOpenExchange(OEF_FIXTURE);
+    const acc = m.relationships.find((r) => r.uuid === "rel-acc")!;
+    const ass = m.relationships.find((r) => r.uuid === "rel-ass")!;
+    const inf = m.relationships.find((r) => r.uuid === "rel-inf")!;
+    expect(acc.access_type).toBe("ReadWrite");
+    expect(ass.is_directed).toBe(true);
+    expect(inf.influence_strength).toBe("++");
+  });
+
+  it("skips relationships with unknown xsi:type", () => {
+    const m = parseOpenExchange(OEF_FIXTURE);
+    expect(m.relationships.find((r) => r.uuid === "rel-skip")).toBeUndefined();
+  });
+
+  it("parses named relationship", () => {
+    const m = parseOpenExchange(OEF_FIXTURE);
+    expect(m.relationships.find((r) => r.uuid === "rel-named")?.name).toBe("serves");
+  });
+
+  it("parses view nodes with style and connections with bendpoints", () => {
+    const m = parseOpenExchange(OEF_FIXTURE);
+    const v = m.views[0]!;
+    expect(v.uuid).toBe("view1");
+    expect(v.primary_viewpoint).toBe("Layered");
+    expect(v.desc).toBe("view doc");
+    const actorNode = v.nodes.find((n) => n.uuid === "n-actor")!;
+    expect(actorNode.x).toBe(10);
+    expect(actorNode.fill_color).toMatchObject({ r: 255, g: 0, b: 0 });
+    expect(actorNode.font_name).toBe("Segoe UI");
+    const labelNode = v.nodes.find((n) => n.uuid === "n-label")!;
+    expect(labelNode.name).toBe("A label");
+    const c = v.conns[0]!;
+    expect(c.uuid).toBe("c1");
+    expect(c.bendpoints?.[0]).toMatchObject({ x: 50, y: 30 });
   });
 });
 
 // ===========================================================================
-// Unit tests – serializeToArchi round-trip with raw Archi tree
+// Unit tests – round-trip with preserved raw sections
 // ===========================================================================
 
-const ARCHI_ROUNDTRIP_XML = `<?xml version="1.0" encoding="UTF-8"?>
-<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="Test" id="model-rt-id" version="5.0.0">
-  <folder name="Application" id="app-folder-id" type="application">
-    <folder name="Components" id="comp-subfolder-id">
-      <element xsi:type="archimate:ApplicationComponent" name="ExistingApp" id="existing-app-id"/>
-    </folder>
-  </folder>
-  <folder name="Relations" id="rels-folder-id" type="relations"/>
-  <folder name="Diagrams" id="diagrams-folder-id" type="diagrams"/>
-</archimate:model>`;
-
-describe("serializeToArchi – round-trip with _rawArchi", () => {
-  it("preserves nested sub-folder ids", () => {
-    const model = parseArchiFormat(ARCHI_ROUNDTRIP_XML);
-    const xml = serializeToArchi(model);
-    expect(xml).toContain('id="comp-subfolder-id"');
-    expect(xml).toContain('id="app-folder-id"');
+describe("serializeToOpenExchange – round-trip preserves organizations / propertyDefinitions", () => {
+  it("preserves organizations subtree through round-trip", () => {
+    const m = parseOpenExchange(OEF_FIXTURE);
+    const xml = serializeToOpenExchange(m);
+    expect(xml).toContain("<organizations>");
+    expect(xml).toContain('identifierRef="actor-id"');
+    const reparsed = parseOpenExchange(xml);
+    expect(reparsed.elements).toHaveLength(m.elements.length);
   });
 
-  it("updates existing element in-place", () => {
-    const model = parseArchiFormat(ARCHI_ROUNDTRIP_XML);
-    model.elements[0]!.name = "RenamedApp";
-    const xml = serializeToArchi(model);
-    expect(xml).toContain("RenamedApp");
-    expect(xml).not.toContain("ExistingApp");
+  it("preserves propertyDefinitions subtree through round-trip", () => {
+    const m = parseOpenExchange(OEF_FIXTURE);
+    const xml = serializeToOpenExchange(m);
+    expect(xml).toContain('<propertyDefinition identifier="propid-1"');
+    expect(xml).toContain("string");
   });
 
-  it("inserts new element into correct layer folder", () => {
-    const model = parseArchiFormat(ARCHI_ROUNDTRIP_XML);
-    model.elements.push({ uuid: "new-id", name: "NewApp", type: "ApplicationComponent", desc: null, props: {} });
-    const xml = serializeToArchi(model);
-    const reparsed = parseArchiFormat(xml);
-    expect(reparsed.elements).toHaveLength(2);
-    expect(reparsed.elements.find((e) => e.name === "NewApp")).toBeTruthy();
+  it("updates existing element in-place across round-trip", () => {
+    const m = parseOpenExchange(OEF_FIXTURE);
+    const actor = m.elements.find((e) => e.uuid === "actor-id")!;
+    actor.name = "RenamedActor";
+    const xml = serializeToOpenExchange(m);
+    expect(xml).toContain("RenamedActor");
+    const reparsed = parseOpenExchange(xml);
+    expect(reparsed.elements.find((e) => e.uuid === "actor-id")?.name).toBe("RenamedActor");
   });
 
-  it("removes deleted elements", () => {
-    const model = parseArchiFormat(ARCHI_ROUNDTRIP_XML);
-    model.elements = [];
-    const xml = serializeToArchi(model);
-    const reparsed = parseArchiFormat(xml);
+  it("appends new element and relationship after round-trip", () => {
+    const m = parseOpenExchange(OEF_FIXTURE);
+    m.elements.push({ uuid: "new-id", name: "NewApp", type: "ApplicationComponent", desc: null, props: {} });
+    m.relationships.push({
+      uuid: "new-rel", name: null, type: "Association",
+      source: "new-id", target: "actor-id",
+      desc: null, props: {}, access_type: null, is_directed: null, influence_strength: null,
+    });
+    const xml = serializeToOpenExchange(m);
+    const reparsed = parseOpenExchange(xml);
+    expect(reparsed.elements.find((e) => e.uuid === "new-id")).toBeTruthy();
+    expect(reparsed.relationships.find((r) => r.uuid === "new-rel")).toBeTruthy();
+  });
+
+  it("appends new view through round-trip", () => {
+    const m = parseOpenExchange(OEF_FIXTURE);
+    m.views.push({ uuid: "v-new", name: "NewView", desc: null, primary_viewpoint: null, nodes: [], conns: [] });
+    const xml = serializeToOpenExchange(m);
+    const reparsed = parseOpenExchange(xml);
+    expect(reparsed.views.find((v) => v.uuid === "v-new")).toBeTruthy();
+  });
+
+  it("removes deleted elements through round-trip", () => {
+    const m = parseOpenExchange(OEF_FIXTURE);
+    m.elements = [];
+    m.relationships = [];
+    const xml = serializeToOpenExchange(m);
+    const reparsed = parseOpenExchange(xml);
     expect(reparsed.elements).toHaveLength(0);
+    expect(reparsed.relationships).toHaveLength(0);
+  });
+
+  it("renders nested container nodes", () => {
+    const child = makeNode({ uuid: "child-n", ref: null, name: null, fill_color: null, line_color: null });
+    const parent = makeNode({ uuid: "parent-n", ref: null, name: null, fill_color: null, line_color: null, nodes: [child] });
+    const view = makeView({ uuid: "view-c", nodes: [parent], conns: [] });
+    const xml = serializeToOpenExchange(makeDataSource({ views: [view] }).model);
+    expect(xml).toContain('identifier="parent-n"');
+    expect(xml).toContain('identifier="child-n"');
+    const reparsed = parseOpenExchange(xml);
+    expect(reparsed.views[0]!.nodes[0]!.nodes).toHaveLength(1);
+  });
+
+  it("serializes view without _raw (flat path, no model fixture)", () => {
+    const view = makeView({ uuid: "vfr", name: "FromScratch", primary_viewpoint: "Layered" });
+    const xml = serializeToOpenExchange(makeDataSource({ views: [view] }).model);
+    expect(xml).toContain('identifier="vfr"');
+    expect(xml).toContain('viewpoint="Layered"');
   });
 });
 
@@ -1786,7 +1957,7 @@ describe("createNode", () => {
 
 describe("saveModel", () => {
   it("returns { saved: true, path } and writes the file", () => {
-    const tmpPath = `data/test-save-unit-${Date.now()}.archimate`;
+    const tmpPath = `data/test-save-unit-${Date.now()}.xml`;
     const ds = { ...makeDataSource({ name: "Save Test" }), path: tmpPath };
     const result = saveModel(ds);
     expect(result.saved).toBe(true);
@@ -1797,209 +1968,6 @@ describe("saveModel", () => {
   });
 });
 
-// ===========================================================================
-// Unit tests – serializeToArchi flat path (no _rawArchi)
-// ===========================================================================
-
-describe("serializeToArchi – flat path branches", () => {
-  it("includes documentation and properties for an element", () => {
-    const elem = makeElement({
-      uuid: "e-docs",
-      name: "Documented",
-      type: "BusinessActor",
-      desc: "Important actor",
-      props: { owner: "team-a", priority: "high" },
-    });
-    const xml = serializeToArchi(makeDataSource({ elements: [elem] }).model);
-    expect(xml).toContain("<documentation>Important actor</documentation>");
-    expect(xml).toContain('key="owner"');
-    expect(xml).toContain('value="team-a"');
-  });
-
-  it("serializes OrJunction with type=or attribute in flat path", () => {
-    const junction = makeElement({ uuid: "or-j", name: "OrGate", type: "OrJunction" });
-    const xml = serializeToArchi(makeDataSource({ elements: [junction] }).model);
-    expect(xml).toContain('xsi:type="archimate:Junction"');
-    expect(xml).toContain('type="or"');
-  });
-
-  it("serializes relationship optional fields: name, access_type, is_directed, influence_strength", () => {
-    const src = makeElement({ uuid: "rs1" });
-    const tgt = makeElement({ uuid: "rt1" });
-    const rel = makeRelationship({
-      uuid: "r-full",
-      source: src,
-      target: tgt,
-      type: "Access",
-      name: "reads data",
-      access_type: "Read",
-      is_directed: true,
-      influence_strength: "high",
-    });
-    const xml = serializeToArchi(makeDataSource({ elements: [src, tgt], relationships: [rel] }).model);
-    expect(xml).toContain('name="reads data"');
-    expect(xml).toContain('accessType="Read"');
-    expect(xml).toContain('directed="true"');
-    expect(xml).toContain('strength="high"');
-  });
-
-  it("serializes relationship with properties (inner element block)", () => {
-    const src = makeElement({ uuid: "rsp1" });
-    const tgt = makeElement({ uuid: "rtp1" });
-    const rel = makeRelationship({
-      uuid: "r-props",
-      source: src,
-      target: tgt,
-      type: "Flow",
-      props: { bandwidth: "100mbps" },
-    });
-    const xml = serializeToArchi(makeDataSource({ elements: [src, tgt], relationships: [rel] }).model);
-    expect(xml).toContain('key="bandwidth"');
-    expect(xml).toContain('value="100mbps"');
-  });
-
-  it("serializes view with nodes, connections, viewpoint, and documentation", () => {
-    const elem = makeElement({ uuid: "ve1", type: "ApplicationComponent" });
-    const node = makeNode({
-      uuid: "vn1",
-      name: "App Node",
-      ref: elem.uuid,
-      x: 10,
-      y: 20,
-      w: 120,
-      h: 55,
-      fill_color: { r: 255, g: 128, b: 0 },
-      line_color: { r: 0, g: 0, b: 128 },
-      font_color: { r: 50, g: 50, b: 50 },
-    });
-    const childNode = makeNode({ uuid: "vn2", name: null, ref: null, x: null, y: null, w: null, h: null, fill_color: null, line_color: null, font_color: null });
-    const nodeWithChild = { ...node, nodes: [childNode] };
-    const conn = makeConnection({ uuid: "vc1", source: "vn1", target: "vn2", ref: "rel-x", name: "arrow" });
-    const view = makeView({
-      uuid: "vv1",
-      name: "App View",
-      desc: "Application architecture",
-      primary_viewpoint: "Application Platform",
-      nodes: [nodeWithChild],
-      conns: [conn],
-    });
-    const xml = serializeToArchi(makeDataSource({ elements: [elem], views: [view] }).model);
-    expect(xml).toContain('viewpoint="Application Platform"');
-    expect(xml).toContain("<documentation>Application architecture</documentation>");
-    expect(xml).toContain('archimateElement="ve1"');
-    expect(xml).toContain('fillColor="#ff8000"');
-    expect(xml).toContain('lineColor="#000080"');
-    expect(xml).toContain('x="10"');
-    expect(xml).toContain('archimateRelationship="rel-x"');
-    expect(xml).toContain('name="arrow"');
-    expect(xml).toContain('name="App Node"');
-  });
-
-  it("serializes view with empty node list as self-closing element", () => {
-    const view = makeView({ uuid: "empty-v", name: "Empty View" });
-    const xml = serializeToArchi(makeDataSource({ views: [view] }).model);
-    expect(xml).toContain('id="empty-v"');
-    expect(xml).toContain('xsi:type="archimate:ArchimateDiagramModel"');
-  });
-});
-
-// ===========================================================================
-// Unit tests – serializeToArchi raw path with relationships and diagram nodes
-// ===========================================================================
-
-const FULL_ARCHI_XML = `<?xml version="1.0" encoding="UTF-8"?>
-<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="Full" id="fm1" version="5.0.0">
-  <folder name="Business" id="bf1" type="business">
-    <element xsi:type="archimate:BusinessActor" name="Actor" id="ba1"/>
-    <element xsi:type="archimate:BusinessService" name="Service" id="bs1"/>
-  </folder>
-  <folder name="Relations" id="rf1" type="relations">
-    <element xsi:type="archimate:AssociationRelationship" id="rel1" source="ba1" target="bs1" name="uses"/>
-  </folder>
-  <folder name="Diagrams" id="df1" type="diagrams">
-    <element xsi:type="archimate:ArchimateDiagramModel" name="View1" id="view1" viewpoint="Layered">
-      <child xsi:type="archimate:DiagramObject" id="node1" archimateElement="ba1" fillColor="#ff0000">
-        <bounds x="10" y="20" width="120" height="55"/>
-        <sourceConnection xsi:type="archimate:Connection" id="conn1" source="node1" target="node2" archimateRelationship="rel1" name="arrow"/>
-      </child>
-      <child xsi:type="archimate:DiagramObject" id="node2" archimateElement="bs1">
-        <bounds x="200" y="20" width="120" height="55"/>
-      </child>
-    </element>
-  </folder>
-</archimate:model>`;
-
-describe("serializeToArchi – raw path with relationships and views", () => {
-  it("preserves existing relationships through raw round-trip", () => {
-    const model = parseArchiFormat(FULL_ARCHI_XML);
-    const xml = serializeToArchi(model);
-    const reparsed = parseArchiFormat(xml);
-    expect(reparsed.relationships).toHaveLength(1);
-    expect(reparsed.relationships[0]!.type).toBe("Association");
-    expect(reparsed.relationships[0]!.name).toBe("uses");
-  });
-
-  it("preserves diagram nodes and connections through raw round-trip", () => {
-    const model = parseArchiFormat(FULL_ARCHI_XML);
-    const xml = serializeToArchi(model);
-    const reparsed = parseArchiFormat(xml);
-    expect(reparsed.views).toHaveLength(1);
-    expect(reparsed.views[0]!.nodes).toHaveLength(2);
-    expect(reparsed.views[0]!.conns).toHaveLength(1);
-  });
-
-  it("appends new relationship not in original raw tree", () => {
-    const model = parseArchiFormat(FULL_ARCHI_XML);
-    const newRel: ArchiRelationship = {
-      uuid: "new-rel",
-      name: "new-assoc",
-      type: "Association",
-      source: "ba1",
-      target: "bs1",
-      desc: null,
-      props: {},
-      access_type: null,
-      is_directed: null,
-      influence_strength: null,
-    };
-    model.relationships.push(newRel);
-    const xml = serializeToArchi(model);
-    expect(xml).toContain('id="new-rel"');
-    const reparsed = parseArchiFormat(xml);
-    expect(reparsed.relationships).toHaveLength(2);
-  });
-
-  it("appends new view not in original raw tree", () => {
-    const model = parseArchiFormat(FULL_ARCHI_XML);
-    const newView: ArchiView = {
-      uuid: "view2",
-      name: "New View",
-      desc: null,
-      primary_viewpoint: null,
-      nodes: [],
-      conns: [],
-    };
-    model.views.push(newView);
-    const xml = serializeToArchi(model);
-    expect(xml).toContain('id="view2"');
-    const reparsed = parseArchiFormat(xml);
-    expect(reparsed.views).toHaveLength(2);
-  });
-
-  it("serializes relationship with all optional raw fields (name, access_type, is_directed, influence_strength, props)", () => {
-    const model = parseArchiFormat(FULL_ARCHI_XML);
-    model.relationships[0]!.name = "named-rel";
-    model.relationships[0]!.access_type = "ReadWrite";
-    model.relationships[0]!.is_directed = false;
-    model.relationships[0]!.influence_strength = "low";
-    model.relationships[0]!.props = { tag: "important" };
-    const xml = serializeToArchi(model);
-    expect(xml).toContain('name="named-rel"');
-    expect(xml).toContain("ReadWrite");
-    expect(xml).toContain("low");
-    expect(xml).toContain('key="tag"');
-  });
-});
 
 // ===========================================================================
 // Unit tests – updateRelationship source and target
@@ -2287,116 +2255,77 @@ describe("MCP tool calls via JSON-RPC", () => {
 });
 
 // ===========================================================================
-// Unit tests – archi-parser classifyType skip branch
+// Unit tests – additional OEF parser / serializer branches
 // ===========================================================================
 
-describe("archi-parser – unknown xsi:type is skipped", () => {
-  it("ignores elements with unknown xsi:type in classifyType", () => {
+describe("oxf-parser – edge cases", () => {
+  it("parses model with no <elements>/<relationships>/<views> sections", () => {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="Skip" id="skip-m">
-  <folder name="Other" id="fo1" type="other">
-    <element xsi:type="archimate:UnknownFutureConcept" name="Unknown" id="x1"/>
-    <element xsi:type="archimate:AndJunction" name="And" id="j1"/>
-  </folder>
-</archimate:model>`;
-    const model = parseArchiFormat(xml);
-    expect(model.elements).toHaveLength(1);
-    expect(model.elements[0]!.uuid).toBe("j1");
+<model xmlns="http://www.opengroup.org/xsd/archimate/3.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" identifier="empty-m">
+  <name xml:lang="fr">Empty</name>
+</model>`;
+    const m = parseOpenExchange(xml);
+    expect(m.elements).toHaveLength(0);
+    expect(m.relationships).toHaveLength(0);
+    expect(m.views).toHaveLength(0);
+  });
+
+  it("parses viewpointRef as fallback for primary_viewpoint", () => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<model xmlns="http://www.opengroup.org/xsd/archimate/3.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" identifier="m">
+  <name xml:lang="fr">M</name>
+  <views><diagrams>
+    <view identifier="v1" xsi:type="Diagram" viewpointRef="vp-x">
+      <name xml:lang="fr">V</name>
+    </view>
+  </diagrams></views>
+</model>`;
+    const m = parseOpenExchange(xml);
+    expect(m.views[0]!.primary_viewpoint).toBe("vp-x");
+  });
+
+  it("parses node without elementRef as Label kind (no ref)", () => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<model xmlns="http://www.opengroup.org/xsd/archimate/3.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" identifier="m">
+  <name xml:lang="fr">M</name>
+  <views><diagrams>
+    <view identifier="v1" xsi:type="Diagram">
+      <name xml:lang="fr">V</name>
+      <node identifier="n-x" xsi:type="Label" x="0" y="0" w="10" h="10"/>
+    </view>
+  </diagrams></views>
+</model>`;
+    const m = parseOpenExchange(xml);
+    expect(m.views[0]!.nodes[0]!.ref).toBeNull();
   });
 });
 
-// ===========================================================================
-// Unit tests – serializer raw path remaining branches
-// ===========================================================================
-
-const XML_FOR_RAW_BRANCHES = `<?xml version="1.0" encoding="UTF-8"?>
-<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="RawBranches" id="rb1" version="5.0.0">
-  <folder name="Business" id="bf2" type="business">
-    <element xsi:type="archimate:BusinessActor" name="Actor2" id="bact2"/>
-    <element xsi:type="archimate:BusinessService" name="Svc2" id="bsvc2"/>
-  </folder>
-  <folder name="Diagrams" id="df2" type="diagrams">
-    <folder name="DiagramsSub" id="dsub1">
-      <element xsi:type="archimate:ArchimateDiagramModel" name="SubView" id="subview1"/>
-    </folder>
-  </folder>
-</archimate:model>`;
-
-describe("serializeToArchi – raw path remaining branches", () => {
-  it("serializes element props in raw model (elemToRawArchiNode props branch)", () => {
-    const model = parseArchiFormat(FULL_ARCHI_XML);
-    model.elements[0]!.props = { tag: "important", owner: "team-b" };
-    const xml = serializeToArchi(model);
-    const reparsed = parseArchiFormat(xml);
-    expect(reparsed.elements[0]!.props).toMatchObject({ tag: "important" });
-  });
-
-  it("creates new folder for element type not in raw model (insertNewElements new folder)", () => {
-    const model = parseArchiFormat(FULL_ARCHI_XML);
-    model.elements.push(makeElement({ uuid: "cap-new-1", name: "MyCap", type: "Capability" }));
-    const xml = serializeToArchi(model);
-    expect(xml).toContain('id="cap-new-1"');
-    const reparsed = parseArchiFormat(xml);
-    expect(reparsed.elements.find((e) => e.uuid === "cap-new-1")).toBeTruthy();
-  });
-
-  it("collectRawViewIds recurses into nested diagram subfolder", () => {
-    const model = parseArchiFormat(XML_FOR_RAW_BRANCHES);
-    expect(model.views).toHaveLength(1);
-    expect(model.views[0]!.uuid).toBe("subview1");
-    const xml = serializeToArchi(model);
-    expect(xml).toContain('id="subview1"');
-  });
-
-  it("new view with nodes and connections via viewToRawArchiNode/diagramChildToRaw", () => {
-    const model = parseArchiFormat(FULL_ARCHI_XML);
-    const childNode: ArchiNode = {
-      uuid: "nn2", name: null, ref: null,
-      x: null, y: null, w: null, h: null,
-      fill_color: null, line_color: null,
-      font_name: null, font_size: null, font_color: null, line_width: null,
-      nodes: [],
-    };
-    const newNode: ArchiNode = {
-      uuid: "nn1", name: "DiagNode", ref: "ba1",
-      x: 10, y: 20, w: 100, h: 50,
-      fill_color: { r: 200, g: 100, b: 50 },
-      line_color: { r: 0, g: 0, b: 200 },
-      font_name: null, font_size: null, font_color: null, line_width: null,
-      nodes: [childNode],
-    };
-    const newConn: ArchiConnection = {
-      uuid: "nc1", name: "Link", ref: "rel1",
-      source: "nn1", target: "nn2",
-      line_color: null, font_name: null, font_size: null, font_color: null, line_width: null,
-    };
-    model.views.push({
-      uuid: "nv1", name: "New Diagram", desc: "test desc",
-      primary_viewpoint: "Layered",
-      nodes: [newNode], conns: [newConn],
+describe("serializeToOpenExchange – misc branches", () => {
+  it("emits relationship with documentation and properties", () => {
+    const src = makeElement({ uuid: "rsp1" });
+    const tgt = makeElement({ uuid: "rtp1" });
+    const rel = makeRelationship({
+      uuid: "r-full", source: src, target: tgt, type: "Flow",
+      name: "flows", desc: "rel doc", props: { "propid-1": "v1" },
     });
-    const xml = serializeToArchi(model);
-    expect(xml).toContain('id="nv1"');
-    expect(xml).toContain('id="nn1"');
-    expect(xml).toContain('id="nc1"');
-    const reparsed = parseArchiFormat(xml);
-    const nv = reparsed.views.find((v) => v.uuid === "nv1")!;
-    expect(nv.nodes).toHaveLength(1);
-    expect(nv.conns).toHaveLength(1);
+    const xml = serializeToOpenExchange(makeDataSource({ elements: [src, tgt], relationships: [rel] }).model);
+    expect(xml).toContain(">rel doc<");
+    expect(xml).toContain('propertyDefinitionRef="propid-1"');
+    expect(xml).toContain('xsi:type="Flow"');
   });
 
-  it("model without relations folder gets one created for new relationships", () => {
-    const model = parseArchiFormat(XML_FOR_RAW_BRANCHES);
-    model.relationships.push({
-      uuid: "new-rel-nf", name: "nf-assoc", type: "Association",
-      source: "bact2", target: "bsvc2",
-      desc: null, props: {}, access_type: null, is_directed: null, influence_strength: null,
-    });
-    const xml = serializeToArchi(model);
-    expect(xml).toContain('id="new-rel-nf"');
-    const reparsed = parseArchiFormat(xml);
-    expect(reparsed.relationships).toHaveLength(1);
-    expect(reparsed.relationships[0]!.uuid).toBe("new-rel-nf");
+  it("emits connection without relationshipRef as xsi:type=Line", () => {
+    const conn = makeConnection({ uuid: "c-line", source: "n1", target: "n2", ref: null });
+    const view = makeView({ uuid: "v-line", nodes: [], conns: [conn] });
+    const xml = serializeToOpenExchange(makeDataSource({ views: [view] }).model);
+    expect(xml).toContain('xsi:type="Line"');
+  });
+
+  it("emits node with line_width on style", () => {
+    const node = makeNode({ uuid: "n-lw", ref: null, name: null, fill_color: null, line_color: null, line_width: 3 });
+    const view = makeView({ uuid: "v-lw", nodes: [node], conns: [] });
+    const xml = serializeToOpenExchange(makeDataSource({ views: [view] }).model);
+    expect(xml).toContain('lineWidth="3"');
   });
 });
 
@@ -2736,7 +2665,7 @@ describe("renderViewToSvg – connection features", () => {
     const n2 = makeNode({ uuid: "n2", ref: e2, x: 200, y: 10, w: 100, h: 50 });
     const conn = makeConnection({
       uuid: "c1", source: "n1", target: "n2", ref: null,
-      bendpoints: [{ startX: 0, startY: -30, endX: 0, endY: -30 }],
+      bendpoints: [{ x: 150, y: 35 }],
     });
     const svg = renderViewToSvg(makeView({ nodes: [n1, n2], conns: [conn] }), baseModel);
     expect(svg).toContain("<polyline ");

@@ -1,25 +1,17 @@
 /**
- * Single Archi model source loader.
- * Reads config.json at startup and parses the configured .archimate file.
+ * Single ArchiMate model source loader.
+ * Reads config.json at startup and parses the configured Open Exchange File (.xml).
  */
 
 import { readFileSync } from "fs";
 import { join } from "path";
-import { parseArchiFormat } from "./archi-parser.js";
+import { parseOpenExchange } from "./oxf-parser.js";
 import type { ArchiModel } from "./model.js";
-
-// ---------------------------------------------------------------------------
-// Configuration
-// ---------------------------------------------------------------------------
 
 interface AppConfig {
   path: string;
   name: string;
 }
-
-// ---------------------------------------------------------------------------
-// Runtime DataSource
-// ---------------------------------------------------------------------------
 
 export interface DataSource {
   readonly path: string;
@@ -30,10 +22,6 @@ export interface DataSource {
   relationshipTypes: string[];
 }
 
-// ---------------------------------------------------------------------------
-// Startup loading
-// ---------------------------------------------------------------------------
-
 function loadConfig(): AppConfig {
   const raw = readFileSync(join(process.cwd(), "config.json"), "utf-8");
   return JSON.parse(raw) as AppConfig;
@@ -41,7 +29,7 @@ function loadConfig(): AppConfig {
 
 function buildDataSource(cfg: AppConfig): DataSource {
   const content = readFileSync(join(process.cwd(), cfg.path), "utf-8");
-  const model = parseArchiFormat(content);
+  const model = parseOpenExchange(content);
   return {
     path: cfg.path,
     model,

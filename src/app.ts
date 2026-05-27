@@ -1,7 +1,7 @@
 /**
  * REST and MCP services to explore and edit an ArchiMate model.
  *
- * Single-source mode: one .archimate file configured in config.json.
+ * Single-source mode: one ArchiMate Open Exchange (.xml) file configured in config.json.
  *
  * Routes:
  *   GET /openapi.json
@@ -20,6 +20,13 @@
 
 import express, { Request, Response } from "express";
 import { randomUUID } from "crypto";
+
+/** xs:ID / NCName requires the first char to be a letter or underscore.
+ *  `crypto.randomUUID()` may return strings starting with a digit, which is
+ *  rejected by the Open Exchange XSD. Prefix with "id-" to stay compliant. */
+function newId(): string {
+  return `id-${randomUUID()}`;
+}
 import { join } from "path";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
@@ -29,7 +36,7 @@ import { z } from "zod";
 import type { ArchiElement, ArchiRelationship, ArchiNode, ArchiConnection, ArchiView } from "./model.js";
 import { version } from "../package.json";
 import { dataSource, DataSource, recomputeDataSourceTypes } from "./registry.js";
-import { saveModelToFile } from "./serializer.js";
+import { saveModelToFile } from "./oxf-serializer.js";
 import { openApiSpec } from "./openapi.js";
 import { renderViewToSvg, renderViewToPng } from "./renderer.js";
 import {
@@ -282,7 +289,7 @@ export function getViewById(ds: DataSource, view_id: string): ViewDetailOut {
 
 export function createView(ds: DataSource, input: ViewCreateIn): ViewDetailOut {
   const view: ArchiView = {
-    uuid: randomUUID(),
+    uuid: newId(),
     name: input.name,
     desc: input.documentation ?? null,
     primary_viewpoint: input.viewpoint ?? null,
@@ -299,7 +306,7 @@ export function createNode(ds: DataSource, view_id: string, input: NodeCreateIn)
   const element = ds.model.elements.find((e) => e.uuid === input.element_id);
   if (!element) throw new Error(`Élément '${input.element_id}' introuvable.`);
   const node: ArchiNode = {
-    uuid: randomUUID(),
+    uuid: newId(),
     name: null,
     ref: element,
     x: input.x ?? null,
@@ -325,7 +332,7 @@ export function createNode(ds: DataSource, view_id: string, input: NodeCreateIn)
 
 export function createElement(ds: DataSource, input: ElementCreateIn): ElementOut {
   const element: ArchiElement = {
-    uuid: randomUUID(),
+    uuid: newId(),
     name: input.name,
     type: input.type,
     desc: input.documentation ?? null,
@@ -356,6 +363,17 @@ export function deleteElement(ds: DataSource, element_id: string): void {
     const tgtId = typeof r.target === "string" ? r.target : r.target.uuid;
     return srcId !== element_id && tgtId !== element_id;
   });
+  const dropNodes = (nodes: ArchiNode[]): ArchiNode[] =>
+    nodes
+      .filter((n) => {
+        const r = n.ref;
+        const refId = r == null ? null : typeof r === "string" ? r : r.uuid;
+        return refId !== element_id;
+      })
+      .map((n) => ({ ...n, nodes: dropNodes(n.nodes) }));
+  for (const v of ds.model.views) {
+    v.nodes = dropNodes(v.nodes);
+  }
   recomputeDataSourceTypes(ds);
 }
 
@@ -369,7 +387,7 @@ export function createRelationship(ds: DataSource, input: RelationshipCreateIn):
   if (!srcElem) throw new Error(`Élément source '${input.source}' introuvable.`);
   if (!tgtElem) throw new Error(`Élément cible '${input.target}' introuvable.`);
   const rel: ArchiRelationship = {
-    uuid: randomUUID(),
+    uuid: newId(),
     name: input.name ?? null,
     type: input.type,
     source: srcElem,
@@ -944,7 +962,7 @@ mcpServer.registerTool(
 mcpServer.registerTool(
   "save_model",
   {
-    description: "Saves the current in-memory model to its source file on disk (.archimate).",
+    description: "Saves the current in-memory model to its source file on disk (Open Exchange XML).",
     inputSchema: {},
   },
   async () => toContent(saveModel(dataSource))

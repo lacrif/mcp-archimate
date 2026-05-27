@@ -221,7 +221,7 @@ const SaveResult = {
   required: ["saved", "path"],
   properties: {
     saved: { type: "boolean", example: true },
-    path:  { type: "string", example: "data/archisurance.archimate" },
+    path:  { type: "string", example: "data/archisurance.xml" },
   },
 };
 
@@ -257,7 +257,7 @@ export const openApiSpec = {
     title: "mcp-archimate",
     version,
     description:
-      "API REST pour interroger et modifier un modèle ArchiMate 3.1 au format Archi Tool natif (.archimate). " +
+      "API REST pour interroger et modifier un modèle ArchiMate 3.1 au format Open Exchange File (.xml). " +
       "La source est configurée dans `config.json`.",
     contact: { name: "GitHub", url: "https://github.com/lacrif/mcp-archimate" },
   },
@@ -291,7 +291,7 @@ export const openApiSpec = {
         tags: ["Model"],
         summary: "Sauvegarder le modèle sur disque",
         operationId: "saveModel",
-        description: "Sérialise le modèle en mémoire et l'écrit dans son fichier .archimate.",
+        description: "Sérialise le modèle en mémoire et l'écrit dans son fichier .xml (Open Exchange File).",
         responses: {
           "200": {
             description: "Modèle sauvegardé",

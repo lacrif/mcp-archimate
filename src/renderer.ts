@@ -106,7 +106,9 @@ const REL_LINE: Record<string, RelLineStyle> = {
 const DEFAULT_REL_LINE: RelLineStyle = { dashArray: null, markerStart: null, markerEnd: "url(#arrow-open)" };
 
 // ---------------------------------------------------------------------------
-// Node geometry (absolute positions, child coords are relative to parent)
+// Node geometry. Per ArchiMate Open Exchange XSD (archimate3_Diagram.xsd),
+// every node's x/y is measured "from the Top,Left (i.e. 0,0) corner of the
+// diagram", so child coords are absolute, not parent-relative.
 // ---------------------------------------------------------------------------
 
 interface NodeGeom {
@@ -120,18 +122,18 @@ interface NodeGeom {
 
 function collectNodes(
   nodes: ArchiNode[],
-  offsetX: number,
-  offsetY: number,
+  _offsetX: number,
+  _offsetY: number,
   depth: number,
   out: Map<string, NodeGeom>
 ): void {
   for (const n of nodes) {
-    const x = offsetX + (n.x ?? 0);
-    const y = offsetY + (n.y ?? 0);
+    const x = n.x ?? 0;
+    const y = n.y ?? 0;
     const w = n.w ?? 120;
     const h = n.h ?? 55;
     out.set(n.uuid, { node: n, absX: x, absY: y, absW: w, absH: h, depth });
-    collectNodes(n.nodes, x, y, depth + 1, out);
+    collectNodes(n.nodes, 0, 0, depth + 1, out);
   }
 }
 
@@ -821,11 +823,9 @@ export function renderViewToSvg(view: ArchiView, model: ArchiModel): string {
     // Build waypoints using bendpoints (Archi: offsets from src/tgt centers)
     const waypoints: Array<{ x: number; y: number }> = [];
     for (const bp of conn.bendpoints ?? []) {
-      waypoints.push({
-        x: (srcCx + bp.startX + tgtCx + bp.endX) / 2,
-        y: (srcCy + bp.startY + tgtCy + bp.endY) / 2,
-      });
+      waypoints.push({ x: bp.x, y: bp.y });
     }
+    void srcCx; void srcCy; void tgtCx; void tgtCy;
 
     let allPts: Array<{ x: number; y: number }>;
     if (waypoints.length === 0) {

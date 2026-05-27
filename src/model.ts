@@ -1,6 +1,6 @@
 /**
- * Internal model types for ArchiMate models.
- * Parsing is handled by archi-parser.ts (Archi native format).
+ * Internal model types for ArchiMate models (Open Exchange Format).
+ * Parsing is handled by oxf-parser.ts.
  */
 
 export interface ArchiColor {
@@ -57,10 +57,8 @@ export interface ArchiNode {
 }
 
 export interface BendPoint {
-  startX: number;
-  startY: number;
-  endX: number;
-  endY: number;
+  x: number;
+  y: number;
 }
 
 export interface ArchiConnection {
@@ -94,5 +92,6 @@ export interface ArchiModel {
   elements: ArchiElement[];
   relationships: ArchiRelationship[];
   views: ArchiView[];
-  _rawArchi?: unknown; // raw parsed Archi model node — preserved for lossless round-trip
+  /** Raw parsed Open Exchange Format model node — preserved for lossless round-trip. */
+  _raw?: unknown;
 }
